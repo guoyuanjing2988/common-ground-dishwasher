@@ -12,6 +12,16 @@ Sequence: open door → put 1 detergent pod into the inner-door groove → pull 
 - Robot model: ./mujoco_menagerie/franka_emika_panda/panda.xml, attached with prefix "panda/" (read it for actuator names, ctrl ranges, keyframe "home", body/site names). Do not edit Menagerie files.
 - Keep changes small; one task per prompt; run the check command before finishing.
 
+## Lessons from the 10 Oct PoC (bowl grasp, 10/10 randomized passes) — apply these, don't rediscover them
+- Panda bodies need `gravcomp=1` (set via MjSpec on the attached bodies). Without it the position servos sag ~6 mm and the hand hits the object.
+- Stock Menagerie gripper servo (100 N/m) cannot hold a 180 g bowl at friction 0.6 (capacity ≈1.47 N < 1.77 N weight). Use 600 N/m: gainprm[0]=600*0.04/255, biasprm=(0,-600,-10); keep ctrl range 0–255 (255 = open) and force limit ±100 N. Gives ~15 N actuator force.
+- Object geoms need `priority=1`, otherwise contact friction mixes to the Panda's 1.0 and your 0.6 is silently ignored.
+- Contact params that worked: condim 4, friction (0.6, 0.005, 0.0001), solref (0.006, 1), solimp (0.95, 0.99, 0.001, 0.5, 2), solver iterations 100, tolerance 1e-10, noslip 0.
+- A tilted inverted bowl flattens between two vertical tine rows; one row leaning inward ~35° holds it at 17–19°. Level placement also works (1.8 mm error). Tine lean is our estimate, so label it.
+- Lowering: stop when the object gets >0.5 N upward support for 10 ms, then open. This rebounds a few mm before release, so refine it if there's time.
+- macOS offscreen render can fail inside Codex with `CGLError: invalid CoreGraphics connection`. The fix is a CGL context with `CGLPFAAllowOfflineRenderers`.
+- The PoC used the object's true initial pose (no perception). Say so in the HUD/README.
+
 ## Two people work in parallel — FILE OWNERSHIP (never edit the other person's files)
 | Track A (robot) | Track B (environment/product) |
 |---|---|
