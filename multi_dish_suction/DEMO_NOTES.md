@@ -224,22 +224,62 @@ Every real object got the right load/leave decision. Two labels were wrong (soap
 
 ---
 
-# Messy-sink attempt (`sink.py`): status at 13:32 SGT, INCOMPLETE
+# Messy sink (`sink.py`): honest partial result, **1 of 6 dishes loaded**
 
-**Built and working**
-- A sink scene matching `sink_refs/sink_6.png`:
-  - basin (−0.30…−0.05, 0.33…0.68; 100 mm deep) cut into the counter;
-  - faucet, collidable splash-back, soap, sponge, checked-colour dish cloth, cup with chopsticks, a cutting board leaning on the wall, and the earlier clutter;
-  - 4 plates in a loose, offset stack leaning sideways, with 2 bowls wedged against the wall. Seeded like that, then settled by physics; all 6 stay in the sink, at < 0.4 mm/s after 8 s.
-- **Robot base moved** to (0.45, 0.48, 0.90) so the sink is in reach (`sink_reach.py`).
-- **GPT pick order** (`codex exec`, 53 s): it found all 6 dishes and ordered them top plate → blue bowl → orange bowl → plates 2–4. The board and oil bottle were misread as one "long utensil".
-- **Depth patch finder:** finds the flat disc of the top plate at the true 23° tilt, and the bowls' inside bottoms.
-- **In-hand classification:** after a pick, the item is shown to the wall camera and its rim circle is fitted: 97–99 mm → plate, 56.7 mm → bowl.
+- Video: `out/sink_suction_demo.mp4`. H.264, 1280×720, **40.8 s**, **2.4 MB**. Written to `.tmp`, then moved into place.
+- Sequence: opening on the sink → GPT recognition and pick-order card (53 s call, fast-forwarded) → picks with the checklist → end card listing what went where and why.
+- Key frames: `frames/sink/00_opening`, `01_recognition`, `01_sealed_bowl1`, `02_bowl_spot1`, `99_end`. The physics drop that built the pile is `out/sink/drop.mp4`.
+- Results: `out/sink/result.json`, `plan.json`, `capture.json`. Log: `logs/s_run_final.log`. Peak memory 890 MB under `runw.sh`.
 
-**Not yet working: holding through the lift**
-- Seals on tilted dishes in the pile are acquired, then lost during the lift, with a 1.5 mm lip gap at 3.5–5°.
-- The modelled cup is a rigid ring of 8 lip points. On a tilted, loose plate it seals only partially (6/8 lips), and with the 44 N cap the seal then peels.
-- In one run (13:25) a plate reached the basket but was not seated correctly. In another, a dropped plate fell to the floor; that run's checks detected and reported it.
-- A spring-loaded cup gimbal (bellows compliance) was tried and reverted: it did not fix the peeling.
+**Scene** (matches the user's reference `sink_refs/sink_6.png`):
+- A single basin, 0.25 × 0.35 m and 100 mm deep, cut into the counter right next to the dishwasher.
+- Around it: faucet, collidable splash-back, soap bottle, sponge, dish cloth, cup with chopsticks, a cutting board leaning on the wall, and the earlier clutter (pan, flask, knife, oil).
+- 4 plates were seeded as a loose, offset stack leaning sideways, with 2 bowls wedged between the stack and the wall, then **settled by mj_step for 8 s**. All 6 stay in the sink, at < 0.4 mm/s.
+- **The robot base moved** from (0.55, 0.30) to **(0.45, 0.48, 0.90)** so the whole basin is in reach (`sink_reach.py`).
 
-**Blocked at 13:31.** The shared interpreter `common_ground_dishwasher/.venv` and `mujoco_menagerie/` (Panda model) were deleted by another process. That folder became a git repo, and both are git-ignored. No other Python with mujoco or mink exists on the machine, and installs are forbidden, so no further sims can run. The last `out/sink_suction_demo.mp4` (13:30) shows only failed and dropped picks. It is NOT a deliverable.
+**Pipeline.**
+1. **GPT (codex exec), one call on the wall image:** labels every item EN + 中文, marks it dishwasher-safe or not, and gives a pick order.
+   - It found all 6 dishes and ordered them: top plate 1, blue bowl 2, orange bowl 3, plates 2–4.
+   - Misreads: the soap bottle as a "carton"; the board plus oil bottle as one "long utensil".
+2. **Before every pick the depth is re-captured.** Inside GPT's box, the robot searches for the most exposed sealable patch:
+   - plate: a flat disc, 30 mm radius, rms < 1.2 mm;
+   - bowl: a concave inside bottom;
+   - in both cases nothing may stand above the cup or housing, and the approach must be within 35° of vertical.
+   The cup approaches along the patch normal and stops at the first lip contact, then presses in 2 mm steps until the seal check passes.
+3. **In-hand check:** the held item is raised in view of the wall camera without re-orienting it, and its rim circle is fitted. 97–99 mm → plate; 52–57 mm → bowl. Placement follows the measured class. Perceived poses only: ground truth is used for scoring and the floor check, never for control.
+4. If a pick fails, the robot moves on to the next item, then makes one retry pass.
+
+**Seal settings for this scene** (the plain and kitchen demos keep the strict 8-lip / 1 mm rule):
+- Acquisition: ≥ 6 of the 8 lip points touching, the other 2 within 1 mm (bellows lip compliance), normals within 15°.
+- Hold: every lip within 2 mm.
+
+## Results
+
+| Pick order | Item (GPT) | Outcome | Why |
+|---|---|---|---|
+| 3 | Orange bowl | ✓ **loaded**, bowl spot 1: final xy error 8.7 mm, tilt 27°, at rest | inside bottom exposed (approach 2° from vertical) → sealed → classified in hand (52 mm rim) → placed |
+| 1 | Top white plate | → person | the cup touched the 23°-tilted plate, but the loose plate rotated away under the first lip contact, so there was no full seal |
+| 4 | Second white plate | → person | same as the top plate |
+| 2 | Blue bowl | → person | its inside bottom is not exposed (partly under the plate stack) |
+| 5, 6 | Third / bottom plate | → person | no exposed flat 30 mm patch (covered by the plates above) |
+
+- **Peak suction:** 44 N against a 44 N cap.
+- **Seal losses:** one, during a partial acquisition on plate 2 (it was never carried).
+- **Unplanned robot contacts:** none, apart from a 0.9 N graze between the pump housing and the bowl it was releasing.
+- **Items around the sink:** max displacement 0 mm. **Nothing on the floor.** The run checks every dish and clutter item for z < 0.5 m and shows it on the end card.
+
+## What was tried, and what we learned (all runs logged in `logs/s_run*.log`)
+
+**The limit is how the suction cup is modelled for loose, tilted items in a pile.**
+- The cup is a rigid ring of 8 contact points with a 44 N cap. It seals reliably on an item that is flat and supported (plain demo 5/5, kitchen 5/5).
+- On a loose plate leaning at 20–25° in a pile, the first lip contact tips the plate, so all 8 lips never seat.
+- With a looser 6/8 acquisition, the seal formed but peeled while the wedged plate was being pulled off the pile:
+  - with in-plane torque from a 28–35 mm off-centre grasp, the lip gap grew past the limit at 3.5–7°;
+  - and during fast re-orientation.
+- A spring-loaded cup joint mimicking a flexible bellows (±10–15°, 1–5 N·m/rad) and a softer lip did not fix the peeling, so both were reverted.
+- One run carried a plate to the basket, but it was not seated, and another plate fell to the floor. Those runs reported both events; neither is the final video.
+- What would fix it on real hardware: a bellows or multi-fold cup (it conforms up to ~20°), a larger or foam cup for plates, and a centred grasp with a regrasp before insertion. That last part matters because a centred cup cannot pass the basket rail when the plate is upright.
+
+**Not done** (time): calling GPT again after each pick to update the order (the "look again" loop), and using the reviewer's `recognition_card/sink_scene.py` sink6 layout. My scene was built to match the same reference image.
+
+**Interruption:** from 13:30 to 13:36 the shared `.venv` and the menagerie Franka model were missing (a repo sync by the reviewer), so no sims ran. Everything after 13:36 used the restored environment.

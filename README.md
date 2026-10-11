@@ -10,9 +10,9 @@ A wheeled robot leaves its charger, docks at the kitchen counter, and a Franka F
 countertop dishwasher (BREMED E804 class). It opens the door, puts a detergent pod in the door groove,
 pulls the basket out, picks a flat plate off the counter, slots it upright between the tines, pushes
 the basket in, closes the door, and presses POWER, then QUICK, then POWER. Then it drives back to its
-charger. On a cluttered kitchen counter, GPT recognises every item (13/13) and decides what goes into the
-dishwasher. The arm then loads 3 plates and 2 bowls into their places from the perceived poses (GPT box + depth): 5/5
-with a gripper, and again 5/5 with a suction cup.
+charger. From a messy sink, GPT looks, the arm picks from the perceived pose (GPT box + depth), and GPT looks again:
+4 of 6 dishes loaded, and the 2 it cannot grasp are handed to a person. On a tidy counter the same pipeline finds 13/13
+items and loads 5/5 dishes, with a gripper and again with a suction cup.
 GPT (through `codex exec` on a ChatGPT subscription) is the robot's task-level brain. It
 chooses and sequences validated skills, reads their results, and recovers from faults. Force control,
 trajectories, collision checks and safety stay in the robot's own controllers.
@@ -58,16 +58,22 @@ Sources: `gpt_control/GPT_CONTROL.md` §4, `system_design/SYSTEM.md` §1, `mobil
 
 ## Results (all from logged simulation runs)
 
-### 0. The kitchen: recognise, then load plates and bowls
+### 0. The kitchen: from a messy sink and a cluttered counter
 
 ![Loaded basket with the final check](docs/assets/kitchen_final_check.jpg)
 
-**The messy sink (recognition and pick order).** Source: [`recognition_card/RESULTS.md`](recognition_card/RESULTS.md), sink6 section.
-A stainless sink holds a fanned pile of 4 plates and 2 bowls, with everyday items around it. One GPT call (47.7 s) found
-**11/13** objects. It missed the 2 plates hidden in the middle of the pile, and it listed a towel fold as an extra cloth.
-Its labels and dishwasher-safe verdicts were right for all 11 matched objects (mean box IoU 0.89). Its pick order starts with a free
-top plate, and 3 of its 4 steps are physically free. Step 3 takes the bowl that props up the remaining plates. Loading from the sink
-is not shown: the video loads on the counter scene below.
+**The messy sink: look, pick, look again.** Source: [`multi_dish_b/DEMO_NOTES.md`](multi_dish_b/DEMO_NOTES.md), "Messy sink" section.
+Six dishes are dropped into a sink and settle under physics. GPT sees only an overhead camera image. On its first look (one
+`codex exec` call, 59 s) it finds all 6 dishes among 13 items and plans a pick order. Before every pick, depth is re-captured and the
+arm grasps from the **perceived** pose (GPT box + depth). After every pick GPT looks again: 7 looks in total.
+
+| Quantity | Value |
+|---|---|
+| Dishes loaded from the sink | **4/6**: 2 plates upright in slots 6 and 5, 2 bowls upside-down on bowl spots 1 and 2 |
+| Perceived pose error of the loaded dishes | 1.7–2.9 mm |
+| Handed to a person | an upright bowl sitting on a plate (needs a flip this gripper can't do); the plate under it, lying flat on the basin floor with no rim to pinch |
+| GPT mistakes | a "possible pan" that was most likely the drain; a blue cloth called a "cutting board"; the pick order changed between looks |
+| Counter items disturbed | none (≤ 0.85 mm) |
 
 **The counter scene: recognise, then load, in one run.** Source: [`multi_dish_b/DEMO_NOTES.md`](multi_dish_b/DEMO_NOTES.md), kitchen section.
 The counter holds 3 plates, 2 bowls and 8 clutter items. One live GPT call (29.3 s) sees an overhead camera image and
@@ -216,6 +222,7 @@ mkdir -p gpt_control/logs mobile_pipeline/out multi_dish_b/logs multi_dish_sucti
 .venv/bin/python full_pipeline/run.py --option M1 --trials 10 --no-video  # the 10-trial table
 mobile_pipeline/guard.sh mission_video run_mobile.py --video              # one mobile mission
 gpt_control/runw.sh logs/x.log gpt_agent.py --level L1 --scen door_latch --seed 3 --goal zh
+multi_dish_b/runw.sh logs/sink.log sink_demo.py --tag _x                # messy sink: look, pick, look again
 multi_dish_b/runw.sh logs/k.log multi.py --tag _k --frames frames_kitchen  # kitchen: GPT recognition -> 3 plates + 2 bowls
 multi_dish_suction/runw.sh logs/x.log kitchen_demo.py                      # the same counter with a suction cup
 ```
@@ -231,9 +238,8 @@ mobile_pipeline/             free-body wheeled base, lidar docking, battery, mes
 system_design/               real-hardware design: SYSTEM.md, spec.json, calculations, BOM, diagrams
 gpt_control/                 GPT (codex exec) control: robot API, safety gate, faults, L1/L2 study, API.md
 gpt_mobile/, gpt_sort/, gpt_adversary/, gpt_engineer/   follow-up GPT studies (code, write-up, results.json)
-multi_dish_b/                kitchen counter: GPT recognition + depth -> 3 plates + 2 bowls with the gripper
+multi_dish_b/                messy sink and kitchen counter: GPT looks + depth -> plates and bowls with the gripper
 multi_dish_suction/          the same with a suction cup (Franka Cobot Pump)
-recognition_card/            standalone GPT recognition of a messy counter (scoring vs ground truth)
 docs/                        GitHub Pages: index.html, slides.html, media/demo_final.mp4, assets/ (images)
 ```
 
@@ -246,7 +252,7 @@ Large raw outputs (full-length run videos, per-run dumps, logs) are not included
 - **Touch panel.** Buttons are touch sensors plus a "conductive + force + dwell" rule. Real capacitance is not modelled, and the E804 panel logic is our assumption.
 - **Perception.** Clean synthetic renders with Gaussian depth noise. Codex gives the 2-D detection; the millimetre pose comes from depth geometry and a known plate model. The pod pose is not perceived in the nominal task.
 - **Appliance state.** Door angle, basket travel and panel display are simulated sensor access in the GPT study.
-- **Scope.** The charger-to-charger mission handles one plate and one pod. The 5-dish kitchen runs start docked, with the door open and the basket out, and see one clean rendered image. The run counts (10 trials, 6 missions, 2 runs per fault, 4 multi-dish runs) show feasibility, not reliability.
+- **Scope.** The charger-to-charger mission handles one plate and one pod. The sink and counter runs start docked, with the door open and the basket out, and see clean rendered images. The run counts (10 trials, 6 missions, 2 runs per fault, 4 multi-dish runs) show feasibility, not reliability.
 - **Arm model.** The simulated arm is the Menagerie Panda with FR3 joint limits applied in the mobile pipeline; FR3 masses and inertias are not used.
 - **GPT.** About 10 s per decision, so the arm waits about 32 % of an L1 mission. 5 of 38 L1 success claims were false, all on steps GPT could not observe. GPT needs the network; the planned offline fallback is a local behaviour tree with GPT as an exception handler.
 - **Cost.** BOM prices are reseller listings or estimates (tagged V / R / E in `bom_table.md`), not quotes.

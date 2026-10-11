@@ -1,4 +1,101 @@
-# multi_dish_b: Franka loads 3 plates + 2 bowls into a countertop dishwasher (MuJoCo)
+# multi_dish_b: Franka loads a countertop dishwasher (MuJoCo)
+
+## Messy sink (latest): `out/sink_demo.mp4`
+
+**4 of 6 dishes are loaded; 2 are handed to a person.** All 4 grasps use perceived poses: GPT boxes plus depth. Final poses were measured after everything settled:
+- 2 plates: slot 6 and slot 5;
+- 2 bowls, upside down and tilted: bowl spots 1 and 2.
+
+The 2 handed over are an **upright bowl sitting on a plate** (opening up; flipping it needs a regrasp this gripper cannot do) and the **plate under it**, which lies flat on the basin floor with no exposed rim to pinch. Nothing left the sink unnoticed: no dish ended outside the basin unless it was loaded. The 8 counter items stayed put (≤ 0.85 mm).
+
+**Video:** `out/sink_demo.mp4`. H.264 yuv420p, 1280×720, **114.6 s, 26.5 MB**. It was written as `.tmp.mp4`, then moved into place. The video shows:
+1. The dump: 6 dishes dropped into the sink, settling under `mj_step`, at real-time speed.
+2. A wide shot.
+3. The "GPT is recognising" banner (59.0 s, fast-forwarded) and the recognition card. Boxes are numbered with the GPT pick order; the legend gives EN + 中文 labels and poses; the not-loaded list gives reasons.
+4. A short **"Look #n"** card before every next pick. This is a new image and a **new GPT call** on what is left (28–44 s each, fast-forwarded): 7 looks in total.
+5. The picks and placements, with the caption `Pick #k <label> → slot/spot [perceived pose]`.
+6. Handover captions.
+7. The loaded-basket close-up and an end card: ✓/✗ list plus "Left on the counter / for a person" with the reasons.
+
+Key frames are in `keyframes_sink/`. The images and answers of every GPT look are in `out/sink/`. All data is in `out/result_sink.json`. A rough first take is kept in `out/dev/sink_demo_rough_v1.mp4`: its bowl-orientation test wrongly handed over both upside-down bowls (2 of 6 loaded).
+
+**Run:** `./runw.sh logs/sink.log sink_demo.py --tag _x` → `out/sink_demo_x.tmp.mp4`. Wall time is about 390 s, including 7 GPT calls. Peak RSS: 1.06 GB.
+
+### Scene (`sink_scene.py`)
+The sink6 reference look is approximated where it stays graspable.
+- **Basin:** a recessed steel basin cut into the counter right of the dishwasher. Interior x −0.36…−0.06, y 0.30…0.95; floor 12 cm below the counter; 4 walls and a drain. The counter and the cabinet are split around it.
+- **Fixtures and clutter:** a faucet with spout and lever, soap bottle, sponge, checked dish cloth, a cutting board against the wall, and a cup with chopsticks. The left-side clutter from the kitchen version is kept.
+- **Dishes:** dropped from perturbed poses (seed 3) and settled by physics:
+  - 2 plates slid down against the front wall, rims sticking up over its edge;
+  - a 3rd plate flat at the back with an upright bowl tilted on it;
+  - 2 bowls upside down, wedged between the plates and the back wall.
+- **Not the sink6 fanned stack.** I tried a fanned, nested 4-plate stack. It settled into nested plates whose rims had no room for a finger, and every grasp failed. So the final layout is less chaotic than sink6. I did not use `recognition_card/sink_scene.py` sink6, for the same reason and for lack of time.
+- **Overhead camera:** `sinkcam` is mounted under the wall cabinet behind the sink, looking down into the basin, so it sees the faces of the leaning plates. Depth noise σ = 1.5 mm × range.
+- **Mount:** the same cart and 1.10 m linear axis. The base follows the perceived item y for picks and returns to y = 0.36 for loading.
+
+### Loop (`sink_demo.py`)
+1. **GPT, first look.** `codex exec` (read-only, stdin /dev/null) receives the sinkcam image only. It returns per item: box, EN/中文 label, in-sink, dishwasher-safe + reason, pose, and **pick order** (top-most / least-blocked first).
+2. **Pick the first remaining item** in GPT order. Items already attempted are skipped; they are identified by the box centre projected onto the basin, within 6 cm.
+3. **Re-capture depth right before the pick**, then:
+   - **Plate:** RANSAC plane on the depth points in the GPT box. A plate within 25° of horizontal is flat → handover. Otherwise:
+     - in-plane up axis;
+     - top rim point = 99.5th percentile along that axis;
+     - centre = top − R;
+     - concave side from the rim-vs-disc offset;
+     - origin = visible-face offset.
+     Then **pinch the top rim** (pipeline `pick_rack`: pads on the rim face, approach down along the plate plane) and lift 0.17 m along the plane. Carry and insert use the unchanged `step_insert` with the measured-at-grasp in-hand transform; touchdown is detected by the wrist F/T.
+   - **Bowl:** the top 6 mm band of the depth points within 6.5 cm of the box centre. Upside down = a compact top (foot ring, mean radius < 34 mm) and a centre less than 25 mm below the top. An upright bowl shows its cavity, about 40 mm deep → handover. For an upside-down bowl: foot-ring grasp with the fingers along y (narrow in x, clear of the basin walls), then the hand turns about the bowl axis to the placement frame. Placement is as before.
+4. **Look again:** re-capture. If the depth image still shows something above the basin floor, call GPT again on the new image, show the "Look #n" card, and continue. The loop stops when GPT lists no new pickable dish.
+
+### Results (`out/result_sink.json`)
+**Recognition.** GPT found all 6 dishes and gave sensible safe / not-safe calls for the rest. Mistakes:
+- it reported a "possible pan beneath the white plate" (most likely the dark drain);
+- it called a blue cloth a "cutting board";
+- the pick order changed between looks: look 1 put the flat plate 2nd; look 2 put it last.
+
+| Look | GPT item (pick # in that look) | Perceived pose error | Pose used | Outcome (final pose after everything settled) |
+|---|---|---|---|---|
+| 1 | Upright blue bowl 正放蓝碗, #1 | (blob mis-centred, 73 mm) | – | **handed to a person**: opening up on a plate, needs a flip |
+| 2 | Beige plate 米色盘子, #1 | 2.87 mm | perceived | ✓ slot 6: lowest rim +1.7 mm, lean 2.5° |
+| 3 | Blue inverted bowl 倒扣蓝碗, #2 (#1 already handed over) | 1.71 mm | perceived | ✓ bowl spot 1: foot error 4.9 mm, tilt 17.9° |
+| 4 | Inverted blue bowl, #2 | 1.82 mm | perceived | ✓ bowl spot 2: foot error 2.5 mm, tilt 19.0° |
+| 5 | White plate 白色盘子, #1 | 2.40 mm | perceived | ✓ slot 5: lowest rim +3.0 mm, lean 1.3° |
+| 6 | White plate (flat, under the bowl), #2 | – | – | **handed to a person**: flat on the basin floor, no exposed rim |
+
+**Measurements**
+- Plate lift slip: 2.0 / 4.1 mm. Bowl lift slip: 0.35 / 0.34 mm.
+- No unplanned robot contact above 2 N.
+
+**Physics warning from the dump:** max penetration 24 mm, between the faucet base and the sponge. The sponge was seeded overlapping the faucet base and was pushed out at t = 0. This is a seeding error, not a robot contact.
+
+### Ground-truth audit (sink)
+
+**Controller inputs (drive motion): perceived or sensed**
+- The GPT boxes.
+- Depth (re-captured before every pick) → plate plane and rim, bowl foot ring and orientation class.
+- Plate in-hand transform: encoders relative to the perceived pose. Bowl in-hand offset: perceived grasp point plus encoders.
+- Wrist-F/T touchdown.
+- Basket and slot targets: the known dishwasher model + the known travel.
+- The look-again stop test: depth above the basin floor.
+
+**Ground truth used for decisions (stated here)**
+- *Identity:* the perceived item is named by its nearest simulator body. This is for the table and the slot bookkeeping only; the robot moves to the perceived pose.
+- *GT-fallback switch:* error > 6 mm → use the true pose (labelled on screen). It **did not fire** for any loaded item.
+- *Step success predicates:* lift rise / slip / finger contacts, `plate_slot_state` and `bowl_check`. They only abort an item; on failure the hand opens and the item is reported as "grasp failed, left in the sink for a person". No item failed in the final run.
+
+**Scoring / HUD only:** slip tracking, the final table, the dishes-left-the-sink check, the clutter-moved check.
+
+**Reset / seeding only:** dish drop poses and arm / door / basket at t = 0. After that, only `mj_step` moves anything.
+
+### Sink simplifications (honest)
+- **Layout:** chosen so rims are exposed: 2 plates leaning on the wall edge. The fully nested sink6 stack was not graspable with this gripper in the time available. The pile is seeded and then settled by physics, not a random dump.
+- **GPT:** sees clean renders. Its latency (28–59 s per look) is real but fast-forwarded in the video.
+- **Handover:** the 2 handed-over items are reported, not actually handed to a simulated person.
+- **Pinch-lift slip gate:** 30 mm (rack PoC: 5 mm), because the plate slides along the wall edge while lifting. The actual slips were 2–4 mm.
+- **Earlier simplifications still in force** (sections below): door open, basket out 0.33 m, the 1.10 m linear axis, the 10 mm insert aim, 3× video speed.
+- **Shared-environment outage:** the shared venv was deleted around 13:30 and restored at 13:36. `kitchen.py` and `pipeline.py` now fall back to a pure-python blob labeller and any available QP solver if scipy or daqp are missing; neither fallback was used in the reported runs.
+
+---
 
 ## Kitchen upgrade (final submission video): `out/kitchen_demo.mp4`
 

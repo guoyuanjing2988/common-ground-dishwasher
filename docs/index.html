@@ -77,7 +77,7 @@
 <p class="src">Demo video with bilingual captions. Everything shown is MuJoCo simulation; slow parts are sped up (the speed is shown on screen).</p>
 
 <div class="stats">
-  <div class="stat"><b>164 / 164</b><span>counter items recognised and classified by GPT over 24 random kitchens</span></div>
+  <div class="stat"><b>4 / 6</b><span>dishes loaded straight from a messy sink (perceived poses); 2 handed to a person</span></div>
   <div class="stat"><b>5 / 5</b><span>dishes placed from perceived poses after GPT found 13/13 items (gripper; suction too)</span></div>
   <div class="stat"><b>6 / 6</b><span>complete mobile missions: charger → dock → load → start → charger</span></div>
   <div class="stat"><b>10 / 10</b><span>9-step loading runs from a docked cart with real camera + Codex vision</span></div>
@@ -97,8 +97,9 @@
   <figure><img src="assets/base_17_panel_start_end.jpg" alt="Panel pressed, wash running" loading="lazy"><figcaption>6. POWER → QUICK → POWER with a conductive fingertip; drives back to charge.</figcaption></figure>
 </div>
 
-<h2>The kitchen: recognise everything, then load plates and bowls</h2>
-<p><b>The messy sink.</b> In a sink full of plates and bowls, one GPT call found 11 of 13 objects. It missed 2 plates hidden in the pile, labelled every item it found correctly, and planned a pick order that starts with the free top plate (3 of its 4 steps are physically free). Loading is shown on the counter scene. <span class="src">(recognition_card/RESULTS.md)</span></p>
+<h2>The kitchen: from a messy sink to a loaded basket</h2>
+<p><b>The messy sink.</b> Six dishes are dropped into a sink. GPT looks (one call, 59 s), finds all 6 among 13 items and plans a pick order. The arm grasps each dish from its perceived pose (GPT box + depth, 1.7–2.9 mm error), then GPT looks again: <b>4 of 6 dishes loaded</b>. An upright bowl sitting on a plate and a plate lying flat on the basin floor are handed to a person. <span class="src">(multi_dish_b/DEMO_NOTES.md)</span></p>
+<p>The same pipeline on a tidy counter:</p>
 <p>One live GPT call looks at a cluttered counter (3 plates, 2 bowls and 8 everyday items) and labels every item: what goes into the dishwasher, where, and why the rest stays out. Depth inside GPT's boxes gives each dish's pose, and the arm loads all five from those <b>perceived</b> poses. The clutter is left untouched.</p>
 <div class="two">
   <figure><img src="assets/kitchen_recognition.jpg" alt="GPT recognition card on the kitchen counter" loading="lazy"><figcaption>GPT's recognition (29.3 s call): 13/13 items found. Green = load, amber = safe but not this load, red = hand-wash.</figcaption></figure>

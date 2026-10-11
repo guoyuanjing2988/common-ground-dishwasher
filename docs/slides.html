@@ -119,18 +119,18 @@
 <!-- K -->
 <section class="slide">
   <div class="kicker">4 · The kitchen</div>
-  <h2>See the whole counter, then load plates and bowls</h2>
+  <h2>From a messy sink: look, pick, look again</h2>
   <div class="row">
     <div class="col">
-      <div class="photo"><img src="assets/kitchen_recognition.jpg" alt="GPT recognition of a cluttered counter"></div>
-      <p style="font-size:22px;margin-top:12px"><b style="color:var(--acc)">13 / 13</b> items found by one GPT call; each dish located to about 1 mm (GPT box + depth). Across 24 random counters, <b style="color:var(--acc)">164 / 164</b> items classified.</p>
+      <div class="photo"><img src="assets/sink_recognition.jpg" alt="GPT recognition of the messy sink"></div>
+      <p style="font-size:22px;margin-top:12px"><b style="color:var(--acc)">4 / 6</b> dishes loaded straight from a messy sink, each from its perceived pose (1.7–2.9 mm). GPT looks again after every pick; an upright bowl on a plate and a flat plate are handed to a person.</p>
     </div>
     <div class="col">
-      <div class="photo"><img src="assets/kitchen_final_check.jpg" alt="Loaded basket with the final check"></div>
-      <p style="font-size:22px;margin-top:12px"><b style="color:var(--acc)">5 / 5</b> dishes placed from <i>perceived</i> poses: plates lean 1.4–3.7°, bowls within 7 mm, clutter untouched. With a suction cup: also 5/5, 0 seal losses.</p>
+      <div class="photo"><img src="assets/sink_final.jpg" alt="Loaded basket: 4 of 6 dishes from the sink"></div>
+      <p style="font-size:22px;margin-top:12px">Same pipeline on a tidy counter: GPT found <b style="color:var(--acc)">13 / 13</b> items and the arm placed <b style="color:var(--acc)">5 / 5</b> dishes (plates lean 1.4–3.7°). With a suction cup: also 5/5.</p>
     </div>
   </div>
-  <p class="src">multi_dish_b/DEMO_NOTES.md (kitchen) · multi_dish_suction/DEMO_NOTES.md · gpt_sort/GPT_SORT.md · door starts open, basket out</p>
+  <p class="src">multi_dish_b/DEMO_NOTES.md (Messy sink, Kitchen) · multi_dish_suction/DEMO_NOTES.md · door starts open, basket out</p>
 </section>
 
 <!-- 5 -->
@@ -200,7 +200,7 @@
     <div class="stat"><b>6 / 6</b><span>full mobile missions: charger → dock → load → start → charger</span><small>265–273 s each · mobile_pipeline/MOBILE_RESULTS.md</small></div>
     <div class="stat"><b>10 / 10</b><span>9-step loading runs on a docked cart, real camera + Codex vision</span><small>plate centre error 0.44–1.75 mm · full_pipeline/RESULTS.md</small></div>
     <div class="stat"><b>13 / 14</b><span>fault missions finished by GPT; hard-coded script 0 / 14</span><small>gpt_control/GPT_CONTROL.md</small></div>
-    <div class="stat"><b>5 / 5</b><span>dishes placed from perceived poses after GPT found 13/13 items; also 5/5 with suction</span><small>multi_dish_b · multi_dish_suction DEMO_NOTES.md</small></div>
+    <div class="stat"><b>4 / 6</b><span>dishes loaded straight from a messy sink (perceived poses); 2 handed to a person. Tidy counter: 13/13 found, 5/5 loaded</span><small>multi_dish_b/DEMO_NOTES.md</small></div>
   </div>
 </section>
 
