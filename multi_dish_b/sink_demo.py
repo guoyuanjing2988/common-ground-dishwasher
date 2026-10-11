@@ -129,7 +129,7 @@ class Sink(M.Multi):
         if len(P) < 200:
             return None
         c, n, inl = ransac_plane(P, thr=.004, iters=400, rng=np.random.default_rng(1))
-        if abs(n[2]) > .9:
+        if abs(n[2]) > (.97 if SS.LAYOUT == 'stack' else .9):
             return dict(kind='flat', n=n.tolist())
         band = np.abs((P - c) @ n) < .015
         Q = P[band]
@@ -148,6 +148,14 @@ class Sink(M.Multi):
         face = .010 if n @ (campos - ctr) > 0 else .005           # visible face: concave disc top / convex disc bottom
         origin = ctr - n * face
         Pm = np.column_stack([np.cross(u, n), u, n])
+        if SS.LAYOUT == 'stack':
+            # fanned stack slides toward +y: grasp the rim 25 deg from the top toward +y, where no plate lies beneath it
+            phi = math.radians(25)
+            c_, s_ = math.cos(phi), math.sin(phi)
+            yw = np.array([0, 1., 0])
+            sgn_ = 1. if (Pm[:, 0] @ yw) < 0 else -1.          # rotate the in-plane 'up' axis toward +y
+            Rz = np.array([[c_, -sgn_ * s_, 0], [sgn_ * s_, c_, 0], [0, 0, 1]])
+            Pm = Pm @ Rz
         return dict(kind='lean', origin=origin, P=Pm, centre=origin + n * S.MID_Z, rim_sign=float(s))
 
     def est_bowl(self, X, box):
@@ -205,11 +213,36 @@ class Sink(M.Multi):
         return nm, float(np.linalg.norm(pos[nm] - est_pos) * 1000)
 
     # -------------------------------------------------------------- finish the job (full_pipeline skills)
+    def basket_pod_clearance(self):
+        return 1.0                                     # no pod in this scene: not applicable
+
+    def open_and_pull(self):
+        """Door closed + basket in at t = 0: full_pipeline open_door (hinge arc to 90 deg) and pull_basket."""
+        self.opt.rail.update(open_door=self.set_base(0.40), pull_basket=self.set_base(0.48))
+        self.set_base(M.BASE_INSERT)
+        M.Hud.items = [['Open door (hinge arc)', None, ''], ['Pull basket out', None, '']]
+        self.rec.view = np.array([0.20, 0.05, 1.08, 1.5, 150., -25.], float)
+        for k, (name, fn, cap) in enumerate([('open_door', self.step_open_door, 'Open the door along its hinge arc (full_pipeline skill)'),
+                                              ('pull_basket', self.step_pull_basket, 'Pull the lower basket out to the loading position')]):
+            M.Hud.caption = cap
+            try:
+                out = self.run_step(name, fn)
+                self.finish[name] = dict(ok=True, **{k_: v for k_, v in out.items() if not isinstance(v, (dict, list))})
+                M.Hud.items[k][1] = True
+            except PL.StepFail as e:
+                self.finish[name] = dict(ok=False, reason=str(e))
+                M.Hud.items[k][1] = False
+                return False
+        self.lift_clear()
+        return True
+
     def pod_state(self):
         return dict(in_groove=True, note='no detergent pod in this scene: pod check not applicable')
 
     def finish_job(self):
         d = self.data
+        if self.pname not in [f'plate{i}' for i in range(3)]:
+            self.pname, self.pid, self.slot_k = 'plate0', self.model.body('plate0').id, 5
         self.lift_clear()
         M.Hud.items += [['Push basket in', None, ''], ['Close door', None, ''], ['Press QUICK, then POWER', None, '']]
         n0 = len(M.Hud.items) - 3
@@ -266,14 +299,23 @@ class Sink(M.Multi):
         M.Hud.caption = 'Dirty dishes dumped into the sink (dropped, settling under physics)  脏碗盘被丢进水槽'
         self.substep('')
         M.SPEED = 1
+        self.finish = {}
+        if getattr(self, 'closed_start', False):
+            dw.set_state(m, d, door_deg=0., basket=0.)
+            self.basket_est = 0.
         self.hold('dump', 2.5, PL.OPEN)
         M.SPEED = 3
         self.rec.view = np.array([-0.12, 0.0, 0.95, 2.85, 180., -48.], float)
-        M.Hud.caption = ('Messy sink: 3 plates + 2 bowls (this layout: no flat plate, no upright bowl)' if SS.LAYOUT == 'full'
+        M.Hud.caption = ('Messy sink: a fanned stack of 3 plates + 2 bowls beside it' if SS.LAYOUT == 'stack' else
+                         'Messy sink: 3 plates + 2 bowls (this layout: no flat plate, no upright bowl)' if SS.LAYOUT == 'full'
                          else 'Messy sink next to the dishwasher: 3 plates, 3 bowls, kitchen items')
         self.hold('overview', 4.5, PL.OPEN)
         if self.keyframes_dir:
             self.rec.still(d, Path(self.keyframes_dir) / '00_sink.png')
+        if getattr(self, 'closed_start', False):
+            if not self.open_and_pull():
+                self.rec.close()
+                return dict(aborted=True, finish=self.finish, steps=self.steps)
         g = self.recognize_sink(cache)
         items = g['items']
         npick = sum(1 for it in items if it['pick_order'] > 0)
@@ -284,7 +326,7 @@ class Sink(M.Multi):
         dd = ImageDraw.Draw(im, 'RGBA')
         dd.rectangle((0, K.CAM_H - 70, K.CAM_W, K.CAM_H), fill=(14, 18, 24, 225))
         gs = self.gpt_meta.get('seconds')
-        dd.text((16, K.CAM_H - 62), f'GPT (codex exec, ChatGPT subscription) is recognising the sink ...  {gs if gs else "cached"} s, fast-forwarded',
+        dd.text((16, K.CAM_H - 62), f'GPT (codex exec, ChatGPT subscription) is recognising the sink ...  {(str(gs) + " s, fast-forwarded") if gs else "GPT output replayed from the logged run"}',
                 fill=(255, 225, 130), font=K._font(24))
         dd.text((16, K.CAM_H - 28), 'Input: this overhead camera image only (no ground truth).  输入：仅此俯视相机图像', fill=(220, 220, 220), font=K._font(18))
         self.card_frames(np.asarray(im), 2.5)
@@ -308,7 +350,10 @@ class Sink(M.Multi):
                 Image.fromarray(rgb).save(png)
                 K.SCHEMA_BAK, K.PROMPT_BAK = K.SCHEMA, K.PROMPT
                 K.SCHEMA, K.PROMPT = SCHEMA, PROMPT
-                obj, meta = K.ask_gpt(png, SD, tag=f'sink_look{look}')
+                if getattr(self, 'replay', None):
+                    obj, meta = json.loads(json.dumps(self.replay)), dict(seconds=None, replayed=True)
+                else:
+                    obj, meta = K.ask_gpt(png, SD, tag=f'sink_look{look}')
                 K.SCHEMA, K.PROMPT = K.SCHEMA_BAK, K.PROMPT_BAK
                 if obj is None:
                     break
@@ -318,7 +363,7 @@ class Sink(M.Multi):
                 im = Image.fromarray(rgb).convert('RGB')
                 dd = ImageDraw.Draw(im, 'RGBA')
                 dd.rectangle((0, K.CAM_H - 50, K.CAM_W, K.CAM_H), fill=(14, 18, 24, 225))
-                dd.text((16, K.CAM_H - 42), f'Look #{look}: new image -> GPT again ({meta.get("seconds")} s, fast-forwarded)  再看一次', fill=(255, 225, 130), font=K._font(24))
+                dd.text((16, K.CAM_H - 42), (f'Look #{look}: new image -> GPT again ({meta.get("seconds")} s, fast-forwarded)  再看一次' if meta.get('seconds') else f'Look #{look}: GPT output replayed from the logged run  再看一次（回放）'), fill=(255, 225, 130), font=K._font(24))
                 self.card_frames(np.asarray(im), 1.2)
                 c2 = poly_card(rgb, items, f'Look #{look}: GPT sees {npick} dish(es) still to take out  第{look}次识别：剩余{npick}件')
                 Image.fromarray(c2).save(SD / f'card_look{look}.png')
@@ -398,6 +443,7 @@ class Sink(M.Multi):
                 M.Hud.items[k][1] = True
             except HandOver as h:
                 row['handed_to_person'] = h.reason
+                self.log_fn(f'HANDOVER {it["label_en"]}: {h.reason}')
                 M.Hud.items[k][1] = False
                 M.Hud.items[k][0] += '  → person'
                 M.Hud.caption = f'{tag}: hand to a person – {h.reason}'
@@ -413,7 +459,6 @@ class Sink(M.Multi):
                 self.log_fn(f'FAIL {it["label_en"]}: {e}')
                 self.recover()
             rows.append(row)
-        self.finish = {}
         if getattr(self, 'full', False):
             self.finish_job()
         else:
@@ -489,20 +534,31 @@ def main():
     ap.add_argument('--cache', default=None)
     ap.add_argument('--tag', default='')
     ap.add_argument('--seed', type=int, default=3)
+    ap.add_argument('--closed', action='store_true', help='start with door closed + basket in; open + pull first')
+    ap.add_argument('--replay', default=None, help='replay a logged GPT answer for every look (no codex call)')
+    ap.add_argument('--stack', action='store_true', help='fanned plate stack layout (with --full)')
     ap.add_argument('--full', action='store_true', help='all-graspable layout + push basket, close door, QUICK + POWER')
     a = ap.parse_args()
     SS.SEED = a.seed
+    ap_stack = a.stack
     if a.full:
-        SS.LAYOUT = 'full'
+        SS.LAYOUT = 'stack' if ap_stack else 'full'
     SD.mkdir(parents=True, exist_ok=True)
-    video = None if a.no_video else OUT / f'sink{"_full" if a.full else ""}_demo{a.tag}.tmp.mp4'
-    kf = None if a.no_video else ROOT / ('frames_sink_full' if a.full else 'frames_sink')
+    nm_ = 'sink_stack' if a.stack else ('sink_full_open' if a.closed else ('sink_full' if a.full else 'sink'))
+    video = None if a.no_video else OUT / f'{nm_}_demo{a.tag}.tmp.mp4'
+    kf = None if a.no_video else ROOT / f'frames_{nm_}'
     if kf:
         kf.mkdir(exist_ok=True)
     r = Sink(video=video, keyframes_dir=kf, log=lambda s: print(s, flush=True))
     r.full = a.full
+    r.closed_start = a.closed
+    if a.replay:
+        r.replay = json.loads(Path(a.replay).read_text())
     res = r.run_sink(a.cache)
-    (OUT / f'result_sink{"_full" if a.full else ""}{a.tag}.json').write_text(json.dumps(res, indent=1, default=float))
+    (OUT / f'result_{nm_}{a.tag}.json').write_text(json.dumps(res, indent=1, default=float))
+    if res.get('aborted'):
+        print('ABORTED', res['finish'])
+        return
     for row in res['rows']:
         print('ROW', json.dumps({k: v for k, v in row.items() if k != 'gpt'}, default=float), row['gpt']['label_en'])
     for t in res['table']:

@@ -119,6 +119,24 @@ def build():
     S._attach_panda(spec, site)
     tints = [[.96, .96, .93, 1], [.97, .93, .86, 1], [.92, .95, .97, 1], [.95, .92, .90, 1]]
     j = lambda s_: rng.uniform(-s_, s_)
+    if LAYOUT == 'stack':
+        # sink_6.png look: a loose, fanned STACK of 3 plates sliding sideways along the front wall, each lying on the one
+        # below, offset ~50 mm sideways (+y) and one plate-thickness outward, so the top plate's +y rim is the most exposed;
+        # 2 bowls wedged beside the stack (upside down). Seeded, then settled by physics.
+        y0 = 0.50 + j(.01)
+        for i in range(3):
+            org, R = _lean_plate_pose(y0 + .06 * i + j(.004), 0.)
+            org = org + R[:, 2] * (.021 * i) + np.array([0, 0, .002 * i])
+            S._add_plate(spec, None, 0., pos=org, R=R, name=f'plate{i}', rgba=tints[i])
+        for k_, (x, y) in enumerate([(-0.25, 0.86), (-0.27, 0.40)]):
+            M.add_bowl(spec, f'bowl{k_}', (x + j(.008), y + j(.008)))
+            bb = spec.body(f'bowl{k_}')
+            bb.pos = [bb.pos[0], bb.pos[1], SS_FLOOR + M.BOWL_HEIGHT + .03]
+            bb.quat = _quat_mul([0, 1, 0, 0], _axis_quat([1, .4, 0], j(.15)))
+        K.add_clutter(spec)
+        _accessories(spec)
+        K.add_camera(spec)
+        return _finish(spec)
     if LAYOUT == 'full':
         # 'all graspable' layout: 3 plates slid down against the front wall (rims up over its edge) at random yaw / spacing,
         # 2 bowls upside down wedged behind them. NO flat plate and NO upright bowl in this layout.

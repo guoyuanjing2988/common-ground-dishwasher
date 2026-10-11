@@ -1,6 +1,51 @@
 # multi_dish_b: Franka loads a countertop dishwasher (MuJoCo)
 
-## Sink, full job (latest): `out/sink_full_demo.mp4`
+## Sink, full job from a CLOSED dishwasher: `out/sink_full_open_demo.mp4`
+
+**Start state: the door is closed and the basket is in.** The full sequence is:
+1. open_door (full_pipeline: follow the hinge arc), reaching 90.02°; peak finger force 11.4 N;
+2. pull_basket out to 0.33 m;
+3. the 5-dish sink loop: 3 leaning plates and 2 inverted bowls, all loaded;
+4. push basket in (0.0 mm);
+5. close door to −0.009°, with the `door_closed` sensor true;
+6. press QUICK, then POWER. Touch-pad peaks are 4.59 N and 4.84 N. The panel shows RUNNING (QUICK).
+
+The layout and seed are the same as `sink_full` (seed 3). **GPT outputs are replayed from the logged run.** The first-look answer from `result_sink_full.json` is saved as `out/sink/replay_sink_full_look1.json` and reused for every look, filtered by the items already attempted. No codex call was made in this run, and the on-screen banners say "GPT output replayed from the logged run". The camera image is not exactly the same, because the robot arm sits elsewhere after opening the door; the dishes in the sink are unchanged.
+
+Poses: perceived poses (depth re-captured before every pick), the same GT audit as below. Perceived pose errors were 1.4–2.7 mm.
+
+| Item | Target | Final result |
+|---|---|---|
+| plate 0 | slot 6 | lowest rim +2.2 mm, lean 2.0° |
+| plate 1 | slot 5 | +2.1 mm, 2.1° |
+| plate 2 | slot 4 | +2.8 mm, 1.35° |
+| bowl 0 | bowl spot 1 | foot-ring error 8.8 mm, tilt 16.8° |
+| bowl 1 | bowl spot 2 | 4.5 mm, 18.3° |
+
+All rows OK. No dish left the sink unnoticed and the counter items did not move. No unplanned robot contact above 2 N, and 0 warnings.
+
+- **Pod checks:** the pod checks in pull_basket and push_basket are "not applicable" (this scene has no pod).
+- **Run:** `sink_demo.py --full --closed --seed 3 --cache out/sink/replay_sink_full_look1.json --replay out/sink/replay_sink_full_look1.json`.
+- **Data:** `out/result_sink_full_open.json`; key frames in `keyframes_sink_full_open/`.
+
+---
+
+## Sink, fanned plate STACK attempt (sink_6.png look): `out/sink_stack_demo.mp4` (honest failure)
+
+**Result: 1 of 5 dishes loaded. The finishing steps were not completed.** Only one inverted bowl reached the basket, by the foot-ring grasp.
+- **Stack:** layout "stack", seed 4, run `sink_demo.py --full --stack --seed 4`. 3 plates in a fanned stack along the front wall, each lying on the one below, 60 mm sideways and 21 mm outward. They settled at leans of 54°, 41° and 34° from vertical, with 2 upside-down bowls beside them.
+- **Seed 3 collapsed:** the stack fell nearly flat (11–23° from horizontal) into an ungraspable pile.
+- **Plates:** the rim pinch on the stacked plates failed. The fingers made no contact at the rim point 25° from the top toward the exposed side; the cause has not been investigated. One pinch had no joint path at all. A plate was disturbed during the attempts (max penetration 47 mm during recovery).
+- **Bowls:** one bowl was loaded (foot error 1.8 mm at placement). The bowl next to the side wall y = 0.95 failed: with the fingers closing along y, the hand most likely hits that wall.
+- **Basket push:** the basket was pushed fully in (0.0 mm), but the step's plate-in-slot check failed because no plate had been loaded, so the run stopped there. The door was not closed and no button was pressed.
+- **End card bug:** it marks the loaded bowl ✗ because the bowl target was still referenced to the pulled-out basket after the failed push step (a scoring bookkeeping bug). The bowl is in the basket, on the bowl tines.
+- **Ran out of time:** I did not iterate further before the 14:50 hard stop.
+
+**Delivered successful version:** use `out/sink_full_demo.mp4` (separate leaning plates, all 5 dishes loaded, basket pushed, door closed, QUICK + POWER pressed, panel RUNNING).
+
+---
+
+## Sink, full job: `out/sink_full_demo.mp4`
 
 **All 5 dishes go from the messy sink into the dishwasher. The robot then pushes the basket in, closes the door and presses QUICK, then POWER. The panel ends showing RUNNING.**
 
