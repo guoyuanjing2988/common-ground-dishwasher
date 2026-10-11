@@ -1,0 +1,802 @@
+{
+ "table": [
+  {
+   "item": "plate2",
+   "target": "plate slot 6",
+   "ok": true,
+   "bottom_offset_mm": 0.8,
+   "plane_tilt_deg": 3.3,
+   "speed_mm_s": 0.01,
+   "wrong_tines": [],
+   "other_contacts": []
+  },
+  {
+   "item": "plate0",
+   "target": "plate slot 5",
+   "ok": true,
+   "bottom_offset_mm": 2.7,
+   "plane_tilt_deg": 1.56,
+   "speed_mm_s": 0.01,
+   "wrong_tines": [],
+   "other_contacts": []
+  },
+  {
+   "item": "plate1",
+   "target": "plate slot 4",
+   "ok": true,
+   "bottom_offset_mm": 2.8,
+   "plane_tilt_deg": 1.37,
+   "speed_mm_s": 0.01,
+   "wrong_tines": [],
+   "other_contacts": []
+  },
+  {
+   "item": "bowl0",
+   "target": "bowl spot 1",
+   "ok": true,
+   "foot_err_mm": 13.6,
+   "foot_err_xyz_mm": [
+    -2.4,
+    13.1,
+    -2.4
+   ],
+   "tilt_from_inverted_deg": 13.8,
+   "opening_dot_z": -0.971,
+   "speed_mm_s": 0.03,
+   "bowl_tines": [
+    "dw/bowl_tine5",
+    "dw/bowl_tine7"
+   ],
+   "other_contacts": [],
+   "touching_robot": false
+  },
+  {
+   "item": "bowl1",
+   "target": "bowl spot 2",
+   "ok": true,
+   "foot_err_mm": 4.4,
+   "foot_err_xyz_mm": [
+    1.0,
+    4.2,
+    0.2
+   ],
+   "tilt_from_inverted_deg": 18.3,
+   "opening_dot_z": -0.949,
+   "speed_mm_s": 0.03,
+   "bowl_tines": [
+    "dw/bowl_tine0",
+    "dw/bowl_tine2"
+   ],
+   "other_contacts": [],
+   "touching_robot": false
+  }
+ ],
+ "rows": [
+  {
+   "gpt": {
+    "box": [
+     680,
+     377,
+     759,
+     450
+    ],
+    "label_en": "Right blue bowl",
+    "label_zh": "\u53f3\u4fa7\u84dd\u7897",
+    "category": "bowl",
+    "in_sink": true,
+    "dishwasher_safe": true,
+    "reason_en": "Plain ceramic bowl",
+    "reason_zh": "\u666e\u901a\u9676\u74f7\u7897",
+    "pick_order": 1,
+    "pose_en": "Upside down on basin floor",
+    "skill": "bowl"
+   },
+   "look": 1,
+   "match": "bowl0",
+   "perceived": [
+    -0.24789134625020656,
+    0.5175040181023224,
+    0.8423925372767868
+   ],
+   "err_mm": 1.8,
+   "spread_mm": 22.7,
+   "pose_source": "perceived",
+   "loaded": "bowl spot 1"
+  },
+  {
+   "gpt": {
+    "box": [
+     536,
+     394,
+     615,
+     472
+    ],
+    "label_en": "Blue bowl",
+    "label_zh": "\u84dd\u8272\u7897",
+    "category": "bowl",
+    "in_sink": true,
+    "dishwasher_safe": true,
+    "reason_en": "Ceramic bowl tolerates dishwasher cleaning",
+    "reason_zh": "\u9676\u74f7\u7897\u53ef\u673a\u6d17",
+    "pick_order": 1,
+    "pose_en": "Upside down on basin floor",
+    "skill": "bowl"
+   },
+   "look": 2,
+   "match": "bowl1",
+   "perceived": [
+    -0.2614424812982076,
+    0.7332483695827198,
+    0.8426046607574075
+   ],
+   "err_mm": 1.45,
+   "spread_mm": 22.6,
+   "pose_source": "perceived",
+   "loaded": "bowl spot 2"
+  },
+  {
+   "gpt": {
+    "box": [
+     421,
+     244,
+     566,
+     377
+    ],
+    "label_en": "Light blue plate",
+    "label_zh": "\u6d45\u84dd\u8272\u76d8\u5b50",
+    "category": "plate",
+    "in_sink": true,
+    "dishwasher_safe": true,
+    "reason_en": "Ordinary plate without delicate decoration",
+    "reason_zh": "\u666e\u901a\u9910\u76d8\u65e0\u7cbe\u7ec6\u88c5\u9970",
+    "pick_order": 1,
+    "pose_en": "Leaning against the rear sink wall",
+    "skill": "plate"
+   },
+   "look": 3,
+   "match": "plate2",
+   "perceived": [
+    -0.09933630566282148,
+    0.8366080970092686,
+    0.8629585336696506
+   ],
+   "err_mm": 2.69,
+   "pose_source": "perceived",
+   "loaded": "plate slot 6"
+  },
+  {
+   "gpt": {
+    "box": [
+     704,
+     226,
+     841,
+     357
+    ],
+    "label_en": "White plate",
+    "label_zh": "\u767d\u8272\u76d8\u5b50",
+    "category": "plate",
+    "in_sink": true,
+    "dishwasher_safe": true,
+    "reason_en": "Ceramic plate",
+    "reason_zh": "\u9676\u74f7\u76d8\u53ef\u673a\u6d17",
+    "pick_order": 1,
+    "pose_en": "Leaning against the back wall",
+    "skill": "plate"
+   },
+   "look": 4,
+   "match": "plate0",
+   "perceived": [
+    -0.09771896583471663,
+    0.43262599015884345,
+    0.863128307518077
+   ],
+   "err_mm": 2.24,
+   "pose_source": "perceived",
+   "loaded": "plate slot 5"
+  },
+  {
+   "gpt": {
+    "box": [
+     574,
+     238,
+     714,
+     369
+    ],
+    "label_en": "Cream plate",
+    "label_zh": "\u7c73\u8272\u76d8\u5b50",
+    "category": "plate",
+    "in_sink": true,
+    "dishwasher_safe": true,
+    "reason_en": "Ceramic plate tolerates dishwasher washing",
+    "reason_zh": "\u9676\u74f7\u76d8\u53ef\u673a\u6d17",
+    "pick_order": 1,
+    "pose_en": "Leaning against the rear sink wall",
+    "skill": "plate"
+   },
+   "look": 5,
+   "match": "plate1",
+   "perceived": [
+    -0.10253639281104272,
+    0.6196441124775569,
+    0.8609218048676361
+   ],
+   "err_mm": 2.45,
+   "pose_source": "perceived",
+   "loaded": "plate slot 4"
+  }
+ ],
+ "looks": [
+  {
+   "look": 1,
+   "n_items": 12,
+   "n_pick": 5,
+   "seconds": 37.9
+  },
+  {
+   "look": 2,
+   "n_items": 10,
+   "n_pick": 4,
+   "seconds": 35.7
+  },
+  {
+   "look": 3,
+   "n_items": 9,
+   "n_pick": 3,
+   "seconds": 33.2
+  },
+  {
+   "look": 4,
+   "n_items": 9,
+   "n_pick": 2,
+   "seconds": 21.6
+  },
+  {
+   "look": 5,
+   "n_items": 8,
+   "n_pick": 1,
+   "seconds": 27.1
+  }
+ ],
+ "finish": {
+  "push_basket": {
+   "ok": true,
+   "basket_m": 0.0,
+   "plate_in_slot": true,
+   "pod_in_groove": true
+  },
+  "close_door": {
+   "ok": true,
+   "door_deg": -0.009,
+   "door_closed_sensor": true
+  },
+  "press_buttons": {
+   "ok": true,
+   "touch_threshold_N": 1.0,
+   "quick_touch_peak_N": 4.59,
+   "quick_ft_stop": true,
+   "power_touch_peak_N": 4.84,
+   "power_ft_stop": true
+  },
+  "panel": "RUNNING (QUICK)"
+ },
+ "layout": "full",
+ "outside_sink": [],
+ "clutter_moved_mm": {
+  "board": 0.3,
+  "knife": 0.73,
+  "pan": 0.85,
+  "flask": 0.3,
+  "mug": 0.3,
+  "soap": 0.3,
+  "sponge": 0.3,
+  "oil": 0.3
+ },
+ "gpt_meta": {
+  "seconds": 37.9
+ },
+ "gpt": {
+  "items": [
+   {
+    "box": [
+     420,
+     244,
+     567,
+     375
+    ],
+    "label_en": "Light blue plate",
+    "label_zh": "\u6d45\u84dd\u8272\u9910\u76d8",
+    "category": "plate",
+    "in_sink": true,
+    "dishwasher_safe": true,
+    "reason_en": "Plain ceramic plate",
+    "reason_zh": "\u666e\u901a\u9676\u74f7\u9910\u76d8",
+    "pick_order": 5,
+    "pose_en": "Leaning against the back wall",
+    "skill": "plate"
+   },
+   {
+    "box": [
+     573,
+     235,
+     716,
+     365
+    ],
+    "label_en": "Beige plate",
+    "label_zh": "\u7c73\u8272\u9910\u76d8",
+    "category": "plate",
+    "in_sink": true,
+    "dishwasher_safe": true,
+    "reason_en": "Plain ceramic plate",
+    "reason_zh": "\u666e\u901a\u9676\u74f7\u9910\u76d8",
+    "pick_order": 4,
+    "pose_en": "Leaning against the back wall",
+    "skill": "plate"
+   },
+   {
+    "box": [
+     707,
+     225,
+     841,
+     355
+    ],
+    "label_en": "White plate",
+    "label_zh": "\u767d\u8272\u9910\u76d8",
+    "category": "plate",
+    "in_sink": true,
+    "dishwasher_safe": true,
+    "reason_en": "Plain ceramic plate",
+    "reason_zh": "\u666e\u901a\u9676\u74f7\u9910\u76d8",
+    "pick_order": 3,
+    "pose_en": "Leaning against the back wall",
+    "skill": "plate"
+   },
+   {
+    "box": [
+     535,
+     396,
+     615,
+     471
+    ],
+    "label_en": "Left blue bowl",
+    "label_zh": "\u5de6\u4fa7\u84dd\u7897",
+    "category": "bowl",
+    "in_sink": true,
+    "dishwasher_safe": true,
+    "reason_en": "Plain ceramic bowl",
+    "reason_zh": "\u666e\u901a\u9676\u74f7\u7897",
+    "pick_order": 2,
+    "pose_en": "Upside down on basin floor",
+    "skill": "bowl"
+   },
+   {
+    "box": [
+     680,
+     377,
+     759,
+     450
+    ],
+    "label_en": "Right blue bowl",
+    "label_zh": "\u53f3\u4fa7\u84dd\u7897",
+    "category": "bowl",
+    "in_sink": true,
+    "dishwasher_safe": true,
+    "reason_en": "Plain ceramic bowl",
+    "reason_zh": "\u666e\u901a\u9676\u74f7\u7897",
+    "pick_order": 1,
+    "pose_en": "Upside down on basin floor",
+    "skill": "bowl"
+   },
+   {
+    "box": [
+     218,
+     293,
+     355,
+     475
+    ],
+    "label_en": "Blue cutting board",
+    "label_zh": "\u84dd\u8272\u7827\u677f",
+    "category": "cutting_board",
+    "in_sink": false,
+    "dishwasher_safe": true,
+    "reason_en": "Appears to be dishwasher-safe plastic",
+    "reason_zh": "\u7591\u4f3c\u53ef\u673a\u6d17\u5851\u6599",
+    "pick_order": 0,
+    "pose_en": "Lying flat on left counter",
+    "skill": null
+   },
+   {
+    "box": [
+     350,
+     494,
+     452,
+     583
+    ],
+    "label_en": "Pink soap bottle",
+    "label_zh": "\u7c89\u8272\u6d17\u6d01\u7cbe\u74f6",
+    "category": "soap_bottle",
+    "in_sink": false,
+    "dishwasher_safe": false,
+    "reason_en": "Soap container, not a dish",
+    "reason_zh": "\u6d17\u6d01\u7cbe\u5bb9\u5668",
+    "pick_order": 0,
+    "pose_en": "Standing upright beside sink",
+    "skill": null
+   },
+   {
+    "box": [
+     741,
+     473,
+     816,
+     571
+    ],
+    "label_en": "Green and yellow sponge",
+    "label_zh": "\u7eff\u9ec4\u53cc\u8272\u6d77\u7ef5",
+    "category": "sponge",
+    "in_sink": false,
+    "dishwasher_safe": false,
+    "reason_en": "Cleaning sponge, not a dish",
+    "reason_zh": "\u6e05\u6d01\u6d77\u7ef5\u975e\u9910\u5177",
+    "pick_order": 0,
+    "pose_en": "Lying flat beside faucet",
+    "skill": null
+   },
+   {
+    "box": [
+     119,
+     552,
+     257,
+     635
+    ],
+    "label_en": "Blue cup",
+    "label_zh": "\u84dd\u8272\u676f\u5b50",
+    "category": "cup",
+    "in_sink": false,
+    "dishwasher_safe": true,
+    "reason_en": "Plain cup; material safety assumed",
+    "reason_zh": "\u666e\u901a\u676f\u6750\u8d28\u5f85\u786e\u8ba4",
+    "pick_order": 0,
+    "pose_en": "Tilted with opening facing upper left",
+    "skill": "bowl"
+   },
+   {
+    "box": [
+     0,
+     562,
+     156,
+     594
+    ],
+    "label_en": "Upper wooden chopstick",
+    "label_zh": "\u4e0a\u65b9\u6728\u7b77",
+    "category": "other",
+    "in_sink": false,
+    "dishwasher_safe": false,
+    "reason_en": "Wood may warp in dishwasher",
+    "reason_zh": "\u6728\u6750\u673a\u6d17\u6613\u53d8\u5f62",
+    "pick_order": 0,
+    "pose_en": "Extending left from blue cup",
+    "skill": null
+   },
+   {
+    "box": [
+     0,
+     580,
+     146,
+     598
+    ],
+    "label_en": "Lower wooden chopstick",
+    "label_zh": "\u4e0b\u65b9\u6728\u7b77",
+    "category": "other",
+    "in_sink": false,
+    "dishwasher_safe": false,
+    "reason_en": "Wood may warp in dishwasher",
+    "reason_zh": "\u6728\u6750\u673a\u6d17\u6613\u53d8\u5f62",
+    "pick_order": 0,
+    "pose_en": "Extending left from blue cup",
+    "skill": null
+   },
+   {
+    "box": [
+     0,
+     660,
+     312,
+     720
+    ],
+    "label_en": "Partially visible wooden cutting board",
+    "label_zh": "\u90e8\u5206\u53ef\u89c1\u6728\u7827\u677f",
+    "category": "cutting_board",
+    "in_sink": false,
+    "dishwasher_safe": false,
+    "reason_en": "Wood may warp or split",
+    "reason_zh": "\u6728\u6750\u6613\u53d8\u5f62\u5f00\u88c2",
+    "pick_order": 0,
+    "pose_en": "Lying flat, cropped by bottom edge",
+    "skill": null
+   }
+  ]
+ },
+ "steps": [
+  {
+   "step": "pick_bowl0",
+   "t_start": 8.0,
+   "ok": true,
+   "reason": "",
+   "t_end": 21.3,
+   "sim_s": 13.3,
+   "wall_s": 6.4,
+   "metrics": {
+    "lift_rise_mm": 99.7,
+    "lift_slip_mm": 0.32,
+    "finger_contacts": 24
+   },
+   "rail_m_end": -0.2225
+  },
+  {
+   "step": "place_bowl0",
+   "t_start": 21.3,
+   "ok": true,
+   "reason": "",
+   "t_end": 50.14,
+   "sim_s": 28.84,
+   "wall_s": 13.5,
+   "metrics": {
+    "touchdown_detected": true,
+    "touchdown_peak_N": 3.19,
+    "touchdown_contacts": [],
+    "touchdown_above_target_mm": 6.6,
+    "foot_err_mm": 8.0,
+    "foot_err_xyz_mm": [
+     -4.2,
+     6.8,
+     -0.5
+    ],
+    "tilt_from_inverted_deg": 17.4,
+    "opening_dot_z": -0.954,
+    "speed_mm_s": 0.03,
+    "bowl_tines": [
+     "dw/bowl_tine5",
+     "dw/bowl_tine7"
+    ],
+    "other_contacts": [],
+    "touching_robot": false
+   },
+   "rail_m_end": -0.34
+  },
+  {
+   "step": "pick_bowl1",
+   "t_start": 51.14,
+   "ok": true,
+   "reason": "",
+   "t_end": 68.314,
+   "sim_s": 17.174,
+   "wall_s": 8.3,
+   "metrics": {
+    "lift_rise_mm": 99.7,
+    "lift_slip_mm": 0.31,
+    "finger_contacts": 24
+   },
+   "rail_m_end": -0.0068
+  },
+  {
+   "step": "place_bowl1",
+   "t_start": 68.314,
+   "ok": true,
+   "reason": "",
+   "t_end": 101.714,
+   "sim_s": 33.4,
+   "wall_s": 16.6,
+   "metrics": {
+    "touchdown_detected": true,
+    "touchdown_peak_N": 2.42,
+    "touchdown_contacts": [
+     "dw/bowl_tine0"
+    ],
+    "touchdown_above_target_mm": 7.1,
+    "foot_err_mm": 1.5,
+    "foot_err_xyz_mm": [
+     -0.0,
+     -0.0,
+     1.5
+    ],
+    "tilt_from_inverted_deg": 20.0,
+    "opening_dot_z": -0.94,
+    "speed_mm_s": 0.02,
+    "bowl_tines": [
+     "dw/bowl_tine0",
+     "dw/bowl_tine2"
+    ],
+    "other_contacts": [],
+    "touching_robot": false
+   },
+   "rail_m_end": -0.34
+  },
+  {
+   "step": "pick_plate2",
+   "t_start": 102.714,
+   "ok": true,
+   "reason": "",
+   "t_end": 119.486,
+   "sim_s": 16.772,
+   "wall_s": 7.9,
+   "metrics": {
+    "lift_rise_mm": 170.2,
+    "lift_slip_mm": 5.53,
+    "finger_contacts": 5
+   },
+   "rail_m_end": 0.0968
+  },
+  {
+   "step": "insert_plate2",
+   "t_start": 119.486,
+   "ok": true,
+   "reason": "",
+   "t_end": 143.602,
+   "sim_s": 24.116,
+   "wall_s": 10.9,
+   "metrics": {
+    "touchdown_detected": true,
+    "slot_yaw_deg": 0,
+    "carry_plan_margin_deg": 43.4,
+    "touchdown_support_filt_N": 8.95,
+    "touchdown_support_peak_N": 14.07,
+    "in_slot": true,
+    "bottom_offset_mm": 3.5,
+    "centre_err_mm": [
+     11.5,
+     0.7,
+     -0.6
+    ],
+    "plane_tilt_deg": 0.7,
+    "wrong_tines": [],
+    "other_contacts": [],
+    "speed_mm_s": 0.01,
+    "touching_robot": false
+   },
+   "rail_m_end": -0.34
+  },
+  {
+   "step": "pick_plate0",
+   "t_start": 144.602,
+   "ok": true,
+   "reason": "",
+   "t_end": 158.242,
+   "sim_s": 13.64,
+   "wall_s": 6.2,
+   "metrics": {
+    "lift_rise_mm": 170.0,
+    "lift_slip_mm": 5.47,
+    "finger_contacts": 4
+   },
+   "rail_m_end": -0.3074
+  },
+  {
+   "step": "insert_plate0",
+   "t_start": 158.242,
+   "ok": true,
+   "reason": "",
+   "t_end": 180.648,
+   "sim_s": 22.406,
+   "wall_s": 9.8,
+   "metrics": {
+    "touchdown_detected": true,
+    "slot_yaw_deg": 0,
+    "carry_plan_margin_deg": 46.5,
+    "touchdown_support_filt_N": 8.34,
+    "touchdown_support_peak_N": 13.12,
+    "in_slot": true,
+    "bottom_offset_mm": 3.7,
+    "centre_err_mm": [
+     11.5,
+     -1.1,
+     -0.6
+    ],
+    "plane_tilt_deg": 0.59,
+    "wrong_tines": [],
+    "other_contacts": [],
+    "speed_mm_s": 0.01,
+    "touching_robot": false
+   },
+   "rail_m_end": -0.34
+  },
+  {
+   "step": "pick_plate1",
+   "t_start": 181.648,
+   "ok": true,
+   "reason": "",
+   "t_end": 195.698,
+   "sim_s": 14.05,
+   "wall_s": 6.2,
+   "metrics": {
+    "lift_rise_mm": 170.4,
+    "lift_slip_mm": 7.51,
+    "finger_contacts": 4
+   },
+   "rail_m_end": -0.1202
+  },
+  {
+   "step": "insert_plate1",
+   "t_start": 195.698,
+   "ok": true,
+   "reason": "",
+   "t_end": 218.656,
+   "sim_s": 22.958,
+   "wall_s": 10.1,
+   "metrics": {
+    "touchdown_detected": true,
+    "slot_yaw_deg": 0,
+    "carry_plan_margin_deg": 48.7,
+    "touchdown_support_filt_N": 9.15,
+    "touchdown_support_peak_N": 14.44,
+    "in_slot": true,
+    "bottom_offset_mm": 3.5,
+    "centre_err_mm": [
+     11.6,
+     0.4,
+     -0.6
+    ],
+    "plane_tilt_deg": 0.73,
+    "wrong_tines": [],
+    "other_contacts": [],
+    "speed_mm_s": 0.01,
+    "touching_robot": false
+   },
+   "rail_m_end": -0.34
+  },
+  {
+   "step": "push_basket",
+   "t_start": 219.656,
+   "ok": true,
+   "reason": "",
+   "t_end": 235.266,
+   "sim_s": 15.61,
+   "wall_s": 6.9,
+   "metrics": {
+    "basket_m": 0.0,
+    "plate_in_slot": true,
+    "pod_in_groove": true
+   },
+   "rail_m_end": -0.22
+  },
+  {
+   "step": "close_door",
+   "t_start": 235.266,
+   "ok": true,
+   "reason": "",
+   "t_end": 255.8,
+   "sim_s": 20.534,
+   "wall_s": 9.2,
+   "metrics": {
+    "door_deg": -0.009,
+    "door_closed_sensor": true
+   },
+   "rail_m_end": -0.3
+  },
+  {
+   "step": "press_buttons",
+   "t_start": 255.8,
+   "ok": true,
+   "reason": "",
+   "t_end": 274.66,
+   "sim_s": 18.86,
+   "wall_s": 8.6,
+   "metrics": {
+    "touch_threshold_N": 1.0,
+    "quick_touch_peak_N": 4.59,
+    "quick_ft_stop": true,
+    "power_touch_peak_N": 4.84,
+    "power_ft_stop": true
+   },
+   "rail_m_end": -0.22
+  }
+ ],
+ "sim_time_s": 313.02,
+ "wall_s": 303.4,
+ "warnings": {},
+ "max_penetration_mm": 5.565,
+ "max_pen_where": [
+  "sink_wall_l",
+  "plate0_rim0",
+  "dump"
+ ],
+ "unexpected_robot_contacts": [],
+ "video_frames": 4059
+}

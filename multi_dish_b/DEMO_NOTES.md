@@ -1,5 +1,62 @@
 # multi_dish_b: Franka loads a countertop dishwasher (MuJoCo)
 
+## Sink, full job (latest): `out/sink_full_demo.mp4`
+
+**All 5 dishes go from the messy sink into the dishwasher. The robot then pushes the basket in, closes the door and presses QUICK, then POWER. The panel ends showing RUNNING.**
+
+All 5 grasps use perceived poses: GPT box plus depth. GPT looked before every pick: 5 looks of 21.6–37.9 s, fast-forwarded on screen. GT fallback never fired. The final poses below were measured after the door was closed and the buttons pressed.
+
+**This layout has NO flat plate and NO upright bowl. This is stated on screen too.** Every dish is placed so that the proven skills can grasp it:
+- 3 plates slid down against the front wall, their rims up over its edge, at random yaw and spacing;
+- 2 bowls upside down, wedged behind them.
+
+The scene is seeded and settled by physics. The flat-plate and upright-bowl skills are being attempted separately by another agent. The mixed layout with those two items is the previous section (`out/sink_demo.mp4`, 4 of 6 loaded).
+
+**Files**
+- Video: `out/sink_full_demo.mp4`. H.264 yuv420p, 1280×720, **135.3 s, 37.3 MB**. Written as `.tmp.mp4`, then moved into place.
+- Data: `out/result_sink_full.json`.
+- Key frames: `keyframes_sink_full/`.
+- Run: `./runw.sh logs/x.log sink_demo.py --full --tag _x`. Wall time about 300 s, peak RSS 1.07 GB.
+
+| Look | GPT item (EN / 中文) | Perceived pose error | Pose used | Final, after door closed + program started |
+|---|---|---|---|---|
+| 1 | Right blue bowl / 右侧蓝碗 | 1.80 mm | perceived | ✓ bowl spot 1: foot error 13.6 mm, tilt 13.8° from inverted |
+| 2 | Blue bowl / 蓝色碗 | 1.45 mm | perceived | ✓ bowl spot 2: foot error 4.4 mm, tilt 18.3° |
+| 3 | Light blue plate / 浅蓝色盘子 | 2.69 mm | perceived | ✓ slot 6: lowest rim +0.8 mm, lean 3.3° |
+| 4 | White plate / 白色盘子 | 2.24 mm | perceived | ✓ slot 5: lowest rim +2.7 mm, lean 1.6° |
+| 5 | Cream plate / 米色盘子 | 2.45 mm | perceived | ✓ slot 4: lowest rim +2.8 mm, lean 1.4° |
+
+The foot error of bowl 1 was 8.0 mm right after placement. The basket push moved it to 13.6 mm, still under the 15 mm limit.
+
+**Finishing steps.** These are the full_pipeline skills, unchanged. The rail setpoints are the M2 ones.
+
+| Step | Result |
+|---|---|
+| Push basket in | basket at 0.0 mm |
+| Close door | −0.009°; `door_closed` sensor true |
+| Press QUICK, then POWER | wrist F/T stop at 3 N; touch-pad peaks 4.59 N / 4.84 N (threshold 1 N) |
+
+**Panel:** RUNNING (QUICK).
+
+**Physics and contacts**
+- No dish left the sink unnoticed.
+- The 8 counter items stayed put (≤ 0.85 mm).
+- No unplanned robot contact above 2 N.
+- MuJoCo warnings: 0.
+- Max penetration: 5.6 mm, plate on basin wall during the initial drop.
+
+**Honest notes**
+- **No real panel display:** the dishwasher model has no display. "RUNNING" is shown in the caption bar, and the QUICK and POWER pads are recoloured green. That is a visual change only, made after both touch pads registered more than 1 N.
+- **Pod check skipped:** the push-basket step's pod-in-groove check does not apply, because this scene has no pod. It is returned as "not applicable".
+- **Bowl targets after the push:** they now refer to the pushed-in basket (known back stop). The first take scored them against the pulled-out basket and wrongly showed ✗. That take is kept in `out/dev/`.
+- **Slip gate:** the pinch-lift slip gate is 30 mm, as in the sink section. Actual slip: 5.5–7.5 mm.
+- **GT audit:** the same as the sink section below.
+  - Identity matching, scoring and the fallback switch read true poses; the fallback switch never fired.
+  - The motion uses only GPT boxes, depth, encoders, wrist F/T and the known dishwasher model.
+  - The finishing steps use the known dishwasher model plus wrist F/T, exactly as in full_pipeline.
+
+---
+
 ## Messy sink (latest): `out/sink_demo.mp4`
 
 **4 of 6 dishes are loaded; 2 are handed to a person.** All 4 grasps use perceived poses: GPT boxes plus depth. Final poses were measured after everything settled:

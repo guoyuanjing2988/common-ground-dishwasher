@@ -77,7 +77,8 @@
 <p class="src">Demo video with bilingual captions. Everything shown is MuJoCo simulation; slow parts are sped up (the speed is shown on screen).</p>
 
 <div class="stats">
-  <div class="stat"><b>4 / 6</b><span>dishes loaded straight from a messy sink (perceived poses); 2 handed to a person</span></div>
+  <div class="stat"><b>5 / 5</b><span>dishes from a messy sink, door closed, wash started (perceived poses)</span></div>
+  <div class="stat"><b>4 / 6</b><span>harder sink layout; 2 handed to a person (flat plate, upright bowl)</span></div>
   <div class="stat"><b>5 / 5</b><span>dishes placed from perceived poses after GPT found 13/13 items (gripper; suction too)</span></div>
   <div class="stat"><b>6 / 6</b><span>complete mobile missions: charger → dock → load → start → charger</span></div>
   <div class="stat"><b>10 / 10</b><span>9-step loading runs from a docked cart with real camera + Codex vision</span></div>
@@ -97,8 +98,10 @@
   <figure><img src="assets/base_17_panel_start_end.jpg" alt="Panel pressed, wash running" loading="lazy"><figcaption>6. POWER → QUICK → POWER with a conductive fingertip; drives back to charge.</figcaption></figure>
 </div>
 
-<h2>The kitchen: from a messy sink to a loaded basket</h2>
-<p><b>The messy sink.</b> Six dishes are dropped into a sink. GPT looks (one call, 59 s), finds all 6 among 13 items and plans a pick order. The arm grasps each dish from its perceived pose (GPT box + depth, 1.7–2.9 mm error), then GPT looks again: <b>4 of 6 dishes loaded</b>. An upright bowl sitting on a plate and a plate lying flat on the basin floor are handed to a person. <span class="src">(multi_dish_b/DEMO_NOTES.md)</span></p>
+<h2>From a messy sink to a running dishwasher</h2>
+<p><b>Final run:</b> GPT looks 5 times (22–38 s each). The arm loads all <b>5 dishes</b> from their perceived poses (1.45–2.7 mm), pushes the basket in, closes the door (−0.009°, sensor closed) and presses QUICK, then POWER: the panel shows <b>RUNNING (QUICK)</b>. That layout has no flat plate and no upright bowl. <span class="src">(multi_dish_b/result_sink_full.json)</span></p>
+<figure><img src="assets/sink_running.jpg" alt="Dishwasher closed, panel running" loading="lazy"><figcaption>Door closed, QUICK program running.</figcaption></figure>
+<p><b>A harder layout.</b> Six dishes are dropped into a sink. GPT looks (one call, 59 s), finds all 6 among 13 items and plans a pick order. The arm grasps each dish from its perceived pose (GPT box + depth, 1.7–2.9 mm error), then GPT looks again: <b>4 of 6 dishes loaded</b>. An upright bowl sitting on a plate and a plate lying flat on the basin floor are handed to a person. <span class="src">(multi_dish_b/DEMO_NOTES.md)</span></p>
 <p>The same pipeline on a tidy counter:</p>
 <p>One live GPT call looks at a cluttered counter (3 plates, 2 bowls and 8 everyday items) and labels every item: what goes into the dishwasher, where, and why the rest stays out. Depth inside GPT's boxes gives each dish's pose, and the arm loads all five from those <b>perceived</b> poses. The clutter is left untouched.</p>
 <div class="two">

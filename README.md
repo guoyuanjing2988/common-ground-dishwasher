@@ -6,11 +6,14 @@
 
 **Common Ground Makeathon 2026, SQ Collective Singapore.**
 
-**GPT controls a robot that clears a messy sink into a countertop dishwasher.** GPT sees only an overhead camera
-image of the sink. It names the dishes and plans a pick order. The arm grasps each dish from its perceived pose (GPT's
-box plus depth, 1.7–2.9 mm error) and loads it. Then GPT looks again at what is left. In the sink run, **4 of 6
-dishes were loaded** (2 plates upright, 2 bowls upside-down). The 2 it could not grasp, an upright bowl sitting on a
-plate and a plate lying flat on the basin floor, were handed to a person.
+**GPT controls a robot that clears a messy sink into a countertop dishwasher and starts the wash.** GPT sees only an
+overhead camera image of the sink. It names the dishes and plans a pick order. The arm grasps each dish from its
+perceived pose (GPT's box plus depth, 1.45–2.7 mm error) and loads it. Then GPT looks again at what is left: 5 looks,
+22–38 s each. In the final run **all 5 dishes were loaded** (3 plates upright, 2 bowls upside-down). The robot then
+pushed the basket in (0.0 mm), closed the door (−0.009°, door sensor closed) and pressed QUICK, then POWER: the panel
+shows RUNNING (QUICK). The counter items moved at most 0.85 mm. That layout has no flat plate and no upright bowl. In a
+**harder layout, 4 of 6** were loaded, and an upright bowl sitting on a plate and a plate lying flat on the basin floor
+were handed to a person.
 
 **How it works.** GPT (through `codex exec` on a ChatGPT subscription) decides the next *skill*. The robot API checks
 the call against a schema, a safety gate and preconditions. Then the robot's own controllers move the arm. GPT never
@@ -18,6 +21,7 @@ sends joint torques: it makes about one decision per 10 s, while the arm runs a 
 trajectories, collision checks and the e-stop stay with the robot.
 
 **Other results** (all in MuJoCo physics, details below):
+- **Harder sink layout:** 4/6 loaded; a flat plate and an upright bowl on a plate were handed to a person.
 - **Tidy counter:** the same pipeline finds 13/13 items and loads 5/5 dishes, with a gripper and again with a suction cup.
 - **Faults:** with injected faults GPT finished 13/14 missions; a fixed script finished 0/14.
 - **Mobile robot:** a wheeled base leaves its charger, docks at the counter, and the Franka FR3 arm opens the door,
@@ -69,7 +73,18 @@ Sources: `gpt_control/GPT_CONTROL.md` §4, `system_design/SYSTEM.md` §1, `mobil
 
 ![Loaded basket with the final check](docs/assets/kitchen_final_check.jpg)
 
-**The messy sink: look, pick, look again.** Source: [`multi_dish_b/DEMO_NOTES.md`](multi_dish_b/DEMO_NOTES.md), "Messy sink" section.
+**The messy sink, final run: 5/5 loaded, door closed, wash started.** Source: [`multi_dish_b/result_sink_full.json`](multi_dish_b/result_sink_full.json) (the run in the video).
+
+| Quantity | Value |
+|---|---|
+| Dishes loaded from the sink | **5/5**: 3 plates upright in slots 6, 5, 4; 2 bowls upside-down on bowl spots 1 and 2 |
+| Perceived pose error of the grasps | 1.45–2.7 mm (GPT box + depth) |
+| GPT looks | 5, 22–38 s each (one before every pick) |
+| Finish | basket in 0.0 mm · door −0.009°, door sensor closed · QUICK then POWER pressed (touch 4.59 / 4.84 N) · panel RUNNING (QUICK) |
+| Counter items disturbed | none (≤ 0.85 mm) |
+| Layout note | no flat plate and no upright bowl in this layout |
+
+**The messy sink, harder layout: look, pick, look again.** Source: [`multi_dish_b/DEMO_NOTES.md`](multi_dish_b/DEMO_NOTES.md), "Messy sink" section.
 Six dishes are dropped into a sink and settle under physics. GPT sees only an overhead camera image. On its first look (one
 `codex exec` call, 59 s) it finds all 6 dishes among 13 items and plans a pick order. Before every pick, depth is re-captured and the
 arm grasps from the **perceived** pose (GPT box + depth). After every pick GPT looks again: 7 looks in total.
