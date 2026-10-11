@@ -14,7 +14,7 @@
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); overflow: hidden;
-    font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Segoe UI", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", sans-serif; }
+    font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif; }
   #stage { position: absolute; width: 1600px; height: 900px; left: 50%; top: 50%; transform-origin: center center; }
   .slide { position: absolute; inset: 0; background: var(--slide); padding: 64px 80px 56px; display: none; flex-direction: column; }
   .slide.on { display: flex; }
@@ -67,7 +67,6 @@
   <div class="kicker">Common Ground Makeathon 2026 · Design × Tech · Culture × Tech</div>
   <h1>Sink to Shelf</h1>
   <p style="font-size:38px;margin:0 0 8px">From the messy sink to a loaded dishwasher.</p>
-  <p class="zh" style="font-size:28px">从乱糟糟的水槽，到装好的洗碗机</p>
   <p style="margin-top:40px"><span class="pill">MuJoCo physics simulation + real-hardware design</span></p>
   <p class="src" style="margin-top:60px">Yuanjing Guo · SQ Collective, Singapore · 11 Oct 2026</p>
 </section>
@@ -76,14 +75,13 @@
 <section class="slide">
   <div class="kicker">1 · The problem</div>
   <h2>A small chore that never ends</h2>
-  <p class="zh">一件永远做不完的小家务</p>
   <div class="row">
     <div class="col">
       <ul>
-        <li>Every day someone bends down, reaches in and loads the dishwasher.<span class="zh">每天都要弯腰、伸手、装碗。</span></li>
-        <li><b>Who it hurts most:</b> older people living at home, the family members who care for them, busy two-job households.<span class="zh">最吃力的是：在家养老的长者、照顾他们的家人、双职工家庭。</span></li>
-        <li><b>Singapore context:</b> an ageing population, compact kitchens, and countertop dishwashers that need no plumbing work.<span class="zh">新加坡：人口老龄化、厨房小、台式洗碗机免改水路。</span></li>
-        <li><b>Design rule:</b> no renovation. Same counter, same appliance, a docking strip and a charger.<span class="zh">设计原则：不改厨房、不改电器。</span></li>
+        <li>Every day someone bends down, reaches in and loads the dishwasher.</li>
+        <li><b>Who it hurts most:</b> older people living at home, the family members who care for them, busy two-job households.</li>
+        <li><b>Singapore context:</b> an ageing population, compact kitchens, and countertop dishwashers that need no plumbing work.</li>
+        <li><b>Design rule:</b> no renovation. Same counter, same appliance, a docking strip and a charger.</li>
       </ul>
     </div>
     <div class="col" style="flex:.8">
@@ -96,7 +94,6 @@
 <section class="slide">
   <div class="kicker">2 · Watch it</div>
   <h2>One full load, start to finish</h2>
-  <p class="zh">从充电桩出发，到洗碗机开洗，再回去充电</p>
   <video controls preload="metadata" poster="assets/base_04_nav_predock_end.jpg">
     <source src="media/demo_final.mp4" type="video/mp4">
     <source src="demo_final.mp4" type="video/mp4">
@@ -108,7 +105,6 @@
 <section class="slide">
   <div class="kicker">3 · How it works</div>
   <h2>Dock, see, then nine physical steps</h2>
-  <p class="zh">停靠、看清，然后九个物理步骤</p>
   <div class="grid3">
     <figure><div class="photo"><img src="assets/base_05_dock_end.jpg" alt="Docked"></div><figcaption>Lidar line-fit, reverse into V-blocks at 100 N, brake. Arm base within 1.6 mm, 0.09°.</figcaption></figure>
     <figure><div class="photo"><img src="assets/1_perceive_plate_codex_overlay.jpg" alt="Codex detection"></div><figcaption>Wall camera → GPT box → depth fit: plate centre to ~1 mm.</figcaption></figure>
@@ -124,7 +120,6 @@
 <section class="slide">
   <div class="kicker">4 · The kitchen</div>
   <h2>See the whole counter, then load plates and bowls</h2>
-  <p class="zh">看清整个台面，再把盘子和碗装到对的位置</p>
   <div class="row">
     <div class="col">
       <div class="photo"><img src="assets/kitchen_recognition.jpg" alt="GPT recognition of a cluttered counter"></div>
@@ -142,7 +137,6 @@
 <section class="slide">
   <div class="kicker">5 · The GPT brain</div>
   <h2>GPT decides <i>what</i>. Tested skills decide <i>how</i>.</h2>
-  <p class="zh">GPT 决定"做什么"，验证过的技能决定"怎么做"</p>
   <div class="row">
     <div class="col" style="flex:1.05">
       <table>
@@ -161,7 +155,7 @@
     <div class="col" style="flex:.95">
       <div class="split">
         <div><h3>GPT (seconds)</h3><ul>
-          <li>task order from a goal in English or 中文</li>
+          <li>task order from a goal in English or Chinese</li>
           <li>skill parameters</li>
           <li>diagnose and recover</li>
           <li>when to ask a human</li></ul></div>
@@ -181,7 +175,6 @@
 <section class="slide">
   <div class="kicker">6 · Real hardware &amp; cost</div>
   <h2>Every chip has one job</h2>
-  <p class="zh">真实硬件：每块芯片各司其职</p>
   <div class="row">
     <div class="col" style="flex:1.35"><div class="img"><img src="assets/block_diagram.png" alt="Compute and bus block diagram"></div></div>
     <div class="col" style="flex:.65">
@@ -203,7 +196,6 @@
 <section class="slide">
   <div class="kicker">7 · Results</div>
   <h2>Numbers from logged simulation runs</h2>
-  <p class="zh">所有数字都来自记录在案的仿真运行</p>
   <div class="big">
     <div class="stat"><b>6 / 6</b><span>full mobile missions: charger → dock → load → start → charger</span><small>265–273 s each · mobile_pipeline/MOBILE_RESULTS.md</small></div>
     <div class="stat"><b>10 / 10</b><span>9-step loading runs on a docked cart, real camera + Codex vision</span><small>plate centre error 0.44–1.75 mm · full_pipeline/RESULTS.md</small></div>
@@ -216,7 +208,6 @@
 <section class="slide">
   <div class="kicker">8 · Honest status &amp; next</div>
   <h2>Simulation and design today. Real robot next.</h2>
-  <p class="zh">今天是仿真和设计，下一步是真机</p>
   <div class="row">
     <div class="col">
       <ul style="font-size:25px;list-style:none;padding-left:0">
@@ -242,7 +233,7 @@
 <section class="slide" style="justify-content:center">
   <div class="kicker">Author &amp; links</div>
   <h1 style="font-size:88px">Sink to Shelf</h1>
-  <p style="font-size:34px;color:var(--acc)">One less chore at home. 家里少一件家务。</p>
+  <p style="font-size:34px;color:var(--acc)">From the messy sink to a loaded dishwasher.</p>
   <p style="font-size:26px;margin-top:30px">Yuanjing Guo</p>
   <p style="font-size:24px">Code: github.com/guoyuanjing2988/common-ground-dishwasher<br>Demo page: [GitHub Pages URL]</p>
   <p class="src">MuJoCo 3.15 · mink 1.3 · Franka Emika Panda model from MuJoCo Menagerie (Apache-2.0) · GPT via the Codex CLI</p>

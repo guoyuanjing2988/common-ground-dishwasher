@@ -19,7 +19,7 @@
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text);
-         font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", sans-serif; }
+         font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif; }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
   header { padding: 56px 0 24px; }
   h1 { font-size: clamp(40px, 7vw, 72px); line-height: 1.05; margin: 0 0 12px; letter-spacing: -0.02em; }
@@ -61,7 +61,6 @@
 <header>
   <h1>Sink to Shelf</h1>
   <p class="lead">From the messy sink to a loaded dishwasher. A wheeled robot docks at the kitchen counter, GPT recognises what to load, and a Franka arm loads the countertop dishwasher.</p>
-  <p class="zh">一台会自己开到台面前、停稳、帮你装台式洗碗机并启动的机器人。GPT 负责任务层决策。</p>
   <span class="badge">MuJoCo physics simulation + real-hardware design. Not yet a physical robot.</span>
   <div class="links">
     <a href="https://github.com/guoyuanjing2988/common-ground-dishwasher">Source code (GitHub)</a>
@@ -87,7 +86,6 @@
 
 <h2>Why</h2>
 <p>Loading the dishwasher needs bending, reaching and careful hands, every single day. For older people, carers and busy families in compact kitchens, it is one more chore that never ends. A countertop dishwasher already does the washing. We automate the part that is left: putting things in and pressing start, with an unmodified appliance in an unmodified kitchen.</p>
-<p class="zh">装洗碗机要弯腰、伸手、小心，而且天天要做。对老人、照护者和忙碌的小家庭来说，它永远做不完。我们把剩下的这一步自动化：不改电器、不改厨房。</p>
 
 <h2>How it works</h2>
 <div class="steps">
@@ -102,7 +100,6 @@
 <h2>The kitchen: recognise everything, then load plates and bowls</h2>
 <p><b>The messy sink.</b> In a sink full of plates and bowls, one GPT call found 11 of 13 objects. It missed 2 plates hidden in the pile, labelled every item it found correctly, and planned a pick order that starts with the free top plate (3 of its 4 steps are physically free). Loading is shown on the counter scene. <span class="src">(recognition_card/RESULTS.md)</span></p>
 <p>One live GPT call looks at a cluttered counter (3 plates, 2 bowls and 8 everyday items) and labels every item: what goes into the dishwasher, where, and why the rest stays out. Depth inside GPT's boxes gives each dish's pose, and the arm loads all five from those <b>perceived</b> poses. The clutter is left untouched.</p>
-<p class="zh">一次 GPT 调用看清杂乱台面上的每件物品：哪些进洗碗机、放哪里、其余为什么留下。GPT 的框加上深度相机给出每个盘碗的位置，机械臂按感知到的位置装好全部 5 件，杂物没被碰到。</p>
 <div class="two">
   <figure><img src="assets/kitchen_recognition.jpg" alt="GPT recognition card on the kitchen counter" loading="lazy"><figcaption>GPT's recognition (29.3 s call): 13/13 items found. Green = load, amber = safe but not this load, red = hand-wash.</figcaption></figure>
   <figure><img src="assets/kitchen_final_check.jpg" alt="Loaded basket with the final check" loading="lazy"><figcaption>5/5 placed from perceived poses (0.73–1.19 mm pose error): plates lean 1.4–3.7°, bowls within 7 mm.</figcaption></figure>
@@ -164,7 +161,6 @@
   <p><b>Real:</b> MuJoCo physics (wheels, brakes, contacts, plate, pod, door, basket), real GPT calls with real latency, and a costed hardware design.</p>
   <p><b>Not yet:</b> a physical robot; the 5-dish kitchen runs start with the door open. Water, washing, the door latch and real capacitive touch are not simulated. Ten trials, six missions and two runs per fault show feasibility, not reliability.</p>
   <p><b>Next:</b> one run from the charger to a full load, destack piles robustly, test a conductive fingertip on the real E804 panel, then supervised trials in a real kitchen.</p>
-  <p class="zh">现状：仿真 + 硬件设计，还不是实体机器人。下一步：造底盘、在真实面板上测试导电指尖、在真实厨房做有人看护的试验。</p>
 </div>
 
 <footer>
