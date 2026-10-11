@@ -50,6 +50,8 @@ import os
 if os.environ.get('SD_FCAP'):          # sanity test only: e.g. SD_FCAP=3 -> weaker than a plate's weight -> it must drop
     F_CAP = float(os.environ['SD_FCAP'])
 SEAL_KEEP = float(os.environ.get('SD_SEAL_KEEP', '.001'))  # maintenance gap limit (plain demo 1 mm; sink demo 1.5 mm)
+LIP_SOLREF = [float(os.environ.get('SD_LIP_TC', '.015')), 1]   # lip contact softness (sink demo: softer rubber lip)
+LIP_SOLIMP = [.9, .95, float(os.environ.get('SD_LIP_W', '.002')), .5, 2]
 CUP_GIMBAL = bool(os.environ.get('SD_CUP_GIMBAL'))
 CUP_GIMBAL_K = 1.0                   # N m / rad, EST bellows bending stiffness
 GIMBAL_ON_BUILD = [True]             # IK model is built without it (nominal cup pose)
@@ -141,7 +143,7 @@ def add_pump(spec):
         cup.add_geom(name=f'cup_lip{i}', type=SPH, size=[LIP_SR, 0, 0],
                      pos=[(CUP_R - LIP_SR) * math.cos(a), (CUP_R - LIP_SR) * math.sin(a), CUP_H - LIP_SR],
                      rgba=[.1, .1, .1, 1], mass=.001, priority=2, friction=[CUP_MU, .005, .0001], condim=3,
-                     solref=[.015, 1], solimp=[.9, .95, .002, .5, 2])
+                     solref=LIP_SOLREF, solimp=LIP_SOLIMP)
     cup.add_site(name='tcp', pos=[0, 0, CUP_H], size=[.003, 0, 0], rgba=[1, .3, .1, 0])
     for b in (pump, cup):
         b.gravcomp = 1                      # payload model of the arm controller (as for the Franka hand)

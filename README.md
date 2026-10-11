@@ -62,7 +62,14 @@ Sources: `gpt_control/GPT_CONTROL.md` §4, `system_design/SYSTEM.md` §1, `mobil
 
 ![Loaded basket with the final check](docs/assets/kitchen_final_check.jpg)
 
-**The climax of the video: recognise, then load, in one run.** Source: [`multi_dish_b/DEMO_NOTES.md`](multi_dish_b/DEMO_NOTES.md), kitchen section.
+**The messy sink (recognition and pick order).** Source: [`recognition_card/RESULTS.md`](recognition_card/RESULTS.md), sink6 section.
+A stainless sink holds a fanned pile of 4 plates and 2 bowls, with everyday items around it. One GPT call (47.7 s) found
+**11/13** objects. It missed the 2 plates hidden in the middle of the pile, and it listed a towel fold as an extra cloth.
+Its labels and dishwasher-safe verdicts were right for all 11 matched objects (mean box IoU 0.89). Its pick order starts with a free
+top plate, and 3 of its 4 steps are physically free. Step 3 takes the bowl that props up the remaining plates. Loading from the sink
+is not shown: the video loads on the counter scene below.
+
+**The counter scene: recognise, then load, in one run.** Source: [`multi_dish_b/DEMO_NOTES.md`](multi_dish_b/DEMO_NOTES.md), kitchen section.
 The counter holds 3 plates, 2 bowls and 8 clutter items. One live GPT call (29.3 s) sees an overhead camera image and
 labels every item. Depth back-projection inside GPT's boxes gives each dish's pose, and the arm grasps from those
 **perceived** poses (no ground-truth fallback was needed).
@@ -91,8 +98,6 @@ Simplifications: one clean rendered image, recognition once at the start, door a
 | GPT cost per scene | 2 calls, median 42 s |
 
 In gpt_sort, the robot itself loads only one plate per scene (slot P4); bowls and mugs go to a human.
-
-**Custom 3D-printed fingers.** Source: [`multi_dish_fingers/DEMO_NOTES.md`](multi_dish_fingers/DEMO_NOTES.md). A rim-hook finger and a 2 mm wedge-blade finger (80 mm, PETG + TPU, printable STLs in `multi_dish_fingers/fingers/`) take 2 nested bowls and 3 stacked plates off their piles: **5/5** placed, 0 unexpected robot contacts, plates leaning 1.0–2.1°. At stock length (53.5 mm) the same tips place 0/3 plates, because the hand body hits the counter. Honest note: the final alignment above the slot is closed-loop on the measured (simulator) dish pose.
 
 ### 1. Arm on a docked cart: the full 9-step task
 Source: [`full_pipeline/RESULTS.md`](full_pipeline/RESULTS.md), [`full_pipeline/MOUNTING.md`](full_pipeline/MOUNTING.md). Each trial is one continuous MuJoCo run with real camera and Codex perception. The plate pose is randomised by ±10 mm and ±10°.
@@ -228,7 +233,6 @@ gpt_control/                 GPT (codex exec) control: robot API, safety gate, f
 gpt_mobile/, gpt_sort/, gpt_adversary/, gpt_engineer/   follow-up GPT studies (code, write-up, results.json)
 multi_dish_b/                kitchen counter: GPT recognition + depth -> 3 plates + 2 bowls with the gripper
 multi_dish_suction/          the same with a suction cup (Franka Cobot Pump)
-multi_dish_fingers/          custom 3D-printed wedge / rim-hook fingers (STLs + demo)
 recognition_card/            standalone GPT recognition of a messy counter (scoring vs ground truth)
 docs/                        GitHub Pages: index.html, slides.html, media/demo_final.mp4, assets/ (images)
 ```

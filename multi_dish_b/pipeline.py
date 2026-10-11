@@ -22,6 +22,11 @@ from pathlib import Path
 
 import imageio.v2 as imageio
 import mink
+try:
+    import qpsolvers as _qps
+    SOLVER = 'daqp' if 'daqp' in _qps.available_solvers else _qps.available_solvers[0]
+except Exception:
+    SOLVER = 'daqp'
 import mujoco
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
@@ -307,7 +312,7 @@ class Runner:
             post = mink.PostureTask(ik, cost=1e-3)
             post.set_target(q)
             for _ in range(300):
-                v = mink.solve_ik(cfg, [task, post], 1., solver='daqp', damping=1e-4, limits=[mink.ConfigurationLimit(ik, gain=.5)],
+                v = mink.solve_ik(cfg, [task, post], 1., solver=SOLVER, damping=1e-4, limits=[mink.ConfigurationLimit(ik, gain=.5)],
                                   constraints=cons)
                 cfg.integrate_inplace(v, 1.)
             e = task.compute_error(cfg)
@@ -335,11 +340,11 @@ class Runner:
     def _ik(self, cfg, tasks, dt, limits, cons, damping=1e-5):
         """solve_ik; if the collision-avoidance limit makes the QP infeasible, solve that tick without it."""
         try:
-            return mink.solve_ik(cfg, tasks, dt, solver='daqp', damping=damping, limits=limits, constraints=cons)
+            return mink.solve_ik(cfg, tasks, dt, solver=SOLVER, damping=damping, limits=limits, constraints=cons)
         except mink.exceptions.NoSolutionFound:
             self.metrics['ik_collision_fallbacks'] = self.metrics.get('ik_collision_fallbacks', 0) + 1
             lim = [l for l in limits if not isinstance(l, mink.CollisionAvoidanceLimit)]
-            return mink.solve_ik(cfg, tasks, dt, solver='daqp', damping=damping, limits=lim, constraints=cons)
+            return mink.solve_ik(cfg, tasks, dt, solver=SOLVER, damping=damping, limits=lim, constraints=cons)
 
     # ------------------------------------------------------------------ configuration-level planning helpers
     FLIP = np.diag([-1., -1, 1])          # 180 deg about the approach axis (parallel gripper is symmetric)

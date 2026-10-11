@@ -451,7 +451,7 @@ class Multi(PL.Runner):
         e = self.foot(j) - tgt
         R = self.data.xmat[bid].reshape(3, 3)
         up_dot = float(R[2, 2])                                   # bowl opening axis . world z (-1 = fully inverted)
-        tilt = math.degrees(math.acos(min(1., -up_dot)))          # tilt from fully inverted
+        tilt = math.degrees(math.acos(max(-1., min(1., -up_dot))))          # tilt from fully inverted
         vel = np.zeros(6)
         mujoco.mj_objectVelocity(self.model, self.data, mujoco.mjtObj.mjOBJ_BODY, bid, vel, 0)
         touch = self.touching(bid)

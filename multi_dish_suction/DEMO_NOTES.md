@@ -221,3 +221,25 @@ Every real object got the right load/leave decision. Two labels were wrong (soap
 - The camera pose is known.
 - GPT's boxes for the plate stack and bowl nest come from the first image and are re-used for every later depth capture (the piles do not move).
 - The "accept if within 12 mm / 6 mm of truth" gate uses ground truth only as a safety and scoring check. It never triggered.
+
+---
+
+# Messy-sink attempt (`sink.py`): status at 13:32 SGT, INCOMPLETE
+
+**Built and working**
+- A sink scene matching `sink_refs/sink_6.png`:
+  - basin (−0.30…−0.05, 0.33…0.68; 100 mm deep) cut into the counter;
+  - faucet, collidable splash-back, soap, sponge, checked-colour dish cloth, cup with chopsticks, a cutting board leaning on the wall, and the earlier clutter;
+  - 4 plates in a loose, offset stack leaning sideways, with 2 bowls wedged against the wall. Seeded like that, then settled by physics; all 6 stay in the sink, at < 0.4 mm/s after 8 s.
+- **Robot base moved** to (0.45, 0.48, 0.90) so the sink is in reach (`sink_reach.py`).
+- **GPT pick order** (`codex exec`, 53 s): it found all 6 dishes and ordered them top plate → blue bowl → orange bowl → plates 2–4. The board and oil bottle were misread as one "long utensil".
+- **Depth patch finder:** finds the flat disc of the top plate at the true 23° tilt, and the bowls' inside bottoms.
+- **In-hand classification:** after a pick, the item is shown to the wall camera and its rim circle is fitted: 97–99 mm → plate, 56.7 mm → bowl.
+
+**Not yet working: holding through the lift**
+- Seals on tilted dishes in the pile are acquired, then lost during the lift, with a 1.5 mm lip gap at 3.5–5°.
+- The modelled cup is a rigid ring of 8 lip points. On a tilted, loose plate it seals only partially (6/8 lips), and with the 44 N cap the seal then peels.
+- In one run (13:25) a plate reached the basket but was not seated correctly. In another, a dropped plate fell to the floor; that run's checks detected and reported it.
+- A spring-loaded cup gimbal (bellows compliance) was tried and reverted: it did not fix the peeling.
+
+**Blocked at 13:31.** The shared interpreter `common_ground_dishwasher/.venv` and `mujoco_menagerie/` (Panda model) were deleted by another process. That folder became a git repo, and both are git-ignored. No other Python with mujoco or mink exists on the machine, and installs are forbidden, so no further sims can run. The last `out/sink_suction_demo.mp4` (13:30) shows only failed and dropped picks. It is NOT a deliverable.

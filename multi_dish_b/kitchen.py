@@ -14,7 +14,10 @@ from pathlib import Path
 
 import mujoco
 import numpy as np
-import scipy.ndimage as ndi
+try:
+    import scipy.ndimage as ndi
+except ImportError:                      # fallback: simple 4-connected labelling (BFS) if scipy is unavailable
+    ndi = None
 from PIL import Image, ImageDraw, ImageFont
 
 import items as IT
@@ -119,9 +122,30 @@ def height_map(cam, data, depth):
     return X, X[..., 2] - S.COUNTER_Z
 
 
+def _label(mask):
+    from collections import deque
+    lab = np.zeros(mask.shape, int)
+    n = 0
+    H_, W_ = mask.shape
+    for v0, u0 in zip(*np.nonzero(mask)):
+        if lab[v0, u0]:
+            continue
+        n += 1
+        q = deque([(v0, u0)])
+        lab[v0, u0] = n
+        while q:
+            v, u = q.popleft()
+            for dv, du in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                a, b = v + dv, u + du
+                if 0 <= a < H_ and 0 <= b < W_ and mask[a, b] and not lab[a, b]:
+                    lab[a, b] = n
+                    q.append((a, b))
+    return lab, n
+
+
 def component(mask, box=None, seed_uv=None):
     """Connected blob of `mask` overlapping the box most (or containing / nearest to seed_uv)."""
-    lab, n = ndi.label(mask)
+    lab, n = ndi.label(mask) if ndi is not None else _label(mask)
     if n == 0:
         return None
     if box is not None:
