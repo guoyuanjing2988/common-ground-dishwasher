@@ -225,6 +225,8 @@ class Sink(M.Multi):
             try:
                 out = self.run_step(name, fn)
                 self.finish[name] = dict(ok=True, **{k_: v for k_, v in out.items() if not isinstance(v, (dict, list))})
+                if name == 'push_basket':
+                    self.basket_est = 0.0          # pushed to the known back stop: bowl targets now refer to the closed basket
                 M.Hud.items[n0 + k][1] = True
             except PL.StepFail as e:
                 self.finish[name] = dict(ok=False, reason=str(e))
