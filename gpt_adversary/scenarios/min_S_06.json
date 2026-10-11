@@ -1,0 +1,12 @@
+{
+ "name": "min_S_06",
+ "source": "minimized",
+ "from_entry": "S_06",
+ "target_mode": "pull_basket|door_closed,plate_in_slot,quick_running|",
+ "params": {
+  "basket": {
+   "rail_friction_N": 7.24399,
+   "damping": 4.5002
+  }
+ }
+}

@@ -1,0 +1,272 @@
+{
+ "rows": [
+  {
+   "group": "Arm",
+   "item": "Franka Research 3 arm + FR3 Control (FCI incl.)",
+   "qty": 1,
+   "unit_usd": 29218,
+   "ext_usd": 29218,
+   "tag": "R",
+   "source": "https://vention.io/parts/franka-robotics-fr3-4193"
+  },
+  {
+   "group": "Arm",
+   "item": "Franka Hand gripper",
+   "qty": 1,
+   "unit_usd": 1777,
+   "ext_usd": 1777,
+   "tag": "R",
+   "source": "https://vention.io/parts/franka-robotics-fr3-franka-hand-4422"
+  },
+  {
+   "group": "Arm",
+   "item": "Bota SensONE wrist F/T (serial/USB)",
+   "qty": 1,
+   "unit_usd": 5430,
+   "ext_usd": 5430,
+   "tag": "R",
+   "source": "https://www.roboticscenter.ai/store/product/bota-sensone"
+  },
+  {
+   "group": "Arm",
+   "item": "Conductive silicone fingertip (6-8 mm) + braided ground lead",
+   "qty": 1,
+   "unit_usd": 25,
+   "ext_usd": 25,
+   "tag": "R/E",
+   "source": "https://www.newegg.com/p/0SA-00ZV-000U8"
+  },
+  {
+   "group": "Drive",
+   "item": "Oriental BLMR6200SKM-GFV-F + GFV6G50 + BLVD-KRD (200 W, power-off brake)",
+   "qty": 2,
+   "unit_usd": 1373,
+   "ext_usd": 2746,
+   "tag": "V",
+   "source": "https://catalog.orientalmotor.com/item/blv-r-series-brushless-dc-motor-speed-control/shop-blv-r-series-brushless-dc-motors/blmr6200skm-gfv-f-gfv6g50-blvd-krd"
+  },
+  {
+   "group": "Drive",
+   "item": "200 mm PU drive wheel, axle bearing block, coupling, sprung swing arm",
+   "qty": 2,
+   "unit_usd": 200,
+   "ext_usd": 400,
+   "tag": "E",
+   "source": "-"
+  },
+  {
+   "group": "Drive",
+   "item": "Swivel caster 100 mm PU, 100 kg (Tente 1044UAP100R26 class)",
+   "qty": 4,
+   "unit_usd": 40,
+   "ext_usd": 160,
+   "tag": "E",
+   "source": "https://cdn.tente.com/datasheets/1044UAP100R26_28S45RAL9002BH139_en.pdf"
+  },
+  {
+   "group": "Structure",
+   "item": "Welded steel chassis, Al deck, covers (IPX4 top), 0.80 m column, arm flange",
+   "qty": 1,
+   "unit_usd": 1500,
+   "ext_usd": 1500,
+   "tag": "E",
+   "source": "-"
+  },
+  {
+   "group": "Structure",
+   "item": "Ballast plate 15 kg",
+   "qty": 1,
+   "unit_usd": 50,
+   "ext_usd": 50,
+   "tag": "E",
+   "source": "-"
+  },
+  {
+   "group": "Structure",
+   "item": "Dock V-blocks + cone pins (work dock + charge dock)",
+   "qty": 2,
+   "unit_usd": 120,
+   "ext_usd": 240,
+   "tag": "E",
+   "source": "-"
+  },
+  {
+   "group": "Power",
+   "item": "Battery 51.2 V 30 Ah LFP (2 x 8S), BMS with CAN, IEC 62619 / UN38.3",
+   "qty": 1,
+   "unit_usd": 900,
+   "ext_usd": 900,
+   "tag": "E (quote)",
+   "source": "https://www.leoch.com/uploads/ueditor/file/20231111/6383531340936257313889595.pdf"
+  },
+  {
+   "group": "Power",
+   "item": "Victron Phoenix 48/800 230V VE.Direct UK",
+   "qty": 1,
+   "unit_usd": 260,
+   "ext_usd": 260,
+   "tag": "R",
+   "source": "https://www.victronenergy.com/upload/documents/Datasheet-Phoenix-Inverter-VE.Direct-250VA-1200VA-EN.pdf"
+  },
+  {
+   "group": "Power",
+   "item": "Mean Well RSD-300C-24 DC-DC",
+   "qty": 1,
+   "unit_usd": 130,
+   "ext_usd": 130,
+   "tag": "R",
+   "source": "https://my.rs-online.com/web/p/dc-dc-converters/7704087"
+  },
+  {
+   "group": "Power",
+   "item": "Albright SW80 48 V contactor (K1) + safety contactor K2",
+   "qty": 2,
+   "unit_usd": 90,
+   "ext_usd": 180,
+   "tag": "R",
+   "source": "https://ph.fridayparts.com/48v-100a-aftermarket-albright-sw80-10-single-acting-solenoid-contactor-for-industrial-automation-equipment"
+  },
+  {
+   "group": "Power",
+   "item": "Class T 100 A fuse + block, branch fuses (>=60 VDC), disconnect, pre-charge, cable, lugs",
+   "qty": 1,
+   "unit_usd": 450,
+   "ext_usd": 450,
+   "tag": "E",
+   "source": "https://www.bluesea.com/products/5007100/Class_T_Fuse_Block_with_Insulating_Cover_-_110_to_200A"
+  },
+  {
+   "group": "Power",
+   "item": "Charge dock: Mean Well NPB-750-48 charger",
+   "qty": 1,
+   "unit_usd": 220,
+   "ext_usd": 220,
+   "tag": "R",
+   "source": "https://www.jameco.com/z/NPB-750-48-MEAN-WELL-759-4W-55-2V-11-3A-Ultra-Wide-Output-Range-Intelligent-Battery-Charger_2334711.html"
+  },
+  {
+   "group": "Power",
+   "item": "Charge contacts (collector + dock plate, presence switch, dock relay)",
+   "qty": 1,
+   "unit_usd": 350,
+   "ext_usd": 350,
+   "tag": "E (quote)",
+   "source": "https://uk.robotshop.com/products/robopad-extendable-collector-contacts-90mm-wide-100a"
+  },
+  {
+   "group": "Compute",
+   "item": "Main PC OnLogic Helix 500 (12-24 V DC), 16 GB, SSD",
+   "qty": 1,
+   "unit_usd": 1000,
+   "ext_usd": 1000,
+   "tag": "R/E",
+   "source": "https://www.phoronix.com/review/onlogic-helix-500"
+  },
+  {
+   "group": "Compute",
+   "item": "Intel AX210 Wi-Fi 6E card + antennas",
+   "qty": 1,
+   "unit_usd": 35,
+   "ext_usd": 35,
+   "tag": "R",
+   "source": "https://vetco.net/products/intel-wifi-6e-ax210-wifi-bluetooth-5-2-m-2-card"
+  },
+  {
+   "group": "Compute",
+   "item": "STM32 NUCLEO-H723ZG + carrier (RS-485, CAN-FD, I/O)",
+   "qty": 1,
+   "unit_usd": 110,
+   "ext_usd": 110,
+   "tag": "R/E",
+   "source": "https://futureelectronics.com/p/development-tools--microcontroller-microprocessor--32-bit-eval-board/nucleo-h723zg-stmicroelectronics-4152938"
+  },
+  {
+   "group": "Compute",
+   "item": "Advantech EKI-2725 GbE switch (12/48 V)",
+   "qty": 1,
+   "unit_usd": 195,
+   "ext_usd": 195,
+   "tag": "R",
+   "source": "https://uk.rs-online.com/web/p/network-hubs/2835848"
+  },
+  {
+   "group": "Sensors",
+   "item": "RPLIDAR S2 2D lidar",
+   "qty": 2,
+   "unit_usd": 400,
+   "ext_usd": 800,
+   "tag": "E",
+   "source": "https://bucket-download.slamtec.com/4a5f962943b5140f97ae3b7fab7ed9bdf2adee11/SLAMTEC_rplidar_datasheet_S2_v2.0_en.pdf"
+  },
+  {
+   "group": "Wall node",
+   "item": "Jetson Orin Nano Super dev kit",
+   "qty": 1,
+   "unit_usd": 399,
+   "ext_usd": 399,
+   "tag": "R (news, after 2026-07 price rise)",
+   "source": "https://hwbusters.com/news/nvidia-jetson-prices-jump-up-to-101-the-249-orin-nano-super-is-now-399/"
+  },
+  {
+   "group": "Wall node",
+   "item": "RealSense D435i + mount + 2 m USB-C cable",
+   "qty": 1,
+   "unit_usd": 600,
+   "ext_usd": 600,
+   "tag": "R",
+   "source": "https://www.realsenseai.com/products/depth-camera-d435i/"
+  },
+  {
+   "group": "Safety",
+   "item": "PILZ PNOZ s3 24 VDC",
+   "qty": 1,
+   "unit_usd": 170,
+   "ext_usd": 170,
+   "tag": "R",
+   "source": "https://elektrobode.nl/products/pilz-pnozsigma-pnoz-s3-24vdc-relais-vr-veiligheidsstroomcircuits-750103"
+  },
+  {
+   "group": "Safety",
+   "item": "E-stop mushroom buttons (2) + key switch",
+   "qty": 1,
+   "unit_usd": 120,
+   "ext_usd": 120,
+   "tag": "E",
+   "source": "-"
+  },
+  {
+   "group": "Safety",
+   "item": "Wireless e-stop (generic; FORT PL d is quote-only)",
+   "qty": 1,
+   "unit_usd": 170,
+   "ext_usd": 170,
+   "tag": "R",
+   "source": "https://store.clearpathrobotics.com/products/wireless-e-stop"
+  },
+  {
+   "group": "Safety",
+   "item": "ASO SENTIR safety edges (4 sides) + ELMON rail 41-822 relay",
+   "qty": 1,
+   "unit_usd": 800,
+   "ext_usd": 800,
+   "tag": "R/E",
+   "source": "https://es.misumi-ec.com/vona2/detail/221304237161"
+  }
+ ],
+ "subtotal_usd": 48435,
+ "contingency_10pct_usd": 4844,
+ "total_usd": 53279,
+ "total_sgd": 69263,
+ "usd_sgd_rate_assumed": 1.3,
+ "by_group_usd": {
+  "Arm": 36450,
+  "Drive": 3306,
+  "Structure": 1790,
+  "Power": 2490,
+  "Compute": 1340,
+  "Sensors": 800,
+  "Wall node": 999,
+  "Safety": 1260
+ },
+ "total_excl_arm_usd": 22284
+}

@@ -1,0 +1,12 @@
+{
+ "name": "larger_thermal_force_drift",
+ "source": "gpt",
+ "hypothesis": "Doubling the previously tolerated thermal drift may exceed the insertion controller's bias compensation. Sustained residual force can satisfy the filtered touchdown threshold before the plate reaches its supports.",
+ "expected_failure": "Step 6 releases prematurely and fails the seating check, leaving the plate unsupported or leaning outside its intended slot.",
+ "real_world_story": "The wrist force sensor warms during a long loading cycle after being tared cold.",
+ "params": {
+  "sensors": {
+   "ft_drift_N_per_min": 2.0
+  }
+ }
+}

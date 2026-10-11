@@ -1,0 +1,22 @@
+{
+ "samples": 204397,
+ "base_mass_excl_arm_kg": 112.9,
+ "base_cog_world_m": [
+  0.318,
+  0.418,
+  0.208
+ ],
+ "cop_margin_m": {
+  "front": 0.187,
+  "rear": 0.224,
+  "left": 0.172,
+  "right": 0.177
+ },
+ "min_free_edge_margin_m (front/left/right; rear is the dock)": 0.172,
+ "sim_reference_margin_m": 0.183,
+ "dock_preload_N": 100.0,
+ "max_force_toward_counter_N": 54.9,
+ "dock_contact_force_max_N": 154.9,
+ "brake_utilisation_max (drive wheels only, mu=0.50)": 0.409,
+ "note": "Quasi-static, recorded task wrenches only (no human push, no e-stop with arm extended)."
+}

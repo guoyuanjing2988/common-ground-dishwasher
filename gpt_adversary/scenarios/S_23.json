@@ -1,0 +1,18 @@
+{
+ "name": "sparse_23",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "person": {
+   "at_s": 30.63,
+   "dur_s": 82.04,
+   "distance_m": 1.55
+  },
+  "buttons": {
+   "threshold_N": 2.8538,
+   "dwell_ms": 4.7677
+  }
+ }
+}

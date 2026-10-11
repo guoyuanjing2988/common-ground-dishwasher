@@ -1,0 +1,13 @@
+{
+ "name": "sparse_15",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "dish": {
+   "dx": -0.0686,
+   "dy": -0.0759
+  }
+ }
+}

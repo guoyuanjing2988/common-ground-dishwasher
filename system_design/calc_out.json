@@ -1,0 +1,208 @@
+{
+ "mass_total_kg": 133.2,
+ "cog_m": [
+  0.029,
+  -0.002,
+  0.33
+ ],
+ "mass_base_excl_arm_hand_ft_kg": 113.9,
+ "tip": {
+  "edge_distance_front_m": 0.236,
+  "edge_distance_rear_m": 0.294,
+  "edge_distance_side_m": 0.238,
+  "a_to_tip_fwd_m_s2": 7.01,
+  "a_to_tip_rear_m_s2": 8.73,
+  "a_to_tip_side_m_s2": 7.08,
+  "a_wheel_skid_limit_m_s2": 4.91,
+  "commanded_a_m_s2": 0.5,
+  "safety_factor_vs_commanded": 14.0,
+  "tip_possible_by_braking": false,
+  "static_tilt_to_tip_deg": 35.6
+ },
+ "estop": {
+  "driven_wheel_normal_load_N": 718,
+  "brake_force_tyre_limit_N": 359,
+  "brake_force_torque_limit_N": 540,
+  "decel_m_s2": 2.7,
+  "stop_distance_from_0.5_m_s_mm": 46.0,
+  "stop_distance_from_0.3_m_s_mm": 17.0,
+  "tip_margin_factor": 2.6
+ },
+ "dock_hold": {
+  "required_pull_away_N": 39.3,
+  "required_side_N": 58.4,
+  "brake_capacity_N": 359,
+  "utilisation": 0.42
+ },
+ "drive": {
+  "rolling_force_N": 26.1,
+  "torque_cruise_Nm_per_wheel": 1.31,
+  "torque_accel_Nm_per_wheel": 4.64,
+  "torque_dock_preload_Nm_per_wheel": 6.31,
+  "step_height_m": 0.005,
+  "step_force_both_leading_casters_N": 285,
+  "torque_step_Nm_per_wheel": 15.54,
+  "traction_limit_N": 359,
+  "step_climb_traction_ok": true,
+  "max_step_by_traction_m": 0.0065,
+  "wheel_rpm_at_vmax": 47.7,
+  "gear_ratio": 50.0,
+  "motor_rpm_at_vmax": 2387,
+  "wheel_force_rated_N": 274,
+  "wheel_force_peak_N": 550,
+  "vmax_capability_m_s": 0.84,
+  "mech_power_accel_at_vmax_W": 46.4,
+  "mech_power_cruise_W": 13.1
+ },
+ "power_table": [
+  {
+   "load": "FR3 arm + Control (AC)",
+   "path": "ac",
+   "idle_W": 60.0,
+   "active_W": 80.0,
+   "peak_W": 450.0,
+   "bus_idle_W": 66.7,
+   "bus_active_W": 88.9,
+   "tag": "V ~80 W datasheet; idle E; peak 450 W reseller (UNVERIFIED)"
+  },
+  {
+   "load": "Main PC OnLogic Helix 500",
+   "path": "24",
+   "idle_W": 12.0,
+   "active_W": 30.0,
+   "peak_W": 60.0,
+   "bus_idle_W": 13.0,
+   "bus_active_W": 32.6,
+   "tag": "E (60 W stress, AnandTech)"
+  },
+  {
+   "load": "2 x RPLIDAR S2 (spun down docked)",
+   "path": "24",
+   "idle_W": 0.5,
+   "active_W": 5.0,
+   "peak_W": 6.0,
+   "bus_idle_W": 0.5,
+   "bus_active_W": 5.4,
+   "tag": "V/R >2 W each"
+  },
+  {
+   "load": "GbE switch EKI-2725",
+   "path": "24",
+   "idle_W": 4.0,
+   "active_W": 4.0,
+   "peak_W": 5.0,
+   "bus_idle_W": 4.3,
+   "bus_active_W": 4.3,
+   "tag": "E"
+  },
+  {
+   "load": "Base MCU STM32H723 + RS-485/CAN",
+   "path": "24",
+   "idle_W": 1.0,
+   "active_W": 1.0,
+   "peak_W": 1.5,
+   "bus_idle_W": 1.1,
+   "bus_active_W": 1.1,
+   "tag": "E"
+  },
+  {
+   "load": "PILZ PNOZ s3 + safety-edge relay",
+   "path": "24",
+   "idle_W": 2.5,
+   "active_W": 2.5,
+   "peak_W": 2.5,
+   "bus_idle_W": 2.7,
+   "bus_active_W": 2.7,
+   "tag": "E"
+  },
+  {
+   "load": "Bota SensONE F/T",
+   "path": "24",
+   "idle_W": 1.0,
+   "active_W": 1.0,
+   "peak_W": 1.0,
+   "bus_idle_W": 1.1,
+   "bus_active_W": 1.1,
+   "tag": "E"
+  },
+  {
+   "load": "2 x BLVD-KRD drivers (standby)",
+   "path": "48",
+   "idle_W": 8.0,
+   "active_W": 8.0,
+   "peak_W": 8.0,
+   "bus_idle_W": 8.0,
+   "bus_active_W": 8.0,
+   "tag": "E"
+  },
+  {
+   "load": "2 x BLV-R drive (driving)",
+   "path": "48",
+   "idle_W": 0.0,
+   "active_W": 45.0,
+   "peak_W": 470.6,
+   "bus_idle_W": 0.0,
+   "bus_active_W": 45.0,
+   "tag": "calc: 46 W mech peak accel, 13 W cruise; 200 W rated each"
+  },
+  {
+   "load": "2 x motor brake coils (released)",
+   "path": "48",
+   "idle_W": 0.0,
+   "active_W": 12.0,
+   "peak_W": 12.0,
+   "bus_idle_W": 0.0,
+   "bus_active_W": 12.0,
+   "tag": "E"
+  }
+ ],
+ "energy": {
+  "phases": [
+   {
+    "phase": "wake: inverter on, FR3 boot + self-test",
+    "s": 90.0,
+    "bus_W": 107.0,
+    "Wh": 2.67
+   },
+   {
+    "phase": "undock + drive out + dock",
+    "s": 45.0,
+    "bus_W": 188.4,
+    "Wh": 2.36
+   },
+   {
+    "phase": "arm task (185 s sim)",
+    "s": 185.0,
+    "bus_W": 148.8,
+    "Wh": 7.65
+   },
+   {
+    "phase": "2 Codex waits (arm holding)",
+    "s": 32.0,
+    "bus_W": 126.6,
+    "Wh": 1.12
+   },
+   {
+    "phase": "undock + drive back + dock",
+    "s": 45.0,
+    "bus_W": 188.4,
+    "Wh": 2.36
+   }
+  ],
+  "cycle_time_s": 397.0,
+  "energy_per_cycle_Wh": 16.2,
+  "bus_idle_awake_W": 107.0,
+  "bus_peak_W_all_peaks_coincident": 1083,
+  "bus_peak_A_at_48V": 22.6,
+  "battery_nominal_Wh": 1536,
+  "battery_usable_Wh": 1229,
+  "cycles_per_charge": 76,
+  "hours_awake_idle_off_charger": 11.5,
+  "charger_A": 11.3,
+  "charge_time_20_to_100pct_h": 2.5,
+  "recharge_per_cycle_min": 1.7,
+  "sleep_on_dock_W": 6.0,
+  "energy_per_cycle_Wh_pessimistic_FR3_250W": 25.9,
+  "cycles_per_charge_pessimistic": 47
+ }
+}

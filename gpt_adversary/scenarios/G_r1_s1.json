@@ -1,0 +1,12 @@
+{
+ "name": "pad_actuation_above_command",
+ "source": "gpt",
+ "hypothesis": "The robot stops pressing near 3 N, while the pads require 4 N to actuate. The separate success check accepts any peak above 1 N, so both presses can pass without registering commands.",
+ "expected_failure": "Step 9 reports success despite insufficient actuation force; QUICK is not running, producing a silent mission failure.",
+ "real_world_story": "A replacement control-panel overlay requires a firmer press than the panel used during validation.",
+ "params": {
+  "buttons": {
+   "threshold_N": 4.0
+  }
+ }
+}

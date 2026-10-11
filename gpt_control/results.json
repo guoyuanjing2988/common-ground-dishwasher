@@ -1,0 +1,1289 @@
+{
+ "gpt": [
+  {
+   "level": "L1",
+   "scenario": "none",
+   "n": 5,
+   "success": 5,
+   "handled": 5,
+   "seated": 5,
+   "lean": [
+    9.18,
+    8.67,
+    8.81,
+    8.76,
+    9.41
+   ],
+   "claimed": 5,
+   "false_claims": 0,
+   "gpt_calls": [
+    11,
+    11,
+    11,
+    11,
+    11
+   ],
+   "gpt_s": [
+    96.2,
+    96.7,
+    98.4,
+    95.5,
+    102.8
+   ],
+   "perc_calls": [
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "perc_s": [
+    29.4,
+    25.1,
+    26.6,
+    26.3,
+    27.1
+   ],
+   "sim_s": [
+    185.07,
+    181.5,
+    185.18,
+    184.68,
+    184.81
+   ],
+   "wall_s": [
+    147.9,
+    141.9,
+    145.7,
+    142.3,
+    150.8
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 0,
+   "failed": 0,
+   "recoveries": 0,
+   "tokens": [
+    80486,
+    80540,
+    55741,
+    55528,
+    68512
+   ],
+   "prompt_chars": [
+    8126,
+    8258,
+    8142,
+    8238,
+    8144
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L1_none_s1_zh",
+    "L1_none_s2_en",
+    "L1_none_s3_zh",
+    "L1_none_s4_en",
+    "L1_none_s5_zh"
+   ]
+  },
+  {
+   "level": "L1",
+   "scenario": "door_latch",
+   "n": 2,
+   "success": 2,
+   "handled": 2,
+   "seated": 2,
+   "lean": [
+    9.19,
+    8.6
+   ],
+   "claimed": 2,
+   "false_claims": 0,
+   "gpt_calls": [
+    12,
+    12
+   ],
+   "gpt_s": [
+    103.3,
+    108.5
+   ],
+   "perc_calls": [
+    2,
+    2
+   ],
+   "perc_s": [
+    25.9,
+    28.8
+   ],
+   "sim_s": [
+    202.38,
+    202.37
+   ],
+   "wall_s": [
+    152.0,
+    159.9
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 0,
+   "failed": 2,
+   "recoveries": 2,
+   "tokens": [
+    74266,
+    73745
+   ],
+   "prompt_chars": [
+    8397,
+    8492
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L1_door_latch_s1_zh",
+    "L1_door_latch_s2_en"
+   ]
+  },
+  {
+   "level": "L1",
+   "scenario": "pod_moved",
+   "n": 2,
+   "success": 2,
+   "handled": 2,
+   "seated": 2,
+   "lean": [
+    8.64,
+    9.17
+   ],
+   "claimed": 2,
+   "false_claims": 0,
+   "gpt_calls": [
+    12,
+    12
+   ],
+   "gpt_s": [
+    111.2,
+    116.5
+   ],
+   "perc_calls": [
+    3,
+    3
+   ],
+   "perc_s": [
+    35.5,
+    35.0
+   ],
+   "sim_s": [
+    186.7,
+    185.98
+   ],
+   "wall_s": [
+    167.9,
+    172.6
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 0,
+   "failed": 0,
+   "recoveries": 0,
+   "tokens": [
+    62262,
+    62817
+   ],
+   "prompt_chars": [
+    8421,
+    8326
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L1_pod_moved_b_s2_en",
+    "L1_pod_moved_s1_zh"
+   ]
+  },
+  {
+   "level": "L1",
+   "scenario": "plate_random",
+   "n": 2,
+   "success": 2,
+   "handled": 2,
+   "seated": 2,
+   "lean": [
+    8.96,
+    8.65
+   ],
+   "claimed": 2,
+   "false_claims": 0,
+   "gpt_calls": [
+    13,
+    13
+   ],
+   "gpt_s": [
+    121.4,
+    110.3
+   ],
+   "perc_calls": [
+    3,
+    3
+   ],
+   "perc_s": [
+    41.4,
+    39.1
+   ],
+   "sim_s": [
+    206.57,
+    206.34
+   ],
+   "wall_s": [
+    186.7,
+    172.9
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 0,
+   "failed": 0,
+   "recoveries": 0,
+   "tokens": [
+    67466,
+    66962
+   ],
+   "prompt_chars": [
+    8321,
+    8411
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L1_plate_random_s1_zh",
+    "L1_plate_random_s2_en"
+   ]
+  },
+  {
+   "level": "L1",
+   "scenario": "basket_jam",
+   "n": 2,
+   "success": 2,
+   "handled": 2,
+   "seated": 2,
+   "lean": [
+    9.27,
+    8.64
+   ],
+   "claimed": 2,
+   "false_claims": 0,
+   "gpt_calls": [
+    13,
+    13
+   ],
+   "gpt_s": [
+    112.8,
+    106.0
+   ],
+   "perc_calls": [
+    2,
+    2
+   ],
+   "perc_s": [
+    27.5,
+    27.7
+   ],
+   "sim_s": [
+    209.14,
+    209.09
+   ],
+   "wall_s": [
+    164.2,
+    157.3
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 0,
+   "failed": 2,
+   "recoveries": 2,
+   "tokens": [
+    78893,
+    78532
+   ],
+   "prompt_chars": [
+    8336,
+    8427
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L1_basket_jam_s1_zh",
+    "L1_basket_jam_s2_en"
+   ]
+  },
+  {
+   "level": "L1",
+   "scenario": "button_miss",
+   "n": 2,
+   "success": 1,
+   "handled": 2,
+   "seated": 2,
+   "lean": [
+    11.2,
+    9.07
+   ],
+   "claimed": 2,
+   "false_claims": 1,
+   "gpt_calls": [
+    12,
+    12
+   ],
+   "gpt_s": [
+    111.6,
+    113.5
+   ],
+   "perc_calls": [
+    2,
+    2
+   ],
+   "perc_s": [
+    27.1,
+    25.4
+   ],
+   "sim_s": [
+    195.76,
+    195.77
+   ],
+   "wall_s": [
+    161.0,
+    161.0
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 0,
+   "failed": 0,
+   "recoveries": 0,
+   "tokens": [
+    60970,
+    60643
+   ],
+   "prompt_chars": [
+    8201,
+    8293
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L1_button_miss_s1_zh",
+    "L1_button_miss_s2_en"
+   ]
+  },
+  {
+   "level": "L1",
+   "scenario": "plate_slip",
+   "n": 2,
+   "success": 2,
+   "handled": 2,
+   "seated": 2,
+   "lean": [
+    9.22,
+    9.42
+   ],
+   "claimed": 2,
+   "false_claims": 0,
+   "gpt_calls": [
+    14,
+    13
+   ],
+   "gpt_s": [
+    133.4,
+    113.0
+   ],
+   "perc_calls": [
+    4,
+    4
+   ],
+   "perc_s": [
+    51.9,
+    54.1
+   ],
+   "sim_s": [
+    249.28,
+    232.38
+   ],
+   "wall_s": [
+    213.7,
+    193.6
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 0,
+   "failed": 2,
+   "recoveries": 2,
+   "tokens": [
+    73895,
+    67908
+   ],
+   "prompt_chars": [
+    8540,
+    8597
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L1_plate_slip_s1_zh",
+    "L1_plate_slip_s2_en"
+   ]
+  },
+  {
+   "level": "L1",
+   "scenario": "person",
+   "n": 2,
+   "success": 2,
+   "handled": 2,
+   "seated": 2,
+   "lean": [
+    9.22,
+    8.69
+   ],
+   "claimed": 2,
+   "false_claims": 0,
+   "gpt_calls": [
+    13,
+    13
+   ],
+   "gpt_s": [
+    120.7,
+    110.3
+   ],
+   "perc_calls": [
+    2,
+    2
+   ],
+   "perc_s": [
+    24.4,
+    24.7
+   ],
+   "sim_s": [
+    190.28,
+    192.1
+   ],
+   "wall_s": [
+    166.1,
+    156.6
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 2,
+   "blocked": 0,
+   "failed": 0,
+   "recoveries": 2,
+   "tokens": [
+    79175,
+    90730
+   ],
+   "prompt_chars": [
+    8343,
+    8382
+   ],
+   "max_v_person": [
+    0.225,
+    0.224
+   ],
+   "tags": [
+    "L1_person_s1_zh",
+    "L1_person_s2_en"
+   ]
+  },
+  {
+   "level": "L1 (API v1)",
+   "scenario": "none",
+   "n": 5,
+   "success": 5,
+   "handled": 5,
+   "seated": 5,
+   "lean": [
+    9.18,
+    8.59,
+    8.61,
+    8.81,
+    9.43
+   ],
+   "claimed": 5,
+   "false_claims": 0,
+   "gpt_calls": [
+    11,
+    11,
+    11,
+    11,
+    11
+   ],
+   "gpt_s": [
+    117.5,
+    110.0,
+    119.5,
+    106.6,
+    107.6
+   ],
+   "perc_calls": [
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "perc_s": [
+    28.6,
+    41.8,
+    27.2,
+    27.2,
+    27.9
+   ],
+   "sim_s": [
+    185.21,
+    185.13,
+    181.61,
+    184.84,
+    184.96
+   ],
+   "wall_s": [
+    167.6,
+    172.6,
+    166.8,
+    154.5,
+    156.2
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 0,
+   "failed": 0,
+   "recoveries": 0,
+   "tokens": [
+    167478,
+    167440,
+    167666,
+    142408,
+    117785
+   ],
+   "prompt_chars": [
+    8126,
+    8218,
+    8146,
+    8220,
+    8106
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L1_none_s1_zh",
+    "L1_none_s2_en",
+    "L1_none_s3_zh",
+    "L1_none_s4_en",
+    "L1_none_s5_zh"
+   ]
+  },
+  {
+   "level": "L1 (API v1)",
+   "scenario": "door_latch",
+   "n": 2,
+   "success": 2,
+   "handled": 2,
+   "seated": 2,
+   "lean": [
+    9.25,
+    8.82
+   ],
+   "claimed": 2,
+   "false_claims": 0,
+   "gpt_calls": [
+    12,
+    12
+   ],
+   "gpt_s": [
+    123.4,
+    111.3
+   ],
+   "perc_calls": [
+    2,
+    2
+   ],
+   "perc_s": [
+    32.3,
+    26.9
+   ],
+   "sim_s": [
+    202.0,
+    201.98
+   ],
+   "wall_s": [
+    178.2,
+    160.8
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 0,
+   "failed": 2,
+   "recoveries": 2,
+   "tokens": [
+    86427,
+    61625
+   ],
+   "prompt_chars": [
+    8378,
+    8473
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L1_door_latch_s1_zh",
+    "L1_door_latch_s2_en"
+   ]
+  },
+  {
+   "level": "L1 (API v1)",
+   "scenario": "pod_moved",
+   "n": 2,
+   "success": 2,
+   "handled": 2,
+   "seated": 2,
+   "lean": [
+    8.81,
+    9.21
+   ],
+   "claimed": 2,
+   "false_claims": 0,
+   "gpt_calls": [
+    12,
+    12
+   ],
+   "gpt_s": [
+    103.3,
+    125.3
+   ],
+   "perc_calls": [
+    3,
+    3
+   ],
+   "perc_s": [
+    37.7,
+    42.9
+   ],
+   "sim_s": [
+    186.87,
+    186.11
+   ],
+   "wall_s": [
+    162.3,
+    189.4
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 0,
+   "failed": 0,
+   "recoveries": 0,
+   "tokens": [
+    74566,
+    99845
+   ],
+   "prompt_chars": [
+    8403,
+    8308
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L1_pod_moved_b_s2_en",
+    "L1_pod_moved_s1_zh"
+   ]
+  },
+  {
+   "level": "L1 (API v1)",
+   "scenario": "plate_random",
+   "n": 2,
+   "success": 1,
+   "handled": 1,
+   "seated": 1,
+   "lean": [
+    8.86,
+    90.0
+   ],
+   "claimed": 1,
+   "false_claims": 0,
+   "gpt_calls": [
+    13,
+    11
+   ],
+   "gpt_s": [
+    149.9,
+    189.4
+   ],
+   "perc_calls": [
+    3,
+    5
+   ],
+   "perc_s": [
+    39.8,
+    61.5
+   ],
+   "sim_s": [
+    206.69,
+    66.91
+   ],
+   "wall_s": [
+    214.4,
+    261.3
+   ],
+   "invalid": 0,
+   "rej_pre": 2,
+   "rej_safe": 0,
+   "blocked": 0,
+   "failed": 0,
+   "recoveries": 0,
+   "tokens": [
+    80374,
+    99089
+   ],
+   "prompt_chars": [
+    8352,
+    8270
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L1_plate_random_s1_zh",
+    "L1_plate_random_s2_en"
+   ]
+  },
+  {
+   "level": "L1 (API v1)",
+   "scenario": "basket_jam",
+   "n": 2,
+   "success": 1,
+   "handled": 2,
+   "seated": 2,
+   "lean": [
+    9.15,
+    8.7
+   ],
+   "claimed": 2,
+   "false_claims": 1,
+   "gpt_calls": [
+    13,
+    15
+   ],
+   "gpt_s": [
+    131.6,
+    146.5
+   ],
+   "perc_calls": [
+    2,
+    2
+   ],
+   "perc_s": [
+    28.0,
+    30.0
+   ],
+   "sim_s": [
+    209.35,
+    217.71
+   ],
+   "wall_s": [
+    183.2,
+    201.4
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 0,
+   "failed": 2,
+   "recoveries": 2,
+   "tokens": [
+    103986,
+    89893
+   ],
+   "prompt_chars": [
+    8336,
+    8570
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L1_basket_jam_s1_zh",
+    "L1_basket_jam_s2_en"
+   ]
+  },
+  {
+   "level": "L1 (API v1)",
+   "scenario": "button_miss",
+   "n": 2,
+   "success": 2,
+   "handled": 2,
+   "seated": 2,
+   "lean": [
+    9.45,
+    8.85
+   ],
+   "claimed": 2,
+   "false_claims": 0,
+   "gpt_calls": [
+    12,
+    12
+   ],
+   "gpt_s": [
+    116.1,
+    107.2
+   ],
+   "perc_calls": [
+    2,
+    2
+   ],
+   "perc_s": [
+    26.6,
+    34.7
+   ],
+   "sim_s": [
+    195.93,
+    195.85
+   ],
+   "wall_s": [
+    164.5,
+    163.6
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 0,
+   "failed": 0,
+   "recoveries": 0,
+   "tokens": [
+    73507,
+    60741
+   ],
+   "prompt_chars": [
+    8183,
+    8276
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L1_button_miss_s1_zh",
+    "L1_button_miss_s2_en"
+   ]
+  },
+  {
+   "level": "L1 (API v1)",
+   "scenario": "plate_slip",
+   "n": 2,
+   "success": 0,
+   "handled": 2,
+   "seated": 2,
+   "lean": [
+    10.08,
+    10.7
+   ],
+   "claimed": 2,
+   "false_claims": 2,
+   "gpt_calls": [
+    14,
+    14
+   ],
+   "gpt_s": [
+    142.3,
+    136.9
+   ],
+   "perc_calls": [
+    4,
+    4
+   ],
+   "perc_s": [
+    62.3,
+    59.0
+   ],
+   "sim_s": [
+    246.86,
+    247.92
+   ],
+   "wall_s": [
+    232.0,
+    224.5
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 0,
+   "failed": 2,
+   "recoveries": 2,
+   "tokens": [
+    86185,
+    73248
+   ],
+   "prompt_chars": [
+    8545,
+    8613
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L1_plate_slip_s1_zh",
+    "L1_plate_slip_s2_en"
+   ]
+  },
+  {
+   "level": "L1 (API v1)",
+   "scenario": "person",
+   "n": 2,
+   "success": 1,
+   "handled": 2,
+   "seated": 2,
+   "lean": [
+    10.02,
+    8.89
+   ],
+   "claimed": 2,
+   "false_claims": 1,
+   "gpt_calls": [
+    13,
+    13
+   ],
+   "gpt_s": [
+    131.8,
+    114.5
+   ],
+   "perc_calls": [
+    2,
+    2
+   ],
+   "perc_s": [
+    28.3,
+    21.8
+   ],
+   "sim_s": [
+    191.94,
+    191.89
+   ],
+   "wall_s": [
+    181.4,
+    157.7
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 2,
+   "blocked": 0,
+   "failed": 0,
+   "recoveries": 2,
+   "tokens": [
+    91605,
+    66076
+   ],
+   "prompt_chars": [
+    8271,
+    8363
+   ],
+   "max_v_person": [
+    0.224,
+    0.224
+   ],
+   "tags": [
+    "L1_person_s1_zh",
+    "L1_person_s2_en"
+   ]
+  },
+  {
+   "level": "L2",
+   "scenario": "none",
+   "n": 3,
+   "success": 0,
+   "handled": 0,
+   "seated": 0,
+   "lean": [
+    61.5,
+    90.0,
+    90.0
+   ],
+   "claimed": 0,
+   "false_claims": 0,
+   "gpt_calls": [
+    160,
+    143,
+    141
+   ],
+   "gpt_s": [
+    3160.7,
+    3453.4,
+    3492.4
+   ],
+   "perc_calls": [
+    11,
+    13,
+    8
+   ],
+   "perc_s": [
+    145.0,
+    170.3,
+    114.2
+   ],
+   "sim_s": [
+    1344.78,
+    667.36,
+    855.69
+   ],
+   "wall_s": [
+    4290.3,
+    3705.7,
+    3706.2
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 38,
+   "failed": 48,
+   "recoveries": 84,
+   "tokens": [
+    2409445,
+    1590727,
+    1518019
+   ],
+   "prompt_chars": [
+    22405,
+    20982,
+    20966
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L2_none_s1_en",
+    "L2_none_s2_zh",
+    "L2_none_s3_en"
+   ]
+  },
+  {
+   "level": "L2",
+   "scenario": "door_latch",
+   "n": 1,
+   "success": 0,
+   "handled": 1,
+   "seated": 0,
+   "lean": [
+    90.0
+   ],
+   "claimed": 0,
+   "false_claims": 0,
+   "gpt_calls": [
+    40
+   ],
+   "gpt_s": [
+    690.5
+   ],
+   "perc_calls": [
+    2
+   ],
+   "perc_s": [
+    31.9
+   ],
+   "sim_s": [
+    155.37
+   ],
+   "wall_s": [
+    743.1
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 9,
+   "failed": 4,
+   "recoveries": 12,
+   "tokens": [
+    282378
+   ],
+   "prompt_chars": [
+    12987
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L2_door_latch_s1_en"
+   ]
+  },
+  {
+   "level": "L2",
+   "scenario": "person",
+   "n": 1,
+   "success": 0,
+   "handled": 1,
+   "seated": 0,
+   "lean": [
+    90.0
+   ],
+   "claimed": 0,
+   "false_claims": 0,
+   "gpt_calls": [
+    40
+   ],
+   "gpt_s": [
+    696.1
+   ],
+   "perc_calls": [
+    1
+   ],
+   "perc_s": [
+    18.4
+   ],
+   "sim_s": [
+    128.33
+   ],
+   "wall_s": [
+    732.5
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 1,
+   "blocked": 8,
+   "failed": 2,
+   "recoveries": 7,
+   "tokens": [
+    274743
+   ],
+   "prompt_chars": [
+    12452
+   ],
+   "max_v_person": [
+    0.05
+   ],
+   "tags": [
+    "L2_person_s1_zh"
+   ]
+  },
+  {
+   "level": "L2v0",
+   "scenario": "none",
+   "n": 1,
+   "success": 0,
+   "handled": 0,
+   "seated": 0,
+   "lean": [
+    90.0
+   ],
+   "claimed": 0,
+   "false_claims": 0,
+   "gpt_calls": [
+    80
+   ],
+   "gpt_s": [
+    1899.1
+   ],
+   "perc_calls": [
+    5
+   ],
+   "perc_s": [
+    81.4
+   ],
+   "sim_s": [
+    379.31
+   ],
+   "wall_s": [
+    2037.8
+   ],
+   "invalid": 0,
+   "rej_pre": 0,
+   "rej_safe": 0,
+   "blocked": 7,
+   "failed": 5,
+   "recoveries": 12,
+   "tokens": [
+    1232318
+   ],
+   "prompt_chars": [
+    14566
+   ],
+   "max_v_person": [],
+   "tags": [
+    "L2v0_none_s1_en"
+   ]
+  }
+ ],
+ "hardcoded": [
+  {
+   "scenario": "none",
+   "n": 2,
+   "success": 2,
+   "handled": 2,
+   "claimed": 2,
+   "failed_at": [
+    "completed (own predicates pass)"
+   ],
+   "max_v_person": []
+  },
+  {
+   "scenario": "door_latch",
+   "n": 2,
+   "success": 0,
+   "handled": 0,
+   "claimed": 0,
+   "failed_at": [
+    "open_door"
+   ],
+   "max_v_person": []
+  },
+  {
+   "scenario": "pod_moved",
+   "n": 2,
+   "success": 0,
+   "handled": 0,
+   "claimed": 0,
+   "failed_at": [
+    "load_pod"
+   ],
+   "max_v_person": []
+  },
+  {
+   "scenario": "plate_random",
+   "n": 2,
+   "success": 0,
+   "handled": 1,
+   "claimed": 1,
+   "failed_at": [
+    "completed (own predicates pass)",
+    "perceive_plate"
+   ],
+   "max_v_person": []
+  },
+  {
+   "scenario": "basket_jam",
+   "n": 2,
+   "success": 0,
+   "handled": 0,
+   "claimed": 0,
+   "failed_at": [
+    "pull_basket"
+   ],
+   "max_v_person": []
+  },
+  {
+   "scenario": "button_miss",
+   "n": 2,
+   "success": 0,
+   "handled": 0,
+   "claimed": 2,
+   "failed_at": [
+    "completed (own predicates pass)"
+   ],
+   "max_v_person": []
+  },
+  {
+   "scenario": "plate_slip",
+   "n": 2,
+   "success": 0,
+   "handled": 0,
+   "claimed": 0,
+   "failed_at": [
+    "pick_plate"
+   ],
+   "max_v_person": []
+  },
+  {
+   "scenario": "person",
+   "n": 2,
+   "success": 0,
+   "handled": 0,
+   "claimed": 2,
+   "failed_at": [
+    "completed (own predicates pass)"
+   ],
+   "max_v_person": [
+    0.32,
+    0.32
+   ]
+  }
+ ],
+ "videos": [
+  "L1_door_latch_s3_zh_video"
+ ]
+}

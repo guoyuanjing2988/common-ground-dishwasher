@@ -1,0 +1,13 @@
+--- a/planner.py
++++ b/planner.py
+@@ -165,7 +165,9 @@
+         self.nav_log = []
+         self.cancel = False
+         self.touchdown_filter = (.05, 2.0, 10)              # insert touchdown: 40 ms EMA, > 2 N for 20 ms
+-        self.insert_aim = .003                              # insert aim offset toward -plate normal (m)
++        # The lowest rim is 6.8 mm toward +normal from the plate centre.
++        # Centre that rim in the gap with clearance for docking error.
++        self.insert_aim = .008                              # insert aim offset toward -plate normal (m)
+         self.co = Coroutine(self.main)
+         self.k = 0
+ 

@@ -1,0 +1,38 @@
+{
+ "name": "sparse_02",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "plate": {
+   "radius_m": 0.0941,
+   "mass_kg": 0.8746,
+   "mu": 0.5241,
+   "wetness": 0.3245,
+   "x": -0.4506,
+   "y": 0.8422,
+   "rgb": [
+    0.593,
+    0.443,
+    0.587
+   ],
+   "upside_down": true
+  },
+  "basket": {
+   "rail_friction_N": 8.2316,
+   "damping": 11.9917,
+   "preload_slots": [
+    1,
+    2,
+    4
+   ]
+  },
+  "lighting": {
+   "key_scale": 0.8728,
+   "ambient_scale": 0.9908,
+   "color_temp_K": 4162.6169,
+   "key_azimuth_deg": -40.5054
+  }
+ }
+}

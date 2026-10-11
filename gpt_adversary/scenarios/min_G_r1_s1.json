@@ -1,0 +1,11 @@
+{
+ "name": "min_G_r1_s1",
+ "source": "minimized",
+ "from_entry": "G_r1_s1",
+ "target_mode": "claimed_ok|quick_running|",
+ "params": {
+  "buttons": {
+   "threshold_N": 1.375
+  }
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "name": "slightly_rotated_appliance",
+ "source": "gpt",
+ "hypothesis": "A small appliance rotation may preserve handle capture and pod placement while rotating basket tines relative to the calibrated insertion plane. Tracking the basket pull endpoint corrects translation but cannot correct the unmeasured orientation.",
+ "expected_failure": "Step 6 contacts a tine prematurely and releases the plate with incorrect support or lean, failing the seating check.",
+ "real_world_story": "The dishwasher is turned slightly while cleaning behind it.",
+ "params": {
+  "dishwasher": {
+   "yaw_deg": 1.2
+  }
+ }
+}

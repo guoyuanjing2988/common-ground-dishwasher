@@ -1,0 +1,20 @@
+{
+ "name": "min_S_22",
+ "source": "minimized",
+ "from_entry": "S_22",
+ "target_mode": "insert_plate|basket_in,door_closed,plate_in_slot,quick_running|",
+ "params": {
+  "camera_bump": {
+   "roll_deg": -0.42023,
+   "pitch_deg": -0.159,
+   "yaw_deg": -1.45253,
+   "dx": 0.0102,
+   "dy": -0.0111,
+   "dz": 0.0102
+  },
+  "buttons": {
+   "threshold_N": 4.08483,
+   "dwell_ms": 21.7286
+  }
+ }
+}

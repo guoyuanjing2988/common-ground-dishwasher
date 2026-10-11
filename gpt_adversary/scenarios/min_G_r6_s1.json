@@ -1,0 +1,12 @@
+{
+ "name": "min_G_r6_s1",
+ "source": "minimized",
+ "from_entry": "G_r6_s1",
+ "target_mode": "pick_plate|basket_in,door_closed,plate_in_slot,quick_running|",
+ "params": {
+  "camera_bump": {
+   "pitch_deg": -2.0,
+   "dx": 0.02
+  }
+ }
+}

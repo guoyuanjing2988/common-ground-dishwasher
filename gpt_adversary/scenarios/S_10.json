@@ -1,0 +1,31 @@
+{
+ "name": "sparse_10",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "plate": {
+   "radius_m": 0.1308,
+   "mass_kg": 0.7205,
+   "mu": 0.9052,
+   "wetness": 0.9012,
+   "x": -0.2032,
+   "y": 0.4862,
+   "rgb": [
+    0.247,
+    0.309,
+    0.719
+   ]
+  },
+  "dish": {
+   "dx": 0.0392,
+   "dy": 0.0252
+  },
+  "dishwasher": {
+   "dx": -0.0026,
+   "dy": 0.0493,
+   "yaw_deg": -0.4824
+  }
+ }
+}

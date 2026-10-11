@@ -1,0 +1,25 @@
+{
+ "name": "sparse_12",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "door": {
+   "hinge_friction_Nm": 2.505,
+   "damping": 1.9945,
+   "spring_scale": 1.0373
+  },
+  "lighting": {
+   "key_scale": 1.5202,
+   "ambient_scale": 1.2388,
+   "color_temp_K": 6744.9832,
+   "key_azimuth_deg": -137.3658
+  },
+  "dishwasher": {
+   "dx": -0.0235,
+   "dy": -0.0278,
+   "yaw_deg": -2.9897
+  }
+ }
+}

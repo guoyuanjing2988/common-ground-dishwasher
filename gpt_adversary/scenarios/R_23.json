@@ -1,0 +1,100 @@
+{
+ "name": "random_23",
+ "source": "random",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "plate": {
+   "radius_m": 0.1317,
+   "mass_kg": 0.9559,
+   "mu": 0.2233,
+   "wetness": 0.8314,
+   "x": -0.313,
+   "y": 0.6119,
+   "rgb": [
+    0.272,
+    0.448,
+    0.329
+   ],
+   "upside_down": true
+  },
+  "pod": {
+   "dx": 0.0127,
+   "dy": 0.0134,
+   "yaw_deg": 55.9,
+   "size_scale": 1.028,
+   "mass_kg": 0.027,
+   "location": "dish"
+  },
+  "dish": {
+   "dx": 0.0346,
+   "dy": -0.0127
+  },
+  "door": {
+   "hinge_friction_Nm": 2.2017,
+   "damping": 8.5831,
+   "spring_scale": 1.3475
+  },
+  "basket": {
+   "rail_friction_N": 10.8026,
+   "damping": 18.3571,
+   "preload_slots": [
+    3
+   ]
+  },
+  "lighting": {
+   "key_scale": 0.4026,
+   "ambient_scale": 1.09,
+   "color_temp_K": 3635.3634,
+   "key_azimuth_deg": 4.1737
+  },
+  "camera_bump": {
+   "roll_deg": -2.9239,
+   "pitch_deg": -2.4517,
+   "yaw_deg": 1.1227,
+   "dx": 0.0096,
+   "dy": 0.0186,
+   "dz": -0.0123
+  },
+  "dock": {
+   "dx": 0.0187,
+   "dy": 0.0298,
+   "yaw_deg": 1.448
+  },
+  "dishwasher": {
+   "dx": 0.0102,
+   "dy": -0.0093,
+   "yaw_deg": 0.0816
+  },
+  "sensors": {
+   "depth_noise_scale": 1.217,
+   "ft_noise_N": 0.425,
+   "ft_drift_N_per_min": 0.72
+  },
+  "person": {
+   "at_s": 162.37,
+   "dur_s": 57.43,
+   "distance_m": 1.91
+  },
+  "buttons": {
+   "threshold_N": 2.0136,
+   "dwell_ms": 45.5472
+  },
+  "clutter": [
+   {
+    "type": "bowl",
+    "surface": "counter",
+    "x": -0.123,
+    "y": 0.43,
+    "yaw_deg": 68.2,
+    "size_scale": 0.992,
+    "rgb": [
+     0.92,
+     0.92,
+     0.9
+    ]
+   }
+  ]
+ }
+}

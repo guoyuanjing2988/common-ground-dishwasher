@@ -1,0 +1,37 @@
+{
+ "name": "sparse_04",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "plate": {
+   "radius_m": 0.0898,
+   "mass_kg": 0.7992,
+   "mu": 0.4524,
+   "wetness": 0.5352,
+   "x": -0.3494,
+   "y": 0.3566,
+   "rgb": [
+    0.183,
+    0.111,
+    0.379
+   ]
+  },
+  "clutter": [
+   {
+    "type": "mug",
+    "surface": "dishwasher_top",
+    "x": -0.062,
+    "y": 0.139,
+    "yaw_deg": -164.9,
+    "size_scale": 0.865,
+    "rgb": [
+     0.85,
+     0.3,
+     0.25
+    ]
+   }
+  ]
+ }
+}

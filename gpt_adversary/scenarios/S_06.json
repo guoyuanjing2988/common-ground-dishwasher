@@ -1,0 +1,17 @@
+{
+ "name": "sparse_06",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "basket": {
+   "rail_friction_N": 18.8173,
+   "damping": 8.6672,
+   "preload_slots": [
+    0,
+    1
+   ]
+  }
+ }
+}

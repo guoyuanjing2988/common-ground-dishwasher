@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sink to Shelf Slides</title>
+<style>
+  :root {
+    --bg: #0b0e13; --slide: #0e1116; --panel: #161b22; --line: #2a313c; --text: #eef1f4; --muted: #a2abb6;
+    --acc: #5ec8a0; --warn: #f0786e; color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) { --bg: #0b0e13; }   /* the deck stays dark for projection */
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Segoe UI", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", sans-serif; }
+  #stage { position: absolute; width: 1600px; height: 900px; left: 50%; top: 50%; transform-origin: center center; }
+  .slide { position: absolute; inset: 0; background: var(--slide); padding: 64px 80px 56px; display: none; flex-direction: column; }
+  .slide.on { display: flex; }
+  .kicker { color: var(--acc); font-weight: 700; letter-spacing: .08em; font-size: 20px; text-transform: uppercase; margin-bottom: 10px; }
+  h1 { font-size: 104px; line-height: 1; margin: 0 0 24px; letter-spacing: -0.02em; }
+  h2 { font-size: 54px; line-height: 1.1; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .zh { color: var(--muted); font-size: 24px; margin: 0 0 22px; }
+  p, li { font-size: 28px; line-height: 1.45; }
+  ul { margin: 0; padding-left: 1.1em; }
+  li { margin: 0 0 12px; }
+  li .zh { font-size: 20px; display: block; margin: 2px 0 0; }
+  .row { display: flex; gap: 40px; flex: 1; min-height: 0; }
+  .col { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .img { background: #fff; border-radius: 14px; padding: 14px; display: flex; align-items: center; justify-content: center; min-height: 0; flex: 1; }
+  .img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .photo { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+  .photo img { width: 100%; display: block; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid3 figure { margin: 0; }
+  .grid3 figcaption { font-size: 19px; color: var(--muted); margin-top: 6px; }
+  .big { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 8px; }
+  .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 22px 26px; }
+  .stat b { display: block; font-size: 64px; color: var(--acc); line-height: 1.05; }
+  .stat span { font-size: 23px; color: var(--text); }
+  .stat small { display: block; font-size: 16px; color: var(--muted); margin-top: 6px; }
+  table { border-collapse: collapse; width: 100%; font-size: 23px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .bar { height: 14px; background: var(--acc); border-radius: 7px; margin-top: 6px; }
+  .src { font-size: 16px; color: var(--muted); margin-top: auto; padding-top: 14px; }
+  .pill { display: inline-block; border: 1px solid var(--warn); color: var(--warn); border-radius: 999px; padding: 6px 18px; font-size: 22px; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .split > div { padding: 18px 24px; }
+  .split > div:first-child { background: #12202b; }
+  .split > div:last-child { background: #1d1a17; }
+  .split h3 { margin: 0 0 8px; font-size: 26px; }
+  .split li { font-size: 22px; margin-bottom: 6px; }
+  video { width: 100%; max-height: 640px; border-radius: 12px; background: #000; }
+  .tick { color: var(--acc); font-weight: 700; } .cross { color: var(--warn); font-weight: 700; }
+  #hud { position: fixed; right: 16px; bottom: 12px; color: #6b7581; font-size: 14px; font-family: inherit; }
+  #bar { position: fixed; left: 0; bottom: 0; height: 4px; background: var(--acc); transition: width .2s; }
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 -->
+<section class="slide" style="justify-content:center;background:linear-gradient(rgba(14,17,22,.78),rgba(14,17,22,.9)),url(assets/base_05_dock_end.jpg) center/cover;">
+  <div class="kicker">Common Ground Makeathon 2026 · Design × Tech · Culture × Tech</div>
+  <h1>Sink to Shelf</h1>
+  <p style="font-size:38px;margin:0 0 8px">From the messy sink to a loaded dishwasher.</p>
+  <p class="zh" style="font-size:28px">从乱糟糟的水槽，到装好的洗碗机</p>
+  <p style="margin-top:40px"><span class="pill">MuJoCo physics simulation + real-hardware design</span></p>
+  <p class="src" style="margin-top:60px">Yuanjing Guo · SQ Collective, Singapore · 11 Oct 2026</p>
+</section>
+
+<!-- 2 -->
+<section class="slide">
+  <div class="kicker">1 · The problem</div>
+  <h2>A small chore that never ends</h2>
+  <p class="zh">一件永远做不完的小家务</p>
+  <div class="row">
+    <div class="col">
+      <ul>
+        <li>Every day someone bends down, reaches in and loads the dishwasher.<span class="zh">每天都要弯腰、伸手、装碗。</span></li>
+        <li><b>Who it hurts most:</b> older people living at home, the family members who care for them, busy two-job households.<span class="zh">最吃力的是：在家养老的长者、照顾他们的家人、双职工家庭。</span></li>
+        <li><b>Singapore context:</b> an ageing population, compact kitchens, and countertop dishwashers that need no plumbing work.<span class="zh">新加坡：人口老龄化、厨房小、台式洗碗机免改水路。</span></li>
+        <li><b>Design rule:</b> no renovation. Same counter, same appliance, a docking strip and a charger.<span class="zh">设计原则：不改厨房、不改电器。</span></li>
+      </ul>
+    </div>
+    <div class="col" style="flex:.8">
+      <div class="img"><img src="assets/kitchen_topview.png" alt="Kitchen top view with robot dock, charger and dishwasher"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="slide">
+  <div class="kicker">2 · Watch it</div>
+  <h2>One full load, start to finish</h2>
+  <p class="zh">从充电桩出发，到洗碗机开洗，再回去充电</p>
+  <video controls preload="metadata" poster="assets/base_04_nav_predock_end.jpg">
+    <source src="media/demo_final.mp4" type="video/mp4">
+    <source src="demo_final.mp4" type="video/mp4">
+  </video>
+  <p class="src">Submission video, MuJoCo simulation, sped up where marked.</p>
+</section>
+
+<!-- 4 -->
+<section class="slide">
+  <div class="kicker">3 · How it works</div>
+  <h2>Dock, see, then nine physical steps</h2>
+  <p class="zh">停靠、看清，然后九个物理步骤</p>
+  <div class="grid3">
+    <figure><div class="photo"><img src="assets/base_05_dock_end.jpg" alt="Docked"></div><figcaption>Lidar line-fit, reverse into V-blocks at 100 N, brake. Arm base within 1.6 mm, 0.09°.</figcaption></figure>
+    <figure><div class="photo"><img src="assets/1_perceive_plate_codex_overlay.jpg" alt="Codex detection"></div><figcaption>Wall camera → GPT box → depth fit: plate centre to ~1 mm.</figcaption></figure>
+    <figure><div class="photo"><img src="assets/03_load_pod.jpg" alt="Pod"></div><figcaption>Open the door on its hinge arc; pod into the door groove.</figcaption></figure>
+    <figure><div class="photo"><img src="assets/05_pick_plate.jpg" alt="Pick plate"></div><figcaption>Slide the flat plate to the edge, pinch the rim, tilt it upright against the counter.</figcaption></figure>
+    <figure><div class="photo"><img src="assets/06_insert_plate.jpg" alt="Insert"></div><figcaption>Insert between its own two tines; push the basket in; close the door.</figcaption></figure>
+    <figure><div class="photo"><img src="assets/base_17_panel_start_end.jpg" alt="Panel"></div><figcaption>POWER → QUICK → POWER with a conductive fingertip; drive back to charge.</figcaption></figure>
+  </div>
+  <p class="src">Sources: mobile_pipeline/MOBILE_RESULTS.md, full_pipeline/RESULTS.md</p>
+</section>
+
+<!-- K -->
+<section class="slide">
+  <div class="kicker">4 · The kitchen</div>
+  <h2>See the whole counter, then load plates and bowls</h2>
+  <p class="zh">看清整个台面，再把盘子和碗装到对的位置</p>
+  <div class="row">
+    <div class="col">
+      <div class="photo"><img src="assets/kitchen_recognition.jpg" alt="GPT recognition of a cluttered counter"></div>
+      <p style="font-size:22px;margin-top:12px"><b style="color:var(--acc)">13 / 13</b> items found by one GPT call; each dish located to about 1 mm (GPT box + depth). Across 24 random counters, <b style="color:var(--acc)">164 / 164</b> items classified.</p>
+    </div>
+    <div class="col">
+      <div class="photo"><img src="assets/kitchen_final_check.jpg" alt="Loaded basket with the final check"></div>
+      <p style="font-size:22px;margin-top:12px"><b style="color:var(--acc)">5 / 5</b> dishes placed from <i>perceived</i> poses: plates lean 1.4–3.7°, bowls within 7 mm, clutter untouched. With a suction cup: also 5/5, 0 seal losses.</p>
+    </div>
+  </div>
+  <p class="src">multi_dish_b/DEMO_NOTES.md (kitchen) · multi_dish_suction/DEMO_NOTES.md · gpt_sort/GPT_SORT.md · door starts open, basket out</p>
+</section>
+
+<!-- 5 -->
+<section class="slide">
+  <div class="kicker">5 · The GPT brain</div>
+  <h2>GPT decides <i>what</i>. Tested skills decide <i>how</i>.</h2>
+  <p class="zh">GPT 决定"做什么"，验证过的技能决定"怎么做"</p>
+  <div class="row">
+    <div class="col" style="flex:1.05">
+      <table>
+        <tr><th>Injected fault (2 runs each)</th><th class="n">Script</th><th class="n">GPT</th></tr>
+        <tr><td>Door does not latch</td><td class="n">0/2</td><td class="n">2/2</td></tr>
+        <tr><td>Pod not in its dish</td><td class="n">0/2</td><td class="n">2/2</td></tr>
+        <tr><td>Plate at a random spot</td><td class="n">0/2</td><td class="n">2/2</td></tr>
+        <tr><td>Basket jams</td><td class="n">0/2</td><td class="n">2/2</td></tr>
+        <tr><td>First button press ignored</td><td class="n">0/2</td><td class="n">1/2</td></tr>
+        <tr><td>Plate knocked out of the hand</td><td class="n">0/2</td><td class="n">2/2</td></tr>
+        <tr><td>Person near the robot</td><td class="n">0/2</td><td class="n">2/2</td></tr>
+        <tr><th>Missions completed</th><th class="n">0/14</th><th class="n" style="color:var(--acc)">13/14</th></tr>
+      </table>
+      <p class="src">gpt_control/GPT_CONTROL.md · ~11 GPT calls per mission, median 9.5 s each · GPT on raw primitives: 0/3</p>
+    </div>
+    <div class="col" style="flex:.95">
+      <div class="split">
+        <div><h3>GPT (seconds)</h3><ul>
+          <li>task order from a goal in English or 中文</li>
+          <li>skill parameters</li>
+          <li>diagnose and recover</li>
+          <li>when to ask a human</li></ul></div>
+        <div><h3>Robot (milliseconds)</h3><ul>
+          <li>1 kHz torque, force control</li>
+          <li>speed caps near people</li>
+          <li>preconditions, collision checks</li>
+          <li>hardware e-stop</li></ul></div>
+      </div>
+      <p style="font-size:21px;margin-top:16px">Example: the door springs back to 68°. GPT reads <code>DOOR_NOT_LATCHED</code> and retries holding the door 4 s at its stop. It latches.</p>
+      <p style="font-size:21px">Also: GPT commanded the whole mobile mission (3/3); as a tester it found 9 failure modes; as an engineer it fixed the plate lean, 9.7° → 2.1°.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="slide">
+  <div class="kicker">6 · Real hardware &amp; cost</div>
+  <h2>Every chip has one job</h2>
+  <p class="zh">真实硬件：每块芯片各司其职</p>
+  <div class="row">
+    <div class="col" style="flex:1.35"><div class="img"><img src="assets/block_diagram.png" alt="Compute and bus block diagram"></div></div>
+    <div class="col" style="flex:.65">
+      <ul style="font-size:22px">
+        <li style="font-size:22px"><b>Franka FR3</b> + Hand + wrist F/T; 1 kHz torque loop</li>
+        <li style="font-size:22px"><b>Main PC</b> (RT Linux, ROS 2): IK 100 Hz, skills, docking</li>
+        <li style="font-size:22px"><b>STM32H723</b>: wheels, brakes, battery, bumpers, watchdog</li>
+        <li style="font-size:22px"><b>Jetson + RealSense</b> on the wall: camera, Codex calls</li>
+        <li style="font-size:22px"><b>51.2 V 30 Ah LFP</b>: ≈ 10 Wh per mission, ~95–120 missions per charge</li>
+        <li style="font-size:22px"><b>PILZ safety relay</b>: e-stop cuts arm and wheels with no software in the loop</li>
+        <li style="font-size:22px"><b>BOM ≈ US$53k</b> (≈ S$69k, 28 lines, incl. 10 % contingency); the arm + hand + F/T is 68 % of it</li>
+      </ul>
+      <p class="src">system_design/SYSTEM.md · system_design/bom_table.md · mobile_pipeline/MOBILE_RESULTS.md</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <div class="kicker">7 · Results</div>
+  <h2>Numbers from logged simulation runs</h2>
+  <p class="zh">所有数字都来自记录在案的仿真运行</p>
+  <div class="big">
+    <div class="stat"><b>6 / 6</b><span>full mobile missions: charger → dock → load → start → charger</span><small>265–273 s each · mobile_pipeline/MOBILE_RESULTS.md</small></div>
+    <div class="stat"><b>10 / 10</b><span>9-step loading runs on a docked cart, real camera + Codex vision</span><small>plate centre error 0.44–1.75 mm · full_pipeline/RESULTS.md</small></div>
+    <div class="stat"><b>13 / 14</b><span>fault missions finished by GPT; hard-coded script 0 / 14</span><small>gpt_control/GPT_CONTROL.md</small></div>
+    <div class="stat"><b>5 / 5</b><span>dishes placed from perceived poses after GPT found 13/13 items; also 5/5 with suction</span><small>multi_dish_b · multi_dish_suction DEMO_NOTES.md</small></div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+  <div class="kicker">8 · Honest status &amp; next</div>
+  <h2>Simulation and design today. Real robot next.</h2>
+  <p class="zh">今天是仿真和设计，下一步是真机</p>
+  <div class="row">
+    <div class="col">
+      <ul style="font-size:25px;list-style:none;padding-left:0">
+        <li style="font-size:25px"><span class="tick">✓</span> Physics in MuJoCo: wheels, brakes, contacts, plate, pod, door, basket</li>
+        <li style="font-size:25px"><span class="tick">✓</span> Real GPT calls with real latency and real recoveries</li>
+        <li style="font-size:25px"><span class="tick">✓</span> A costed hardware design down to fuses and contactors</li>
+        <li style="font-size:25px"><span class="cross">✗</span> Not a physical robot yet. No water, washing or real touch sensing</li>
+        <li style="font-size:25px"><span class="cross">✗</span> The 5-dish runs start with the door open; small run counts mean feasibility, not reliability</li>
+      </ul>
+    </div>
+    <div class="col">
+      <ul style="font-size:25px">
+        <li style="font-size:25px"><b>Next 1:</b> a US$25 conductive-fingertip test on the real E804 touch panel</li>
+        <li style="font-size:25px"><b>Next 2:</b> one run from the charger to a full load; destack piles robustly; build the base</li>
+        <li style="font-size:25px"><b>Next 3:</b> offline fallback (local behaviour tree), with GPT as the exception handler</li>
+        <li style="font-size:25px"><b>Next 4:</b> human confirmation before starting a wash, and verification sensors for steps GPT cannot see</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="slide" style="justify-content:center">
+  <div class="kicker">Author &amp; links</div>
+  <h1 style="font-size:88px">Sink to Shelf</h1>
+  <p style="font-size:34px;color:var(--acc)">One less chore at home. 家里少一件家务。</p>
+  <p style="font-size:26px;margin-top:30px">Yuanjing Guo</p>
+  <p style="font-size:24px">Code: github.com/guoyuanjing2988/common-ground-dishwasher<br>Demo page: [GitHub Pages URL]</p>
+  <p class="src">MuJoCo 3.15 · mink 1.3 · Franka Emika Panda model from MuJoCo Menagerie (Apache-2.0) · GPT via the Codex CLI</p>
+</section>
+
+</div>
+<div id="bar"></div><div id="hud"></div>
+<script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage = document.getElementById('stage'), hud = document.getElementById('hud'), bar = document.getElementById('bar');
+  var i = 0;
+  try { var h = parseInt(location.hash.slice(1), 10); if (h >= 1 && h <= slides.length) i = h - 1; } catch (e) {}
+  function fit() {
+    var s = Math.min(window.innerWidth / 1600, window.innerHeight / 900);
+    stage.style.transform = 'translate(-50%, -50%) scale(' + s + ')';
+  }
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function (s, k) {
+      s.classList.toggle('on', k === i);
+      if (k !== i) s.querySelectorAll('video').forEach(function (v) { v.pause(); });
+    });
+    hud.textContent = (i + 1) + ' / ' + slides.length;
+    bar.style.width = ((i + 1) / slides.length * 100) + '%';
+    try { history.replaceState(null, '', '#' + (i + 1)); } catch (e) {}
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.target && e.target.tagName === 'VIDEO' && (e.key === ' ' )) return;
+    if (['ArrowRight', 'PageDown', ' ', 'Enter'].indexOf(e.key) >= 0) { e.preventDefault(); show(i + 1); }
+    else if (['ArrowLeft', 'PageUp', 'Backspace'].indexOf(e.key) >= 0) { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(function () {});
+      else document.exitFullscreen();
+    }
+  });
+  var tx = null;
+  document.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    if (tx === null) return; var dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 50) show(i + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+  window.addEventListener('resize', fit);
+  fit(); show(i);
+})();
+</script>
+</body>
+</html>

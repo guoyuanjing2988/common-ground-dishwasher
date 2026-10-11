@@ -1,0 +1,13 @@
+{
+ "name": "min_S_11",
+ "source": "minimized",
+ "from_entry": "S_11",
+ "target_mode": "open_door|plate_in_slot,pod_in_groove,quick_running|",
+ "params": {
+  "dock": {
+   "dx": 0.0103,
+   "dy": -0.0136,
+   "yaw_deg": 0.1744
+  }
+ }
+}

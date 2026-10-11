@@ -1,0 +1,12 @@
+{
+ "name": "noisy_touchdown_release",
+ "source": "gpt",
+ "hypothesis": "White force noise differs from the tolerated sustained drift. During the many samples of insertion, a surviving filtered excursion can cross the low 0.5 N touchdown threshold before physical support, causing premature release.",
+ "expected_failure": "Step 6 reports touchdown before seating, releases the plate above its supports, and fails the seating check after an uncontrolled drop.",
+ "real_world_story": "An aging wrist sensor develops intermittent electrical noise from a damaged cable shield.",
+ "params": {
+  "sensors": {
+   "ft_noise_N": 0.4
+  }
+ }
+}

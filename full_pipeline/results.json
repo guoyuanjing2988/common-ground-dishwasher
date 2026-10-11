@@ -1,0 +1,1884 @@
+{
+ "trials": {
+  "M1": {
+   "n": 10,
+   "success": 10,
+   "clean_success": 10,
+   "per_step_ok": {
+    "perceive_plate": 10,
+    "open_door": 10,
+    "load_pod": 10,
+    "pull_basket": 10,
+    "pick_plate": 10,
+    "insert_plate": 10,
+    "push_basket": 10,
+    "close_door": 10,
+    "press_buttons": 10
+   },
+   "per_step_attempted": {
+    "perceive_plate": 10,
+    "open_door": 10,
+    "load_pod": 10,
+    "pull_basket": 10,
+    "pick_plate": 10,
+    "insert_plate": 10,
+    "push_basket": 10,
+    "close_door": 10,
+    "press_buttons": 10
+   },
+   "per_step_clean": {
+    "perceive_plate": 10,
+    "open_door": 10,
+    "load_pod": 10,
+    "pull_basket": 10,
+    "pick_plate": 10,
+    "insert_plate": 10,
+    "push_basket": 10,
+    "close_door": 10,
+    "press_buttons": 10
+   },
+   "step_sim_s_mean": {
+    "perceive_plate": 2.5,
+    "open_door": 22.2,
+    "load_pod": 24.1,
+    "pull_basket": 15.9,
+    "pick_plate": 38.0,
+    "insert_plate": 21.4,
+    "push_basket": 17.3,
+    "close_door": 19.8,
+    "press_buttons": 17.7
+   },
+   "cycle_sim_s": [
+    185.27,
+    185.69,
+    185.98
+   ],
+   "codex_call_s": [
+    10.8,
+    15.76,
+    19.3
+   ],
+   "codex_calls": 20,
+   "cycle_incl_codex_s": [
+    212.45,
+    217.2,
+    219.58
+   ],
+   "wall_s": [
+    47.2,
+    52.19,
+    54.7
+   ],
+   "perception1_err_mm": [
+    0.44,
+    0.88,
+    1.75
+   ],
+   "perception2_err_mm": [
+    0.74,
+    0.95,
+    1.65
+   ],
+   "overhang_mm": [
+    48.4,
+    48.74,
+    49.1
+   ],
+   "push_press_mean_N": [
+    9.1,
+    9.92,
+    10.86
+   ],
+   "tilt_slip_mm": [
+    0.6,
+    0.72,
+    0.92
+   ],
+   "hold_slip_mm": [
+    0.06,
+    0.09,
+    0.15
+   ],
+   "plane_vertical_deg": [
+    0.02,
+    0.06,
+    0.11
+   ],
+   "rack_lift_slip_mm": null,
+   "slot_bottom_offset_mm": [
+    -4.0,
+    -3.65,
+    -3.3
+   ],
+   "slot_tilt_deg": [
+    7.23,
+    7.6,
+    7.93
+   ],
+   "touchdown_peak_N": [
+    11.19,
+    12.46,
+    14.13
+   ],
+   "door_open_deg": [
+    90.02,
+    90.02,
+    90.02
+   ],
+   "door_closed_deg": [
+    -0.01,
+    -0.01,
+    -0.01
+   ],
+   "door_peak_finger_N": [
+    13.3,
+    13.3,
+    13.3
+   ],
+   "pod_basket_clearance_mm": [
+    34.5,
+    34.5,
+    34.5
+   ],
+   "quick_touch_N": [
+    5.39,
+    5.39,
+    5.39
+   ],
+   "power_touch_N": [
+    6.62,
+    6.62,
+    6.62
+   ],
+   "max_penetration_mm": [
+    1.15,
+    1.15,
+    1.15
+   ],
+   "warnings": 0,
+   "unplanned_contacts": [
+    {
+     "step": "pick_plate",
+     "phase": "pinch_in",
+     "robot": "panda/hand",
+     "other": "plate_rim3",
+     "max_force_N": 7.87
+    },
+    {
+     "step": "pick_plate",
+     "phase": "close",
+     "robot": "panda/hand",
+     "other": "plate_rim3",
+     "max_force_N": 7.25
+    },
+    {
+     "step": "pick_plate",
+     "phase": "tilt",
+     "robot": "panda/hand",
+     "other": "plate_rim3",
+     "max_force_N": 2.87
+    },
+    {
+     "step": "pick_plate",
+     "phase": "close",
+     "robot": "panda/hand",
+     "other": "plate_rim3",
+     "max_force_N": 6.88
+    },
+    {
+     "step": "pick_plate",
+     "phase": "tilt",
+     "robot": "panda/hand",
+     "other": "plate_rim3",
+     "max_force_N": 2.85
+    },
+    {
+     "step": "pick_plate",
+     "phase": "close",
+     "robot": "panda/hand",
+     "other": "plate_rim2",
+     "max_force_N": 7.82
+    },
+    {
+     "step": "pick_plate",
+     "phase": "tilt",
+     "robot": "panda/hand",
+     "other": "plate_rim2",
+     "max_force_N": 3.78
+    },
+    {
+     "step": "insert_plate",
+     "phase": "carry_up",
+     "robot": "panda/hand",
+     "other": "plate_rim2",
+     "max_force_N": 4.22
+    },
+    {
+     "step": "insert_plate",
+     "phase": "carry_across",
+     "robot": "panda/hand",
+     "other": "plate_rim2",
+     "max_force_N": 1.7
+    },
+    {
+     "step": "insert_plate",
+     "phase": "carry_up",
+     "robot": "panda/hand",
+     "other": "plate_rim2",
+     "max_force_N": 3.81
+    }
+   ],
+   "failure_modes": {}
+  },
+  "M2": {
+   "n": 10,
+   "success": 10,
+   "clean_success": 10,
+   "per_step_ok": {
+    "perceive_plate": 10,
+    "open_door": 10,
+    "load_pod": 10,
+    "pull_basket": 10,
+    "pick_plate": 10,
+    "insert_plate": 10,
+    "push_basket": 10,
+    "close_door": 10,
+    "press_buttons": 10
+   },
+   "per_step_attempted": {
+    "perceive_plate": 10,
+    "open_door": 10,
+    "load_pod": 10,
+    "pull_basket": 10,
+    "pick_plate": 10,
+    "insert_plate": 10,
+    "push_basket": 10,
+    "close_door": 10,
+    "press_buttons": 10
+   },
+   "per_step_clean": {
+    "perceive_plate": 10,
+    "open_door": 10,
+    "load_pod": 10,
+    "pull_basket": 10,
+    "pick_plate": 10,
+    "insert_plate": 10,
+    "push_basket": 10,
+    "close_door": 10,
+    "press_buttons": 10
+   },
+   "step_sim_s_mean": {
+    "perceive_plate": 2.5,
+    "open_door": 21.8,
+    "load_pod": 23.9,
+    "pull_basket": 17.0,
+    "pick_plate": 40.2,
+    "insert_plate": 21.3,
+    "push_basket": 17.5,
+    "close_door": 20.5,
+    "press_buttons": 18.9
+   },
+   "cycle_sim_s": [
+    189.65,
+    190.34,
+    191.35
+   ],
+   "codex_call_s": [
+    11.6,
+    14.89,
+    17.2
+   ],
+   "codex_calls": 20,
+   "cycle_incl_codex_s": [
+    216.15,
+    220.11,
+    222.79
+   ],
+   "wall_s": [
+    47.3,
+    50.74,
+    53.4
+   ],
+   "perception1_err_mm": [
+    0.44,
+    0.89,
+    1.75
+   ],
+   "perception2_err_mm": [
+    0.64,
+    0.89,
+    1.71
+   ],
+   "overhang_mm": [
+    48.6,
+    49.04,
+    49.3
+   ],
+   "push_press_mean_N": [
+    9.12,
+    9.92,
+    10.93
+   ],
+   "tilt_slip_mm": [
+    0.27,
+    0.53,
+    0.8
+   ],
+   "hold_slip_mm": [
+    0.08,
+    0.11,
+    0.15
+   ],
+   "plane_vertical_deg": [
+    0.03,
+    0.07,
+    0.1
+   ],
+   "rack_lift_slip_mm": null,
+   "slot_bottom_offset_mm": [
+    -3.9,
+    -3.6,
+    -3.3
+   ],
+   "slot_tilt_deg": [
+    7.19,
+    7.51,
+    7.81
+   ],
+   "touchdown_peak_N": [
+    11.57,
+    12.16,
+    13.16
+   ],
+   "door_open_deg": [
+    90.02,
+    90.02,
+    90.02
+   ],
+   "door_closed_deg": [
+    -0.01,
+    -0.01,
+    -0.01
+   ],
+   "door_peak_finger_N": [
+    11.6,
+    11.6,
+    11.6
+   ],
+   "pod_basket_clearance_mm": [
+    34.5,
+    34.5,
+    34.5
+   ],
+   "quick_touch_N": [
+    4.27,
+    4.27,
+    4.27
+   ],
+   "power_touch_N": [
+    5.36,
+    5.36,
+    5.36
+   ],
+   "max_penetration_mm": [
+    0.7,
+    0.7,
+    0.7
+   ],
+   "warnings": 0,
+   "unplanned_contacts": [
+    {
+     "step": "pick_plate",
+     "phase": "pinch_in",
+     "robot": "panda/hand",
+     "other": "plate_rim3",
+     "max_force_N": 8.23
+    },
+    {
+     "step": "pick_plate",
+     "phase": "close",
+     "robot": "panda/hand",
+     "other": "plate_rim3",
+     "max_force_N": 7.66
+    },
+    {
+     "step": "pick_plate",
+     "phase": "tilt",
+     "robot": "panda/hand",
+     "other": "plate_rim3",
+     "max_force_N": 3.47
+    },
+    {
+     "step": "pick_plate",
+     "phase": "tilt",
+     "robot": "panda/hand",
+     "other": "plate_rim3",
+     "max_force_N": 5.16
+    },
+    {
+     "step": "pick_plate",
+     "phase": "tilt",
+     "robot": "panda/hand",
+     "other": "plate_rim3",
+     "max_force_N": 4.57
+    },
+    {
+     "step": "insert_plate",
+     "phase": "carry_up",
+     "robot": "panda/hand",
+     "other": "plate_rim3",
+     "max_force_N": 3.38
+    },
+    {
+     "step": "insert_plate",
+     "phase": "carry_across",
+     "robot": "panda/hand",
+     "other": "plate_rim3",
+     "max_force_N": 2.85
+    },
+    {
+     "step": "insert_plate",
+     "phase": "carry_across",
+     "robot": "panda/hand",
+     "other": "plate_rim3",
+     "max_force_N": 0.93
+    },
+    {
+     "step": "insert_plate",
+     "phase": "carry_up",
+     "robot": "panda/hand",
+     "other": "plate_rim1",
+     "max_force_N": 2.08
+    },
+    {
+     "step": "insert_plate",
+     "phase": "carry_across",
+     "robot": "panda/hand",
+     "other": "plate_rim1",
+     "max_force_N": 0.82
+    }
+   ],
+   "failure_modes": {}
+  },
+  "M3": {
+   "n": 5,
+   "success": 0,
+   "clean_success": 0,
+   "per_step_ok": {
+    "perceive_plate": 5,
+    "open_door": 5,
+    "load_pod": 5,
+    "pull_basket": 5,
+    "pick_plate": 3,
+    "insert_plate": 3,
+    "push_basket": 3,
+    "close_door": 0,
+    "press_buttons": 0
+   },
+   "per_step_attempted": {
+    "perceive_plate": 5,
+    "open_door": 5,
+    "load_pod": 5,
+    "pull_basket": 5,
+    "pick_plate": 5,
+    "insert_plate": 3,
+    "push_basket": 3,
+    "close_door": 3,
+    "press_buttons": 0
+   },
+   "per_step_clean": {
+    "perceive_plate": 5,
+    "open_door": 0,
+    "load_pod": 5,
+    "pull_basket": 5,
+    "pick_plate": 3,
+    "insert_plate": 3,
+    "push_basket": 3,
+    "close_door": 0,
+    "press_buttons": 0
+   },
+   "step_sim_s_mean": {
+    "perceive_plate": 2.5,
+    "open_door": 20.6,
+    "load_pod": 30.0,
+    "pull_basket": 14.9,
+    "pick_plate": 17.9,
+    "insert_plate": 31.1,
+    "push_basket": 14.8
+   },
+   "cycle_sim_s": null,
+   "codex_call_s": [
+    7.2,
+    9.64,
+    10.9
+   ],
+   "codex_calls": 5,
+   "cycle_incl_codex_s": null,
+   "wall_s": [
+    21.6,
+    26.0,
+    29.9
+   ],
+   "perception1_err_mm": [
+    1.51,
+    1.88,
+    2.27
+   ],
+   "perception2_err_mm": null,
+   "overhang_mm": null,
+   "push_press_mean_N": null,
+   "tilt_slip_mm": null,
+   "hold_slip_mm": null,
+   "plane_vertical_deg": null,
+   "rack_lift_slip_mm": [
+    1.43,
+    1.49,
+    1.57
+   ],
+   "slot_bottom_offset_mm": [
+    3.2,
+    3.4,
+    3.6
+   ],
+   "slot_tilt_deg": [
+    7.14,
+    7.35,
+    7.49
+   ],
+   "touchdown_peak_N": [
+    18.57,
+    18.95,
+    19.44
+   ],
+   "door_open_deg": [
+    90.02,
+    90.02,
+    90.02
+   ],
+   "door_closed_deg": null,
+   "door_peak_finger_N": [
+    74.2,
+    74.2,
+    74.2
+   ],
+   "pod_basket_clearance_mm": [
+    34.5,
+    34.5,
+    34.5
+   ],
+   "quick_touch_N": null,
+   "power_touch_N": null,
+   "max_penetration_mm": [
+    1.58,
+    4.09,
+    5.77
+   ],
+   "warnings": 0,
+   "unplanned_contacts": [
+    {
+     "step": "open_door",
+     "phase": "door_arc",
+     "robot": "panda/hand",
+     "other": "dw/rail_t",
+     "max_force_N": 66.06
+    },
+    {
+     "step": "open_door",
+     "phase": "door_release",
+     "robot": "panda/hand",
+     "other": "dw/rail_t",
+     "max_force_N": 43.07
+    },
+    {
+     "step": "open_door",
+     "phase": "door_back",
+     "robot": "panda/hand",
+     "other": "dw/rail_t",
+     "max_force_N": 34.33
+    },
+    {
+     "step": "open_door",
+     "phase": "door_arc",
+     "robot": "panda/hand",
+     "other": "dw/rail_t",
+     "max_force_N": 66.06
+    },
+    {
+     "step": "open_door",
+     "phase": "door_release",
+     "robot": "panda/hand",
+     "other": "dw/rail_t",
+     "max_force_N": 43.07
+    },
+    {
+     "step": "open_door",
+     "phase": "door_back",
+     "robot": "panda/hand",
+     "other": "dw/rail_t",
+     "max_force_N": 34.33
+    },
+    {
+     "step": "open_door",
+     "phase": "door_arc",
+     "robot": "panda/hand",
+     "other": "dw/rail_t",
+     "max_force_N": 66.06
+    },
+    {
+     "step": "open_door",
+     "phase": "door_release",
+     "robot": "panda/hand",
+     "other": "dw/rail_t",
+     "max_force_N": 43.07
+    },
+    {
+     "step": "open_door",
+     "phase": "door_back",
+     "robot": "panda/hand",
+     "other": "dw/rail_t",
+     "max_force_N": 34.33
+    },
+    {
+     "step": "open_door",
+     "phase": "door_arc",
+     "robot": "panda/hand",
+     "other": "dw/rail_t",
+     "max_force_N": 66.06
+    }
+   ],
+   "failure_modes": {
+    "close_door": [
+     "close_door: bar not grasped (finger opening 22.5 mm each)",
+     "close_door: bar not grasped (finger opening 22.5 mm each)",
+     "close_door: bar not grasped (finger opening 22.5 mm each)"
+    ],
+    "pick_plate": [
+     "pick_plate: rise -0.000 m, slip 24.0 mm",
+     "pick_plate: rise -0.000 m, slip 24.7 mm"
+    ]
+   }
+  }
+ },
+ "singles": {
+  "M1": {
+   "success": true,
+   "clean_success": true,
+   "failed": null,
+   "sim_time_s": 185.72,
+   "codex_s": [
+    14.4,
+    18.8
+   ],
+   "wall_s": 298.7,
+   "steps": [
+    {
+     "step": "perceive_plate",
+     "ok": true,
+     "t": [
+      0.5,
+      3.0
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "open_door",
+     "ok": true,
+     "t": [
+      3.0,
+      25.172
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "load_pod",
+     "ok": true,
+     "t": [
+      25.172,
+      49.278
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "pull_basket",
+     "ok": true,
+     "t": [
+      49.278,
+      65.184
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "pick_plate",
+     "ok": true,
+     "t": [
+      65.184,
+      103.226
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 11.6
+    },
+    {
+     "step": "insert_plate",
+     "ok": true,
+     "t": [
+      103.226,
+      124.634
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 4.4
+    },
+    {
+     "step": "push_basket",
+     "ok": true,
+     "t": [
+      124.634,
+      141.93
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "close_door",
+     "ok": true,
+     "t": [
+      141.93,
+      161.712
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "press_buttons",
+     "ok": true,
+     "t": [
+      161.712,
+      179.416
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    }
+   ],
+   "max_penetration_mm": 1.146,
+   "warnings": {}
+  },
+  "M2": {
+   "success": true,
+   "clean_success": true,
+   "failed": null,
+   "sim_time_s": 191.33,
+   "codex_s": [
+    14.2,
+    13.1
+   ],
+   "wall_s": 148.5,
+   "steps": [
+    {
+     "step": "perceive_plate",
+     "ok": true,
+     "t": [
+      0.5,
+      3.0
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "open_door",
+     "ok": true,
+     "t": [
+      3.0,
+      24.81
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "load_pod",
+     "ok": true,
+     "t": [
+      24.81,
+      48.666
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "pull_basket",
+     "ok": true,
+     "t": [
+      48.666,
+      65.618
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "pick_plate",
+     "ok": true,
+     "t": [
+      65.618,
+      106.698
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 10.6
+    },
+    {
+     "step": "insert_plate",
+     "ok": true,
+     "t": [
+      106.698,
+      128.09
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 3.0
+    },
+    {
+     "step": "push_basket",
+     "ok": true,
+     "t": [
+      128.09,
+      145.64
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "close_door",
+     "ok": true,
+     "t": [
+      145.64,
+      166.138
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "press_buttons",
+     "ok": true,
+     "t": [
+      166.138,
+      184.998
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    }
+   ],
+   "max_penetration_mm": 0.702,
+   "warnings": {}
+  },
+  "M3": {
+   "success": false,
+   "clean_success": false,
+   "failed": "close_door: bar not grasped (finger opening 22.5 mm each)",
+   "sim_time_s": 142.39,
+   "codex_s": [
+    12.9
+   ],
+   "wall_s": 108.2,
+   "steps": [
+    {
+     "step": "perceive_plate",
+     "ok": true,
+     "t": [
+      0.5,
+      3.0
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "open_door",
+     "ok": true,
+     "t": [
+      3.0,
+      23.6
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 66.1
+    },
+    {
+     "step": "load_pod",
+     "ok": true,
+     "t": [
+      23.6,
+      53.588
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "pull_basket",
+     "ok": true,
+     "t": [
+      53.588,
+      68.442
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "pick_plate",
+     "ok": true,
+     "t": [
+      68.442,
+      86.43
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "insert_plate",
+     "ok": true,
+     "t": [
+      86.43,
+      117.784
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "push_basket",
+     "ok": true,
+     "t": [
+      117.784,
+      132.608
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "close_door",
+     "ok": false,
+     "t": [
+      132.608,
+      140.39
+     ],
+     "reason": "bar not grasped (finger opening 22.5 mm each)",
+     "unplanned_contact_max_N": 0.0
+    }
+   ],
+   "max_penetration_mm": 5.767,
+   "warnings": {}
+  },
+  "M3a": {
+   "success": false,
+   "clean_success": false,
+   "failed": "open_door: door only at 55.0 deg",
+   "sim_time_s": 25.37,
+   "codex_s": [
+    10.9
+   ],
+   "wall_s": 14.0,
+   "steps": [
+    {
+     "step": "perceive_plate",
+     "ok": true,
+     "t": [
+      0.5,
+      3.0
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "open_door",
+     "ok": false,
+     "t": [
+      3.0,
+      23.366
+     ],
+     "reason": "door only at 55.0 deg",
+     "unplanned_contact_max_N": 950.6
+    }
+   ],
+   "max_penetration_mm": 5.424,
+   "warnings": {}
+  },
+  "M3flat": {
+   "success": false,
+   "clean_success": false,
+   "failed": "pick_plate: no joint path for pinch + tilt + lift from this mount (per-pose IK, independent seeds: pinch_pre 0.0 mm, pinch_in 0.0 mm, pinch 0.0 mm, tilt15 0.0 mm, tilt30 0.0 mm, tilt45 0.0 mm, tilt60 0.0 mm, tilt75 0.0 mm, tilt90 0.1 mm, lift 0.0 mm)",
+   "sim_time_s": 94.27,
+   "codex_s": [
+    13.3,
+    15.0
+   ],
+   "wall_s": 45.3,
+   "steps": [
+    {
+     "step": "perceive_plate",
+     "ok": true,
+     "t": [
+      0.5,
+      3.0
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "open_door",
+     "ok": true,
+     "t": [
+      3.0,
+      23.6
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 66.1
+    },
+    {
+     "step": "load_pod",
+     "ok": true,
+     "t": [
+      23.6,
+      53.588
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "pull_basket",
+     "ok": true,
+     "t": [
+      53.588,
+      68.442
+     ],
+     "reason": "",
+     "unplanned_contact_max_N": 0.0
+    },
+    {
+     "step": "pick_plate",
+     "ok": false,
+     "t": [
+      68.442,
+      92.268
+     ],
+     "reason": "no joint path for pinch + tilt + lift from this mount (per-pose IK, independent seeds: pinch_pre 0.0 mm, pinch_in 0.0 mm, pinch 0.0 mm, tilt15 0.0 mm, tilt30 0.0 mm, tilt45 0.0 mm, tilt60 0.0 mm, tilt75 0.0 mm, tilt90 0.1 mm, lift 0.0 mm)",
+     "unplanned_contact_max_N": 0.0
+    }
+   ],
+   "max_penetration_mm": 1.578,
+   "warnings": {}
+  }
+ },
+ "statics": {
+  "M1": {
+   "footprint_m": [
+    0.65,
+    0.6
+   ],
+   "support_polygon_x": [
+    0.04,
+    0.57
+   ],
+   "support_polygon_y": [
+    0.18,
+    0.66
+   ],
+   "cart_mass_kg": 120.0,
+   "column_mass_kg": 15.0,
+   "cop_margin_m": {
+    "front": 0.191,
+    "left": 0.183,
+    "right": 0.185,
+    "rear": 0.238
+   },
+   "min_free_edge_margin_m": 0.183,
+   "max_force_toward_counter_N": 54.9,
+   "max_force_away_from_counter_N": 39.3,
+   "max_side_force_N": 58.4,
+   "brake_friction_utilisation": 0.077,
+   "min_cart_mass_for_20mm_margin_kg": 13.3,
+   "arm_vertical_load_N": [
+    -217.4,
+    -144.2
+   ],
+   "max_overturning_moment_at_mount_Nm": 68.0,
+   "samples": 204397
+  },
+  "M2": {
+   "footprint_m": [
+    0.57,
+    1.0
+   ],
+   "support_polygon_x": [
+    0.04,
+    0.49
+   ],
+   "support_polygon_y": [
+    -0.04,
+    0.84
+   ],
+   "cart_mass_kg": 120.0,
+   "column_mass_kg": 15.0,
+   "cop_margin_m": {
+    "front": 0.141,
+    "left": 0.345,
+    "right": 0.36,
+    "rear": 0.185
+   },
+   "min_free_edge_margin_m": 0.141,
+   "max_force_toward_counter_N": 68.8,
+   "max_force_away_from_counter_N": 57.5,
+   "max_side_force_N": 48.0,
+   "brake_friction_utilisation": 0.078,
+   "min_cart_mass_for_20mm_margin_kg": 28.9,
+   "arm_vertical_load_N": [
+    -212.0,
+    -125.0
+   ],
+   "max_overturning_moment_at_mount_Nm": 53.7,
+   "samples": 209590
+  },
+  "M3": {
+   "clamp_square_m": 0.2,
+   "max_overturning_moment_Nm": 133.6,
+   "max_horizontal_force_N": 189.2,
+   "arm_vertical_load_N": [
+    -221.7,
+    -75.2
+   ],
+   "required_clamp_preload_N": 1114.0,
+   "preload_tip_N": 1114.0,
+   "preload_slide_N": 489.0,
+   "samples": 74971
+  },
+  "M3a": {
+   "clamp_square_m": 0.2,
+   "max_overturning_moment_Nm": 102.2,
+   "max_horizontal_force_N": 419.8,
+   "arm_vertical_load_N": [
+    -302.1,
+    78.8
+   ],
+   "required_clamp_preload_N": 1354.0,
+   "preload_tip_N": 875.0,
+   "preload_slide_N": 1354.0,
+   "samples": 2537
+  },
+  "M3flat": {
+   "clamp_square_m": 0.2,
+   "max_overturning_moment_Nm": 94.1,
+   "max_horizontal_force_N": 184.4,
+   "arm_vertical_load_N": [
+    -211.0,
+    -91.1
+   ],
+   "required_clamp_preload_N": 849.0,
+   "preload_tip_N": 849.0,
+   "preload_slide_N": 456.0,
+   "samples": 9432
+  }
+ },
+ "mount_table": {
+  "M1": [
+   {
+    "target": "door open/close arc (0-90 deg)",
+    "passed": true,
+    "choice": "kappa 0.5 psi +0 flip +1",
+    "n_waypoints": 12,
+    "worst_pos_err_mm": 0.008285294927161983,
+    "worst_rot_err_deg": 0.00037585827249510137,
+    "min_margin_deg": 14.951163790809762,
+    "min_clearance_mm": 1.9934326696461093,
+    "min_clearance_at": "door_arc30",
+    "max_jump_rad": 0.3701527407831908,
+    "fail_at": null,
+    "seconds": 2.7
+   },
+   {
+    "target": "pod: dish -> door groove",
+    "passed": true,
+    "choice": "place tilt +0",
+    "n_waypoints": 6,
+    "worst_pos_err_mm": 0.005473080007697798,
+    "worst_rot_err_deg": 0.0011387144994495473,
+    "min_margin_deg": 46.634062473202476,
+    "min_clearance_mm": 6.64251331579979,
+    "min_clearance_at": "groove_release",
+    "max_jump_rad": 0.8197540976036988,
+    "fail_at": null,
+    "seconds": 0.1
+   },
+   {
+    "target": "basket pull / push (0-0.25 m)",
+    "passed": true,
+    "choice": "pitch +0 psi +0 flip +1",
+    "n_waypoints": 8,
+    "worst_pos_err_mm": 0.014325834357794762,
+    "worst_rot_err_deg": 0.0002956202808434312,
+    "min_margin_deg": 28.90493091586895,
+    "min_clearance_mm": 1.9989377896843128,
+    "min_clearance_at": "basket_0.00",
+    "max_jump_rad": 0.39526035013778016,
+    "fail_at": null,
+    "seconds": 0.2
+   },
+   {
+    "target": "flat pick: drag, pinch, tilt, lift",
+    "passed": true,
+    "choice": "approach +60",
+    "n_waypoints": 15,
+    "worst_pos_err_mm": 0.009865447772599425,
+    "worst_rot_err_deg": 0.0011981635594495567,
+    "min_margin_deg": 30.129840551680477,
+    "min_clearance_mm": 14.071642957219854,
+    "min_clearance_at": "push_drag1",
+    "max_jump_rad": 1.813173363704639,
+    "fail_at": null,
+    "seconds": 0.3
+   },
+   {
+    "target": "carry + insert into plate slot",
+    "passed": true,
+    "choice": "in-hand from approach +60",
+    "n_waypoints": 4,
+    "worst_pos_err_mm": 0.009890372640645777,
+    "worst_rot_err_deg": 0.0003706636431959775,
+    "min_margin_deg": 12.903540053261532,
+    "min_clearance_mm": 2.352499391014175,
+    "min_clearance_at": "insert",
+    "max_jump_rad": 0.23687159644453581,
+    "fail_at": null,
+    "seconds": 0.2
+   },
+   {
+    "target": "btn_quick press",
+    "passed": true,
+    "choice": "pitch +0 yaw +0 vertical +1",
+    "n_waypoints": 2,
+    "worst_pos_err_mm": 0.005039507688649428,
+    "worst_rot_err_deg": 0.00020197837751849735,
+    "min_margin_deg": 55.00675533634629,
+    "min_clearance_mm": 0.5006573978016281,
+    "min_clearance_at": "btn_quick",
+    "max_jump_rad": 0.11185213967903693,
+    "fail_at": null,
+    "seconds": 0.0
+   },
+   {
+    "target": "btn_power press",
+    "passed": true,
+    "choice": "pitch +0 yaw +0 vertical +1",
+    "n_waypoints": 2,
+    "worst_pos_err_mm": 0.008246555327287424,
+    "worst_rot_err_deg": 0.0012331796130169383,
+    "min_margin_deg": 32.85791427573698,
+    "min_clearance_mm": 0.5011838209188222,
+    "min_clearance_at": "btn_power",
+    "max_jump_rad": 0.16446585310034845,
+    "fail_at": null,
+    "seconds": 0.0
+   }
+  ],
+  "M2": [
+   {
+    "target": "door open/close arc (0-90 deg)",
+    "passed": true,
+    "choice": "kappa 0.5 psi +0 flip +1",
+    "n_waypoints": 12,
+    "worst_pos_err_mm": 0.006163394060570271,
+    "worst_rot_err_deg": 0.00035801936857922416,
+    "min_margin_deg": 15.285703129002837,
+    "min_clearance_mm": 1.9967053586626549,
+    "min_clearance_at": "door_arc40",
+    "max_jump_rad": 0.3712930276118851,
+    "fail_at": null,
+    "seconds": 2.2,
+    "rail_setpoint_m": 0.0
+   },
+   {
+    "target": "pod: dish -> door groove",
+    "passed": true,
+    "choice": "place tilt +0",
+    "n_waypoints": 6,
+    "worst_pos_err_mm": 0.003805099667186513,
+    "worst_rot_err_deg": 0.00014706731219078241,
+    "min_margin_deg": 48.15839494495498,
+    "min_clearance_mm": 6.642662198764193,
+    "min_clearance_at": "groove_release",
+    "max_jump_rad": 0.7929343325717604,
+    "fail_at": null,
+    "seconds": 0.1,
+    "rail_setpoint_m": 0.0
+   },
+   {
+    "target": "basket pull / push (0-0.25 m)",
+    "passed": true,
+    "choice": "pitch +0 psi +0 flip +1",
+    "n_waypoints": 8,
+    "worst_pos_err_mm": 0.009988547671289285,
+    "worst_rot_err_deg": 5.585533098160517e-05,
+    "min_margin_deg": 38.82067014255712,
+    "min_clearance_mm": 1.9993608783070593,
+    "min_clearance_at": "basket_0.00",
+    "max_jump_rad": 0.3222116331851118,
+    "fail_at": null,
+    "seconds": 0.1,
+    "rail_setpoint_m": 0.08
+   },
+   {
+    "target": "flat pick: drag, pinch, tilt, lift",
+    "passed": true,
+    "choice": "approach +60",
+    "n_waypoints": 15,
+    "worst_pos_err_mm": 0.009969859939648445,
+    "worst_rot_err_deg": 0.0014119857137929394,
+    "min_margin_deg": 2.5101592228368763,
+    "min_clearance_mm": 14.0718450926528,
+    "min_clearance_at": "push_drag1",
+    "max_jump_rad": 1.6560174780195764,
+    "fail_at": null,
+    "seconds": 0.3,
+    "rail_setpoint_m": -0.04
+   },
+   {
+    "target": "carry + insert into plate slot",
+    "passed": true,
+    "choice": "in-hand from approach +60",
+    "n_waypoints": 4,
+    "worst_pos_err_mm": 0.009857492160432288,
+    "worst_rot_err_deg": 0.0002983520527451513,
+    "min_margin_deg": 12.924520072249273,
+    "min_clearance_mm": 2.3524554629857772,
+    "min_clearance_at": "insert",
+    "max_jump_rad": 0.2587584258260587,
+    "fail_at": null,
+    "seconds": 0.2,
+    "rail_setpoint_m": -0.04
+   },
+   {
+    "target": "btn_quick press",
+    "passed": true,
+    "choice": "pitch +0 yaw +0 vertical +1",
+    "n_waypoints": 2,
+    "worst_pos_err_mm": 0.007802510764238749,
+    "worst_rot_err_deg": 0.00017828952570863232,
+    "min_margin_deg": 59.003209532915434,
+    "min_clearance_mm": 0.5004808081770367,
+    "min_clearance_at": "btn_quick",
+    "max_jump_rad": 0.08836060878477547,
+    "fail_at": null,
+    "seconds": 0.0,
+    "rail_setpoint_m": 0.08
+   },
+   {
+    "target": "btn_power press",
+    "passed": true,
+    "choice": "pitch +0 yaw +0 vertical +1",
+    "n_waypoints": 2,
+    "worst_pos_err_mm": 0.004972631885724491,
+    "worst_rot_err_deg": 0.0002208387489732087,
+    "min_margin_deg": 28.99402528516771,
+    "min_clearance_mm": 0.5008944645395698,
+    "min_clearance_at": "btn_power",
+    "max_jump_rad": 0.1153405793607658,
+    "fail_at": null,
+    "seconds": 0.0,
+    "rail_setpoint_m": 0.08
+   }
+  ],
+  "M3 (rack)": [
+   {
+    "target": "door open/close arc (0-90 deg)",
+    "passed": false,
+    "choice": "kappa 0.0 psi +20 flip -1",
+    "n_waypoints": 11,
+    "worst_pos_err_mm": 0.009801148269621035,
+    "worst_rot_err_deg": 0.0025532605858056313,
+    "min_margin_deg": 13.752652482630078,
+    "min_clearance_mm": -5.658339744187047,
+    "min_clearance_at": "door_arc90",
+    "max_jump_rad": 0.27972065432840953,
+    "fail_at": {
+     "name": "door_arc90",
+     "pos_err_mm": 0.006352799257273395,
+     "rot_err_deg": 9.151720742297306e-05,
+     "margin_deg": 13.752652482630078,
+     "collisions": [
+      [
+       "panda/right_finger",
+       "dw/rail_t",
+       5.66
+      ]
+     ],
+     "jump_rad": 0.17694257381652612
+    },
+    "seconds": 5.7
+   },
+   {
+    "target": "pod: dish -> door groove",
+    "passed": true,
+    "choice": "place tilt +15",
+    "n_waypoints": 6,
+    "worst_pos_err_mm": 0.010586145758398051,
+    "worst_rot_err_deg": 0.0005459480264852619,
+    "min_margin_deg": 11.787738040747884,
+    "min_clearance_mm": 5.241416236575702,
+    "min_clearance_at": "groove_release",
+    "max_jump_rad": 2.127277583173107,
+    "fail_at": null,
+    "seconds": 0.3
+   },
+   {
+    "target": "basket pull / push (0-0.25 m)",
+    "passed": true,
+    "choice": "pitch +0 psi +0 flip +1",
+    "n_waypoints": 8,
+    "worst_pos_err_mm": 0.010944788367744056,
+    "worst_rot_err_deg": 0.0002945209725048562,
+    "min_margin_deg": 35.02677274698581,
+    "min_clearance_mm": 1.9996309542539419,
+    "min_clearance_at": "basket_0.00",
+    "max_jump_rad": 0.601700855732068,
+    "fail_at": null,
+    "seconds": 0.2
+   },
+   {
+    "target": "rack pick: rim pinch, lift 0.17 m",
+    "passed": true,
+    "choice": "rack grasp hy +1",
+    "n_waypoints": 3,
+    "worst_pos_err_mm": 0.006413031244468294,
+    "worst_rot_err_deg": 0.0009375274375693108,
+    "min_margin_deg": 25.188638899867257,
+    "min_clearance_mm": 39.967505453469386,
+    "min_clearance_at": "rack_above",
+    "max_jump_rad": 0.4316333245731665,
+    "fail_at": null,
+    "seconds": 0.1
+   },
+   {
+    "target": "carry + insert into plate slot",
+    "passed": true,
+    "choice": "in-hand from rack hy +1",
+    "n_waypoints": 4,
+    "worst_pos_err_mm": 0.003026719072138479,
+    "worst_rot_err_deg": 0.00011587441592951439,
+    "min_margin_deg": 22.653428342310157,
+    "min_clearance_mm": 2.3526008644391796,
+    "min_clearance_at": "insert",
+    "max_jump_rad": 0.3159614660010688,
+    "fail_at": null,
+    "seconds": 0.2
+   },
+   {
+    "target": "btn_quick press",
+    "passed": true,
+    "choice": "pitch +0 yaw +0 vertical +1",
+    "n_waypoints": 2,
+    "worst_pos_err_mm": 0.009889877905307601,
+    "worst_rot_err_deg": 0.001045578210419653,
+    "min_margin_deg": 46.898970804369995,
+    "min_clearance_mm": 0.5011316435043313,
+    "min_clearance_at": "btn_quick",
+    "max_jump_rad": 0.14301833588066448,
+    "fail_at": null,
+    "seconds": 0.0
+   },
+   {
+    "target": "btn_power press",
+    "passed": true,
+    "choice": "pitch +0 yaw +0 vertical +1",
+    "n_waypoints": 2,
+    "worst_pos_err_mm": 0.009987908111647265,
+    "worst_rot_err_deg": 0.00036329648747066863,
+    "min_margin_deg": 34.23324619693533,
+    "min_clearance_mm": 0.50136564334674,
+    "min_clearance_at": "btn_power",
+    "max_jump_rad": 0.19430988456919715,
+    "fail_at": null,
+    "seconds": 0.0
+   }
+  ],
+  "M3 (flat)": [
+   {
+    "target": "door open/close arc (0-90 deg)",
+    "passed": false,
+    "choice": "kappa 0.0 psi +20 flip -1",
+    "n_waypoints": 11,
+    "worst_pos_err_mm": 0.009801148269621035,
+    "worst_rot_err_deg": 0.0025532605858056313,
+    "min_margin_deg": 13.752652482630078,
+    "min_clearance_mm": -5.658339744187047,
+    "min_clearance_at": "door_arc90",
+    "max_jump_rad": 0.27972065432840953,
+    "fail_at": {
+     "name": "door_arc90",
+     "pos_err_mm": 0.006352799257273395,
+     "rot_err_deg": 9.151720742297306e-05,
+     "margin_deg": 13.752652482630078,
+     "collisions": [
+      [
+       "panda/right_finger",
+       "dw/rail_t",
+       5.66
+      ]
+     ],
+     "jump_rad": 0.17694257381652612
+    },
+    "seconds": 5.3
+   },
+   {
+    "target": "pod: dish -> door groove",
+    "passed": true,
+    "choice": "place tilt +15",
+    "n_waypoints": 6,
+    "worst_pos_err_mm": 0.010586145758398051,
+    "worst_rot_err_deg": 0.0005459480264852619,
+    "min_margin_deg": 11.787738040747884,
+    "min_clearance_mm": 5.241416236575702,
+    "min_clearance_at": "groove_release",
+    "max_jump_rad": 2.127277583173107,
+    "fail_at": null,
+    "seconds": 0.3
+   },
+   {
+    "target": "basket pull / push (0-0.25 m)",
+    "passed": true,
+    "choice": "pitch +0 psi +0 flip +1",
+    "n_waypoints": 8,
+    "worst_pos_err_mm": 0.010944788367744056,
+    "worst_rot_err_deg": 0.0002945209725048562,
+    "min_margin_deg": 35.02677274698581,
+    "min_clearance_mm": 1.9996309542539419,
+    "min_clearance_at": "basket_0.00",
+    "max_jump_rad": 0.601700855732068,
+    "fail_at": null,
+    "seconds": 0.1
+   },
+   {
+    "target": "flat pick: drag, pinch, tilt, lift",
+    "passed": false,
+    "choice": "approach +45",
+    "n_waypoints": 6,
+    "worst_pos_err_mm": 38.813499763855845,
+    "worst_rot_err_deg": 1.3448128359855507,
+    "min_margin_deg": 16.139850959417277,
+    "min_clearance_mm": 14.073143503548044,
+    "min_clearance_at": "push_start",
+    "max_jump_rad": 1.7721766349681034,
+    "fail_at": {
+     "name": "pinch_pre",
+     "pos_err_mm": 38.813499763855845,
+     "rot_err_deg": 1.3448128359855507,
+     "margin_deg": 16.139850959417277,
+     "collisions": [],
+     "jump_rad": 1.7721766349681034
+    },
+    "seconds": 0.4
+   },
+   {
+    "target": "carry + insert into plate slot",
+    "passed": true,
+    "choice": "in-hand from approach -60",
+    "n_waypoints": 4,
+    "worst_pos_err_mm": 0.009966248181114851,
+    "worst_rot_err_deg": 0.00022031992466455398,
+    "min_margin_deg": 36.49686746030181,
+    "min_clearance_mm": 2.3523244366834284,
+    "min_clearance_at": "insert",
+    "max_jump_rad": 0.23432603937099783,
+    "fail_at": null,
+    "seconds": 0.4
+   },
+   {
+    "target": "btn_quick press",
+    "passed": true,
+    "choice": "pitch +0 yaw +0 vertical +1",
+    "n_waypoints": 2,
+    "worst_pos_err_mm": 0.009889877905307601,
+    "worst_rot_err_deg": 0.001045578210419653,
+    "min_margin_deg": 46.898970804369995,
+    "min_clearance_mm": 0.5011316435043313,
+    "min_clearance_at": "btn_quick",
+    "max_jump_rad": 0.14301833588066448,
+    "fail_at": null,
+    "seconds": 0.0
+   },
+   {
+    "target": "btn_power press",
+    "passed": true,
+    "choice": "pitch +0 yaw +0 vertical +1",
+    "n_waypoints": 2,
+    "worst_pos_err_mm": 0.009987908111647265,
+    "worst_rot_err_deg": 0.00036329648747066863,
+    "min_margin_deg": 34.23324619693533,
+    "min_clearance_mm": 0.50136564334674,
+    "min_clearance_at": "btn_power",
+    "max_jump_rad": 0.19430988456919715,
+    "fail_at": null,
+    "seconds": 0.0
+   }
+  ],
+  "M3a yaw 45 (rack)": [
+   {
+    "target": "door open/close arc (0-90 deg)",
+    "passed": true,
+    "choice": "kappa 1.0 psi +40 flip +1",
+    "n_waypoints": 12,
+    "worst_pos_err_mm": 0.003403889093744541,
+    "worst_rot_err_deg": 0.00038297244343232485,
+    "min_margin_deg": 2.4631865837052445,
+    "min_clearance_mm": 1.7650492475738178,
+    "min_clearance_at": "door_arc90",
+    "max_jump_rad": 0.3230525367152388,
+    "fail_at": null,
+    "seconds": 5.1
+   },
+   {
+    "target": "pod: dish -> door groove",
+    "passed": true,
+    "choice": "place tilt +15",
+    "n_waypoints": 6,
+    "worst_pos_err_mm": 0.013029207137819356,
+    "worst_rot_err_deg": 0.0004862074130611063,
+    "min_margin_deg": 20.4626039250119,
+    "min_clearance_mm": 5.241238871254829,
+    "min_clearance_at": "groove_release",
+    "max_jump_rad": 2.3079982724639705,
+    "fail_at": null,
+    "seconds": 0.2
+   },
+   {
+    "target": "basket pull / push (0-0.25 m)",
+    "passed": true,
+    "choice": "pitch +0 psi +0 flip +1",
+    "n_waypoints": 8,
+    "worst_pos_err_mm": 0.009474447193964805,
+    "worst_rot_err_deg": 0.0006582877183077427,
+    "min_margin_deg": 35.49074440209674,
+    "min_clearance_mm": 1.9996219397152284,
+    "min_clearance_at": "basket_0.00",
+    "max_jump_rad": 0.5921304869652664,
+    "fail_at": null,
+    "seconds": 0.1
+   },
+   {
+    "target": "rack pick: rim pinch, lift 0.17 m",
+    "passed": true,
+    "choice": "rack grasp hy +1",
+    "n_waypoints": 3,
+    "worst_pos_err_mm": 0.006009625505275588,
+    "worst_rot_err_deg": 0.00024271810246208485,
+    "min_margin_deg": 33.02581964192681,
+    "min_clearance_mm": 24.062341060283153,
+    "min_clearance_at": "rack_above",
+    "max_jump_rad": 0.4941238110511743,
+    "fail_at": null,
+    "seconds": 0.1
+   },
+   {
+    "target": "carry + insert into plate slot",
+    "passed": false,
+    "choice": "in-hand from rack hy +1",
+    "n_waypoints": 3,
+    "worst_pos_err_mm": 0.004083781734520327,
+    "worst_rot_err_deg": 0.00012971179326408223,
+    "min_margin_deg": 23.887545523715886,
+    "min_clearance_mm": -1.3698866984070968,
+    "min_clearance_at": "insert",
+    "max_jump_rad": 0.28693436581185416,
+    "fail_at": {
+     "name": "insert",
+     "pos_err_mm": 0.001177813438215307,
+     "rot_err_deg": 2.2165253030559974e-05,
+     "margin_deg": 23.887545523715886,
+     "collisions": [
+      [
+       "panda/link6",
+       "dw/band",
+       1.37
+      ]
+     ],
+     "jump_rad": 0.22208817276811854
+    },
+    "seconds": 0.3
+   },
+   {
+    "target": "btn_quick press",
+    "passed": true,
+    "choice": "pitch +0 yaw +0 vertical +1",
+    "n_waypoints": 2,
+    "worst_pos_err_mm": 0.0013816632678177328,
+    "worst_rot_err_deg": 6.69001252290882e-05,
+    "min_margin_deg": 56.24942843002192,
+    "min_clearance_mm": 0.5008215421912293,
+    "min_clearance_at": "btn_quick",
+    "max_jump_rad": 0.1308442418942572,
+    "fail_at": null,
+    "seconds": 0.0
+   },
+   {
+    "target": "btn_power press",
+    "passed": true,
+    "choice": "pitch +0 yaw +0 vertical +1",
+    "n_waypoints": 2,
+    "worst_pos_err_mm": 0.0016275236175951806,
+    "worst_rot_err_deg": 9.852858605021066e-05,
+    "min_margin_deg": 37.23211642178381,
+    "min_clearance_mm": 0.5008662044734747,
+    "min_clearance_at": "btn_power",
+    "max_jump_rad": 0.14334217638029,
+    "fail_at": null,
+    "seconds": 0.0
+   }
+  ],
+  "M3 back x=-0.30 yaw 135 (flat)": [
+   {
+    "target": "door open/close arc (0-90 deg)",
+    "passed": false,
+    "choice": "kappa 0.0 psi +40 flip +1",
+    "n_waypoints": 8,
+    "worst_pos_err_mm": 22.890576074653016,
+    "worst_rot_err_deg": 0.2642969930210315,
+    "min_margin_deg": 1.9650087194709958,
+    "min_clearance_mm": -11.95755310801382,
+    "min_clearance_at": "door_arc60",
+    "max_jump_rad": 0.5681862872190315,
+    "fail_at": {
+     "name": "door_arc60",
+     "pos_err_mm": 22.890576074653016,
+     "rot_err_deg": 0.2642969930210315,
+     "margin_deg": 1.9650087194709958,
+     "collisions": [
+      [
+       "panda/hand",
+       "dw/rail_t",
+       11.96
+      ],
+      [
+       "panda/left_finger",
+       "dw/rail_t",
+       7.18
+      ],
+      [
+       "panda/hand",
+       "dw/handle_bar",
+       4.57
+      ]
+     ],
+     "jump_rad": 0.5681862872190315
+    },
+    "seconds": 10.5
+   },
+   {
+    "target": "pod: dish -> door groove",
+    "passed": false,
+    "choice": "place tilt +0",
+    "n_waypoints": 2,
+    "worst_pos_err_mm": 0.009802428802390812,
+    "worst_rot_err_deg": 0.001254896824213666,
+    "min_margin_deg": 2.1451057315357462,
+    "min_clearance_mm": 7.298379886880505,
+    "min_clearance_at": "pod_grasp",
+    "max_jump_rad": 0.7078384227935992,
+    "fail_at": {
+     "name": "pod_grasp",
+     "pos_err_mm": 0.004659120803803502,
+     "rot_err_deg": 0.0007806946557043582,
+     "margin_deg": 11.009460139763425,
+     "collisions": [],
+     "jump_rad": 0.7078384227935992
+    },
+    "seconds": 1.0
+   },
+   {
+    "target": "basket pull / push (0-0.25 m)",
+    "passed": false,
+    "choice": "pitch -20 psi +20 flip +1",
+    "n_waypoints": 8,
+    "worst_pos_err_mm": 198.73369555585032,
+    "worst_rot_err_deg": 8.175954138088498,
+    "min_margin_deg": 21.82608437381137,
+    "min_clearance_mm": -47.42305199264805,
+    "min_clearance_at": "basket_release",
+    "max_jump_rad": 0.8138381765657504,
+    "fail_at": {
+     "name": "basket_release",
+     "pos_err_mm": 198.73369555585032,
+     "rot_err_deg": 8.175954138088498,
+     "margin_deg": 36.24631754802415,
+     "collisions": [
+      [
+       "panda/hand",
+       "dw/frame_t_f",
+       47.42
+      ],
+      [
+       "panda/hand",
+       "dw/front_v8",
+       14.09
+      ],
+      [
+       "panda/hand",
+       "dw/plate_tine1_8",
+       3.69
+      ]
+     ],
+     "jump_rad": 0.8138381765657504
+    },
+    "seconds": 9.3
+   },
+   {
+    "target": "flat pick: drag, pinch, tilt, lift",
+    "passed": true,
+    "choice": "approach -60",
+    "n_waypoints": 15,
+    "worst_pos_err_mm": 0.012182284985178956,
+    "worst_rot_err_deg": 0.0007619507677382328,
+    "min_margin_deg": 7.444953419701174,
+    "min_clearance_mm": 14.07122415648454,
+    "min_clearance_at": "push_drag2",
+    "max_jump_rad": 1.2823479109946707,
+    "fail_at": null,
+    "seconds": 0.5
+   },
+   {
+    "target": "carry + insert into plate slot",
+    "passed": true,
+    "choice": "in-hand from approach -45",
+    "n_waypoints": 4,
+    "worst_pos_err_mm": 0.009986783140523368,
+    "worst_rot_err_deg": 0.0005735084263201242,
+    "min_margin_deg": 33.16215957374345,
+    "min_clearance_mm": 2.35217577625665,
+    "min_clearance_at": "insert",
+    "max_jump_rad": 0.2800269898186871,
+    "fail_at": null,
+    "seconds": 1.8
+   },
+   {
+    "target": "btn_quick press",
+    "passed": true,
+    "choice": "pitch +0 yaw +0 vertical +1",
+    "n_waypoints": 2,
+    "worst_pos_err_mm": 0.008630914041695976,
+    "worst_rot_err_deg": 0.0008459927560593627,
+    "min_margin_deg": 24.10091974104606,
+    "min_clearance_mm": 0.500925629264647,
+    "min_clearance_at": "btn_quick",
+    "max_jump_rad": 0.2799389939105643,
+    "fail_at": null,
+    "seconds": 0.0
+   },
+   {
+    "target": "btn_power press",
+    "passed": true,
+    "choice": "pitch +0 yaw +0 vertical +1",
+    "n_waypoints": 2,
+    "worst_pos_err_mm": 0.004837799977112617,
+    "worst_rot_err_deg": 0.00016614619422733446,
+    "min_margin_deg": 25.884461406114607,
+    "min_clearance_mm": 0.5013314290335029,
+    "min_clearance_at": "btn_power",
+    "max_jump_rad": 0.22028208351794243,
+    "fail_at": null,
+    "seconds": 0.0
+   }
+  ]
+ }
+}

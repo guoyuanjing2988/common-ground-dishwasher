@@ -1,0 +1,35 @@
+{
+ "name": "sparse_20",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "plate": {
+   "radius_m": 0.1264,
+   "mass_kg": 0.4171,
+   "mu": 0.6432,
+   "wetness": 0.8792,
+   "x": -0.2565,
+   "y": 0.407,
+   "rgb": [
+    0.012,
+    0.529,
+    0.726
+   ],
+   "upside_down": true
+  },
+  "basket": {
+   "rail_friction_N": 9.8482,
+   "damping": 3.24,
+   "preload_slots": [
+    3
+   ]
+  },
+  "dishwasher": {
+   "dx": -0.014,
+   "dy": 0.0115,
+   "yaw_deg": -0.3138
+  }
+ }
+}

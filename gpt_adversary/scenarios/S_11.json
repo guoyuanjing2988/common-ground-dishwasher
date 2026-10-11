@@ -1,0 +1,14 @@
+{
+ "name": "sparse_11",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "dock": {
+   "dx": 0.0206,
+   "dy": -0.0272,
+   "yaw_deg": 0.3488
+  }
+ }
+}

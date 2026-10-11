@@ -1,0 +1,140 @@
+{
+ "name": "random_05",
+ "source": "random",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "plate": {
+   "radius_m": 0.0977,
+   "mass_kg": 1.0282,
+   "mu": 0.8496,
+   "wetness": 0.6525,
+   "x": -0.0309,
+   "y": 0.4755,
+   "rgb": [
+    0.39,
+    0.882,
+    0.347
+   ]
+  },
+  "pod": {
+   "location": "counter",
+   "dx": 0.0068,
+   "dy": 0.0162,
+   "x": -0.4716,
+   "y": 0.7556,
+   "yaw_deg": 46.2235,
+   "size_scale": 0.9324,
+   "mass_kg": 0.0131
+  },
+  "dish": {
+   "dx": -0.0792,
+   "dy": -0.0215
+  },
+  "door": {
+   "hinge_friction_Nm": 1.7989,
+   "damping": 6.4137,
+   "spring_scale": 0.8009
+  },
+  "basket": {
+   "rail_friction_N": 14.5844,
+   "damping": 8.8742,
+   "preload_slots": [
+    4
+   ]
+  },
+  "lighting": {
+   "key_scale": 0.54,
+   "ambient_scale": 0.4225,
+   "color_temp_K": 6021.4741,
+   "key_azimuth_deg": -150.4382
+  },
+  "camera_bump": {
+   "roll_deg": -0.8663,
+   "pitch_deg": -0.502,
+   "yaw_deg": 3.0,
+   "dx": -0.0074,
+   "dy": 0.012,
+   "dz": 0.003
+  },
+  "dock": {
+   "dx": 0.0159,
+   "dy": 0.0022,
+   "yaw_deg": 1.1896
+  },
+  "dishwasher": {
+   "dx": 0.0115,
+   "dy": 0.0093,
+   "yaw_deg": -0.5188
+  },
+  "sensors": {
+   "depth_noise_scale": 0.7806,
+   "ft_noise_N": 0.0496,
+   "ft_drift_N_per_min": 0.5958
+  },
+  "person": {
+   "at_s": 169.65,
+   "dur_s": 28.67,
+   "distance_m": 1.63
+  },
+  "buttons": {
+   "threshold_N": 5.0328,
+   "dwell_ms": 77.9984
+  },
+  "clutter": [
+   {
+    "type": "mug",
+    "surface": "counter",
+    "x": -0.255,
+    "y": 0.873,
+    "yaw_deg": 48.1,
+    "size_scale": 0.975,
+    "rgb": [
+     0.85,
+     0.3,
+     0.25
+    ]
+   },
+   {
+    "type": "bowl",
+    "surface": "counter",
+    "x": -0.373,
+    "y": 0.402,
+    "yaw_deg": 48.1,
+    "size_scale": 0.93,
+    "rgb": [
+     0.92,
+     0.92,
+     0.9
+    ]
+   },
+   {
+    "type": "cutting_board",
+    "surface": "dishwasher_top",
+    "x": 0.058,
+    "y": 0.068,
+    "yaw_deg": -82.7,
+    "size_scale": 0.868,
+    "rgb": [
+     0.7,
+     0.52,
+     0.32
+    ]
+   },
+   {
+    "type": "cutting_board",
+    "surface": "dishwasher_top",
+    "x": 0.027,
+    "y": 0.05,
+    "yaw_deg": 67.7,
+    "size_scale": 0.962,
+    "rgb": [
+     0.7,
+     0.52,
+     0.32
+    ]
+   }
+  ]
+ }
+}

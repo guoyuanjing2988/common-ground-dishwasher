@@ -1,0 +1,13 @@
+--- a/pipeline.py
++++ b/pipeline.py
+@@ -1328,8 +1328,8 @@
+         width = float(sum(d.qpos[self.fq]))
+         self.hold('unload_grip', 2.0, squeeze_ctrl(width, 2.0))
+         self.hold('seat_light_grip', 2.0)
+-        self.move('release', 1.0, stop_p, Rh, 200.)
+-        self.move('retract', 1.5, stop_p + [0, 0, .12], Rh, 200.)
++        self.move('release', 1.0, stop_p, Rh, OPEN)
++        self.move('retract', 1.5, stop_p + [0, 0, .12], Rh, OPEN)
+         self.allowed = set()
+         self.hold('settle', 1.0)
+         st = self.plate_slot_state()

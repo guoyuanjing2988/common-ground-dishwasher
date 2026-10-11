@@ -1,0 +1,19 @@
+You are the engineer on a simulated mobile robot (sprung wheeled base + Franka arm with a Bota wrist F/T sensor, MuJoCo)
+that drives from its charger, reverses into V-blocks at the kitchen counter (100 N dock preload, wheel brakes on), loads a
+dishwasher, then starts it by touching three capacitive pads on the dishwasher panel (POWER, QUICK, POWER) with a
+conductive stylus on the finger, and drives back. The 9-step task code is pipeline.py (class Runner) and planner.py
+(class MotionPlanner, which subclasses Runner and runs it on the mobile base; the panel press is MotionPlanner.job_press).
+The TaskSupervisor (task_supervisor.py, frozen) retries a press when the panel readout did not change.
+
+Observed problem: in full missions the robot often "completes" a panel press without the panel registering anything
+(the panel stays OFF; the stylus never reaches the pad), so the supervisor has to retry, sometimes twice. A real
+appliance user would see the robot poke the air. Guarded moves that end on a wrist-F/T contact decision may be affected
+elsewhere too (e.g. insert touchdown), so check the whole mission.
+
+Test set: 3 full missions (charger -> V-block dock -> 9 task steps -> 3 panel presses -> charger), plate start pose and
+robot start pose randomised from seeds mission0..mission2, truth perception.
+METRIC = number of missions (out of 3) that finish DONE with all steps OK, the plate in its slot after insert (frozen
+scorer), door closed, basket in, the panel RUNNING the QUICK program, AND exactly 3 press attempts in total (every press
+registers on its first attempt; the attempt count comes from the frozen supervisor). TARGET: 3/3.
+Do not make the robot press harder or deeper than needed: a press that hits the pad hard is also bad (the existing
+press-and-hold regulates about 3 N).

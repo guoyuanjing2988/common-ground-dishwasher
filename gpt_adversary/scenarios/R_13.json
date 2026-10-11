@@ -1,0 +1,121 @@
+{
+ "name": "random_13",
+ "source": "random",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "plate": {
+   "radius_m": 0.1033,
+   "mass_kg": 0.368,
+   "mu": 0.7031,
+   "wetness": 0.8239,
+   "x": -0.207,
+   "y": 0.834,
+   "rgb": [
+    0.209,
+    0.621,
+    0.655
+   ]
+  },
+  "pod": {
+   "dx": 0.008,
+   "dy": 0.0113,
+   "yaw_deg": -41.613,
+   "size_scale": 1.2622,
+   "mass_kg": 0.0199,
+   "location": "dish"
+  },
+  "dish": {
+   "dx": 0.0176,
+   "dy": 0.0617
+  },
+  "door": {
+   "hinge_friction_Nm": 0.4009,
+   "damping": 9.817,
+   "spring_scale": 1.0965
+  },
+  "basket": {
+   "rail_friction_N": 8.0826,
+   "damping": 22.6609,
+   "preload_slots": [
+    2,
+    6
+   ]
+  },
+  "lighting": {
+   "key_scale": 0.2763,
+   "ambient_scale": 1.7325,
+   "color_temp_K": 2699.1397,
+   "key_azimuth_deg": -110.3111
+  },
+  "camera_bump": {
+   "roll_deg": -2.5372,
+   "pitch_deg": 1.497,
+   "yaw_deg": 1.9674,
+   "dx": -0.0067,
+   "dy": 0.0088,
+   "dz": 0.0193
+  },
+  "dock": {
+   "dx": 0.0278,
+   "dy": 0.0279,
+   "yaw_deg": -1.6407
+  },
+  "dishwasher": {
+   "dx": -0.0108,
+   "dy": 0.0115,
+   "yaw_deg": -1.9906
+  },
+  "sensors": {
+   "depth_noise_scale": 0.7829,
+   "ft_noise_N": 0.2188,
+   "ft_drift_N_per_min": 1.82
+  },
+  "buttons": {
+   "threshold_N": 0.6837,
+   "dwell_ms": 53.9842
+  },
+  "clutter": [
+   {
+    "type": "cereal_box",
+    "surface": "dishwasher_top",
+    "x": -0.073,
+    "y": -0.046,
+    "yaw_deg": -101.8,
+    "size_scale": 1.213,
+    "rgb": [
+     0.9,
+     0.7,
+     0.2
+    ]
+   },
+   {
+    "type": "cereal_box",
+    "surface": "counter",
+    "x": -0.364,
+    "y": 0.972,
+    "yaw_deg": -156.6,
+    "size_scale": 0.822,
+    "rgb": [
+     0.9,
+     0.7,
+     0.2
+    ]
+   },
+   {
+    "type": "bottle",
+    "surface": "counter",
+    "x": -0.17,
+    "y": 0.457,
+    "yaw_deg": -29.2,
+    "size_scale": 1.192,
+    "rgb": [
+     0.25,
+     0.55,
+     0.35
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,17 @@
+--- a/pipeline.py
++++ b/pipeline.py
+@@ -1317,9 +1317,14 @@
+         stop_p = sup['at'] if hit else ph - [0, 0, .006]
+         self.ref['cmd'] = (stop_p, Rh)
+         self.substep('release, retract')
+         self.allowed = {self.pid}
++        # Unload the pinch without changing the hand pose; light pad friction lets
++        # gravity seat the plate before the fingers stop guiding its attitude.
++        width = float(sum(d.qpos[self.fq]))
++        self.hold('unload_grip', 2.0, squeeze_ctrl(width, 2.0))
++        self.hold('seat_light_grip', 2.0)
+         self.move('release', 1.0, stop_p, Rh, 200.)
+         self.move('retract', 1.5, stop_p + [0, 0, .12], Rh, 200.)
+         self.allowed = set()
+         self.hold('settle', 1.0)
+         st = self.plate_slot_state()

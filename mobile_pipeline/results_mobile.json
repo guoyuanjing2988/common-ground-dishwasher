@@ -1,0 +1,4900 @@
+{
+ "missions": [
+  {
+   "run": "mission_trial0",
+   "outcome": "DONE",
+   "all_steps": true,
+   "sim_s": 269.04,
+   "wall_s": 140.6,
+   "codex": [
+    16.3,
+    14.4
+   ],
+   "plate": [
+    -0.0014970263853880117,
+    -0.009537346793849757,
+    -0.06262297982493062
+   ],
+   "start": [
+    0.6225778889932287,
+    1.9141653534176102,
+    -93.73831266926781
+   ],
+   "dock_err": [
+    -1.4,
+    -0.0,
+    -0.001
+   ],
+   "est_err": [
+    -0.29,
+    0.19,
+    0.057
+   ],
+   "dock_F_peak": 107.1,
+   "dock_F_after": 126.8,
+   "creep_mm": 0.859,
+   "creep_deg": 0.0287,
+   "min_wheel_N": 349.1,
+   "min_caster_N": 0.0,
+   "cop_m": 0.1527,
+   "brake_Nm": 14.1,
+   "dockF_task": [
+    123.5,
+    144.6
+   ],
+   "charger_err": [
+    -0.3,
+    3.8,
+    -0.68
+   ],
+   "charge_F": 18.0,
+   "soc_drop": 0.589,
+   "E_Wh": 9.41,
+   "I_peak": 3.8,
+   "P_peak": {
+    "total": 204.8,
+    "arm": 149.5,
+    "wheel": 61.1
+   },
+   "panel": "RUNNING [QUICK]",
+   "rss": 600.0,
+   "energy": {
+    "arm_mech_pos": 0.185,
+    "arm_elec": 5.75,
+    "wheel_mech_pos": 0.032,
+    "wheel_elec": 0.043,
+    "fixed": 4.131,
+    "brakes": 0.113,
+    "total": 10.037
+   },
+   "by_state": {
+    "BOOT": 0.003,
+    "LOCALIZE": 0.045,
+    "CHECK_BATTERY": 0.003,
+    "UNDOCK_CHARGER": 0.089,
+    "NAV_PREDOCK": 0.406,
+    "DOCK": 0.314,
+    "UNSTOW_ARM": 0.085,
+    "TASK_PERCEIVE_PLATE": 0.653,
+    "_codex_wait": 1.051,
+    "TASK_OPEN_DOOR": 0.799,
+    "TASK_LOAD_POD": 0.935,
+    "TASK_PULL_BASKET": 0.56,
+    "TASK_PICK_PLATE": 1.986,
+    "TASK_INSERT_PLATE": 0.817,
+    "TASK_PUSH_BASKET": 0.566,
+    "TASK_CLOSE_DOOR": 0.779,
+    "PANEL_POWER": 0.382,
+    "PANEL_QUICK": 0.322,
+    "PANEL_START": 0.303,
+    "STOW_ARM": 0.249,
+    "UNDOCK": 0.127,
+    "NAV_CHARGER": 0.393,
+    "DOCK_CHARGER": 0.14,
+    "CHARGE_CHECK": 0.072,
+    "FINAL_STATE": 0.003,
+    "FINAL_SOC": 0.003,
+    "DONE": 0.001
+   },
+   "t_state": {
+    "BOOT": 0.1,
+    "LOCALIZE": 1.3,
+    "CHECK_BATTERY": 0.1,
+    "UNDOCK_CHARGER": 2.3,
+    "NAV_PREDOCK": 10.3,
+    "DOCK": 8.5,
+    "UNSTOW_ARM": 2.4,
+    "TASK_PERCEIVE_PLATE": 19.0,
+    "_codex_wait": 30.7,
+    "TASK_OPEN_DOOR": 22.1,
+    "TASK_LOAD_POD": 24.0,
+    "TASK_PULL_BASKET": 14.8,
+    "TASK_PICK_PLATE": 52.6,
+    "TASK_INSERT_PLATE": 21.5,
+    "TASK_PUSH_BASKET": 15.6,
+    "TASK_CLOSE_DOOR": 19.8,
+    "PANEL_POWER": 10.9,
+    "PANEL_QUICK": 8.7,
+    "PANEL_START": 8.6,
+    "STOW_ARM": 7.1,
+    "UNDOCK": 3.3,
+    "NAV_CHARGER": 9.9,
+    "DOCK_CHARGER": 3.8,
+    "CHARGE_CHECK": 2.1,
+    "FINAL_STATE": 0.1,
+    "FINAL_SOC": 0.1,
+    "DONE": 0.04
+   },
+   "warnings": {},
+   "pen": 0.781,
+   "unplanned": []
+  },
+  {
+   "run": "mission_trial1",
+   "outcome": "DONE",
+   "all_steps": true,
+   "sim_s": 272.34,
+   "wall_s": 144.3,
+   "codex": [
+    14.4,
+    19.9
+   ],
+   "plate": [
+    0.008747411605261558,
+    0.0063566720138264615,
+    0.06357664313919133
+   ],
+   "start": [
+    0.6144529451446081,
+    1.875682409499968,
+    -88.29550018579425
+   ],
+   "dock_err": [
+    -1.6,
+    -0.26,
+    -0.02
+   ],
+   "est_err": [
+    -0.41,
+    0.25,
+    0.077
+   ],
+   "dock_F_peak": 113.4,
+   "dock_F_after": 133.3,
+   "creep_mm": 0.852,
+   "creep_deg": 0.0416,
+   "min_wheel_N": 349.2,
+   "min_caster_N": 0.0,
+   "cop_m": 0.1476,
+   "brake_Nm": 15.75,
+   "dockF_task": [
+    128.9,
+    146.0
+   ],
+   "charger_err": [
+    0.0,
+    3.8,
+    -0.83
+   ],
+   "charge_F": 18.4,
+   "soc_drop": 0.595,
+   "E_Wh": 9.51,
+   "I_peak": 4.0,
+   "P_peak": {
+    "total": 214.5,
+    "arm": 159.2,
+    "wheel": 61.0
+   },
+   "panel": "RUNNING [QUICK]",
+   "rss": 690.5,
+   "energy": {
+    "arm_mech_pos": 0.188,
+    "arm_elec": 5.81,
+    "wheel_mech_pos": 0.032,
+    "wheel_elec": 0.043,
+    "fixed": 4.182,
+    "brakes": 0.112,
+    "total": 10.146
+   },
+   "by_state": {
+    "BOOT": 0.003,
+    "LOCALIZE": 0.045,
+    "CHECK_BATTERY": 0.003,
+    "UNDOCK_CHARGER": 0.089,
+    "NAV_PREDOCK": 0.39,
+    "DOCK": 0.314,
+    "UNSTOW_ARM": 0.085,
+    "TASK_PERCEIVE_PLATE": 0.591,
+    "_codex_wait": 1.178,
+    "TASK_OPEN_DOOR": 0.798,
+    "TASK_LOAD_POD": 0.939,
+    "TASK_PULL_BASKET": 0.56,
+    "TASK_PICK_PLATE": 2.162,
+    "TASK_INSERT_PLATE": 0.821,
+    "TASK_PUSH_BASKET": 0.57,
+    "TASK_CLOSE_DOOR": 0.779,
+    "PANEL_POWER": 0.382,
+    "PANEL_QUICK": 0.318,
+    "PANEL_START": 0.303,
+    "STOW_ARM": 0.249,
+    "UNDOCK": 0.127,
+    "NAV_CHARGER": 0.393,
+    "DOCK_CHARGER": 0.144,
+    "CHARGE_CHECK": 0.072,
+    "FINAL_STATE": 0.003,
+    "FINAL_SOC": 0.003,
+    "DONE": 0.001
+   },
+   "t_state": {
+    "BOOT": 0.1,
+    "LOCALIZE": 1.3,
+    "CHECK_BATTERY": 0.1,
+    "UNDOCK_CHARGER": 2.3,
+    "NAV_PREDOCK": 9.9,
+    "DOCK": 8.5,
+    "UNSTOW_ARM": 2.4,
+    "TASK_PERCEIVE_PLATE": 17.2,
+    "_codex_wait": 34.4,
+    "TASK_OPEN_DOOR": 22.1,
+    "TASK_LOAD_POD": 24.1,
+    "TASK_PULL_BASKET": 14.8,
+    "TASK_PICK_PLATE": 57.9,
+    "TASK_INSERT_PLATE": 21.5,
+    "TASK_PUSH_BASKET": 15.7,
+    "TASK_CLOSE_DOOR": 19.8,
+    "PANEL_POWER": 10.9,
+    "PANEL_QUICK": 8.6,
+    "PANEL_START": 8.6,
+    "STOW_ARM": 7.1,
+    "UNDOCK": 3.3,
+    "NAV_CHARGER": 9.9,
+    "DOCK_CHARGER": 3.9,
+    "CHARGE_CHECK": 2.1,
+    "FINAL_STATE": 0.1,
+    "FINAL_SOC": 0.1,
+    "DONE": 0.04
+   },
+   "warnings": {},
+   "pen": 1.444,
+   "unplanned": []
+  },
+  {
+   "run": "mission_trial2",
+   "outcome": "DONE",
+   "all_steps": true,
+   "sim_s": 273.44,
+   "wall_s": 142.8,
+   "codex": [
+    14.5,
+    21.1
+   ],
+   "plate": [
+    0.007563843368997061,
+    0.005433753618594859,
+    -0.022975291678030575
+   ],
+   "start": [
+    0.6220699917182099,
+    1.9356287142824025,
+    -87.13684065536246
+   ],
+   "dock_err": [
+    -1.2,
+    0.63,
+    0.042
+   ],
+   "est_err": [
+    -0.13,
+    -1.23,
+    0.022
+   ],
+   "dock_F_peak": 108.0,
+   "dock_F_after": 129.2,
+   "creep_mm": 0.883,
+   "creep_deg": 0.0212,
+   "min_wheel_N": 349.6,
+   "min_caster_N": 0.0,
+   "cop_m": 0.1535,
+   "brake_Nm": 13.78,
+   "dockF_task": [
+    125.5,
+    147.3
+   ],
+   "charger_err": [
+    -0.4,
+    3.3,
+    -0.99
+   ],
+   "charge_F": 17.2,
+   "soc_drop": 0.599,
+   "E_Wh": 9.56,
+   "I_peak": 4.2,
+   "P_peak": {
+    "total": 222.2,
+    "arm": 166.9,
+    "wheel": 61.1
+   },
+   "panel": "RUNNING [QUICK]",
+   "rss": 799.0,
+   "energy": {
+    "arm_mech_pos": 0.192,
+    "arm_elec": 5.837,
+    "wheel_mech_pos": 0.032,
+    "wheel_elec": 0.043,
+    "fixed": 4.199,
+    "brakes": 0.111,
+    "total": 10.19
+   },
+   "by_state": {
+    "BOOT": 0.003,
+    "LOCALIZE": 0.045,
+    "CHECK_BATTERY": 0.003,
+    "UNDOCK_CHARGER": 0.089,
+    "NAV_PREDOCK": 0.387,
+    "DOCK": 0.314,
+    "UNSTOW_ARM": 0.085,
+    "TASK_PERCEIVE_PLATE": 0.591,
+    "_codex_wait": 1.219,
+    "TASK_OPEN_DOOR": 0.799,
+    "TASK_LOAD_POD": 0.939,
+    "TASK_PULL_BASKET": 0.559,
+    "TASK_PICK_PLATE": 2.21,
+    "TASK_INSERT_PLATE": 0.824,
+    "TASK_PUSH_BASKET": 0.569,
+    "TASK_CLOSE_DOOR": 0.779,
+    "PANEL_POWER": 0.382,
+    "PANEL_QUICK": 0.318,
+    "PANEL_START": 0.303,
+    "STOW_ARM": 0.249,
+    "UNDOCK": 0.127,
+    "NAV_CHARGER": 0.393,
+    "DOCK_CHARGER": 0.14,
+    "CHARGE_CHECK": 0.072,
+    "FINAL_STATE": 0.003,
+    "FINAL_SOC": 0.003,
+    "DONE": 0.001
+   },
+   "t_state": {
+    "BOOT": 0.1,
+    "LOCALIZE": 1.3,
+    "CHECK_BATTERY": 0.1,
+    "UNDOCK_CHARGER": 2.3,
+    "NAV_PREDOCK": 9.8,
+    "DOCK": 8.5,
+    "UNSTOW_ARM": 2.4,
+    "TASK_PERCEIVE_PLATE": 17.2,
+    "_codex_wait": 35.6,
+    "TASK_OPEN_DOOR": 22.1,
+    "TASK_LOAD_POD": 24.1,
+    "TASK_PULL_BASKET": 14.8,
+    "TASK_PICK_PLATE": 59.2,
+    "TASK_INSERT_PLATE": 21.5,
+    "TASK_PUSH_BASKET": 15.7,
+    "TASK_CLOSE_DOOR": 19.8,
+    "PANEL_POWER": 10.9,
+    "PANEL_QUICK": 8.6,
+    "PANEL_START": 8.6,
+    "STOW_ARM": 7.1,
+    "UNDOCK": 3.3,
+    "NAV_CHARGER": 9.9,
+    "DOCK_CHARGER": 3.8,
+    "CHARGE_CHECK": 2.1,
+    "FINAL_STATE": 0.1,
+    "FINAL_SOC": 0.1,
+    "DONE": 0.04
+   },
+   "warnings": {},
+   "pen": 1.372,
+   "unplanned": []
+  },
+  {
+   "run": "mission_trial3",
+   "outcome": "DONE",
+   "all_steps": true,
+   "sim_s": 272.24,
+   "wall_s": 141.4,
+   "codex": [
+    20.1,
+    14.1
+   ],
+   "plate": [
+    -0.004701899113076924,
+    -0.005890808731191664,
+    0.0750895382383102
+   ],
+   "start": [
+    0.6175453784208452,
+    1.8840739458769826,
+    -85.75070854905586
+   ],
+   "dock_err": [
+    -1.0,
+    0.34,
+    0.014
+   ],
+   "est_err": [
+    -0.25,
+    -1.15,
+    0.046
+   ],
+   "dock_F_peak": 109.6,
+   "dock_F_after": 124.3,
+   "creep_mm": 0.901,
+   "creep_deg": 0.0189,
+   "min_wheel_N": 349.6,
+   "min_caster_N": 0.0,
+   "cop_m": 0.1533,
+   "brake_Nm": 13.25,
+   "dockF_task": [
+    119.1,
+    143.0
+   ],
+   "charger_err": [
+    0.1,
+    3.2,
+    -1.15
+   ],
+   "charge_F": 17.2,
+   "soc_drop": 0.596,
+   "E_Wh": 9.51,
+   "I_peak": 3.9,
+   "P_peak": {
+    "total": 207.0,
+    "arm": 151.8,
+    "wheel": 61.1
+   },
+   "panel": "RUNNING [QUICK]",
+   "rss": 905.7,
+   "energy": {
+    "arm_mech_pos": 0.188,
+    "arm_elec": 5.817,
+    "wheel_mech_pos": 0.032,
+    "wheel_elec": 0.042,
+    "fixed": 4.181,
+    "brakes": 0.111,
+    "total": 10.15
+   },
+   "by_state": {
+    "BOOT": 0.003,
+    "LOCALIZE": 0.045,
+    "CHECK_BATTERY": 0.003,
+    "UNDOCK_CHARGER": 0.089,
+    "NAV_PREDOCK": 0.379,
+    "DOCK": 0.314,
+    "UNSTOW_ARM": 0.085,
+    "TASK_PERCEIVE_PLATE": 0.783,
+    "_codex_wait": 1.175,
+    "TASK_OPEN_DOOR": 0.798,
+    "TASK_LOAD_POD": 0.939,
+    "TASK_PULL_BASKET": 0.559,
+    "TASK_PICK_PLATE": 1.989,
+    "TASK_INSERT_PLATE": 0.82,
+    "TASK_PUSH_BASKET": 0.566,
+    "TASK_CLOSE_DOOR": 0.779,
+    "PANEL_POWER": 0.382,
+    "PANEL_QUICK": 0.319,
+    "PANEL_START": 0.303,
+    "STOW_ARM": 0.249,
+    "UNDOCK": 0.127,
+    "NAV_CHARGER": 0.393,
+    "DOCK_CHARGER": 0.144,
+    "CHARGE_CHECK": 0.072,
+    "FINAL_STATE": 0.003,
+    "FINAL_SOC": 0.003,
+    "DONE": 0.001
+   },
+   "t_state": {
+    "BOOT": 0.1,
+    "LOCALIZE": 1.3,
+    "CHECK_BATTERY": 0.1,
+    "UNDOCK_CHARGER": 2.3,
+    "NAV_PREDOCK": 9.6,
+    "DOCK": 8.5,
+    "UNSTOW_ARM": 2.4,
+    "TASK_PERCEIVE_PLATE": 22.8,
+    "_codex_wait": 34.3,
+    "TASK_OPEN_DOOR": 22.1,
+    "TASK_LOAD_POD": 24.1,
+    "TASK_PULL_BASKET": 14.8,
+    "TASK_PICK_PLATE": 52.6,
+    "TASK_INSERT_PLATE": 21.5,
+    "TASK_PUSH_BASKET": 15.6,
+    "TASK_CLOSE_DOOR": 19.8,
+    "PANEL_POWER": 10.9,
+    "PANEL_QUICK": 8.6,
+    "PANEL_START": 8.6,
+    "STOW_ARM": 7.1,
+    "UNDOCK": 3.3,
+    "NAV_CHARGER": 9.9,
+    "DOCK_CHARGER": 3.9,
+    "CHARGE_CHECK": 2.1,
+    "FINAL_STATE": 0.1,
+    "FINAL_SOC": 0.1,
+    "DONE": 0.04
+   },
+   "warnings": {},
+   "pen": 1.747,
+   "unplanned": []
+  },
+  {
+   "run": "mission_trial4",
+   "outcome": "DONE",
+   "all_steps": true,
+   "sim_s": 265.54,
+   "wall_s": 136.3,
+   "codex": [
+    14.1,
+    12.8
+   ],
+   "plate": [
+    -0.007650182606255238,
+    -0.000348227257201128,
+    -0.019256433862095194
+   ],
+   "start": [
+    0.6458146300462069,
+    1.9408661757952679,
+    -91.2171490327797
+   ],
+   "dock_err": [
+    -1.1,
+    0.75,
+    0.083
+   ],
+   "est_err": [
+    -0.19,
+    -0.59,
+    0.076
+   ],
+   "dock_F_peak": 106.3,
+   "dock_F_after": 126.6,
+   "creep_mm": 0.899,
+   "creep_deg": 0.0323,
+   "min_wheel_N": 349.5,
+   "min_caster_N": 0.0,
+   "cop_m": 0.1533,
+   "brake_Nm": 13.48,
+   "dockF_task": [
+    122.3,
+    144.3
+   ],
+   "charger_err": [
+    -0.4,
+    3.6,
+    -0.97
+   ],
+   "charge_F": 18.0,
+   "soc_drop": 0.581,
+   "E_Wh": 9.29,
+   "I_peak": 3.8,
+   "P_peak": {
+    "total": 202.8,
+    "arm": 147.5,
+    "wheel": 61.2
+   },
+   "panel": "RUNNING [QUICK]",
+   "rss": 1016.0,
+   "energy": {
+    "arm_mech_pos": 0.188,
+    "arm_elec": 5.684,
+    "wheel_mech_pos": 0.032,
+    "wheel_elec": 0.043,
+    "fixed": 4.078,
+    "brakes": 0.112,
+    "total": 9.916
+   },
+   "by_state": {
+    "BOOT": 0.003,
+    "LOCALIZE": 0.045,
+    "CHECK_BATTERY": 0.003,
+    "UNDOCK_CHARGER": 0.089,
+    "NAV_PREDOCK": 0.399,
+    "DOCK": 0.314,
+    "UNSTOW_ARM": 0.085,
+    "TASK_PERCEIVE_PLATE": 0.581,
+    "_codex_wait": 0.928,
+    "TASK_OPEN_DOOR": 0.798,
+    "TASK_LOAD_POD": 0.939,
+    "TASK_PULL_BASKET": 0.559,
+    "TASK_PICK_PLATE": 1.943,
+    "TASK_INSERT_PLATE": 0.82,
+    "TASK_PUSH_BASKET": 0.566,
+    "TASK_CLOSE_DOOR": 0.778,
+    "PANEL_POWER": 0.382,
+    "PANEL_QUICK": 0.318,
+    "PANEL_START": 0.303,
+    "STOW_ARM": 0.249,
+    "UNDOCK": 0.127,
+    "NAV_CHARGER": 0.393,
+    "DOCK_CHARGER": 0.14,
+    "CHARGE_CHECK": 0.072,
+    "FINAL_STATE": 0.003,
+    "FINAL_SOC": 0.003,
+    "DONE": 0.001
+   },
+   "t_state": {
+    "BOOT": 0.1,
+    "LOCALIZE": 1.3,
+    "CHECK_BATTERY": 0.1,
+    "UNDOCK_CHARGER": 2.3,
+    "NAV_PREDOCK": 10.1,
+    "DOCK": 8.5,
+    "UNSTOW_ARM": 2.4,
+    "TASK_PERCEIVE_PLATE": 16.9,
+    "_codex_wait": 27.1,
+    "TASK_OPEN_DOOR": 22.1,
+    "TASK_LOAD_POD": 24.1,
+    "TASK_PULL_BASKET": 14.8,
+    "TASK_PICK_PLATE": 51.4,
+    "TASK_INSERT_PLATE": 21.5,
+    "TASK_PUSH_BASKET": 15.6,
+    "TASK_CLOSE_DOOR": 19.8,
+    "PANEL_POWER": 10.9,
+    "PANEL_QUICK": 8.6,
+    "PANEL_START": 8.6,
+    "STOW_ARM": 7.1,
+    "UNDOCK": 3.3,
+    "NAV_CHARGER": 9.9,
+    "DOCK_CHARGER": 3.8,
+    "CHARGE_CHECK": 2.1,
+    "FINAL_STATE": 0.1,
+    "FINAL_SOC": 0.1,
+    "DONE": 0.04
+   },
+   "warnings": {},
+   "pen": 1.36,
+   "unplanned": []
+  },
+  {
+   "run": "mission_video",
+   "outcome": "DONE",
+   "all_steps": true,
+   "sim_s": 266.04,
+   "wall_s": 283.7,
+   "codex": [
+    15.1,
+    12.7
+   ],
+   "plate": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "start": [
+    0.6,
+    1.92,
+    -90.0
+   ],
+   "dock_err": [
+    -1.2,
+    0.44,
+    0.012
+   ],
+   "est_err": [
+    -0.32,
+    -0.71,
+    0.039
+   ],
+   "dock_F_peak": 107.5,
+   "dock_F_after": 130.2,
+   "creep_mm": 0.892,
+   "creep_deg": 0.0169,
+   "min_wheel_N": 349.5,
+   "min_caster_N": 0.0,
+   "cop_m": 0.1527,
+   "brake_Nm": 13.94,
+   "dockF_task": [
+    125.7,
+    148.9
+   ],
+   "charger_err": [
+    -0.3,
+    3.1,
+    -1.28
+   ],
+   "charge_F": 17.3,
+   "soc_drop": 0.582,
+   "E_Wh": 9.3,
+   "I_peak": 4.0,
+   "P_peak": {
+    "total": 213.6,
+    "arm": 158.3,
+    "wheel": 61.2
+   },
+   "panel": "RUNNING [QUICK]",
+   "rss": 786.7,
+   "energy": {
+    "arm_mech_pos": 0.188,
+    "arm_elec": 5.692,
+    "wheel_mech_pos": 0.032,
+    "wheel_elec": 0.043,
+    "fixed": 4.085,
+    "brakes": 0.112,
+    "total": 9.933
+   },
+   "by_state": {
+    "BOOT": 0.003,
+    "LOCALIZE": 0.045,
+    "CHECK_BATTERY": 0.003,
+    "UNDOCK_CHARGER": 0.089,
+    "NAV_PREDOCK": 0.398,
+    "DOCK": 0.314,
+    "UNSTOW_ARM": 0.085,
+    "TASK_PERCEIVE_PLATE": 0.612,
+    "_codex_wait": 0.952,
+    "TASK_OPEN_DOOR": 0.799,
+    "TASK_LOAD_POD": 0.939,
+    "TASK_PULL_BASKET": 0.559,
+    "TASK_PICK_PLATE": 1.928,
+    "TASK_INSERT_PLATE": 0.821,
+    "TASK_PUSH_BASKET": 0.566,
+    "TASK_CLOSE_DOOR": 0.777,
+    "PANEL_POWER": 0.382,
+    "PANEL_QUICK": 0.318,
+    "PANEL_START": 0.303,
+    "STOW_ARM": 0.249,
+    "UNDOCK": 0.127,
+    "NAV_CHARGER": 0.393,
+    "DOCK_CHARGER": 0.14,
+    "CHARGE_CHECK": 0.072,
+    "FINAL_STATE": 0.003,
+    "FINAL_SOC": 0.003,
+    "DONE": 0.001
+   },
+   "t_state": {
+    "BOOT": 0.1,
+    "LOCALIZE": 1.3,
+    "CHECK_BATTERY": 0.1,
+    "UNDOCK_CHARGER": 2.3,
+    "NAV_PREDOCK": 10.1,
+    "DOCK": 8.5,
+    "UNSTOW_ARM": 2.4,
+    "TASK_PERCEIVE_PLATE": 17.8,
+    "_codex_wait": 27.8,
+    "TASK_OPEN_DOOR": 22.1,
+    "TASK_LOAD_POD": 24.1,
+    "TASK_PULL_BASKET": 14.8,
+    "TASK_PICK_PLATE": 51.0,
+    "TASK_INSERT_PLATE": 21.5,
+    "TASK_PUSH_BASKET": 15.6,
+    "TASK_CLOSE_DOOR": 19.8,
+    "PANEL_POWER": 10.9,
+    "PANEL_QUICK": 8.6,
+    "PANEL_START": 8.6,
+    "STOW_ARM": 7.1,
+    "UNDOCK": 3.3,
+    "NAV_CHARGER": 9.9,
+    "DOCK_CHARGER": 3.8,
+    "CHARGE_CHECK": 2.1,
+    "FINAL_STATE": 0.1,
+    "FINAL_SOC": 0.1,
+    "DONE": 0.04
+   },
+   "warnings": {},
+   "pen": 1.03,
+   "unplanned": []
+  }
+ ],
+ "mission_phase_energy": {
+  "mission_trial0": {
+   "drive_out": [
+    0.546,
+    14.1
+   ],
+   "dock": [
+    0.314,
+    8.5
+   ],
+   "task": [
+    8.436,
+    227.1
+   ],
+   "drive_back": [
+    0.733,
+    19.1
+   ],
+   "codex_wait (inside task)": [
+    1.051,
+    30.7
+   ]
+  },
+  "mission_trial1": {
+   "drive_out": [
+    0.53,
+    13.7
+   ],
+   "dock": [
+    0.314,
+    8.5
+   ],
+   "task": [
+    8.557,
+    230.7
+   ],
+   "drive_back": [
+    0.737,
+    19.2
+   ],
+   "codex_wait (inside task)": [
+    1.178,
+    34.4
+   ]
+  },
+  "mission_trial2": {
+   "drive_out": [
+    0.527,
+    13.6
+   ],
+   "dock": [
+    0.314,
+    8.5
+   ],
+   "task": [
+    8.607,
+    232.0
+   ],
+   "drive_back": [
+    0.733,
+    19.1
+   ],
+   "codex_wait (inside task)": [
+    1.219,
+    35.6
+   ]
+  },
+  "mission_trial3": {
+   "drive_out": [
+    0.519,
+    13.4
+   ],
+   "dock": [
+    0.314,
+    8.5
+   ],
+   "task": [
+    8.571,
+    230.9
+   ],
+   "drive_back": [
+    0.737,
+    19.2
+   ],
+   "codex_wait (inside task)": [
+    1.175,
+    34.3
+   ]
+  },
+  "mission_trial4": {
+   "drive_out": [
+    0.539,
+    13.9
+   ],
+   "dock": [
+    0.314,
+    8.5
+   ],
+   "task": [
+    8.321,
+    223.8
+   ],
+   "drive_back": [
+    0.733,
+    19.1
+   ],
+   "codex_wait (inside task)": [
+    0.928,
+    27.1
+   ]
+  },
+  "mission_video": {
+   "drive_out": [
+    0.538,
+    13.9
+   ],
+   "dock": [
+    0.314,
+    8.5
+   ],
+   "task": [
+    8.338,
+    224.3
+   ],
+   "drive_back": [
+    0.733,
+    19.1
+   ],
+   "codex_wait (inside task)": [
+    0.952,
+    27.8
+   ]
+  }
+ },
+ "steps": {
+  "UNSTOW_ARM": {
+   "ok": 6,
+   "n": 6,
+   "tcp_max": 0.2259,
+   "elbow_max": 0.0941,
+   "q6_low_deg": 82.84969717591703,
+   "q4_high_deg": 138.12293567218754,
+   "margin_deg": 21.600508876432034,
+   "margin_joint": [
+    4
+   ],
+   "tau": 0.305,
+   "dur_s": 2.3
+  },
+  "TASK_PERCEIVE_PLATE": {
+   "ok": 6,
+   "n": 6,
+   "tcp_max": 0.1102,
+   "elbow_max": 0.0988,
+   "q6_low_deg": 79.09682361781014,
+   "q4_high_deg": 138.12293567218754,
+   "margin_deg": 26.653996629485896,
+   "margin_joint": [
+    4
+   ],
+   "tau": 0.34,
+   "dur_s": 18.4
+  },
+  "TASK_OPEN_DOOR": {
+   "ok": 6,
+   "n": 6,
+   "tcp_max": 0.2971,
+   "elbow_max": 0.3008,
+   "q6_low_deg": 45.32096159484812,
+   "q4_high_deg": 94.76721931463815,
+   "margin_deg": 10.634096677628078,
+   "margin_joint": [
+    2
+   ],
+   "tau": 0.675,
+   "dur_s": 22.0
+  },
+  "TASK_LOAD_POD": {
+   "ok": 6,
+   "n": 6,
+   "tcp_max": 0.3025,
+   "elbow_max": 0.3595,
+   "q6_low_deg": 55.78317093393695,
+   "q4_high_deg": 82.08193373044175,
+   "margin_deg": 35.87288755314084,
+   "margin_joint": [
+    4
+   ],
+   "tau": 0.596,
+   "dur_s": 24.0
+  },
+  "TASK_PULL_BASKET": {
+   "ok": 6,
+   "n": 6,
+   "tcp_max": 0.2981,
+   "elbow_max": 0.1801,
+   "q6_low_deg": 81.80118441082763,
+   "q4_high_deg": 82.07047457453912,
+   "margin_deg": 18.575291718141287,
+   "margin_joint": [
+    2
+   ],
+   "tau": 0.63,
+   "dur_s": 14.8
+  },
+  "TASK_PICK_PLATE": {
+   "ok": 6,
+   "n": 6,
+   "tcp_max": 0.3047,
+   "elbow_max": 0.3173,
+   "q6_low_deg": 44.35266292107703,
+   "q4_high_deg": 67.98717197022349,
+   "margin_deg": 3.4950425502980216,
+   "margin_joint": [
+    4
+   ],
+   "tau": 0.714,
+   "dur_s": 54.0
+  },
+  "TASK_INSERT_PLATE": {
+   "ok": 6,
+   "n": 6,
+   "tcp_max": 0.1602,
+   "elbow_max": 0.1968,
+   "q6_low_deg": 31.01420545043146,
+   "q4_high_deg": 19.096683311710336,
+   "margin_deg": 10.473668494991449,
+   "margin_joint": [
+    7
+   ],
+   "tau": 0.762,
+   "dur_s": 21.4
+  },
+  "TASK_PUSH_BASKET": {
+   "ok": 6,
+   "n": 6,
+   "tcp_max": 0.2912,
+   "elbow_max": 0.3054,
+   "q6_low_deg": 71.81453004169738,
+   "q4_high_deg": 121.75926104325126,
+   "margin_deg": 17.664288823883282,
+   "margin_joint": [
+    7
+   ],
+   "tau": 0.524,
+   "dur_s": 15.6
+  },
+  "TASK_CLOSE_DOOR": {
+   "ok": 6,
+   "n": 6,
+   "tcp_max": 0.2977,
+   "elbow_max": 0.3447,
+   "q6_low_deg": 51.54328324996885,
+   "q4_high_deg": 91.39822747926893,
+   "margin_deg": 5.706659639502999,
+   "margin_joint": [
+    2
+   ],
+   "tau": 0.889,
+   "dur_s": 19.7
+  },
+  "PANEL_POWER": {
+   "ok": 6,
+   "n": 6,
+   "tcp_max": 0.2523,
+   "elbow_max": 0.1616,
+   "q6_low_deg": 55.983706162232735,
+   "q4_high_deg": 131.1271209936402,
+   "margin_deg": 23.588672425535993,
+   "margin_joint": [
+    4
+   ],
+   "tau": 0.382,
+   "dur_s": 10.7
+  },
+  "PANEL_QUICK": {
+   "ok": 6,
+   "n": 6,
+   "tcp_max": 0.2496,
+   "elbow_max": 0.2508,
+   "q6_low_deg": 86.04107209479572,
+   "q4_high_deg": 113.41699554614647,
+   "margin_deg": 24.79761337326203,
+   "margin_joint": [
+    4
+   ],
+   "tau": 0.491,
+   "dur_s": 8.4
+  },
+  "PANEL_START": {
+   "ok": 6,
+   "n": 6,
+   "tcp_max": 0.2478,
+   "elbow_max": 0.2311,
+   "q6_low_deg": 86.03534251684442,
+   "q4_high_deg": 117.90325508202079,
+   "margin_deg": 25.284627499123232,
+   "margin_joint": [
+    4
+   ],
+   "tau": 0.427,
+   "dur_s": 8.5
+  },
+  "STOW_ARM": {
+   "ok": 6,
+   "n": 6,
+   "tcp_max": 0.2995,
+   "elbow_max": 0.1569,
+   "q6_low_deg": 68.60596638896477,
+   "q4_high_deg": 138.5698427523896,
+   "margin_deg": 13.430130717866497,
+   "margin_joint": [
+    4
+   ],
+   "tau": 0.425,
+   "dur_s": 7.1
+  }
+ },
+ "dock_sweep": [
+  {
+   "run": "docksweep_0_dx+0mm_dy+0mm_dyaw+0.0_DEBUG",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    -0.4,
+    -0.0,
+    0.097
+   ],
+   "sim_s": 231.64,
+   "rss": 589.0
+  },
+  {
+   "run": "docksweep_10_dx+0mm_dy+0mm_dyaw-6.0_DEBUG",
+   "offset": [
+    0,
+    0,
+    -6.0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    -0.09,
+    -0.56,
+    0.038
+   ],
+   "sim_s": 233.54,
+   "rss": 589.1
+  },
+  {
+   "run": "docksweep_1_dx+0mm_dy+20mm_dyaw+0.0_DEBUG",
+   "offset": [
+    0,
+    0.02,
+    0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    -0.32,
+    0.73,
+    0.057
+   ],
+   "sim_s": 231.64,
+   "rss": 591.5
+  },
+  {
+   "run": "docksweep_2_dx+0mm_dy-20mm_dyaw+0.0_DEBUG",
+   "offset": [
+    0,
+    -0.02,
+    0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    -0.13,
+    4.17,
+    0.054
+   ],
+   "sim_s": 232.74,
+   "rss": 592.6
+  },
+  {
+   "run": "docksweep_3_dx+0mm_dy+40mm_dyaw+0.0_DEBUG",
+   "offset": [
+    0,
+    0.04,
+    0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    -0.22,
+    -0.32,
+    0.054
+   ],
+   "sim_s": 232.04,
+   "rss": 594.3
+  },
+  {
+   "run": "docksweep_4_dx+0mm_dy-40mm_dyaw+0.0_DEBUG",
+   "offset": [
+    0,
+    -0.04,
+    0
+   ],
+   "outcome": "ABORTED",
+   "all_steps": false,
+   "steps_ok": 2,
+   "first_fail": "TASK_LOAD_POD: load_pod: pod not lifted",
+   "panel_retries": 0,
+   "est_err": [
+    0.08,
+    40.04,
+    0.013
+   ],
+   "sim_s": 68.94,
+   "rss": 594.2
+  },
+  {
+   "run": "docksweep_5_dx+20mm_dy+0mm_dyaw+0.0_DEBUG",
+   "offset": [
+    0.02,
+    0,
+    0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    -0.26,
+    -0.83,
+    0.054
+   ],
+   "sim_s": 232.64,
+   "rss": 589.6
+  },
+  {
+   "run": "docksweep_6_dx+40mm_dy+0mm_dyaw+0.0_DEBUG",
+   "offset": [
+    0.04,
+    0,
+    0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    -0.19,
+    -1.02,
+    0.048
+   ],
+   "sim_s": 232.84,
+   "rss": 593.2
+  },
+  {
+   "run": "docksweep_7_dx+0mm_dy+0mm_dyaw+3.0_DEBUG",
+   "offset": [
+    0,
+    0,
+    3.0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    -0.1,
+    -1.7,
+    0.022
+   ],
+   "sim_s": 231.34,
+   "rss": 593.9
+  },
+  {
+   "run": "docksweep_8_dx+0mm_dy+0mm_dyaw-3.0_DEBUG",
+   "offset": [
+    0,
+    0,
+    -3.0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    -0.1,
+    -1.35,
+    0.0
+   ],
+   "sim_s": 232.34,
+   "rss": 590.3
+  },
+  {
+   "run": "docksweep_9_dx+0mm_dy+0mm_dyaw+6.0_DEBUG",
+   "offset": [
+    0,
+    0,
+    6.0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    -0.09,
+    -1.04,
+    0.009
+   ],
+   "sim_s": 232.54,
+   "rss": 592.0
+  }
+ ],
+ "pose_sweep": [
+  {
+   "run": "posesweep_0_dx+2mm_dy+0mm_dyaw+0.0_DEBUG",
+   "offset": [
+    0.002,
+    0,
+    0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    -2.0,
+    0.0,
+    0.0
+   ],
+   "sim_s": 232.64,
+   "rss": 599.0
+  },
+  {
+   "run": "posesweep_10_dx+0mm_dy+0mm_dyaw+0.5_DEBUG",
+   "offset": [
+    0,
+    0,
+    0.5
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    0.01,
+    -0.03,
+    -0.5
+   ],
+   "sim_s": 233.24,
+   "rss": 590.0
+  },
+  {
+   "run": "posesweep_11_dx+0mm_dy+0mm_dyaw-0.5_DEBUG",
+   "offset": [
+    0,
+    0,
+    -0.5
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    0.01,
+    0.03,
+    0.5
+   ],
+   "sim_s": 229.54,
+   "rss": 595.0
+  },
+  {
+   "run": "posesweep_1_dx-2mm_dy+0mm_dyaw+0.0_DEBUG",
+   "offset": [
+    -0.002,
+    0,
+    0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    2.0,
+    0.0,
+    0.0
+   ],
+   "sim_s": 230.04,
+   "rss": 602.4
+  },
+  {
+   "run": "posesweep_2_dx+5mm_dy+0mm_dyaw+0.0_DEBUG",
+   "offset": [
+    0.005,
+    0,
+    0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    -5.0,
+    0.0,
+    0.0
+   ],
+   "sim_s": 234.84,
+   "rss": 587.2
+  },
+  {
+   "run": "posesweep_3_dx-5mm_dy+0mm_dyaw+0.0_DEBUG",
+   "offset": [
+    -0.005,
+    0,
+    0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    5.0,
+    0.0,
+    0.0
+   ],
+   "sim_s": 227.84,
+   "rss": 592.7
+  },
+  {
+   "run": "posesweep_4_dx+0mm_dy+2mm_dyaw+0.0_DEBUG",
+   "offset": [
+    0,
+    0.002,
+    0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    0.0,
+    -2.0,
+    0.0
+   ],
+   "sim_s": 231.34,
+   "rss": 593.7
+  },
+  {
+   "run": "posesweep_5_dx+0mm_dy-2mm_dyaw+0.0_DEBUG",
+   "offset": [
+    0,
+    -0.002,
+    0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    0.0,
+    2.0,
+    0.0
+   ],
+   "sim_s": 231.54,
+   "rss": 591.3
+  },
+  {
+   "run": "posesweep_6_dx+0mm_dy+5mm_dyaw+0.0_DEBUG",
+   "offset": [
+    0,
+    0.005,
+    0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    0.0,
+    -5.0,
+    0.0
+   ],
+   "sim_s": 231.14,
+   "rss": 595.9
+  },
+  {
+   "run": "posesweep_7_dx+0mm_dy-5mm_dyaw+0.0_DEBUG",
+   "offset": [
+    0,
+    -0.005,
+    0
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    0.0,
+    5.0,
+    0.0
+   ],
+   "sim_s": 231.24,
+   "rss": 606.1
+  },
+  {
+   "run": "posesweep_8_dx+0mm_dy+0mm_dyaw+0.2_DEBUG",
+   "offset": [
+    0,
+    0,
+    0.2
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    0.0,
+    -0.01,
+    -0.2
+   ],
+   "sim_s": 231.94,
+   "rss": 595.3
+  },
+  {
+   "run": "posesweep_9_dx+0mm_dy+0mm_dyaw-0.2_DEBUG",
+   "offset": [
+    0,
+    0,
+    -0.2
+   ],
+   "outcome": "DONE",
+   "all_steps": true,
+   "steps_ok": 8,
+   "first_fail": "",
+   "panel_retries": 0,
+   "est_err": [
+    0.0,
+    0.01,
+    0.2
+   ],
+   "sim_s": 230.74,
+   "rss": 595.2
+  }
+ ],
+ "estop": {
+  "row": {
+   "run": "estop",
+   "outcome": "DONE",
+   "all_steps": true,
+   "sim_s": 268.04,
+   "wall_s": 137.0,
+   "codex": [
+    11.5,
+    13.6
+   ],
+   "plate": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "start": [
+    0.6,
+    1.92,
+    -90.0
+   ],
+   "dock_err": [
+    -1.2,
+    0.44,
+    0.012
+   ],
+   "est_err": [
+    -0.32,
+    -0.71,
+    0.039
+   ],
+   "dock_F_peak": 107.5,
+   "dock_F_after": 130.2,
+   "creep_mm": 0.882,
+   "creep_deg": 0.0171,
+   "min_wheel_N": 349.8,
+   "min_caster_N": 0.0,
+   "cop_m": 0.1534,
+   "brake_Nm": 13.84,
+   "dockF_task": [
+    125.7,
+    148.1
+   ],
+   "charger_err": [
+    -0.5,
+    3.6,
+    -0.78
+   ],
+   "charge_F": 17.4,
+   "soc_drop": 0.587,
+   "E_Wh": 9.38,
+   "I_peak": 4.0,
+   "P_peak": {
+    "total": 215.2,
+    "arm": 159.9,
+    "wheel": 61.2
+   },
+   "panel": "RUNNING [QUICK]",
+   "rss": 593.0,
+   "energy": {
+    "arm_mech_pos": 0.189,
+    "arm_elec": 5.738,
+    "wheel_mech_pos": 0.032,
+    "wheel_elec": 0.043,
+    "fixed": 4.116,
+    "brakes": 0.112,
+    "total": 10.009
+   },
+   "by_state": {
+    "BOOT": 0.003,
+    "LOCALIZE": 0.045,
+    "CHECK_BATTERY": 0.003,
+    "UNDOCK_CHARGER": 0.089,
+    "NAV_PREDOCK": 0.398,
+    "DOCK": 0.314,
+    "UNSTOW_ARM": 0.085,
+    "TASK_PERCEIVE_PLATE": 0.488,
+    "_codex_wait": 0.863,
+    "TASK_OPEN_DOOR": 0.799,
+    "TASK_LOAD_POD": 0.939,
+    "TASK_PULL_BASKET": 0.559,
+    "TASK_PICK_PLATE": 1.962,
+    "TASK_INSERT_PLATE": 0.828,
+    "ESTOP": 0.158,
+    "TASK_PUSH_BASKET": 0.566,
+    "TASK_CLOSE_DOOR": 0.777,
+    "PANEL_POWER": 0.382,
+    "PANEL_QUICK": 0.318,
+    "PANEL_START": 0.303,
+    "STOW_ARM": 0.249,
+    "UNDOCK": 0.127,
+    "NAV_CHARGER": 0.393,
+    "DOCK_CHARGER": 0.14,
+    "CHARGE_CHECK": 0.072,
+    "FINAL_STATE": 0.003,
+    "FINAL_SOC": 0.003,
+    "DONE": 0.001
+   },
+   "t_state": {
+    "BOOT": 0.1,
+    "LOCALIZE": 1.3,
+    "CHECK_BATTERY": 0.1,
+    "UNDOCK_CHARGER": 2.3,
+    "NAV_PREDOCK": 10.1,
+    "DOCK": 8.5,
+    "UNSTOW_ARM": 2.4,
+    "TASK_PERCEIVE_PLATE": 14.2,
+    "_codex_wait": 25.2,
+    "TASK_OPEN_DOOR": 22.1,
+    "TASK_LOAD_POD": 24.1,
+    "TASK_PULL_BASKET": 14.8,
+    "TASK_PICK_PLATE": 51.9,
+    "TASK_INSERT_PLATE": 21.7,
+    "ESTOP": 4.5,
+    "TASK_PUSH_BASKET": 15.6,
+    "TASK_CLOSE_DOOR": 19.8,
+    "PANEL_POWER": 10.9,
+    "PANEL_QUICK": 8.6,
+    "PANEL_START": 8.6,
+    "STOW_ARM": 7.1,
+    "UNDOCK": 3.3,
+    "NAV_CHARGER": 9.9,
+    "DOCK_CHARGER": 3.8,
+    "CHARGE_CHECK": 2.1,
+    "FINAL_STATE": 0.1,
+    "FINAL_SOC": 0.1,
+    "DONE": 0.04
+   },
+   "warnings": {},
+   "pen": 0.91,
+   "unplanned": []
+  },
+  "estop": {
+   "operator": [
+    {
+     "t": 158.5,
+     "event": "estop_pressed",
+     "phase": "carry_across"
+    },
+    {
+     "t": 161.5,
+     "event": "estop_released"
+    },
+    {
+     "t": 163.0,
+     "event": "operator_resume"
+    }
+   ],
+   "supervisor": [
+    {
+     "t": 158.6,
+     "event": "estop",
+     "during": "TASK_INSERT_PLATE"
+    },
+    {
+     "t": 161.6,
+     "event": "released"
+    },
+    {
+     "t": 163.1,
+     "event": "operator resume"
+    }
+   ],
+   "probe": {
+    "t_press": 158.602,
+    "door_deg_at_estop": 90.03,
+    "plate_finger_contacts_at_estop": 14,
+    "t_resume": 163.102,
+    "slip_during_stop_mm": 0.04,
+    "rot_during_stop_deg": 0.02,
+    "door_deg_at_resume": 90.03,
+    "plate_finger_contacts_at_resume": 10,
+    "tcp_travel_after_estop_mm": 2.44,
+    "arm_stop_time_s": 0.248
+   }
+  },
+  "low_battery": null,
+  "panel_events": [
+   {
+    "t": 222.676,
+    "event": "touch_power",
+    "state": "STANDBY",
+    "program": null
+   },
+   {
+    "t": 223.022,
+    "event": "touch_power_ignored_in_standby",
+    "state": "STANDBY",
+    "program": null
+   },
+   {
+    "t": 231.316,
+    "event": "touch_quick",
+    "state": "SELECTED",
+    "program": "quick"
+   },
+   {
+    "t": 231.582,
+    "event": "touch_quick",
+    "state": "SELECTED",
+    "program": "quick"
+   },
+   {
+    "t": 239.94,
+    "event": "start",
+    "state": "RUNNING",
+    "program": "quick"
+   },
+   {
+    "t": 240.48,
+    "event": "touch_power_ignored",
+    "state": "RUNNING",
+    "program": "quick"
+   }
+  ],
+  "jobs": [
+   {
+    "state": "LOCALIZE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "UNDOCK_CHARGER",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "NAV_PREDOCK",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "DOCK",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "UNSTOW_ARM",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PERCEIVE_PLATE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_OPEN_DOOR",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_LOAD_POD",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PULL_BASKET",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PICK_PLATE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_INSERT_PLATE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PUSH_BASKET",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_CLOSE_DOOR",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "PANEL_POWER",
+    "ok": true,
+    "reason": "",
+    "panel": {
+     "state": "STANDBY",
+     "program": null
+    },
+    "m": {
+     "tool": "stylus",
+     "ft_stop": true,
+     "conductive_peak_N": 45.54,
+     "nonconductive_peak_N": 0.0,
+     "nonconductive_dwell_s": 0.0
+    }
+   },
+   {
+    "state": "PANEL_QUICK",
+    "ok": true,
+    "reason": "",
+    "panel": {
+     "state": "SELECTED",
+     "program": "quick"
+    },
+    "m": {
+     "tool": "stylus",
+     "ft_stop": true,
+     "conductive_peak_N": 34.39,
+     "nonconductive_peak_N": 0.0,
+     "nonconductive_dwell_s": 0.0
+    }
+   },
+   {
+    "state": "PANEL_START",
+    "ok": true,
+    "reason": "",
+    "panel": {
+     "state": "RUNNING",
+     "program": "quick"
+    },
+    "m": {
+     "tool": "stylus",
+     "ft_stop": true,
+     "conductive_peak_N": 51.65,
+     "nonconductive_peak_N": 0.0,
+     "nonconductive_dwell_s": 0.0
+    }
+   },
+   {
+    "state": "STOW_ARM",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "UNDOCK",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "NAV_CHARGER",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "DOCK_CHARGER",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "CHARGE_CHECK",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "FINAL_STATE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "FINAL_SOC",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   }
+  ],
+  "transitions": [
+   {
+    "t": 0.1,
+    "frm": "BOOT",
+    "to": "LOCALIZE",
+    "why": "boot complete"
+   },
+   {
+    "t": 1.4,
+    "frm": "LOCALIZE",
+    "to": "CHECK_BATTERY",
+    "why": "LOCALIZE ok"
+   },
+   {
+    "t": 1.5,
+    "frm": "CHECK_BATTERY",
+    "to": "UNDOCK_CHARGER",
+    "why": "SoC 0.900"
+   },
+   {
+    "t": 3.8,
+    "frm": "UNDOCK_CHARGER",
+    "to": "NAV_PREDOCK",
+    "why": "UNDOCK_CHARGER ok"
+   },
+   {
+    "t": 13.9,
+    "frm": "NAV_PREDOCK",
+    "to": "DOCK",
+    "why": "NAV_PREDOCK ok"
+   },
+   {
+    "t": 22.4,
+    "frm": "DOCK",
+    "to": "UNSTOW_ARM",
+    "why": "DOCK ok"
+   },
+   {
+    "t": 24.8,
+    "frm": "UNSTOW_ARM",
+    "to": "TASK_PERCEIVE_PLATE",
+    "why": "UNSTOW_ARM ok"
+   },
+   {
+    "t": 39.0,
+    "frm": "TASK_PERCEIVE_PLATE",
+    "to": "TASK_OPEN_DOOR",
+    "why": "TASK_PERCEIVE_PLATE ok"
+   },
+   {
+    "t": 61.1,
+    "frm": "TASK_OPEN_DOOR",
+    "to": "TASK_LOAD_POD",
+    "why": "TASK_OPEN_DOOR ok"
+   },
+   {
+    "t": 85.2,
+    "frm": "TASK_LOAD_POD",
+    "to": "TASK_PULL_BASKET",
+    "why": "TASK_LOAD_POD ok"
+   },
+   {
+    "t": 100.0,
+    "frm": "TASK_PULL_BASKET",
+    "to": "TASK_PICK_PLATE",
+    "why": "TASK_PULL_BASKET ok"
+   },
+   {
+    "t": 151.9,
+    "frm": "TASK_PICK_PLATE",
+    "to": "TASK_INSERT_PLATE",
+    "why": "TASK_PICK_PLATE ok"
+   },
+   {
+    "t": 158.6,
+    "frm": "TASK_INSERT_PLATE",
+    "to": "ESTOP",
+    "why": "e-stop pressed (BaseMCU)"
+   },
+   {
+    "t": 163.1,
+    "frm": "ESTOP",
+    "to": "TASK_INSERT_PLATE",
+    "why": "operator acknowledged: resume interrupted job"
+   },
+   {
+    "t": 178.1,
+    "frm": "TASK_INSERT_PLATE",
+    "to": "TASK_PUSH_BASKET",
+    "why": "TASK_INSERT_PLATE ok"
+   },
+   {
+    "t": 193.7,
+    "frm": "TASK_PUSH_BASKET",
+    "to": "TASK_CLOSE_DOOR",
+    "why": "TASK_PUSH_BASKET ok"
+   },
+   {
+    "t": 213.5,
+    "frm": "TASK_CLOSE_DOOR",
+    "to": "PANEL_POWER",
+    "why": "TASK_CLOSE_DOOR ok"
+   },
+   {
+    "t": 224.4,
+    "frm": "PANEL_POWER",
+    "to": "PANEL_QUICK",
+    "why": "panel readout STANDBY"
+   },
+   {
+    "t": 233.0,
+    "frm": "PANEL_QUICK",
+    "to": "PANEL_START",
+    "why": "panel readout SELECTED"
+   },
+   {
+    "t": 241.6,
+    "frm": "PANEL_START",
+    "to": "STOW_ARM",
+    "why": "panel readout RUNNING"
+   },
+   {
+    "t": 248.7,
+    "frm": "STOW_ARM",
+    "to": "UNDOCK",
+    "why": "STOW_ARM ok"
+   },
+   {
+    "t": 252.0,
+    "frm": "UNDOCK",
+    "to": "NAV_CHARGER",
+    "why": "UNDOCK ok"
+   },
+   {
+    "t": 261.9,
+    "frm": "NAV_CHARGER",
+    "to": "DOCK_CHARGER",
+    "why": "NAV_CHARGER ok"
+   },
+   {
+    "t": 265.7,
+    "frm": "DOCK_CHARGER",
+    "to": "CHARGE_CHECK",
+    "why": "DOCK_CHARGER ok"
+   },
+   {
+    "t": 267.8,
+    "frm": "CHARGE_CHECK",
+    "to": "FINAL_STATE",
+    "why": "CHARGE_CHECK ok"
+   },
+   {
+    "t": 267.9,
+    "frm": "FINAL_STATE",
+    "to": "FINAL_SOC",
+    "why": "FINAL_STATE ok"
+   },
+   {
+    "t": 268.0,
+    "frm": "FINAL_SOC",
+    "to": "DONE",
+    "why": "FINAL_SOC ok"
+   }
+  ],
+  "steps": {
+   "UNSTOW_ARM": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2245,
+    "elbow_max": 0.093,
+    "q6_low_deg": 82.91272253338143,
+    "q4_high_deg": 138.26044554301896,
+    "margin_deg": 21.600508876432034,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.303,
+    "dur_s": 2.3
+   },
+   "TASK_PERCEIVE_PLATE": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.1099,
+    "elbow_max": 0.0961,
+    "q6_low_deg": 79.17130813117716,
+    "q4_high_deg": 138.26044554301896,
+    "margin_deg": 26.734210720804214,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.339,
+    "dur_s": 14.1
+   },
+   "TASK_OPEN_DOOR": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2965,
+    "elbow_max": 0.298,
+    "q6_low_deg": 45.38398695231251,
+    "q4_high_deg": 94.80159678234601,
+    "margin_deg": 10.622637521725464,
+    "margin_joint": [
+     2
+    ],
+    "tau": 0.729,
+    "dur_s": 22.0
+   },
+   "TASK_LOAD_POD": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.301,
+    "elbow_max": 0.3573,
+    "q6_low_deg": 55.80608924574218,
+    "q4_high_deg": 82.24809149102967,
+    "margin_deg": 35.912994598800005,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.583,
+    "dur_s": 24.0
+   },
+   "TASK_PULL_BASKET": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2936,
+    "elbow_max": 0.1791,
+    "q6_low_deg": 81.88712808009726,
+    "q4_high_deg": 82.30538727054277,
+    "margin_deg": 18.575291718141287,
+    "margin_joint": [
+     2
+    ],
+    "tau": 0.577,
+    "dur_s": 14.8
+   },
+   "TASK_PICK_PLATE": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.3043,
+    "elbow_max": 0.3122,
+    "q6_low_deg": 44.97718691776962,
+    "q4_high_deg": 68.78931288340664,
+    "margin_deg": 3.6210932652268033,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.704,
+    "dur_s": 51.9
+   },
+   "TASK_INSERT_PLATE": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.1597,
+    "elbow_max": 0.1764,
+    "q6_low_deg": 33.74148455525418,
+    "q4_high_deg": 19.24565233844435,
+    "margin_deg": 14.576046308128143,
+    "margin_joint": [
+     7
+    ],
+    "tau": 0.757,
+    "dur_s": 26.1
+   },
+   "TASK_PUSH_BASKET": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2888,
+    "elbow_max": 0.3012,
+    "q6_low_deg": 73.93447388368143,
+    "q4_high_deg": 122.0801174085245,
+    "margin_deg": 17.549697264857116,
+    "margin_joint": [
+     7
+    ],
+    "tau": 0.51,
+    "dur_s": 15.5
+   },
+   "TASK_CLOSE_DOOR": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2964,
+    "elbow_max": 0.3451,
+    "q6_low_deg": 51.52609451611493,
+    "q4_high_deg": 91.59876270756472,
+    "margin_deg": 5.80406246467524,
+    "margin_joint": [
+     2
+    ],
+    "tau": 0.856,
+    "dur_s": 19.7
+   },
+   "PANEL_POWER": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2493,
+    "elbow_max": 0.1595,
+    "q6_low_deg": 56.03527236379451,
+    "q4_high_deg": 131.2589012865203,
+    "margin_deg": 23.62877947119515,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.353,
+    "dur_s": 10.7
+   },
+   "PANEL_QUICK": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2425,
+    "elbow_max": 0.2464,
+    "q6_low_deg": 86.21295943333497,
+    "q4_high_deg": 113.71493359961448,
+    "margin_deg": 24.809072529164645,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.44,
+    "dur_s": 8.4
+   },
+   "PANEL_START": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2459,
+    "elbow_max": 0.2285,
+    "q6_low_deg": 86.20722985538366,
+    "q4_high_deg": 118.21265229139145,
+    "margin_deg": 25.301816232977153,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.398,
+    "dur_s": 8.5
+   },
+   "STOW_ARM": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2973,
+    "elbow_max": 0.1535,
+    "q6_low_deg": 68.69763963618571,
+    "q4_high_deg": 138.6271385319027,
+    "margin_deg": 13.45304902967173,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.373,
+    "dur_s": 7.1
+   }
+  },
+  "sim_s": 268.04,
+  "outcome": "DONE"
+ },
+ "nonconductive": {
+  "row": {
+   "run": "nonconductive",
+   "outcome": "ABORTED",
+   "all_steps": false,
+   "sim_s": 276.24,
+   "wall_s": 143.2,
+   "codex": [
+    17.1,
+    14.2
+   ],
+   "plate": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "start": [
+    0.6,
+    1.92,
+    -90.0
+   ],
+   "dock_err": [
+    -1.2,
+    0.44,
+    0.012
+   ],
+   "est_err": [
+    -0.32,
+    -0.71,
+    0.039
+   ],
+   "dock_F_peak": 107.5,
+   "dock_F_after": 130.2,
+   "creep_mm": 0.876,
+   "creep_deg": 0.0174,
+   "min_wheel_N": 349.8,
+   "min_caster_N": 0.0,
+   "cop_m": 0.1537,
+   "brake_Nm": 13.76,
+   "dockF_task": [
+    125.7,
+    148.0
+   ],
+   "charger_err": [
+    -0.3,
+    3.6,
+    -1.02
+   ],
+   "charge_F": 18.2,
+   "soc_drop": 0.626,
+   "E_Wh": 10.0,
+   "I_peak": 4.1,
+   "P_peak": {
+    "total": 216.9,
+    "arm": 161.6,
+    "wheel": 61.2
+   },
+   "panel": "OFF",
+   "rss": 594.6,
+   "energy": {
+    "arm_mech_pos": 0.184,
+    "arm_elec": 5.859,
+    "wheel_mech_pos": 0.032,
+    "wheel_elec": 0.043,
+    "fixed": 4.242,
+    "brakes": 0.112,
+    "total": 10.257
+   },
+   "by_state": {
+    "BOOT": 0.003,
+    "LOCALIZE": 0.045,
+    "CHECK_BATTERY": 0.003,
+    "UNDOCK_CHARGER": 0.089,
+    "NAV_PREDOCK": 0.398,
+    "DOCK": 0.314,
+    "UNSTOW_ARM": 0.085,
+    "TASK_PERCEIVE_PLATE": 0.68,
+    "_codex_wait": 1.075,
+    "TASK_OPEN_DOOR": 0.799,
+    "TASK_LOAD_POD": 0.939,
+    "TASK_PULL_BASKET": 0.56,
+    "TASK_PICK_PLATE": 1.983,
+    "TASK_INSERT_PLATE": 0.822,
+    "TASK_PUSH_BASKET": 0.566,
+    "TASK_CLOSE_DOOR": 0.779,
+    "PANEL_POWER": 1.165,
+    "ABORT_SAFE_STOW": 0.36,
+    "ABORT_UNDOCK": 0.127,
+    "ABORT_NAV_CHARGER": 0.393,
+    "ABORT_DOCK_CHARGER": 0.144,
+    "ABORTED": 0.001
+   },
+   "t_state": {
+    "BOOT": 0.1,
+    "LOCALIZE": 1.3,
+    "CHECK_BATTERY": 0.1,
+    "UNDOCK_CHARGER": 2.3,
+    "NAV_PREDOCK": 10.1,
+    "DOCK": 8.5,
+    "UNSTOW_ARM": 2.4,
+    "TASK_PERCEIVE_PLATE": 19.8,
+    "_codex_wait": 31.4,
+    "TASK_OPEN_DOOR": 22.1,
+    "TASK_LOAD_POD": 24.1,
+    "TASK_PULL_BASKET": 14.8,
+    "TASK_PICK_PLATE": 52.5,
+    "TASK_INSERT_PLATE": 21.5,
+    "TASK_PUSH_BASKET": 15.6,
+    "TASK_CLOSE_DOOR": 19.8,
+    "PANEL_POWER": 33.7,
+    "ABORT_SAFE_STOW": 10.4,
+    "ABORT_UNDOCK": 3.3,
+    "ABORT_NAV_CHARGER": 9.9,
+    "ABORT_DOCK_CHARGER": 3.9,
+    "ABORTED": 0.04
+   },
+   "warnings": {},
+   "pen": 1.428,
+   "unplanned": []
+  },
+  "estop": {
+   "operator": [],
+   "supervisor": [],
+   "probe": null
+  },
+  "low_battery": null,
+  "panel_events": [],
+  "jobs": [
+   {
+    "state": "LOCALIZE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "UNDOCK_CHARGER",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "NAV_PREDOCK",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "DOCK",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "UNSTOW_ARM",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PERCEIVE_PLATE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_OPEN_DOOR",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_LOAD_POD",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PULL_BASKET",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PICK_PLATE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_INSERT_PLATE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PUSH_BASKET",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_CLOSE_DOOR",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "PANEL_POWER",
+    "ok": true,
+    "reason": "",
+    "panel": {
+     "state": "OFF"
+    },
+    "m": {
+     "tool": "finger",
+     "ft_stop": true,
+     "conductive_peak_N": 0.0,
+     "nonconductive_peak_N": 33.07,
+     "nonconductive_dwell_s": 0.452
+    }
+   },
+   {
+    "state": "PANEL_POWER",
+    "ok": true,
+    "reason": "",
+    "panel": {
+     "state": "OFF"
+    },
+    "m": {
+     "tool": "finger",
+     "ft_stop": true,
+     "conductive_peak_N": 0.0,
+     "nonconductive_peak_N": 38.14,
+     "nonconductive_dwell_s": 0.414
+    }
+   },
+   {
+    "state": "PANEL_POWER",
+    "ok": true,
+    "reason": "",
+    "panel": {
+     "state": "OFF"
+    },
+    "m": {
+     "tool": "finger",
+     "ft_stop": true,
+     "conductive_peak_N": 0.0,
+     "nonconductive_peak_N": 37.76,
+     "nonconductive_dwell_s": 0.492
+    }
+   },
+   {
+    "state": "ABORT_SAFE_STOW",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "ABORT_UNDOCK",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "ABORT_NAV_CHARGER",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "ABORT_DOCK_CHARGER",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   }
+  ],
+  "transitions": [
+   {
+    "t": 0.1,
+    "frm": "BOOT",
+    "to": "LOCALIZE",
+    "why": "boot complete"
+   },
+   {
+    "t": 1.4,
+    "frm": "LOCALIZE",
+    "to": "CHECK_BATTERY",
+    "why": "LOCALIZE ok"
+   },
+   {
+    "t": 1.5,
+    "frm": "CHECK_BATTERY",
+    "to": "UNDOCK_CHARGER",
+    "why": "SoC 0.900"
+   },
+   {
+    "t": 3.8,
+    "frm": "UNDOCK_CHARGER",
+    "to": "NAV_PREDOCK",
+    "why": "UNDOCK_CHARGER ok"
+   },
+   {
+    "t": 13.9,
+    "frm": "NAV_PREDOCK",
+    "to": "DOCK",
+    "why": "NAV_PREDOCK ok"
+   },
+   {
+    "t": 22.4,
+    "frm": "DOCK",
+    "to": "UNSTOW_ARM",
+    "why": "DOCK ok"
+   },
+   {
+    "t": 24.8,
+    "frm": "UNSTOW_ARM",
+    "to": "TASK_PERCEIVE_PLATE",
+    "why": "UNSTOW_ARM ok"
+   },
+   {
+    "t": 44.6,
+    "frm": "TASK_PERCEIVE_PLATE",
+    "to": "TASK_OPEN_DOOR",
+    "why": "TASK_PERCEIVE_PLATE ok"
+   },
+   {
+    "t": 66.7,
+    "frm": "TASK_OPEN_DOOR",
+    "to": "TASK_LOAD_POD",
+    "why": "TASK_OPEN_DOOR ok"
+   },
+   {
+    "t": 90.8,
+    "frm": "TASK_LOAD_POD",
+    "to": "TASK_PULL_BASKET",
+    "why": "TASK_LOAD_POD ok"
+   },
+   {
+    "t": 105.6,
+    "frm": "TASK_PULL_BASKET",
+    "to": "TASK_PICK_PLATE",
+    "why": "TASK_PULL_BASKET ok"
+   },
+   {
+    "t": 158.1,
+    "frm": "TASK_PICK_PLATE",
+    "to": "TASK_INSERT_PLATE",
+    "why": "TASK_PICK_PLATE ok"
+   },
+   {
+    "t": 179.6,
+    "frm": "TASK_INSERT_PLATE",
+    "to": "TASK_PUSH_BASKET",
+    "why": "TASK_INSERT_PLATE ok"
+   },
+   {
+    "t": 195.2,
+    "frm": "TASK_PUSH_BASKET",
+    "to": "TASK_CLOSE_DOOR",
+    "why": "TASK_PUSH_BASKET ok"
+   },
+   {
+    "t": 215.0,
+    "frm": "TASK_CLOSE_DOOR",
+    "to": "PANEL_POWER",
+    "why": "TASK_CLOSE_DOOR ok"
+   },
+   {
+    "t": 228.1,
+    "frm": "PANEL_POWER",
+    "to": "PANEL_POWER",
+    "why": "retry 1/2: panel did not show ('STANDBY', None) (readout OFF)"
+   },
+   {
+    "t": 238.4,
+    "frm": "PANEL_POWER",
+    "to": "PANEL_POWER",
+    "why": "retry 2/2: panel did not show ('STANDBY', None) (readout OFF)"
+   },
+   {
+    "t": 248.7,
+    "frm": "PANEL_POWER",
+    "to": "ABORT_SAFE_STOW",
+    "why": "abort: PANEL_POWER failed: panel did not show ('STANDBY', None) (readout OFF)"
+   },
+   {
+    "t": 259.1,
+    "frm": "ABORT_SAFE_STOW",
+    "to": "ABORT_UNDOCK",
+    "why": "ABORT_SAFE_STOW ok"
+   },
+   {
+    "t": 262.4,
+    "frm": "ABORT_UNDOCK",
+    "to": "ABORT_NAV_CHARGER",
+    "why": "ABORT_UNDOCK ok"
+   },
+   {
+    "t": 272.3,
+    "frm": "ABORT_NAV_CHARGER",
+    "to": "ABORT_DOCK_CHARGER",
+    "why": "ABORT_NAV_CHARGER ok"
+   },
+   {
+    "t": 276.2,
+    "frm": "ABORT_DOCK_CHARGER",
+    "to": "ABORTED",
+    "why": "ABORT_DOCK_CHARGER ok"
+   }
+  ],
+  "steps": {
+   "UNSTOW_ARM": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2245,
+    "elbow_max": 0.093,
+    "q6_low_deg": 82.91272253338143,
+    "q4_high_deg": 138.26044554301896,
+    "margin_deg": 21.600508876432034,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.303,
+    "dur_s": 2.3
+   },
+   "TASK_PERCEIVE_PLATE": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.1099,
+    "elbow_max": 0.0961,
+    "q6_low_deg": 79.17130813117716,
+    "q4_high_deg": 138.26044554301896,
+    "margin_deg": 26.734210720804214,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.339,
+    "dur_s": 19.7
+   },
+   "TASK_OPEN_DOOR": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2962,
+    "elbow_max": 0.2984,
+    "q6_low_deg": 45.41836442002035,
+    "q4_high_deg": 94.97921369883656,
+    "margin_deg": 10.639826255579388,
+    "margin_joint": [
+     2
+    ],
+    "tau": 0.514,
+    "dur_s": 22.0
+   },
+   "TASK_LOAD_POD": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2985,
+    "elbow_max": 0.3555,
+    "q6_low_deg": 55.903492070914425,
+    "q4_high_deg": 82.16787739971136,
+    "margin_deg": 35.964560800361774,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.594,
+    "dur_s": 24.0
+   },
+   "TASK_PULL_BASKET": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2931,
+    "elbow_max": 0.1811,
+    "q6_low_deg": 81.8470210344381,
+    "q4_high_deg": 82.17360697766266,
+    "margin_deg": 18.63258749765437,
+    "margin_joint": [
+     2
+    ],
+    "tau": 0.598,
+    "dur_s": 14.8
+   },
+   "TASK_PICK_PLATE": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.3042,
+    "elbow_max": 0.3086,
+    "q6_low_deg": 44.86832493669477,
+    "q4_high_deg": 68.60596638896477,
+    "margin_deg": 3.5122312841519463,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.682,
+    "dur_s": 52.4
+   },
+   "TASK_INSERT_PLATE": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.156,
+    "elbow_max": 0.1832,
+    "q6_low_deg": 34.07952965438137,
+    "q4_high_deg": 20.35146088304684,
+    "margin_deg": 13.034789839226228,
+    "margin_joint": [
+     7
+    ],
+    "tau": 0.757,
+    "dur_s": 21.4
+   },
+   "TASK_PUSH_BASKET": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2869,
+    "elbow_max": 0.3007,
+    "q6_low_deg": 73.88290768211967,
+    "q4_high_deg": 121.9368779597418,
+    "margin_deg": 17.53250853100319,
+    "margin_joint": [
+     7
+    ],
+    "tau": 0.516,
+    "dur_s": 15.5
+   },
+   "TASK_CLOSE_DOOR": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2975,
+    "elbow_max": 0.345,
+    "q6_low_deg": 51.549012827920166,
+    "q4_high_deg": 91.60449228551602,
+    "margin_deg": 5.792603308772622,
+    "margin_joint": [
+     2
+    ],
+    "tau": 0.867,
+    "dur_s": 19.7
+   },
+   "PANEL_POWER": {
+    "ok": 0,
+    "n": 1,
+    "tcp_max": 0.255,
+    "elbow_max": 0.1648,
+    "q6_low_deg": 56.00089489608666,
+    "q4_high_deg": 131.19014635110457,
+    "margin_deg": 24.579889411112315,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.349,
+    "dur_s": 9.2
+   }
+  },
+  "sim_s": 276.24,
+  "outcome": "ABORTED"
+ },
+ "low_battery": {
+  "row": {
+   "run": "low_battery",
+   "outcome": "DONE",
+   "all_steps": false,
+   "sim_s": 35.94,
+   "wall_s": 16.5,
+   "codex": [],
+   "plate": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "start": [
+    0.6,
+    1.92,
+    -90.0
+   ],
+   "dock_err": null,
+   "est_err": null,
+   "dock_F_peak": null,
+   "dock_F_after": null,
+   "creep_mm": 0,
+   "creep_deg": 0,
+   "min_wheel_N": 0,
+   "min_caster_N": 0,
+   "cop_m": 0,
+   "brake_Nm": 0,
+   "dockF_task": [
+    0,
+    0
+   ],
+   "charger_err": null,
+   "charge_F": null,
+   "soc_drop": -0.251,
+   "E_Wh": -3.93,
+   "I_peak": 2.7,
+   "P_peak": {
+    "total": 139.3,
+    "arm": 70.9,
+    "wheel": 3.1
+   },
+   "panel": "OFF",
+   "rss": 391.9,
+   "energy": {
+    "arm_mech_pos": 0.0,
+    "arm_elec": 0.688,
+    "wheel_mech_pos": 0.0,
+    "wheel_elec": 0.0,
+    "fixed": 0.552,
+    "brakes": 0.01,
+    "total": 1.25
+   },
+   "by_state": {
+    "BOOT": 0.003,
+    "LOCALIZE": 0.045,
+    "CHECK_BATTERY": 0.003,
+    "GO_CHARGE": 0.159,
+    "CHARGING": 1.038,
+    "DONE": 0.001
+   },
+   "t_state": {
+    "BOOT": 0.1,
+    "LOCALIZE": 1.3,
+    "CHECK_BATTERY": 0.1,
+    "GO_CHARGE": 4.3,
+    "CHARGING": 30.1,
+    "DONE": 0.04
+   },
+   "warnings": {},
+   "pen": 0.251,
+   "unplanned": []
+  },
+  "estop": {
+   "operator": [],
+   "supervisor": [],
+   "probe": null
+  },
+  "low_battery": {
+   "soc_min": 0.3,
+   "soc_at_check": 0.22,
+   "charged_s": 30.0,
+   "net_charge_A": 9.03,
+   "time_to_threshold_min": 15.5
+  },
+  "panel_events": [],
+  "jobs": [
+   {
+    "state": "LOCALIZE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "GO_CHARGE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "CHARGING",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   }
+  ],
+  "transitions": [
+   {
+    "t": 0.1,
+    "frm": "BOOT",
+    "to": "LOCALIZE",
+    "why": "boot complete"
+   },
+   {
+    "t": 1.4,
+    "frm": "LOCALIZE",
+    "to": "CHECK_BATTERY",
+    "why": "LOCALIZE ok"
+   },
+   {
+    "t": 1.5,
+    "frm": "CHECK_BATTERY",
+    "to": "LOW_BATTERY",
+    "why": "SoC 0.220 < 0.3 -> go charge instead of the mission"
+   },
+   {
+    "t": 1.5,
+    "frm": "LOW_BATTERY",
+    "to": "GO_CHARGE",
+    "why": "SoC 0.220"
+   },
+   {
+    "t": 5.8,
+    "frm": "GO_CHARGE",
+    "to": "CHARGING",
+    "why": "GO_CHARGE ok"
+   },
+   {
+    "t": 35.9,
+    "frm": "CHARGING",
+    "to": "DONE",
+    "why": "CHARGING ok"
+   }
+  ],
+  "steps": {},
+  "sim_s": 35.94,
+  "outcome": "DONE"
+ },
+ "panel_door_open_DEBUG": {
+  "row": {
+   "run": "panel_door_open_DEBUG",
+   "outcome": "ABORTED",
+   "all_steps": false,
+   "sim_s": 68.24,
+   "wall_s": 36.6,
+   "codex": [],
+   "plate": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "start": [
+    0.305,
+    0.42,
+    0.0
+   ],
+   "dock_err": null,
+   "est_err": null,
+   "dock_F_peak": null,
+   "dock_F_after": null,
+   "creep_mm": 0.18,
+   "creep_deg": 0.021,
+   "min_wheel_N": 350.3,
+   "min_caster_N": 15.4,
+   "cop_m": 0.1556,
+   "brake_Nm": 2.49,
+   "dockF_task": [
+    -3.4,
+    3.8
+   ],
+   "charger_err": null,
+   "charge_F": null,
+   "soc_drop": 0.151,
+   "E_Wh": 2.42,
+   "I_peak": 3.4,
+   "P_peak": {
+    "total": 182.2,
+    "arm": 126.9,
+    "wheel": 0.0
+   },
+   "panel": "SELECTED [QUICK]",
+   "rss": 401.5,
+   "energy": {
+    "arm_mech_pos": 0.039,
+    "arm_elec": 1.374,
+    "wheel_mech_pos": 0.0,
+    "wheel_elec": 0.0,
+    "fixed": 1.048,
+    "brakes": 0.0,
+    "total": 2.422
+   },
+   "by_state": {
+    "BOOT": 0.003,
+    "LOCALIZE_DOCKED": 0.107,
+    "UNSTOW_ARM": 0.085,
+    "TASK_OPEN_DOOR": 0.799,
+    "PANEL_POWER": 0.393,
+    "PANEL_QUICK": 0.304,
+    "PANEL_START": 0.365,
+    "ABORT_SAFE_STOW": 0.363,
+    "ABORTED": 0.001
+   },
+   "t_state": {
+    "BOOT": 0.1,
+    "LOCALIZE_DOCKED": 3.1,
+    "UNSTOW_ARM": 2.4,
+    "TASK_OPEN_DOOR": 22.1,
+    "PANEL_POWER": 11.0,
+    "PANEL_QUICK": 8.6,
+    "PANEL_START": 10.5,
+    "ABORT_SAFE_STOW": 10.4,
+    "ABORTED": 0.04
+   },
+   "warnings": {},
+   "pen": 0.382,
+   "unplanned": []
+  },
+  "estop": {
+   "operator": [],
+   "supervisor": [],
+   "probe": null
+  },
+  "low_battery": null,
+  "panel_events": [
+   {
+    "t": 36.996,
+    "event": "touch_power",
+    "state": "STANDBY",
+    "program": null
+   },
+   {
+    "t": 37.254,
+    "event": "touch_power_ignored_in_standby",
+    "state": "STANDBY",
+    "program": null
+   },
+   {
+    "t": 45.6,
+    "event": "touch_quick",
+    "state": "SELECTED",
+    "program": "quick"
+   },
+   {
+    "t": 54.188,
+    "event": "start_refused",
+    "state": "SELECTED",
+    "program": "quick",
+    "door_closed": false,
+    "tank_ok": true
+   },
+   {
+    "t": 54.446,
+    "event": "start_refused",
+    "state": "SELECTED",
+    "program": "quick",
+    "door_closed": false,
+    "tank_ok": true
+   },
+   {
+    "t": 54.708,
+    "event": "start_refused",
+    "state": "SELECTED",
+    "program": "quick",
+    "door_closed": false,
+    "tank_ok": true
+   }
+  ],
+  "jobs": [
+   {
+    "state": "LOCALIZE_DOCKED",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "UNSTOW_ARM",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_OPEN_DOOR",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "PANEL_POWER",
+    "ok": true,
+    "reason": "",
+    "panel": {
+     "state": "STANDBY",
+     "program": null
+    },
+    "m": {
+     "tool": "stylus",
+     "ft_stop": true,
+     "conductive_peak_N": 34.08,
+     "nonconductive_peak_N": 0.0,
+     "nonconductive_dwell_s": 0.0
+    }
+   },
+   {
+    "state": "PANEL_QUICK",
+    "ok": true,
+    "reason": "",
+    "panel": {
+     "state": "SELECTED",
+     "program": "quick"
+    },
+    "m": {
+     "tool": "stylus",
+     "ft_stop": true,
+     "conductive_peak_N": 20.53,
+     "nonconductive_peak_N": 0.0,
+     "nonconductive_dwell_s": 0.0
+    }
+   },
+   {
+    "state": "PANEL_START",
+    "ok": true,
+    "reason": "",
+    "panel": {
+     "state": "SELECTED"
+    },
+    "m": {
+     "tool": "stylus",
+     "ft_stop": true,
+     "conductive_peak_N": 34.73,
+     "nonconductive_peak_N": 0.0,
+     "nonconductive_dwell_s": 0.0
+    }
+   },
+   {
+    "state": "ABORT_SAFE_STOW",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   }
+  ],
+  "transitions": [
+   {
+    "t": 0.1,
+    "frm": "BOOT",
+    "to": "LOCALIZE_DOCKED",
+    "why": "boot complete"
+   },
+   {
+    "t": 3.2,
+    "frm": "LOCALIZE_DOCKED",
+    "to": "UNSTOW_ARM",
+    "why": "LOCALIZE_DOCKED ok"
+   },
+   {
+    "t": 5.6,
+    "frm": "UNSTOW_ARM",
+    "to": "TASK_OPEN_DOOR",
+    "why": "UNSTOW_ARM ok"
+   },
+   {
+    "t": 27.7,
+    "frm": "TASK_OPEN_DOOR",
+    "to": "PANEL_POWER",
+    "why": "TASK_OPEN_DOOR ok"
+   },
+   {
+    "t": 38.7,
+    "frm": "PANEL_POWER",
+    "to": "PANEL_QUICK",
+    "why": "panel readout STANDBY"
+   },
+   {
+    "t": 47.3,
+    "frm": "PANEL_QUICK",
+    "to": "PANEL_START",
+    "why": "panel readout SELECTED"
+   },
+   {
+    "t": 57.8,
+    "frm": "PANEL_START",
+    "to": "ABORT_SAFE_STOW",
+    "why": "abort: PANEL_START failed: panel did not show ('RUNNING', 'quick') (readout SELECTED)"
+   },
+   {
+    "t": 68.2,
+    "frm": "ABORT_SAFE_STOW",
+    "to": "ABORTED",
+    "why": "ABORT_SAFE_STOW ok"
+   }
+  ],
+  "steps": {
+   "UNSTOW_ARM": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2244,
+    "elbow_max": 0.0923,
+    "q6_low_deg": 82.97574789084581,
+    "q4_high_deg": 138.13439482809017,
+    "margin_deg": 21.600508876432034,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.305,
+    "dur_s": 2.3
+   },
+   "TASK_OPEN_DOOR": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2965,
+    "elbow_max": 0.2991,
+    "q6_low_deg": 45.332420750750735,
+    "q4_high_deg": 95.12245314761927,
+    "margin_deg": 10.79452486026471,
+    "margin_joint": [
+     2
+    ],
+    "tau": 0.648,
+    "dur_s": 22.0
+   },
+   "PANEL_POWER": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2751,
+    "elbow_max": 0.1907,
+    "q6_low_deg": 55.760252622131716,
+    "q4_high_deg": 127.91282776295628,
+    "margin_deg": 27.834289687455392,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.351,
+    "dur_s": 10.8
+   },
+   "PANEL_QUICK": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2478,
+    "elbow_max": 0.1961,
+    "q6_low_deg": 97.99297170122469,
+    "q4_high_deg": 113.25656736350982,
+    "margin_deg": 27.834289687455392,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.427,
+    "dur_s": 8.4
+   },
+   "PANEL_START": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2464,
+    "elbow_max": 0.1847,
+    "q6_low_deg": 96.14804760090344,
+    "q4_high_deg": 117.60531702855278,
+    "margin_deg": 27.622295303256987,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.326,
+    "dur_s": 8.4
+   }
+  },
+  "sim_s": 68.24,
+  "outcome": "ABORTED"
+ },
+ "mission_tcpcap025_DEBUG": {
+  "row": {
+   "run": "mission_tcpcap025_DEBUG",
+   "outcome": "DONE",
+   "all_steps": true,
+   "sim_s": 274.84,
+   "wall_s": 122.9,
+   "codex": [
+    15.8,
+    15.8
+   ],
+   "plate": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "start": [
+    0.6,
+    1.92,
+    -90.0
+   ],
+   "dock_err": [
+    -1.2,
+    0.44,
+    0.012
+   ],
+   "est_err": [
+    -0.32,
+    -0.71,
+    0.039
+   ],
+   "dock_F_peak": 107.5,
+   "dock_F_after": 130.2,
+   "creep_mm": 0.829,
+   "creep_deg": 0.017,
+   "min_wheel_N": 349.4,
+   "min_caster_N": 0.0,
+   "cop_m": 0.1522,
+   "brake_Nm": 13.6,
+   "dockF_task": [
+    125.7,
+    147.4
+   ],
+   "charger_err": [
+    -0.3,
+    3.4,
+    -1.11
+   ],
+   "charge_F": 18.0,
+   "soc_drop": 0.601,
+   "E_Wh": 9.61,
+   "I_peak": 4.1,
+   "P_peak": {
+    "total": 215.7,
+    "arm": 160.4,
+    "wheel": 61.2
+   },
+   "panel": "RUNNING [QUICK]",
+   "rss": 582.4,
+   "energy": {
+    "arm_mech_pos": 0.188,
+    "arm_elec": 5.87,
+    "wheel_mech_pos": 0.032,
+    "wheel_elec": 0.043,
+    "fixed": 4.221,
+    "brakes": 0.112,
+    "total": 10.246
+   },
+   "by_state": {
+    "BOOT": 0.003,
+    "LOCALIZE": 0.045,
+    "CHECK_BATTERY": 0.003,
+    "UNDOCK_CHARGER": 0.089,
+    "NAV_PREDOCK": 0.398,
+    "DOCK": 0.314,
+    "UNSTOW_ARM": 0.085,
+    "TASK_PERCEIVE_PLATE": 0.636,
+    "_codex_wait": 1.082,
+    "TASK_OPEN_DOOR": 0.813,
+    "TASK_LOAD_POD": 0.967,
+    "TASK_PULL_BASKET": 0.585,
+    "TASK_PICK_PLATE": 2.08,
+    "TASK_INSERT_PLATE": 0.825,
+    "TASK_PUSH_BASKET": 0.58,
+    "TASK_CLOSE_DOOR": 0.811,
+    "PANEL_POWER": 0.382,
+    "PANEL_QUICK": 0.318,
+    "PANEL_START": 0.303,
+    "STOW_ARM": 0.262,
+    "UNDOCK": 0.127,
+    "NAV_CHARGER": 0.393,
+    "DOCK_CHARGER": 0.144,
+    "CHARGE_CHECK": 0.072,
+    "FINAL_STATE": 0.003,
+    "FINAL_SOC": 0.003,
+    "DONE": 0.001
+   },
+   "t_state": {
+    "BOOT": 0.1,
+    "LOCALIZE": 1.3,
+    "CHECK_BATTERY": 0.1,
+    "UNDOCK_CHARGER": 2.3,
+    "NAV_PREDOCK": 10.1,
+    "DOCK": 8.5,
+    "UNSTOW_ARM": 2.4,
+    "TASK_PERCEIVE_PLATE": 18.5,
+    "_codex_wait": 31.6,
+    "TASK_OPEN_DOOR": 22.5,
+    "TASK_LOAD_POD": 24.9,
+    "TASK_PULL_BASKET": 15.5,
+    "TASK_PICK_PLATE": 55.3,
+    "TASK_INSERT_PLATE": 21.6,
+    "TASK_PUSH_BASKET": 16.0,
+    "TASK_CLOSE_DOOR": 20.7,
+    "PANEL_POWER": 10.9,
+    "PANEL_QUICK": 8.6,
+    "PANEL_START": 8.6,
+    "STOW_ARM": 7.5,
+    "UNDOCK": 3.3,
+    "NAV_CHARGER": 9.9,
+    "DOCK_CHARGER": 3.9,
+    "CHARGE_CHECK": 2.1,
+    "FINAL_STATE": 0.1,
+    "FINAL_SOC": 0.1,
+    "DONE": 0.04
+   },
+   "warnings": {},
+   "pen": 1.085,
+   "unplanned": []
+  },
+  "estop": {
+   "operator": [],
+   "supervisor": [],
+   "probe": null
+  },
+  "low_battery": null,
+  "panel_events": [
+   {
+    "t": 228.996,
+    "event": "touch_power",
+    "state": "STANDBY",
+    "program": null
+   },
+   {
+    "t": 237.584,
+    "event": "touch_quick",
+    "state": "SELECTED",
+    "program": "quick"
+   },
+   {
+    "t": 246.226,
+    "event": "start",
+    "state": "RUNNING",
+    "program": "quick"
+   }
+  ],
+  "jobs": [
+   {
+    "state": "LOCALIZE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "UNDOCK_CHARGER",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "NAV_PREDOCK",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "DOCK",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "UNSTOW_ARM",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PERCEIVE_PLATE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_OPEN_DOOR",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_LOAD_POD",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PULL_BASKET",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PICK_PLATE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_INSERT_PLATE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PUSH_BASKET",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_CLOSE_DOOR",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "PANEL_POWER",
+    "ok": true,
+    "reason": "",
+    "panel": {
+     "state": "STANDBY",
+     "program": null
+    },
+    "m": {
+     "tool": "stylus",
+     "ft_stop": true,
+     "conductive_peak_N": 36.76,
+     "nonconductive_peak_N": 0.0,
+     "nonconductive_dwell_s": 0.0
+    }
+   },
+   {
+    "state": "PANEL_QUICK",
+    "ok": true,
+    "reason": "",
+    "panel": {
+     "state": "SELECTED",
+     "program": "quick"
+    },
+    "m": {
+     "tool": "stylus",
+     "ft_stop": true,
+     "conductive_peak_N": 25.3,
+     "nonconductive_peak_N": 0.0,
+     "nonconductive_dwell_s": 0.0
+    }
+   },
+   {
+    "state": "PANEL_START",
+    "ok": true,
+    "reason": "",
+    "panel": {
+     "state": "RUNNING",
+     "program": "quick"
+    },
+    "m": {
+     "tool": "stylus",
+     "ft_stop": true,
+     "conductive_peak_N": 36.48,
+     "nonconductive_peak_N": 0.0,
+     "nonconductive_dwell_s": 0.0
+    }
+   },
+   {
+    "state": "STOW_ARM",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "UNDOCK",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "NAV_CHARGER",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "DOCK_CHARGER",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "CHARGE_CHECK",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "FINAL_STATE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "FINAL_SOC",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   }
+  ],
+  "transitions": [
+   {
+    "t": 0.1,
+    "frm": "BOOT",
+    "to": "LOCALIZE",
+    "why": "boot complete"
+   },
+   {
+    "t": 1.4,
+    "frm": "LOCALIZE",
+    "to": "CHECK_BATTERY",
+    "why": "LOCALIZE ok"
+   },
+   {
+    "t": 1.5,
+    "frm": "CHECK_BATTERY",
+    "to": "UNDOCK_CHARGER",
+    "why": "SoC 0.900"
+   },
+   {
+    "t": 3.8,
+    "frm": "UNDOCK_CHARGER",
+    "to": "NAV_PREDOCK",
+    "why": "UNDOCK_CHARGER ok"
+   },
+   {
+    "t": 13.9,
+    "frm": "NAV_PREDOCK",
+    "to": "DOCK",
+    "why": "NAV_PREDOCK ok"
+   },
+   {
+    "t": 22.4,
+    "frm": "DOCK",
+    "to": "UNSTOW_ARM",
+    "why": "DOCK ok"
+   },
+   {
+    "t": 24.8,
+    "frm": "UNSTOW_ARM",
+    "to": "TASK_PERCEIVE_PLATE",
+    "why": "UNSTOW_ARM ok"
+   },
+   {
+    "t": 43.3,
+    "frm": "TASK_PERCEIVE_PLATE",
+    "to": "TASK_OPEN_DOOR",
+    "why": "TASK_PERCEIVE_PLATE ok"
+   },
+   {
+    "t": 65.8,
+    "frm": "TASK_OPEN_DOOR",
+    "to": "TASK_LOAD_POD",
+    "why": "TASK_OPEN_DOOR ok"
+   },
+   {
+    "t": 90.7,
+    "frm": "TASK_LOAD_POD",
+    "to": "TASK_PULL_BASKET",
+    "why": "TASK_LOAD_POD ok"
+   },
+   {
+    "t": 106.2,
+    "frm": "TASK_PULL_BASKET",
+    "to": "TASK_PICK_PLATE",
+    "why": "TASK_PULL_BASKET ok"
+   },
+   {
+    "t": 161.5,
+    "frm": "TASK_PICK_PLATE",
+    "to": "TASK_INSERT_PLATE",
+    "why": "TASK_PICK_PLATE ok"
+   },
+   {
+    "t": 183.1,
+    "frm": "TASK_INSERT_PLATE",
+    "to": "TASK_PUSH_BASKET",
+    "why": "TASK_INSERT_PLATE ok"
+   },
+   {
+    "t": 199.1,
+    "frm": "TASK_PUSH_BASKET",
+    "to": "TASK_CLOSE_DOOR",
+    "why": "TASK_PUSH_BASKET ok"
+   },
+   {
+    "t": 219.8,
+    "frm": "TASK_CLOSE_DOOR",
+    "to": "PANEL_POWER",
+    "why": "TASK_CLOSE_DOOR ok"
+   },
+   {
+    "t": 230.7,
+    "frm": "PANEL_POWER",
+    "to": "PANEL_QUICK",
+    "why": "panel readout STANDBY"
+   },
+   {
+    "t": 239.3,
+    "frm": "PANEL_QUICK",
+    "to": "PANEL_START",
+    "why": "panel readout SELECTED"
+   },
+   {
+    "t": 247.9,
+    "frm": "PANEL_START",
+    "to": "STOW_ARM",
+    "why": "panel readout RUNNING"
+   },
+   {
+    "t": 255.4,
+    "frm": "STOW_ARM",
+    "to": "UNDOCK",
+    "why": "STOW_ARM ok"
+   },
+   {
+    "t": 258.7,
+    "frm": "UNDOCK",
+    "to": "NAV_CHARGER",
+    "why": "UNDOCK ok"
+   },
+   {
+    "t": 268.6,
+    "frm": "NAV_CHARGER",
+    "to": "DOCK_CHARGER",
+    "why": "NAV_CHARGER ok"
+   },
+   {
+    "t": 272.5,
+    "frm": "DOCK_CHARGER",
+    "to": "CHARGE_CHECK",
+    "why": "DOCK_CHARGER ok"
+   },
+   {
+    "t": 274.6,
+    "frm": "CHARGE_CHECK",
+    "to": "FINAL_STATE",
+    "why": "CHARGE_CHECK ok"
+   },
+   {
+    "t": 274.7,
+    "frm": "FINAL_STATE",
+    "to": "FINAL_SOC",
+    "why": "FINAL_STATE ok"
+   },
+   {
+    "t": 274.8,
+    "frm": "FINAL_SOC",
+    "to": "DONE",
+    "why": "FINAL_SOC ok"
+   }
+  ],
+  "steps": {
+   "UNSTOW_ARM": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2245,
+    "elbow_max": 0.093,
+    "q6_low_deg": 82.91272253338143,
+    "q4_high_deg": 138.26044554301896,
+    "margin_deg": 21.600508876432034,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.303,
+    "dur_s": 2.3
+   },
+   "TASK_PERCEIVE_PLATE": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.1099,
+    "elbow_max": 0.0961,
+    "q6_low_deg": 79.17130813117716,
+    "q4_high_deg": 138.26044554301896,
+    "margin_deg": 26.734210720804214,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.339,
+    "dur_s": 18.4
+   },
+   "TASK_OPEN_DOOR": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2486,
+    "elbow_max": 0.3001,
+    "q6_low_deg": 45.43555315387428,
+    "q4_high_deg": 95.01359116654442,
+    "margin_deg": 10.072598038399873,
+    "margin_joint": [
+     2
+    ],
+    "tau": 0.758,
+    "dur_s": 22.4
+   },
+   "TASK_LOAD_POD": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2567,
+    "elbow_max": 0.3586,
+    "q6_low_deg": 55.874844181157876,
+    "q4_high_deg": 82.16214782176004,
+    "margin_deg": 35.98747911216701,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.599,
+    "dur_s": 24.9
+   },
+   "TASK_PULL_BASKET": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.249,
+    "elbow_max": 0.1769,
+    "q6_low_deg": 81.86420976829203,
+    "q4_high_deg": 82.21944360127314,
+    "margin_deg": 18.661235387410912,
+    "margin_joint": [
+     2
+    ],
+    "tau": 0.546,
+    "dur_s": 15.4
+   },
+   "TASK_PICK_PLATE": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2564,
+    "elbow_max": 0.3117,
+    "q6_low_deg": 45.00010522957486,
+    "q4_high_deg": 68.70909879208833,
+    "margin_deg": 3.684118622691193,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.712,
+    "dur_s": 55.2
+   },
+   "TASK_INSERT_PLATE": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.1545,
+    "elbow_max": 0.1782,
+    "q6_low_deg": 33.57532679466624,
+    "q4_high_deg": 19.005010064489404,
+    "margin_deg": 15.613099917314933,
+    "margin_joint": [
+     7
+    ],
+    "tau": 0.747,
+    "dur_s": 21.5
+   },
+   "TASK_PUSH_BASKET": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2433,
+    "elbow_max": 0.2546,
+    "q6_low_deg": 73.73393865538564,
+    "q4_high_deg": 122.0858469864758,
+    "margin_deg": 17.549697264857116,
+    "margin_joint": [
+     7
+    ],
+    "tau": 0.498,
+    "dur_s": 15.9
+   },
+   "TASK_CLOSE_DOOR": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.248,
+    "elbow_max": 0.3447,
+    "q6_low_deg": 50.8041676942501,
+    "q4_high_deg": 91.68470637683434,
+    "margin_deg": 5.798332886723931,
+    "margin_joint": [
+     2
+    ],
+    "tau": 0.84,
+    "dur_s": 20.6
+   },
+   "PANEL_POWER": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2521,
+    "elbow_max": 0.1558,
+    "q6_low_deg": 56.03527236379451,
+    "q4_high_deg": 131.39641115735168,
+    "margin_deg": 23.588672425535993,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.343,
+    "dur_s": 10.7
+   },
+   "PANEL_QUICK": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2478,
+    "elbow_max": 0.2483,
+    "q6_low_deg": 86.23014816718889,
+    "q4_high_deg": 113.70347444371187,
+    "margin_deg": 25.009607757460433,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.49,
+    "dur_s": 8.4
+   },
+   "PANEL_START": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2438,
+    "elbow_max": 0.2267,
+    "q6_low_deg": 86.23014816718889,
+    "q4_high_deg": 118.28140722680715,
+    "margin_deg": 25.336193700685,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.408,
+    "dur_s": 8.5
+   },
+   "STOW_ARM": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2475,
+    "elbow_max": 0.1387,
+    "q6_low_deg": 68.52575229764645,
+    "q4_high_deg": 138.7703779806854,
+    "margin_deg": 13.332727892694257,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.454,
+    "dur_s": 7.4
+   }
+  },
+  "sim_s": 274.84,
+  "outcome": "DONE"
+ },
+ "mission_nocap_ref_DEBUG": {
+  "row": {
+   "run": "mission_nocap_ref_DEBUG",
+   "outcome": "DONE",
+   "all_steps": true,
+   "sim_s": 269.94,
+   "wall_s": 121.3,
+   "codex": [
+    15.8,
+    15.8
+   ],
+   "plate": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "start": [
+    0.6,
+    1.92,
+    -90.0
+   ],
+   "dock_err": [
+    -1.2,
+    0.44,
+    0.012
+   ],
+   "est_err": [
+    -0.32,
+    -0.71,
+    0.039
+   ],
+   "dock_F_peak": 107.5,
+   "dock_F_after": 130.2,
+   "creep_mm": 0.883,
+   "creep_deg": 0.0173,
+   "min_wheel_N": 349.2,
+   "min_caster_N": 0.0,
+   "cop_m": 0.1538,
+   "brake_Nm": 13.87,
+   "dockF_task": [
+    125.7,
+    148.4
+   ],
+   "charger_err": [
+    -0.6,
+    4.0,
+    -0.42
+   ],
+   "charge_F": 17.5,
+   "soc_drop": 0.59,
+   "E_Wh": 9.43,
+   "I_peak": 4.0,
+   "P_peak": {
+    "total": 212.6,
+    "arm": 157.3,
+    "wheel": 61.2
+   },
+   "panel": "RUNNING [QUICK]",
+   "rss": 602.2,
+   "energy": {
+    "arm_mech_pos": 0.188,
+    "arm_elec": 5.769,
+    "wheel_mech_pos": 0.032,
+    "wheel_elec": 0.043,
+    "fixed": 4.145,
+    "brakes": 0.112,
+    "total": 10.069
+   },
+   "by_state": {
+    "BOOT": 0.003,
+    "LOCALIZE": 0.045,
+    "CHECK_BATTERY": 0.003,
+    "UNDOCK_CHARGER": 0.089,
+    "NAV_PREDOCK": 0.398,
+    "DOCK": 0.314,
+    "UNSTOW_ARM": 0.085,
+    "TASK_PERCEIVE_PLATE": 0.636,
+    "_codex_wait": 1.082,
+    "TASK_OPEN_DOOR": 0.799,
+    "TASK_LOAD_POD": 0.939,
+    "TASK_PULL_BASKET": 0.559,
+    "TASK_PICK_PLATE": 2.032,
+    "TASK_INSERT_PLATE": 0.821,
+    "TASK_PUSH_BASKET": 0.566,
+    "TASK_CLOSE_DOOR": 0.779,
+    "PANEL_POWER": 0.382,
+    "PANEL_QUICK": 0.318,
+    "PANEL_START": 0.306,
+    "STOW_ARM": 0.249,
+    "UNDOCK": 0.127,
+    "NAV_CHARGER": 0.393,
+    "DOCK_CHARGER": 0.144,
+    "CHARGE_CHECK": 0.072,
+    "FINAL_STATE": 0.003,
+    "FINAL_SOC": 0.003,
+    "DONE": 0.001
+   },
+   "t_state": {
+    "BOOT": 0.1,
+    "LOCALIZE": 1.3,
+    "CHECK_BATTERY": 0.1,
+    "UNDOCK_CHARGER": 2.3,
+    "NAV_PREDOCK": 10.1,
+    "DOCK": 8.5,
+    "UNSTOW_ARM": 2.4,
+    "TASK_PERCEIVE_PLATE": 18.5,
+    "_codex_wait": 31.6,
+    "TASK_OPEN_DOOR": 22.1,
+    "TASK_LOAD_POD": 24.1,
+    "TASK_PULL_BASKET": 14.8,
+    "TASK_PICK_PLATE": 54.0,
+    "TASK_INSERT_PLATE": 21.5,
+    "TASK_PUSH_BASKET": 15.6,
+    "TASK_CLOSE_DOOR": 19.8,
+    "PANEL_POWER": 10.9,
+    "PANEL_QUICK": 8.6,
+    "PANEL_START": 8.7,
+    "STOW_ARM": 7.1,
+    "UNDOCK": 3.3,
+    "NAV_CHARGER": 9.9,
+    "DOCK_CHARGER": 3.9,
+    "CHARGE_CHECK": 2.1,
+    "FINAL_STATE": 0.1,
+    "FINAL_SOC": 0.1,
+    "DONE": 0.04
+   },
+   "warnings": {},
+   "pen": 0.814,
+   "unplanned": []
+  },
+  "estop": {
+   "operator": [],
+   "supervisor": [],
+   "probe": null
+  },
+  "low_battery": null,
+  "panel_events": [
+   {
+    "t": 224.41,
+    "event": "touch_power",
+    "state": "STANDBY",
+    "program": null
+   },
+   {
+    "t": 224.798,
+    "event": "touch_power_ignored_in_standby",
+    "state": "STANDBY",
+    "program": null
+   },
+   {
+    "t": 233.036,
+    "event": "touch_quick",
+    "state": "SELECTED",
+    "program": "quick"
+   },
+   {
+    "t": 241.67,
+    "event": "start",
+    "state": "RUNNING",
+    "program": "quick"
+   }
+  ],
+  "jobs": [
+   {
+    "state": "LOCALIZE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "UNDOCK_CHARGER",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "NAV_PREDOCK",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "DOCK",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "UNSTOW_ARM",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PERCEIVE_PLATE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_OPEN_DOOR",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_LOAD_POD",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PULL_BASKET",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PICK_PLATE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_INSERT_PLATE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_PUSH_BASKET",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "TASK_CLOSE_DOOR",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "PANEL_POWER",
+    "ok": true,
+    "reason": "",
+    "panel": {
+     "state": "STANDBY",
+     "program": null
+    },
+    "m": {
+     "tool": "stylus",
+     "ft_stop": true,
+     "conductive_peak_N": 40.22,
+     "nonconductive_peak_N": 0.0,
+     "nonconductive_dwell_s": 0.0
+    }
+   },
+   {
+    "state": "PANEL_QUICK",
+    "ok": true,
+    "reason": "",
+    "panel": {
+     "state": "SELECTED",
+     "program": "quick"
+    },
+    "m": {
+     "tool": "stylus",
+     "ft_stop": true,
+     "conductive_peak_N": 33.22,
+     "nonconductive_peak_N": 0.0,
+     "nonconductive_dwell_s": 0.0
+    }
+   },
+   {
+    "state": "PANEL_START",
+    "ok": true,
+    "reason": "",
+    "panel": {
+     "state": "RUNNING",
+     "program": "quick"
+    },
+    "m": {
+     "tool": "stylus",
+     "ft_stop": true,
+     "conductive_peak_N": 51.69,
+     "nonconductive_peak_N": 0.0,
+     "nonconductive_dwell_s": 0.0
+    }
+   },
+   {
+    "state": "STOW_ARM",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "UNDOCK",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "NAV_CHARGER",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "DOCK_CHARGER",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "CHARGE_CHECK",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "FINAL_STATE",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   },
+   {
+    "state": "FINAL_SOC",
+    "ok": true,
+    "reason": "",
+    "panel": null,
+    "m": {}
+   }
+  ],
+  "transitions": [
+   {
+    "t": 0.1,
+    "frm": "BOOT",
+    "to": "LOCALIZE",
+    "why": "boot complete"
+   },
+   {
+    "t": 1.4,
+    "frm": "LOCALIZE",
+    "to": "CHECK_BATTERY",
+    "why": "LOCALIZE ok"
+   },
+   {
+    "t": 1.5,
+    "frm": "CHECK_BATTERY",
+    "to": "UNDOCK_CHARGER",
+    "why": "SoC 0.900"
+   },
+   {
+    "t": 3.8,
+    "frm": "UNDOCK_CHARGER",
+    "to": "NAV_PREDOCK",
+    "why": "UNDOCK_CHARGER ok"
+   },
+   {
+    "t": 13.9,
+    "frm": "NAV_PREDOCK",
+    "to": "DOCK",
+    "why": "NAV_PREDOCK ok"
+   },
+   {
+    "t": 22.4,
+    "frm": "DOCK",
+    "to": "UNSTOW_ARM",
+    "why": "DOCK ok"
+   },
+   {
+    "t": 24.8,
+    "frm": "UNSTOW_ARM",
+    "to": "TASK_PERCEIVE_PLATE",
+    "why": "UNSTOW_ARM ok"
+   },
+   {
+    "t": 43.3,
+    "frm": "TASK_PERCEIVE_PLATE",
+    "to": "TASK_OPEN_DOOR",
+    "why": "TASK_PERCEIVE_PLATE ok"
+   },
+   {
+    "t": 65.4,
+    "frm": "TASK_OPEN_DOOR",
+    "to": "TASK_LOAD_POD",
+    "why": "TASK_OPEN_DOOR ok"
+   },
+   {
+    "t": 89.5,
+    "frm": "TASK_LOAD_POD",
+    "to": "TASK_PULL_BASKET",
+    "why": "TASK_LOAD_POD ok"
+   },
+   {
+    "t": 104.3,
+    "frm": "TASK_PULL_BASKET",
+    "to": "TASK_PICK_PLATE",
+    "why": "TASK_PULL_BASKET ok"
+   },
+   {
+    "t": 158.3,
+    "frm": "TASK_PICK_PLATE",
+    "to": "TASK_INSERT_PLATE",
+    "why": "TASK_PICK_PLATE ok"
+   },
+   {
+    "t": 179.8,
+    "frm": "TASK_INSERT_PLATE",
+    "to": "TASK_PUSH_BASKET",
+    "why": "TASK_INSERT_PLATE ok"
+   },
+   {
+    "t": 195.4,
+    "frm": "TASK_PUSH_BASKET",
+    "to": "TASK_CLOSE_DOOR",
+    "why": "TASK_PUSH_BASKET ok"
+   },
+   {
+    "t": 215.2,
+    "frm": "TASK_CLOSE_DOOR",
+    "to": "PANEL_POWER",
+    "why": "TASK_CLOSE_DOOR ok"
+   },
+   {
+    "t": 226.1,
+    "frm": "PANEL_POWER",
+    "to": "PANEL_QUICK",
+    "why": "panel readout STANDBY"
+   },
+   {
+    "t": 234.7,
+    "frm": "PANEL_QUICK",
+    "to": "PANEL_START",
+    "why": "panel readout SELECTED"
+   },
+   {
+    "t": 243.4,
+    "frm": "PANEL_START",
+    "to": "STOW_ARM",
+    "why": "panel readout RUNNING"
+   },
+   {
+    "t": 250.5,
+    "frm": "STOW_ARM",
+    "to": "UNDOCK",
+    "why": "STOW_ARM ok"
+   },
+   {
+    "t": 253.8,
+    "frm": "UNDOCK",
+    "to": "NAV_CHARGER",
+    "why": "UNDOCK ok"
+   },
+   {
+    "t": 263.7,
+    "frm": "NAV_CHARGER",
+    "to": "DOCK_CHARGER",
+    "why": "NAV_CHARGER ok"
+   },
+   {
+    "t": 267.6,
+    "frm": "DOCK_CHARGER",
+    "to": "CHARGE_CHECK",
+    "why": "DOCK_CHARGER ok"
+   },
+   {
+    "t": 269.7,
+    "frm": "CHARGE_CHECK",
+    "to": "FINAL_STATE",
+    "why": "CHARGE_CHECK ok"
+   },
+   {
+    "t": 269.8,
+    "frm": "FINAL_STATE",
+    "to": "FINAL_SOC",
+    "why": "FINAL_STATE ok"
+   },
+   {
+    "t": 269.9,
+    "frm": "FINAL_SOC",
+    "to": "DONE",
+    "why": "FINAL_SOC ok"
+   }
+  ],
+  "steps": {
+   "UNSTOW_ARM": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2245,
+    "elbow_max": 0.093,
+    "q6_low_deg": 82.91272253338143,
+    "q4_high_deg": 138.26044554301896,
+    "margin_deg": 21.600508876432034,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.303,
+    "dur_s": 2.3
+   },
+   "TASK_PERCEIVE_PLATE": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.1099,
+    "elbow_max": 0.0961,
+    "q6_low_deg": 79.17130813117716,
+    "q4_high_deg": 138.26044554301896,
+    "margin_deg": 26.734210720804214,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.339,
+    "dur_s": 18.4
+   },
+   "TASK_OPEN_DOOR": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2963,
+    "elbow_max": 0.2947,
+    "q6_low_deg": 45.43555315387428,
+    "q4_high_deg": 95.01359116654442,
+    "margin_deg": 10.645555833530695,
+    "margin_joint": [
+     2
+    ],
+    "tau": 0.758,
+    "dur_s": 22.0
+   },
+   "TASK_LOAD_POD": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2995,
+    "elbow_max": 0.3617,
+    "q6_low_deg": 55.89776249296312,
+    "q4_high_deg": 82.21371402332183,
+    "margin_deg": 35.97029037831308,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.6,
+    "dur_s": 24.0
+   },
+   "TASK_PULL_BASKET": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2934,
+    "elbow_max": 0.1775,
+    "q6_low_deg": 81.89285765804857,
+    "q4_high_deg": 82.28819853668882,
+    "margin_deg": 18.621128341751756,
+    "margin_joint": [
+     2
+    ],
+    "tau": 0.539,
+    "dur_s": 14.8
+   },
+   "TASK_PICK_PLATE": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.3042,
+    "elbow_max": 0.3139,
+    "q6_low_deg": 45.1719925681141,
+    "q4_high_deg": 68.99557768965373,
+    "margin_deg": 3.7127665124477343,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.668,
+    "dur_s": 53.9
+   },
+   "TASK_INSERT_PLATE": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.155,
+    "elbow_max": 0.1812,
+    "q6_low_deg": 33.62116341827671,
+    "q4_high_deg": 19.19408613688258,
+    "margin_deg": 15.968333750296043,
+    "margin_joint": [
+     7
+    ],
+    "tau": 0.713,
+    "dur_s": 21.4
+   },
+   "TASK_PUSH_BASKET": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2853,
+    "elbow_max": 0.2988,
+    "q6_low_deg": 74.04906544270759,
+    "q4_high_deg": 122.12595403213497,
+    "margin_deg": 17.6069930443702,
+    "margin_joint": [
+     7
+    ],
+    "tau": 0.519,
+    "dur_s": 15.6
+   },
+   "TASK_CLOSE_DOOR": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2981,
+    "elbow_max": 0.3449,
+    "q6_low_deg": 51.51463536021232,
+    "q4_high_deg": 91.70762468863957,
+    "margin_deg": 5.838439932383089,
+    "margin_joint": [
+     2
+    ],
+    "tau": 0.869,
+    "dur_s": 19.7
+   },
+   "PANEL_POWER": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2506,
+    "elbow_max": 0.1585,
+    "q6_low_deg": 56.0238132078919,
+    "q4_high_deg": 131.23025339676374,
+    "margin_deg": 23.56002453577945,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.381,
+    "dur_s": 10.7
+   },
+   "PANEL_QUICK": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2454,
+    "elbow_max": 0.2466,
+    "q6_low_deg": 86.14993407587059,
+    "q4_high_deg": 113.64044908624749,
+    "margin_deg": 24.883557042531653,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.457,
+    "dur_s": 8.5
+   },
+   "PANEL_START": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.243,
+    "elbow_max": 0.227,
+    "q6_low_deg": 86.14420449791928,
+    "q4_high_deg": 118.1095198882679,
+    "margin_deg": 25.22160214165884,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.399,
+    "dur_s": 8.5
+   },
+   "STOW_ARM": {
+    "ok": 1,
+    "n": 1,
+    "tcp_max": 0.2981,
+    "elbow_max": 0.1513,
+    "q6_low_deg": 68.57158892125693,
+    "q4_high_deg": 138.63859768780532,
+    "margin_deg": 13.390023672207338,
+    "margin_joint": [
+     4
+    ],
+    "tau": 0.399,
+    "dur_s": 7.1
+   }
+  },
+  "sim_s": 269.94,
+  "outcome": "DONE"
+ },
+ "brake_test": [
+  {
+   "spec": "v1.0",
+   "direction": "forward",
+   "stop": "cat0",
+   "v0": 0.5,
+   "stop_mm": 50.8,
+   "stop_s": 0.4,
+   "min_load_10ms_N": {
+    "wheel_l_tyre": 232.4,
+    "wheel_r_tyre": 242.1,
+    "caster0_ball": 128.6,
+    "caster1_ball": 150.4,
+    "caster2_ball": 0.0,
+    "caster3_ball": 0.0
+   },
+   "caster_lift_max_mm": 0.112,
+   "unloaded_casters_s": 0.126,
+   "cop_margin_min_m": -0.0
+  },
+  {
+   "spec": "v1.0",
+   "direction": "forward",
+   "stop": "cat1",
+   "v0": 0.5,
+   "stop_mm": 90.8,
+   "stop_s": 0.4,
+   "min_load_10ms_N": {
+    "wheel_l_tyre": 351.3,
+    "wheel_r_tyre": 351.3,
+    "caster0_ball": 149.4,
+    "caster1_ball": 172.2,
+    "caster2_ball": 40.9,
+    "caster3_ball": 46.7
+   },
+   "caster_lift_max_mm": -0.001,
+   "unloaded_casters_s": 0.0,
+   "cop_margin_min_m": 0.1819
+  },
+  {
+   "spec": "v1.0",
+   "direction": "reverse",
+   "stop": "cat0",
+   "v0": 0.5,
+   "stop_mm": 50.5,
+   "stop_s": 0.4,
+   "min_load_10ms_N": {
+    "wheel_l_tyre": 225.1,
+    "wheel_r_tyre": 247.2,
+    "caster0_ball": 0.0,
+    "caster1_ball": 8.5,
+    "caster2_ball": 82.0,
+    "caster3_ball": 87.1
+   },
+   "caster_lift_max_mm": 0.015,
+   "unloaded_casters_s": 0.01,
+   "cop_margin_min_m": -0.0
+  },
+  {
+   "spec": "v1.0",
+   "direction": "reverse",
+   "stop": "cat1",
+   "v0": 0.5,
+   "stop_mm": 90.8,
+   "stop_s": 0.4,
+   "min_load_10ms_N": {
+    "wheel_l_tyre": 351.3,
+    "wheel_r_tyre": 351.3,
+    "caster0_ball": 84.1,
+    "caster1_ball": 105.8,
+    "caster2_ball": 107.9,
+    "caster3_ball": 111.9
+   },
+   "caster_lift_max_mm": -0.002,
+   "unloaded_casters_s": 0.0,
+   "cop_margin_min_m": 0.2243
+  },
+  {
+   "spec": "provisional",
+   "direction": "forward",
+   "stop": "cat0",
+   "v0": 0.5,
+   "stop_mm": 36.4,
+   "stop_s": 0.4,
+   "min_load_10ms_N": {
+    "wheel_l_tyre": 122.9,
+    "wheel_r_tyre": 120.7,
+    "caster0_ball": 0.0,
+    "caster1_ball": 0.0,
+    "caster2_ball": 0.0,
+    "caster3_ball": 0.0
+   },
+   "caster_lift_max_mm": 4.11,
+   "unloaded_casters_s": 0.292,
+   "cop_margin_min_m": -0.0002
+  },
+  {
+   "spec": "provisional",
+   "direction": "forward",
+   "stop": "cat1",
+   "v0": 0.5,
+   "stop_mm": 87.7,
+   "stop_s": 0.4,
+   "min_load_10ms_N": {
+    "wheel_l_tyre": 300.4,
+    "wheel_r_tyre": 300.4,
+    "caster0_ball": 136.4,
+    "caster1_ball": 152.6,
+    "caster2_ball": 15.5,
+    "caster3_ball": 20.0
+   },
+   "caster_lift_max_mm": -0.001,
+   "unloaded_casters_s": 0.0,
+   "cop_margin_min_m": 0.1689
+  },
+  {
+   "spec": "provisional",
+   "direction": "reverse",
+   "stop": "cat0",
+   "v0": 0.5,
+   "stop_mm": 37.2,
+   "stop_s": 0.4,
+   "min_load_10ms_N": {
+    "wheel_l_tyre": 300.3,
+    "wheel_r_tyre": 300.3,
+    "caster0_ball": 0.0,
+    "caster1_ball": 3.5,
+    "caster2_ball": 36.9,
+    "caster3_ball": 40.0
+   },
+   "caster_lift_max_mm": 0.001,
+   "unloaded_casters_s": 0.062,
+   "cop_margin_min_m": 0.1522
+  },
+  {
+   "spec": "provisional",
+   "direction": "reverse",
+   "stop": "cat1",
+   "v0": 0.5,
+   "stop_mm": 87.7,
+   "stop_s": 0.4,
+   "min_load_10ms_N": {
+    "wheel_l_tyre": 300.4,
+    "wheel_r_tyre": 300.3,
+    "caster0_ball": 79.7,
+    "caster1_ball": 95.3,
+    "caster2_ball": 73.8,
+    "caster3_ball": 76.3
+   },
+   "caster_lift_max_mm": -0.002,
+   "unloaded_casters_s": 0.0,
+   "cop_margin_min_m": 0.2251
+  }
+ ]
+}

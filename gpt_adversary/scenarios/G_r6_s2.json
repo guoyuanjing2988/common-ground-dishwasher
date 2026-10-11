@@ -1,0 +1,12 @@
+{
+ "name": "accepted_size_wrong_slot_geometry",
+ "source": "gpt",
+ "hypothesis": "A 109 mm radius plate remains inside the perception acceptance interval, but the insertion trajectory still assumes 101.5 mm. Its bottom rim reaches supports earlier and its larger outline can contact additional tines, causing premature touchdown and release in an unsupported or tilted configuration.",
+ "expected_failure": "Step 6 releases on early rim contact; the seating check fails because of excessive lean or contact with neighboring tines.",
+ "real_world_story": "A household mixes slightly different dinner-plate sizes in the same cupboard.",
+ "params": {
+  "plate": {
+   "radius_m": 0.109
+  }
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "name": "sparse_16",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "pod": {
+   "dx": -0.0013,
+   "dy": 0.0178,
+   "yaw_deg": 27.2596,
+   "size_scale": 0.9952,
+   "mass_kg": 0.0175,
+   "location": "dish"
+  },
+  "dish": {
+   "dx": -0.0384,
+   "dy": -0.0073
+  },
+  "person": {
+   "at_s": 70.93,
+   "dur_s": 25.41,
+   "distance_m": 1.14
+  }
+ }
+}

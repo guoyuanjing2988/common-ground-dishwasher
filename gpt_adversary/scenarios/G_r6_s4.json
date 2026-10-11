@@ -1,0 +1,12 @@
+{
+ "name": "resistive_hinge_overloads_fixed_arc",
+ "source": "gpt",
+ "hypothesis": "Elevated continuous hinge friction opposes both opening and closing without introducing a latch or spring-back fault. The fixed joint trajectory must transmit additional torque through the pull-bar grasp, potentially causing grasp migration or incomplete closure despite a successful opening.",
+ "expected_failure": "Step 2 fails to reach 85 degrees, or step 8 loses handle engagement and leaves the door outside its one-degree closure tolerance.",
+ "real_world_story": "A sticky gasket and dirty hinge make the dishwasher door noticeably harder to move.",
+ "params": {
+  "door": {
+   "hinge_friction_Nm": 2.0
+  }
+ }
+}

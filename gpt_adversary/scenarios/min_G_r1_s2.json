@@ -1,0 +1,13 @@
+{
+ "name": "min_G_r1_s2",
+ "source": "minimized",
+ "from_entry": "G_r1_s2",
+ "target_mode": "insert_plate|door_closed,plate_in_slot,quick_running|robot_plate_contact214N",
+ "params": {
+  "basket": {
+   "preload_slots": [
+    6
+   ]
+  }
+ }
+}

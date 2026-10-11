@@ -1,0 +1,13 @@
+{
+ "name": "camera_bump_amplifies_pinch_contact",
+ "source": "gpt",
+ "hypothesis": "The 20 mm camera translation already produced 46.8 N during pinch approach. Adding a small pitch error changes the reconstructed rim position further while potentially preserving the accepted radius, causing the position-controlled hand to drive into the plate before grasping.",
+ "expected_failure": "Step 5 pinch approach produces an unplanned contact above 50 N, potentially before its held-plate check detects any problem.",
+ "real_world_story": "Someone knocks the camera bracket while cleaning, shifting and tilting it slightly.",
+ "params": {
+  "camera_bump": {
+   "dx": 0.02,
+   "pitch_deg": -2.0
+  }
+ }
+}

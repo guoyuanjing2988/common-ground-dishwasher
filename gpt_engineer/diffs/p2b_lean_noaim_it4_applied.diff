@@ -1,0 +1,11 @@
+--- a/pipeline.py
++++ b/pipeline.py
+@@ -1319,6 +1319,8 @@
+         self.ref['cmd'] = (stop_p, Rh)
+         self.substep('release, retract')
+         self.allowed = {self.pid}
++        # Recover the commanded attitude after touchdown while the grasp is firm.
++        self.hold('touchdown_recover', 2.0, 0.)
+         # Unload the pinch without changing the hand pose; light pad friction lets
+         # gravity seat the plate before the fingers stop guiding its attitude.
+         width = float(sum(d.qpos[self.fq]))

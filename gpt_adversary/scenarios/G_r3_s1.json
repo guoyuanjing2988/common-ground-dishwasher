@@ -1,0 +1,12 @@
+{
+ "name": "face_down_rim_grasp",
+ "source": "gpt",
+ "hypothesis": "An inverted plate preserves the outer radius used by perception but changes the rim height and cross-section. The calibrated pinch may close above the rim or contact the wrong surface, never establishing the intended grasp.",
+ "expected_failure": "Step 5c fails to acquire the rim; the subsequent lift check reports the plate not held. The targeted mechanism is incorrect initial grasp geometry, not loss of an established grasp during tilt.",
+ "real_world_story": "Someone leaves a washed plate upside down on the counter to dry.",
+ "params": {
+  "plate": {
+   "upside_down": true
+  }
+ }
+}

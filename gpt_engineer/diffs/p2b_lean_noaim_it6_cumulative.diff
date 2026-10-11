@@ -1,0 +1,37 @@
+--- a/pipeline.py
++++ b/pipeline.py
+@@ -1306,19 +1306,30 @@
+             sup['filt'] += .2 * (s_ - sup['filt'])
+             sup['peak'] = max(sup.get('peak', 0.), s_)
+             near = abs(self.tcp()[0][2] - ph[2]) < .04
+-            sup['cnt'] = sup['cnt'] + 1 if (sup['filt'] > .5 and near) else 0
+-            if sup['cnt'] >= 5:
++            # Require sustained support of most of the ~4.4 N plate weight,
++            # rather than stopping at the first light contact with a tine.
++            sup['cnt'] = sup['cnt'] + 1 if (sup['filt'] > 3.5 and near) else 0
++            if sup['cnt'] >= 25:
+                 sup['at'] = self.tcp()[0].copy()
+                 return True
+             return False
+         self.substep('insert between the tines (stop on wrist-F/T touchdown)')
+-        hit = self.move('insert', 2.5, ph + [0, 0, .025], Rh, 0., stop=stop, qpath=qs[2:4])
++        # Reduce contact impulse against the tines and freely sliding basket;
++        # preserve both descent endpoints, the insertion aim, and the firm grasp.
++        hit = self.move('insert', 10.0, ph + [0, 0, .025], Rh, 0., stop=stop, qpath=qs[2:4])
+         if not hit:
+-            hit = self.move('insert_slow', 4.0, ph - [0, 0, .008], Rh, 0., stop=stop, qpath=qs[3:4])
++            hit = self.move('insert_slow', 12.0, ph - [0, 0, .008], Rh, 0., stop=stop, qpath=qs[3:4])
+         stop_p = sup['at'] if hit else ph - [0, 0, .006]
+         self.ref['cmd'] = (stop_p, Rh)
+         self.substep('release, retract')
+         self.allowed = {self.pid}
++        # Recover the commanded attitude after touchdown while the grasp is firm.
++        self.hold('touchdown_recover', 2.0, 0.)
++        # Unload the pinch without changing the hand pose; light pad friction lets
++        # gravity seat the plate before the fingers stop guiding its attitude.
++        width = float(sum(d.qpos[self.fq]))
++        self.hold('unload_grip', 2.0, squeeze_ctrl(width, 2.0))
++        self.hold('seat_light_grip', 2.0)
+         self.move('release', 1.0, stop_p, Rh, 200.)
+         self.move('retract', 1.5, stop_p + [0, 0, .12], Rh, 200.)
+         self.allowed = set()

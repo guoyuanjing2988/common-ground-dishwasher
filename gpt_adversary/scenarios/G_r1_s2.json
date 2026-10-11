@@ -1,0 +1,14 @@
+{
+ "name": "occupied_target_slot",
+ "source": "gpt",
+ "hypothesis": "An existing plate occupies slot 6. The incoming plate contacts it before reaching the intended supports, triggering touchdown and release without any occupancy-aware recovery.",
+ "expected_failure": "Step 6 releases onto the existing plate; the new plate leans, contacts the existing plate, or falls outside its supports, failing the seating check.",
+ "real_world_story": "Someone leaves one clean plate in the basket before asking the robot to load another.",
+ "params": {
+  "basket": {
+   "preload_slots": [
+    6
+   ]
+  }
+ }
+}

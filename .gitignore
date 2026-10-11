@@ -1,6 +1,8 @@
 .venv/
 mujoco_menagerie/
 out/
+logs/
+codex_work/
 __pycache__/
 *.pyc
 .DS_Store

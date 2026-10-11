@@ -1,0 +1,12 @@
+{
+ "name": "thick_pod_closure_clearance",
+ "source": "gpt",
+ "hypothesis": "The enlarged tablet measures 40 by 30 by 16.25 mm: its aligned footprint fits the groove, but it protrudes 4.25 mm above the groove face. It tests whether closure contact can dislodge a pod after its placement check has passed.",
+ "expected_failure": "If the extra protrusion exhausts closure clearance, step 8 either fails to close or displaces the pod. Displacement followed by successful closure could produce claimed success with pod_in_groove false.",
+ "real_world_story": "The household switches to a larger detergent tablet that still fits the dispenser opening.",
+ "params": {
+  "pod": {
+   "size_scale": 1.25
+  }
+ }
+}

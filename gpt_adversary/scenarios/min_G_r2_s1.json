@@ -1,0 +1,23 @@
+{
+ "name": "min_G_r2_s1",
+ "source": "minimized",
+ "from_entry": "G_r2_s1",
+ "target_mode": "claimed_ok||bottle_fell_off_counter",
+ "params": {
+  "clutter": [
+   {
+    "type": "bottle",
+    "surface": "counter",
+    "x": -0.035,
+    "y": 0.47,
+    "yaw_deg": 0,
+    "size_scale": 0.8,
+    "rgb": [
+     0.25,
+     0.55,
+     0.35
+    ]
+   }
+  ]
+ }
+}

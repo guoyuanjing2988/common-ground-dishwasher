@@ -1,0 +1,17 @@
+{
+ "name": "sparse_19",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "camera_bump": {
+   "roll_deg": -1.0706,
+   "pitch_deg": -0.6377,
+   "yaw_deg": 2.1405,
+   "dx": -0.0026,
+   "dy": -0.0001,
+   "dz": 0.0087
+  }
+ }
+}

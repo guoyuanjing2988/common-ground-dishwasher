@@ -1,0 +1,14 @@
+{
+ "name": "sparse_01",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "dishwasher": {
+   "dx": -0.0251,
+   "dy": 0.0249,
+   "yaw_deg": 1.8362
+  }
+ }
+}

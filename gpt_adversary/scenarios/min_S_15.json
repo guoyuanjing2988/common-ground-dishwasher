@@ -1,0 +1,12 @@
+{
+ "name": "min_S_15",
+ "source": "minimized",
+ "from_entry": "S_15",
+ "target_mode": "load_pod|door_closed,plate_in_slot,pod_in_groove,quick_running|",
+ "params": {
+  "dish": {
+   "dx": -0.01715,
+   "dy": -0.01897
+  }
+ }
+}

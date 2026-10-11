@@ -1,0 +1,5 @@
+{"type":"object","additionalProperties":false,"required":["found","bbox","rim_top","center"],
+ "properties":{"found":{"type":"boolean"},
+  "bbox":{"type":"array","items":{"type":"number"},"minItems":4,"maxItems":4,"description":"[x_min,y_min,x_max,y_max] pixels of the dinner plate"},
+  "rim_top":{"type":"array","items":{"type":"number"},"minItems":2,"maxItems":2,"description":"[x,y] pixel of the highest point of the plate rim"},
+  "center":{"type":"array","items":{"type":"number"},"minItems":2,"maxItems":2,"description":"[x,y] pixel of the plate centre"}}}

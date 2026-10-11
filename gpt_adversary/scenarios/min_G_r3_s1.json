@@ -1,0 +1,11 @@
+{
+ "name": "min_G_r3_s1",
+ "source": "minimized",
+ "from_entry": "G_r3_s1",
+ "target_mode": "pick_plate|basket_in,door_closed,plate_in_slot,quick_running|",
+ "params": {
+  "plate": {
+   "upside_down": true
+  }
+ }
+}

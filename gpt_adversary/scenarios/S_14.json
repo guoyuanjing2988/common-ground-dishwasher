@@ -1,0 +1,20 @@
+{
+ "name": "sparse_14",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "lighting": {
+   "key_scale": 1.249,
+   "ambient_scale": 0.9251,
+   "color_temp_K": 4034.863,
+   "key_azimuth_deg": 24.9132
+  },
+  "dishwasher": {
+   "dx": -0.0262,
+   "dy": 0.0354,
+   "yaw_deg": -1.7868
+  }
+ }
+}

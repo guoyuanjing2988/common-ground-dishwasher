@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sink to Shelf</title>
+<meta name="description" content="A wheeled robot that docks at the counter and loads a countertop dishwasher, with GPT as its task-level brain. MuJoCo simulation plus a costed hardware design. Common Ground Makeathon 2026.">
+<style>
+  :root {
+    --bg: #0e1116; --panel: #161b22; --line: #2a313c; --text: #eef1f4; --muted: #a2abb6;
+    --acc: #5ec8a0; --warn: #f0786e; --img: #ffffff;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f6f7f9; --panel: #ffffff; --line: #dde2e8; --text: #12161c; --muted: #56606c;
+      --acc: #12805c; --warn: #b8392f; --img: #ffffff; color-scheme: light;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", sans-serif; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 56px 0 24px; }
+  h1 { font-size: clamp(40px, 7vw, 72px); line-height: 1.05; margin: 0 0 12px; letter-spacing: -0.02em; }
+  h2 { font-size: 28px; margin: 56px 0 12px; }
+  h3 { font-size: 19px; margin: 0 0 6px; }
+  p { margin: 0 0 12px; }
+  .lead { font-size: 21px; color: var(--text); max-width: 760px; }
+  .zh { color: var(--muted); font-size: 16px; }
+  .badge { display: inline-block; border: 1px solid var(--warn); color: var(--warn); border-radius: 999px;
+           padding: 4px 12px; font-size: 14px; margin: 8px 0 0; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 0; }
+  .links a { border: 1px solid var(--line); background: var(--panel); color: var(--text); text-decoration: none;
+             padding: 8px 14px; border-radius: 8px; font-size: 15px; }
+  .links a:hover { border-color: var(--acc); }
+  video { width: 100%; border-radius: 10px; background: #000; display: block; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 20px 0; }
+  .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .stat b { display: block; font-size: 32px; color: var(--acc); line-height: 1.1; }
+  .stat span { font-size: 14px; color: var(--muted); }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+  figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  figure img { width: 100%; display: block; }
+  figcaption { padding: 8px 12px; font-size: 14px; color: var(--muted); }
+  .diagram img { background: var(--img); }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 12px 0; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .tablewrap { overflow-x: auto; }
+  .src { font-size: 13px; color: var(--muted); }
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .honest { border-left: 4px solid var(--warn); background: var(--panel); padding: 16px 18px; border-radius: 0 10px 10px 0; }
+  footer { margin: 64px 0 40px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); padding-top: 20px; }
+  a { color: var(--acc); }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Sink to Shelf</h1>
+  <p class="lead">From the messy sink to a loaded dishwasher. A wheeled robot docks at the kitchen counter, GPT recognises what to load, and a Franka arm loads the countertop dishwasher.</p>
+  <p class="zh">一台会自己开到台面前、停稳、帮你装台式洗碗机并启动的机器人。GPT 负责任务层决策。</p>
+  <span class="badge">MuJoCo physics simulation + real-hardware design. Not yet a physical robot.</span>
+  <div class="links">
+    <a href="https://github.com/guoyuanjing2988/common-ground-dishwasher">Source code (GitHub)</a>
+    <a href="slides.html">Slides</a>
+    
+    <a href="#hardware">Hardware &amp; BOM</a>
+  </div>
+</header>
+
+<video controls preload="metadata" poster="assets/base_05_dock_end.jpg">
+  <source src="media/demo_final.mp4" type="video/mp4">
+  Your browser cannot play this video. <a href="media/demo_final.mp4">Download demo_final.mp4</a>.
+</video>
+<p class="src">Demo video with bilingual captions. Everything shown is MuJoCo simulation; slow parts are sped up (the speed is shown on screen).</p>
+
+<div class="stats">
+  <div class="stat"><b>164 / 164</b><span>counter items recognised and classified by GPT over 24 random kitchens</span></div>
+  <div class="stat"><b>5 / 5</b><span>dishes placed from perceived poses after GPT found 13/13 items (gripper; suction too)</span></div>
+  <div class="stat"><b>6 / 6</b><span>complete mobile missions: charger → dock → load → start → charger</span></div>
+  <div class="stat"><b>10 / 10</b><span>9-step loading runs from a docked cart with real camera + Codex vision</span></div>
+  <div class="stat"><b>13 / 14</b><span>fault missions finished by GPT (hard-coded script: 0 / 14)</span></div>
+</div>
+
+<h2>Why</h2>
+<p>Loading the dishwasher needs bending, reaching and careful hands, every single day. For older people, carers and busy families in compact kitchens, it is one more chore that never ends. A countertop dishwasher already does the washing. We automate the part that is left: putting things in and pressing start, with an unmodified appliance in an unmodified kitchen.</p>
+<p class="zh">装洗碗机要弯腰、伸手、小心，而且天天要做。对老人、照护者和忙碌的小家庭来说，它永远做不完。我们把剩下的这一步自动化：不改电器、不改厨房。</p>
+
+<h2>How it works</h2>
+<div class="steps">
+  <figure><img src="assets/base_05_dock_end.jpg" alt="Robot docked at the counter" loading="lazy"><figcaption>1. Drives from its charger, lidar-localises, reverses into V-blocks at 100 N and brakes.</figcaption></figure>
+  <figure><img src="assets/1_perceive_plate_codex_overlay.jpg" alt="Wall camera image with Codex detection box" loading="lazy"><figcaption>2. Wall camera + GPT (Codex) box + depth fit: plate centre to ~1 mm.</figcaption></figure>
+  <figure><img src="assets/03_load_pod.jpg" alt="Arm loading the detergent pod into the door groove" loading="lazy"><figcaption>3. Opens the door along its hinge arc; drops the pod in the door groove.</figcaption></figure>
+  <figure><img src="assets/05_pick_plate.jpg" alt="Arm picking the flat plate" loading="lazy"><figcaption>4. Slides the flat plate to the edge, pinches the overhanging rim, tilts it upright.</figcaption></figure>
+  <figure><img src="assets/06_insert_plate.jpg" alt="Plate inserted between the tines" loading="lazy"><figcaption>5. Inserts it between the tines, pushes the basket in, closes the door.</figcaption></figure>
+  <figure><img src="assets/base_17_panel_start_end.jpg" alt="Panel pressed, wash running" loading="lazy"><figcaption>6. POWER → QUICK → POWER with a conductive fingertip; drives back to charge.</figcaption></figure>
+</div>
+
+<h2>The kitchen: recognise everything, then load plates and bowls</h2>
+<p>One live GPT call looks at a cluttered counter (3 plates, 2 bowls and 8 everyday items) and labels every item: what goes into the dishwasher, where, and why the rest stays out. Depth inside GPT's boxes gives each dish's pose, and the arm loads all five from those <b>perceived</b> poses. The clutter is left untouched.</p>
+<p class="zh">一次 GPT 调用看清杂乱台面上的每件物品：哪些进洗碗机、放哪里、其余为什么留下。GPT 的框加上深度相机给出每个盘碗的位置，机械臂按感知到的位置装好全部 5 件，杂物没被碰到。</p>
+<div class="two">
+  <figure><img src="assets/kitchen_recognition.jpg" alt="GPT recognition card on the kitchen counter" loading="lazy"><figcaption>GPT's recognition (29.3 s call): 13/13 items found. Green = load, amber = safe but not this load, red = hand-wash.</figcaption></figure>
+  <figure><img src="assets/kitchen_final_check.jpg" alt="Loaded basket with the final check" loading="lazy"><figcaption>5/5 placed from perceived poses (0.73–1.19 mm pose error): plates lean 1.4–3.7°, bowls within 7 mm.</figcaption></figure>
+</div>
+<div class="tablewrap">
+<table>
+  <tr><th></th><th>Gripper (Franka Hand)</th><th>Suction (Franka Cobot Pump)</th></tr>
+  <tr><td>Start</td><td>3 plates + 2 bowls side by side, 8 clutter items</td><td>2 nested bowls + 3 stacked plates, 8 clutter items</td></tr>
+  <tr><td>Poses used</td><td>perceived (GPT box + depth)</td><td>perceived (GPT box + depth)</td></tr>
+  <tr><td>Placed</td><td class="n">5/5</td><td class="n">5/5, 0 seal losses</td></tr>
+  <tr><td>Clutter moved</td><td class="n">≤ 0.85 mm</td><td class="n">≤ 0.85 mm, 0 contacts</td></tr>
+</table>
+</div>
+<p class="src">Sources: multi_dish_b/DEMO_NOTES.md (kitchen section), multi_dish_suction/DEMO_NOTES.md. Across 24 random counters in a separate study, GPT classified 164/164 items (gpt_sort/GPT_SORT.md). Honest notes: one clean rendered image; the door starts open with the basket out.</p>
+
+<h2>GPT as the brain, not the muscles</h2>
+<p>GPT (through <code>codex exec</code> on a ChatGPT subscription) chooses and sequences validated skills, reads their results and decides how to recover. The robot API checks every call against a schema, a safety gate and preconditions. Force control, trajectories and the e-stop never depend on GPT.</p>
+<div class="two">
+  <figure class="diagram"><img src="assets/architecture.png" alt="GPT control architecture" loading="lazy"><figcaption>Who decides what, at which rate.</figcaption></figure>
+  <div class="tablewrap">
+  <table>
+    <tr><th>Injected fault</th><th>Script</th><th>GPT</th></tr>
+    <tr><td>Door does not latch (springs back to ~68°)</td><td class="n">0/2</td><td class="n">2/2</td></tr>
+    <tr><td>Pod not in its dish</td><td class="n">0/2</td><td class="n">2/2</td></tr>
+    <tr><td>Plate at a random spot</td><td class="n">0/2</td><td class="n">2/2</td></tr>
+    <tr><td>Basket jams at 0.10 m</td><td class="n">0/2</td><td class="n">2/2</td></tr>
+    <tr><td>First button press ignored</td><td class="n">0/2</td><td class="n">1/2</td></tr>
+    <tr><td>Plate knocked out of the hand</td><td class="n">0/2</td><td class="n">2/2</td></tr>
+    <tr><td>Person near the robot</td><td class="n">0/2</td><td class="n">2/2</td></tr>
+    <tr><th>Missions completed</th><th class="n">0/14</th><th class="n">13/14</th></tr>
+  </table>
+  <p class="src">Source: gpt_control/GPT_CONTROL.md §1.1. About 11 GPT calls per nominal mission, median 9.5 s each. GPT composing raw motion primitives finished 0 of 3 missions, which is why it works at the skill level.</p>
+  <p class="src">Follow-up studies: GPT commanded the whole mobile mission 3/3 (gpt_mobile); as a tester GPT found 9 failure modes including the 4 most severe (gpt_adversary); as an engineer it fixed the plate lean from 9.7° to 2.1° with a one-line patch (gpt_engineer).</p>
+  </div>
+</div>
+
+<h2 id="hardware">The real hardware design</h2>
+<p>Franka FR3 arm with a wrist force sensor on a differential-drive base: 51.2 V 30 Ah LFP battery, an inverter for the arm controller, a real-time main PC, an STM32 base MCU, a Jetson wall camera node, and a hardware e-stop chain that bypasses all software.</p>
+<div class="two">
+  <figure class="diagram"><img src="assets/block_diagram.png" alt="Compute and bus block diagram" loading="lazy"><figcaption>Which chip controls what.</figcaption></figure>
+  <figure class="diagram"><img src="assets/power_flow.png" alt="Power flow and wiring" loading="lazy"><figcaption>Power flow: one battery, AC only for the FR3 controller.</figcaption></figure>
+</div>
+<div class="tablewrap">
+<table>
+  <tr><th>BOM group</th><th>USD</th></tr>
+  <tr><td>Arm: Franka FR3 + Hand + Bota SensONE F/T + conductive fingertip</td><td class="n">36,450</td></tr>
+  <tr><td>Drive &amp; structure: 2 braked BLDC drives, wheels, casters, chassis, ballast, V-blocks</td><td class="n">5,096</td></tr>
+  <tr><td>Power: battery, inverter, DC-DC, contactors, fuses, charger, charge contacts</td><td class="n">2,490</td></tr>
+  <tr><td>Sensors &amp; wall node: 2 lidars, Jetson Orin Nano Super, RealSense D435i</td><td class="n">1,799</td></tr>
+  <tr><td>Compute: main PC, STM32 MCU board, Wi-Fi, switch</td><td class="n">1,340</td></tr>
+  <tr><td>Safety: PILZ relay, e-stops, wireless e-stop, safety edges</td><td class="n">1,260</td></tr>
+  <tr><th>Total incl. 10 % contingency</th><th class="n">53,279 (≈ S$ 69,263)</th></tr>
+</table>
+</div>
+<p class="src">Source: system_design/bom_table.md (28 lines; prices are reseller listings or estimates, not quotes).</p>
+
+<h2>Honest status</h2>
+<div class="honest">
+  <p><b>Real:</b> MuJoCo physics (wheels, brakes, contacts, plate, pod, door, basket), real GPT calls with real latency, and a costed hardware design.</p>
+  <p><b>Not yet:</b> a physical robot; the 5-dish kitchen runs start with the door open. Water, washing, the door latch and real capacitive touch are not simulated. Ten trials, six missions and two runs per fault show feasibility, not reliability.</p>
+  <p><b>Next:</b> one run from the charger to a full load, destack piles robustly, test a conductive fingertip on the real E804 panel, then supervised trials in a real kitchen.</p>
+  <p class="zh">现状：仿真 + 硬件设计，还不是实体机器人。下一步：造底盘、在真实面板上测试导电指尖、在真实厨房做有人看护的试验。</p>
+</div>
+
+<footer>
+  Yuanjing Guo · Common Ground Makeathon · 11 Oct 2026 · SQ Collective, Singapore.<br>
+  Built with MuJoCo 3.15, mink 1.3, the Franka Emika Panda model from MuJoCo Menagerie (Apache-2.0), and GPT via the Codex CLI.
+  Product names in the hardware design are referenced for specification only.
+</footer>
+</div>
+</body>
+</html>

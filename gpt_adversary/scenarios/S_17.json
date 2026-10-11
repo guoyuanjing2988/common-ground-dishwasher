@@ -1,0 +1,29 @@
+{
+ "name": "sparse_17",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "pod": {
+   "dx": 0.016,
+   "dy": -0.0028,
+   "yaw_deg": 32.8096,
+   "size_scale": 1.1537,
+   "mass_kg": 0.0249,
+   "location": "dish"
+  },
+  "basket": {
+   "rail_friction_N": 4.69,
+   "damping": 5.4303
+  },
+  "camera_bump": {
+   "roll_deg": -1.8502,
+   "pitch_deg": -1.0467,
+   "yaw_deg": 0.9233,
+   "dx": -0.0015,
+   "dy": -0.0035,
+   "dz": -0.0083
+  }
+ }
+}

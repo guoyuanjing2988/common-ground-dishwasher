@@ -1,0 +1,553 @@
+{
+ "search_top": [
+  {
+   "score": [
+    9,
+    0.721
+   ],
+   "mount": [
+    -0.08,
+    -0.5,
+    45.0
+   ],
+   "passed": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "score": [
+    9,
+    0.546
+   ],
+   "mount": [
+    -0.16,
+    -0.38,
+    0.0
+   ],
+   "passed": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "score": [
+    9,
+    0.513
+   ],
+   "mount": [
+    -0.08,
+    -0.44,
+    45.0
+   ],
+   "passed": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "score": [
+    9,
+    0.471
+   ],
+   "mount": [
+    -0.16,
+    -0.5,
+    45.0
+   ],
+   "passed": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "score": [
+    9,
+    0.443
+   ],
+   "mount": [
+    -0.22,
+    -0.38,
+    0.0
+   ],
+   "passed": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "score": [
+    9,
+    0.443
+   ],
+   "mount": [
+    -0.22,
+    -0.38,
+    45.0
+   ],
+   "passed": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "score": [
+    9,
+    0.399
+   ],
+   "mount": [
+    -0.08,
+    -0.44,
+    0.0
+   ],
+   "passed": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "score": [
+    9,
+    0.386
+   ],
+   "mount": [
+    -0.08,
+    -0.5,
+    0.0
+   ],
+   "passed": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "score": [
+    9,
+    0.386
+   ],
+   "mount": [
+    -0.16,
+    -0.44,
+    0.0
+   ],
+   "passed": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "score": [
+    9,
+    0.379
+   ],
+   "mount": [
+    -0.08,
+    -0.38,
+    0.0
+   ],
+   "passed": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  }
+ ],
+ "mount": [
+  -0.08,
+  -0.5,
+  45.0
+ ],
+ "criteria": {
+  "pos_mm": 2.0,
+  "rot_deg": 1.0,
+  "margin_deg": 2.0
+ },
+ "results": [
+  {
+   "pos_err_mm": 0.009947024379939884,
+   "rot_err_deg": 0.000557462543805148,
+   "margin_deg": 20.66720679684633,
+   "margin_joint": "joint7",
+   "collisions": [],
+   "min_clearance_mm": 4.157516406042537,
+   "min_clearance_pair": [
+    "panda/right_finger",
+    "dw/handle_bar"
+   ],
+   "target": "door_handle (door closed)",
+   "door_deg": 0,
+   "basket_m": 0,
+   "orientation": "bar phi=+0 psi=+0 flip=+1",
+   "seed": 0,
+   "note": "bar grasp, fingers straddle the pull bar",
+   "passed": true,
+   "q_arm": [
+    2.1648619189591245,
+    -1.2536080403172958,
+    -1.6310807365445545,
+    -1.9795566286992563,
+    0.30370405389185506,
+    1.7514279073630246,
+    -2.5365891942044807
+   ],
+   "q_fingers": 0.012,
+   "tcp_target": [
+    0.03,
+    0.0,
+    1.2650000000000001
+   ],
+   "time_s": 0.02
+  },
+  {
+   "pos_err_mm": 0.009991689802771066,
+   "rot_err_deg": 0.0005537694601581802,
+   "margin_deg": 9.892572223759402,
+   "margin_joint": "joint2",
+   "collisions": [],
+   "min_clearance_mm": 3.9987066791800223,
+   "min_clearance_pair": [
+    "panda/right_finger",
+    "dw/handle_bar"
+   ],
+   "target": "door_handle (door open 90)",
+   "door_deg": 90,
+   "basket_m": 0,
+   "orientation": "bar phi=+0 psi=-40 flip=+1",
+   "seed": 2,
+   "note": "bar grasp under the open door",
+   "passed": true,
+   "q_arm": [
+    -0.4843685391982353,
+    1.5901420432040612,
+    0.38825960116537783,
+    -1.378882642970867,
+    1.8688324072052374,
+    1.1178947620591675,
+    -2.2948307613647008
+   ],
+   "q_fingers": 0.012,
+   "tcp_target": [
+    0.31700000000000006,
+    0.0,
+    0.9180000000000001
+   ],
+   "time_s": 94.23
+  },
+  {
+   "pos_err_mm": 0.017355689419307183,
+   "rot_err_deg": 0.00025615770580454666,
+   "margin_deg": 28.465092421511095,
+   "margin_joint": "joint4",
+   "collisions": [],
+   "min_clearance_mm": 2.0401274280707815,
+   "min_clearance_pair": [
+    "panda/right_finger",
+    "dw/groove_wall_l"
+   ],
+   "target": "door_groove (door open 90)",
+   "door_deg": 90,
+   "basket_m": 0,
+   "orientation": "tilt +15 about door-y, close door-y flip=+1",
+   "seed": 9,
+   "note": "pod release pose: TCP 18 mm above groove centre (12 mm above face)",
+   "passed": true,
+   "q_arm": [
+    2.2602402802884254,
+    -0.4601300103824532,
+    -1.980124286091348,
+    -2.574990415360146,
+    -0.38077641691604946,
+    2.5999284775468396,
+    -0.9600417025772012
+   ],
+   "q_fingers": 0.0125,
+   "tcp_target": [
+    0.054999999999999986,
+    -0.1,
+    0.9950000000000001
+   ],
+   "time_s": 13.54
+  },
+  {
+   "pos_err_mm": 0.009979770965460226,
+   "rot_err_deg": 0.0004165733018734772,
+   "margin_deg": 16.817399636966194,
+   "margin_joint": "joint7",
+   "collisions": [],
+   "min_clearance_mm": 4.237294961584919,
+   "min_clearance_pair": [
+    "panda/right_finger",
+    "dw/bhandle_bar"
+   ],
+   "target": "basket_handle (basket in, door open)",
+   "door_deg": 90,
+   "basket_m": 0,
+   "orientation": "bar phi=+0 psi=+0 flip=+1",
+   "seed": 0,
+   "note": "bar grasp",
+   "passed": true,
+   "q_arm": [
+    2.223005609487895,
+    -1.4205061842075573,
+    -1.7449192921936751,
+    -2.140106373250861,
+    0.1345453063900102,
+    1.9784409001151013,
+    -2.603781004711241
+   ],
+   "q_fingers": 0.008,
+   "tcp_target": [
+    -0.04500000000000001,
+    0.0,
+    1.161
+   ],
+   "time_s": 0.02
+  },
+  {
+   "pos_err_mm": 0.006445957016526564,
+   "rot_err_deg": 0.000221059787371839,
+   "margin_deg": 10.373606058860515,
+   "margin_joint": "joint7",
+   "collisions": [],
+   "min_clearance_mm": 4.242025499441355,
+   "min_clearance_pair": [
+    "panda/right_finger",
+    "dw/bhandle_bar"
+   ],
+   "target": "basket_handle (basket out 0.25 m)",
+   "door_deg": 90,
+   "basket_m": 0.25,
+   "orientation": "bar phi=+0 psi=+0 flip=+1",
+   "seed": 2,
+   "note": "bar grasp",
+   "passed": true,
+   "q_arm": [
+    -0.7486152169108441,
+    1.2761681446955857,
+    1.131749633674313,
+    -1.3613987117583055,
+    0.2947565998598526,
+    1.2798347813353395,
+    -2.7162464189680513
+   ],
+   "q_fingers": 0.008,
+   "tcp_target": [
+    0.205,
+    0.0,
+    1.161
+   ],
+   "time_s": 0.07
+  },
+  {
+   "pos_err_mm": 0.009500494785224741,
+   "rot_err_deg": 0.001963409872471934,
+   "margin_deg": 34.05321806218154,
+   "margin_joint": "joint7",
+   "collisions": [],
+   "min_clearance_mm": 0.7207391651957535,
+   "min_clearance_pair": [
+    "panda/hand",
+    "dw/bhandle_bar"
+   ],
+   "target": "plate_slot_target (basket out)",
+   "door_deg": 90,
+   "basket_m": 0.25,
+   "orientation": "tilt -15 about x, close x (plate normal) flip=-1",
+   "seed": 2,
+   "note": "TCP at seated-plate centre, from above",
+   "passed": true,
+   "q_arm": [
+    -0.39068864867979,
+    0.6899198472918107,
+    1.0477700276962179,
+    -1.6984488615557958,
+    -0.635391285805945,
+    1.7357459159198634,
+    -2.302959223915329
+   ],
+   "q_fingers": 0.01,
+   "tcp_target": [
+    0.131,
+    0.065,
+    1.1255
+   ],
+   "time_s": 2.27
+  },
+  {
+   "pos_err_mm": 0.01615545647927645,
+   "rot_err_deg": 0.0001476658228544013,
+   "margin_deg": 28.110266746412385,
+   "margin_joint": "joint4",
+   "collisions": [],
+   "min_clearance_mm": 13.638569392583342,
+   "min_clearance_pair": [
+    "panda/hand",
+    "dw/frame_t_f"
+   ],
+   "target": "bowl_slot_target (basket out)",
+   "door_deg": 90,
+   "basket_m": 0.25,
+   "orientation": "tilt +0 about x, close x flip=-1",
+   "seed": 2,
+   "note": "TCP at bowl foot-ring centre, from above",
+   "passed": true,
+   "q_arm": [
+    -1.5064913806267077,
+    0.8825029317335831,
+    1.7723578356818093,
+    -2.58118329166123,
+    -1.0163168661494137,
+    2.0441431264578735,
+    -2.131502007696382
+   ],
+   "q_fingers": 0.027,
+   "tcp_target": [
+    0.11699999999999999,
+    -0.1396,
+    1.0997
+   ],
+   "time_s": 0.91
+  },
+  {
+   "pos_err_mm": 0.0094935114604031,
+   "rot_err_deg": 0.00029743934846574,
+   "margin_deg": 21.17026566089411,
+   "margin_joint": "joint7",
+   "collisions": [],
+   "min_clearance_mm": 1.5013108318318498,
+   "min_clearance_pair": [
+    "panda/left_finger",
+    "dw/btn_quick_pad"
+   ],
+   "target": "btn_quick (door closed)",
+   "door_deg": 0,
+   "basket_m": 0,
+   "orientation": "press pitch 0 yaw 0 close vertical flip=+1",
+   "seed": 0,
+   "note": "closed fingertips press the pad",
+   "passed": true,
+   "q_arm": [
+    2.0362461167360073,
+    -1.1101503219901927,
+    -1.50943484387745,
+    -2.079437382080566,
+    0.4627321477856874,
+    1.7340327417898478,
+    -2.5278091606955044
+   ],
+   "q_fingers": 0.0,
+   "tcp_target": [
+    0.012499999999999999,
+    -0.032,
+    1.3325
+   ],
+   "time_s": 0.01
+  },
+  {
+   "pos_err_mm": 0.004476311552867486,
+   "rot_err_deg": 0.00017549565994085932,
+   "margin_deg": 21.28227962536476,
+   "margin_joint": "joint7",
+   "collisions": [],
+   "min_clearance_mm": 1.5017820674906912,
+   "min_clearance_pair": [
+    "panda/left_finger",
+    "dw/btn_power_pad"
+   ],
+   "target": "btn_power (door closed)",
+   "door_deg": 0,
+   "basket_m": 0,
+   "orientation": "press pitch 0 yaw 0 close vertical flip=+1",
+   "seed": 0,
+   "note": "closed fingertips press the pad",
+   "passed": true,
+   "q_arm": [
+    -0.3676589756628137,
+    1.0459043199484739,
+    1.1991693761654785,
+    -1.3001679830507387,
+    0.6115022454339176,
+    1.563318121924939,
+    -2.5258541482072796
+   ],
+   "q_fingers": 0.0,
+   "tcp_target": [
+    0.012499999999999999,
+    0.16,
+    1.3325
+   ],
+   "time_s": 0.01
+  }
+ ],
+ "passed": 9,
+ "total": 9
+}

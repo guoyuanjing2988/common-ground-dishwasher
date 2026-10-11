@@ -1,0 +1,19 @@
+{
+ "name": "sparse_05",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "pod": {
+   "location": "counter",
+   "dx": 0.0187,
+   "dy": -0.0003,
+   "x": -0.0584,
+   "y": 0.5019,
+   "yaw_deg": -52.8583,
+   "size_scale": 1.2983,
+   "mass_kg": 0.0233
+  }
+ }
+}

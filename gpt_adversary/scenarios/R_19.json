@@ -1,0 +1,126 @@
+{
+ "name": "random_19",
+ "source": "random",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "plate": {
+   "radius_m": 0.111,
+   "mass_kg": 1.1802,
+   "mu": 0.4037,
+   "wetness": 0.6821,
+   "x": -0.281,
+   "y": 0.3131,
+   "rgb": [
+    0.202,
+    0.469,
+    0.962
+   ],
+   "upside_down": true
+  },
+  "pod": {
+   "dx": 0.0109,
+   "dy": -0.0118,
+   "yaw_deg": 29.5405,
+   "size_scale": 1.0773,
+   "mass_kg": 0.0129,
+   "location": "dish"
+  },
+  "dish": {
+   "dx": 0.0212,
+   "dy": 0.0115
+  },
+  "door": {
+   "hinge_friction_Nm": 1.9949,
+   "damping": 4.4669,
+   "spring_scale": 1.1244
+  },
+  "basket": {
+   "rail_friction_N": 8.3194,
+   "damping": 13.3273,
+   "preload_slots": [
+    2
+   ]
+  },
+  "lighting": {
+   "key_scale": 0.4538,
+   "ambient_scale": 1.0369,
+   "color_temp_K": 4861.9313,
+   "key_azimuth_deg": -65.8671
+  },
+  "camera_bump": {
+   "roll_deg": 0.3925,
+   "pitch_deg": -2.3397,
+   "yaw_deg": -2.1979,
+   "dx": 0.0186,
+   "dy": -0.0112,
+   "dz": 0.0131
+  },
+  "dock": {
+   "dx": 0.028,
+   "dy": -0.0184,
+   "yaw_deg": 2.9581
+  },
+  "dishwasher": {
+   "dx": -0.0435,
+   "dy": -0.0441,
+   "yaw_deg": 3.9427
+  },
+  "sensors": {
+   "depth_noise_scale": 1.4121,
+   "ft_noise_N": 0.3779,
+   "ft_drift_N_per_min": 1.6088
+  },
+  "person": {
+   "at_s": 77.0,
+   "dur_s": 19.08,
+   "distance_m": 1.65
+  },
+  "buttons": {
+   "threshold_N": 1.9399,
+   "dwell_ms": 12.7739
+  },
+  "clutter": [
+   {
+    "type": "cereal_box",
+    "surface": "counter",
+    "x": -0.445,
+    "y": 0.544,
+    "yaw_deg": 86.0,
+    "size_scale": 1.139,
+    "rgb": [
+     0.9,
+     0.7,
+     0.2
+    ]
+   },
+   {
+    "type": "bottle",
+    "surface": "counter",
+    "x": -0.073,
+    "y": 0.527,
+    "yaw_deg": -6.4,
+    "size_scale": 0.902,
+    "rgb": [
+     0.25,
+     0.55,
+     0.35
+    ]
+   },
+   {
+    "type": "mug",
+    "surface": "counter",
+    "x": -0.198,
+    "y": 0.639,
+    "yaw_deg": 35.3,
+    "size_scale": 1.063,
+    "rgb": [
+     0.85,
+     0.3,
+     0.25
+    ]
+   }
+  ]
+ }
+}

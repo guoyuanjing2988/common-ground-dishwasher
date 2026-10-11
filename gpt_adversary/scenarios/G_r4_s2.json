@@ -1,0 +1,19 @@
+{
+ "name": "mug_beside_pod_grasp",
+ "source": "gpt",
+ "hypothesis": "A mug immediately in front of the pod dish occupies clearance needed by the hand during the taught approach. The position-controlled approach can strike the mug before the fingers surround the tablet.",
+ "expected_failure": "Step 3 pushes or topples the mug, produces an unplanned arm contact, or stops because the pod was not lifted.",
+ "real_world_story": "Someone leaves a coffee mug beside the detergent dish after breakfast.",
+ "params": {
+  "clutter": [
+   {
+    "type": "mug",
+    "surface": "counter",
+    "x": -0.085,
+    "y": 0.555,
+    "yaw_deg": 0.0,
+    "size_scale": 0.8
+   }
+  ]
+ }
+}

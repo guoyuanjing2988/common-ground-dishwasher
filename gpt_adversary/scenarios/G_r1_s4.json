@@ -1,0 +1,12 @@
+{
+ "name": "thermal_drift_false_touchdown",
+ "source": "gpt",
+ "hypothesis": "At 1 N per minute, positive force bias reaches the 0.5 N touchdown threshold after 30 seconds. Filtering cannot remove this sustained bias, so insertion can terminate before the plate reaches support.",
+ "expected_failure": "Step 6 falsely declares touchdown and releases an unsupported plate. The resulting fall may cause bouncing, excessive lean, or incorrect tine contact and fail the seating check.",
+ "real_world_story": "The wrist sensor warms after its startup tare while the robot performs the preceding operations.",
+ "params": {
+  "sensors": {
+   "ft_drift_N_per_min": 1.0
+  }
+ }
+}

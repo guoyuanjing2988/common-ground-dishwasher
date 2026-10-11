@@ -1,0 +1,459 @@
+{
+ "modes": [
+  {
+   "id": "M1",
+   "title": "Panel press is an impact tap, never verified -> QUICK silently not started",
+   "mechanism": "The scripted press stops when the unfiltered wrist F/T reads 3 N, resets its reference to the measured pose and \"holds\" 0.3 s; the pad actually sees > 1 N for only 12 ms (nominal registration needs 8 ms) and ~0.07 N during the hold. Any pad needing >= 1.4 N (or a longer debounce) never registers; the Runner checks only the touch-sensor peak (>1 N), never the panel display.",
+   "members": [
+    "G_r1_s1"
+   ],
+   "also_seen": [
+    "S_23 (threshold 2.85 N, with a person)",
+    "min runs: cart yaw 0.5 deg / appliance yaw 1.25 deg -> POWER press not registered"
+   ],
+   "found_by": [
+    "gpt",
+    "sparse"
+   ],
+   "minimal_from": "G_r1_s1",
+   "minimal_params": {
+    "buttons": {
+     "threshold_N": 1.375
+    }
+   },
+   "threshold": "fails at pad threshold 1.375 N (nominal 1.0 N passes); GPT proposed 4.0 N",
+   "severity": 3,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "the 12 ms impact transient depends on the sim contact stiffness (solref 6 ms); the margin, not the weakness, is sim-specific",
+   "novelty": "new mechanism (same symptom as known button_miss)",
+   "real_robot_detects": "no - Runner claims success; only the panel display/beep would show it",
+   "fix": "Hold a regulated force (admittance, e.g. 3-5 N for >= 0.3 s) instead of stop-on-threshold; verify the panel display after each press and retry; calibrate per appliance the force/duration that registers. (The GPT-L1 press skill already holds ~3 N for 0.5 s.)",
+   "ref_run": "runs/min/min_G_r1_s1_03.json",
+   "clip_step": "press_buttons",
+   "clip_len_s": 30,
+   "speed": 3
+  },
+  {
+   "id": "M2",
+   "title": "Pod rotated in its dish -> pod bridges the groove or later falls to the tub floor",
+   "mechanism": "The pod pick uses the taught dish pose and a fixed 0 deg grasp yaw. A tablet lying >= ~34 deg rotated is pinched across a diagonal, is carried skewed and lands on the groove rim instead of in it (detected only by the ground-truth pod check). At 28 deg it seats loosely and is shaken out later (found on the tub floor) while the Runner claims success.",
+   "members": [
+    "G_r1_s3"
+   ],
+   "also_seen": [
+    "S_16, S_17 (yaw 27-33 deg combined with a pod/dish offset -> pod not lifted)"
+   ],
+   "found_by": [
+    "gpt"
+   ],
+   "minimal_from": "G_r1_s3",
+   "minimal_params": {
+    "pod": {
+     "location": "dish",
+     "yaw_deg": 33.75
+    }
+   },
+   "threshold": "34 deg -> not seated (detected by GT check); 28 deg -> silent (pod on tub floor at the end); 22.5 deg -> success",
+   "severity": 3,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "rigid box pod and groove; real tablets are slightly compliant",
+   "novelty": "new (known pod_moved = pod not in its dish)",
+   "real_robot_detects": "no - pod-in-groove is not sensed; a real robot would report success",
+   "fix": "Perceive the pod (camera + VLM) and grasp along its measured yaw even when it is in the dish; verify pod-in-groove (camera view of the door, or in-hand pose check before release).",
+   "ref_run": "runs/min/min_G_r1_s3_04.json",
+   "clip_step": "load_pod",
+   "clip_len_s": 26,
+   "speed": 3
+  },
+  {
+   "id": "M3",
+   "title": "Target slot already occupied -> carried plate strikes it, 200-320 N robot-plate contact, plate knocked out",
+   "mechanism": "No slot-occupancy check and a carry height computed for an empty basket: the carried plate hits the plate already standing in slot 6 during carry_across/descent, is wrenched in the fingers (204-317 N between hand/link7 and the plate) and ends lying on the basket front / open door.",
+   "members": [
+    "G_r1_s2"
+   ],
+   "found_by": [
+    "gpt"
+   ],
+   "minimal_from": "G_r1_s2",
+   "minimal_params": {
+    "basket": {
+     "preload_slots": [
+      6
+     ]
+    }
+   },
+   "threshold": "one plate in the target slot (structural, no magnitude)",
+   "severity": 3,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "pre-loaded plates are rigid with the basket (no wobble), so contact forces are overestimated",
+   "novelty": "new",
+   "real_robot_detects": "partly - large wrist forces would be measurable, but the Runner has no such guard; seating check is ground truth only",
+   "fix": "Perceive basket occupancy (camera over the pulled-out basket) and choose a free slot; force guard on the carry (abort above ~20 N unexpected load); compute the carry height from the perceived contents.",
+   "ref_run": "runs/G_r1_s2.json",
+   "clip_step": "insert_plate",
+   "clip_len_s": 28,
+   "speed": 3
+  },
+  {
+   "id": "M4",
+   "title": "Clutter in the arm sweep knocked off the counter, Runner unaware",
+   "mechanism": "The motion collision model is the calibrated empty kitchen. A bottle standing 35 mm from the counter edge next to the plate is hit by link 6 during the edge-push approach (12 N) and falls to the floor; the mission still completes and the Runner claims success.",
+   "members": [
+    "G_r2_s1"
+   ],
+   "found_by": [
+    "gpt"
+   ],
+   "minimal_from": "G_r2_s1",
+   "minimal_params": {
+    "clutter": [
+     {
+      "type": "bottle",
+      "surface": "counter",
+      "x": -0.035,
+      "y": 0.47,
+      "yaw_deg": 0,
+      "size_scale": 0.8
+     }
+    ]
+   },
+   "threshold": "structural (object inside the swept volume); not bisected",
+   "severity": 4,
+   "plausibility": 2,
+   "classification": "robot weakness",
+   "sim_caveat": "bottle = rigid cylinder; a real FR3 collision reflex would not trigger at 12 N",
+   "novelty": "new",
+   "real_robot_detects": "no - the contact is far below any collision threshold; nothing in the Runner looks at the counter after perception",
+   "fix": "Obstacle perception (depth occupancy of the counter) fed into the motion planner / swept-volume check; refuse or ask the user to clear the area.",
+   "ref_run": "runs/G_r2_s1.json",
+   "clip_step": "pick_plate",
+   "clip_len_s": 14,
+   "speed": 2
+  },
+  {
+   "id": "M5",
+   "title": "Small rotation of cart or appliance -> pod pick / placement misses (bar grasp still succeeds)",
+   "mechanism": "The compliant bar grasp tolerates a small yaw, but the pod pick (taught dish spot, 0.6 m from the arm base) and the groove placement do not: 1 deg of cart yaw moves the dish ~10 mm in the arm frame -> pod not lifted; 1.9 deg of appliance yaw moves the groove ~6-8 mm -> pod lands on the groove rim.",
+   "members": [
+    "G_r4_s3",
+    "G_r6_s3",
+    "S_03"
+   ],
+   "also_seen": [],
+   "found_by": [
+    "gpt",
+    "sparse"
+   ],
+   "minimal_from": "G_r4_s3",
+   "minimal_params": {
+    "dock": {
+     "dx": 0.0055,
+     "yaw_deg": -1.0
+    }
+   },
+   "threshold": "cart yaw 1.0 deg (0.5 deg -> silent QUICK failure instead, see M1); appliance yaw 1.875 deg (1.25 deg -> silent QUICK failure)",
+   "severity": 2,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "none specific",
+   "novelty": "new",
+   "real_robot_detects": "pod not lifted: yes (finger width); pod off the groove: no",
+   "fix": "Re-localise the cart and the appliance at the start of every run (fiducials on the appliance / dock, or a door-bar touch-off) and correct all taught poses.",
+   "ref_run": "runs/min/min_G_r4_s3_03.json",
+   "clip_step": "load_pod",
+   "clip_len_s": 20,
+   "speed": 3
+  },
+  {
+   "id": "M6",
+   "title": "Appliance nudged ~1 cm or cart docked ~1-2 cm off -> pull-bar grasp misses",
+   "mechanism": "All appliance poses are calibrated once. Pushing the dishwasher back by 11 mm (or a lateral cart error of ~1.4 cm) puts the 8 mm-radius pull bar outside the grasp; the fingers close on air (detected). At 7.5 mm the door still opens but the QUICK/POWER pads (24 x 16 mm) are missed.",
+   "members": [
+    "G_r2_s2",
+    "S_01",
+    "S_09",
+    "S_11",
+    "S_12",
+    "S_14",
+    "S_20",
+    "R_03",
+    "R_06",
+    "R_08",
+    "R_09",
+    "R_11",
+    "R_12",
+    "R_13",
+    "R_14",
+    "R_17",
+    "R_20"
+   ],
+   "found_by": [
+    "gpt",
+    "random",
+    "sparse"
+   ],
+   "minimal_from": "G_r2_s2",
+   "minimal_params": {
+    "dishwasher": {
+     "dx": -0.01125
+    }
+   },
+   "threshold": "dishwasher pushed back 11 mm (7.5 mm -> button pads missed instead); cart lateral 14 mm (S_11)",
+   "severity": 2,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "none specific",
+   "novelty": "new",
+   "real_robot_detects": "yes - finger encoders read 0 mm (closed on nothing)",
+   "fix": "Same as M5: per-run re-localisation; plus a guarded search around the expected bar pose before giving up.",
+   "ref_run": "runs/min/min_G_r2_s2_04.json",
+   "clip_step": "open_door",
+   "clip_len_s": 20,
+   "speed": 3
+  },
+  {
+   "id": "M7",
+   "title": "Sticky basket rail (>= ~5 N) -> light bar squeeze slips, basket not pulled out",
+   "mechanism": "The basket bar is held with a 5 N squeeze on a 4 mm wire and pulled on a position-controlled path. Rail friction of ~5 N stops the basket at 0.237 m; >= 7 N the fingers slide off immediately and the basket stays in.",
+   "members": [
+    "S_02",
+    "S_06",
+    "S_07"
+   ],
+   "found_by": [
+    "sparse"
+   ],
+   "minimal_from": "S_06",
+   "minimal_params": {
+    "basket": {
+     "rail_friction_N": 7.24,
+     "damping": 4.5
+    }
+   },
+   "threshold": "4.9 N -> stops at 0.237 m; 7.2 N -> not moved (nominal 0.3 N)",
+   "severity": 2,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "slip threshold depends on modelled finger-pad friction (mu 0.6) and the round-wire contact",
+   "novelty": "new",
+   "real_robot_detects": "yes - basket position from the appliance sensor / hand position",
+   "fix": "Grip the bar firmly (form closure around the wire, higher squeeze) and pull with force control and a stall detector; retry with a push-pull wiggle.",
+   "ref_run": "runs/min/min_S_06_05.json",
+   "clip_step": "pull_basket",
+   "clip_len_s": 20,
+   "speed": 3
+  },
+  {
+   "id": "M8",
+   "title": "Stiff / damped door hinge -> bar slips, door does not open",
+   "mechanism": "Same light 5 N squeeze on the round door bar with a position-controlled 8 s arc: hinge friction ~2 N m with 5 N m s/rad damping (or 2.6 N m) exceeds what the fingers can transmit; the door stays at 0-2 deg.",
+   "members": [
+    "S_13",
+    "R_05"
+   ],
+   "found_by": [
+    "sparse",
+    "random"
+   ],
+   "minimal_from": "S_13",
+   "minimal_params": {
+    "door": {
+     "hinge_friction_Nm": 2.569,
+     "damping": 5.937,
+     "spring_scale": 1.138
+    }
+   },
+   "threshold": "fails at 2.0 N m + 4.9 N m s/rad (door at 2 deg); passes at 1.43 N m + 3.7; GPT tested 2.0 N m with nominal damping -> passed",
+   "severity": 2,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "as M7 (finger friction model); real doors also have a latch needing 20-50 N, not modelled",
+   "novelty": "new (known door_latch = door springs back after opening)",
+   "real_robot_detects": "yes - door angle",
+   "fix": "Firmer grasp (hook the bar), force-controlled opening along the hinge arc with a measured-force budget; detect slip from the hand-door relative motion.",
+   "ref_run": "runs/min/min_S_13_07.json",
+   "clip_step": "open_door",
+   "clip_len_s": 20,
+   "speed": 3
+  },
+  {
+   "id": "M9",
+   "title": "Plate is not an 8-inch plate -> refused by the radius gate (9\" and up, 7.4\" and down); 8.6\" accepted but over-squeezed",
+   "mechanism": "Perception gates the fitted radius at 95-110 mm and every manipulation constant assumes 101.5 mm. A standard 9\" plate (114 mm) is refused at step 1 (safe stop). An 8.6\" plate (109 mm) passes the gate; the rim pinch geometry is off and the palm presses the rim with 71 N during the tilt (mission still succeeds).",
+   "members": [
+    "G_r2_s3",
+    "S_04",
+    "S_10",
+    "R_01",
+    "R_02",
+    "R_04",
+    "R_07",
+    "R_10",
+    "R_16",
+    "R_18",
+    "R_19",
+    "R_21",
+    "R_22",
+    "R_23"
+   ],
+   "also_seen": [
+    "G_r6_s2 (109 mm: degraded, 71 N palm-rim contact)"
+   ],
+   "found_by": [
+    "gpt",
+    "random",
+    "sparse"
+   ],
+   "minimal_from": "G_r2_s3",
+   "minimal_params": {
+    "plate": {
+     "radius_m": 0.1143
+    }
+   },
+   "threshold": "deterministic gate: r > 110 mm or < 95 mm",
+   "severity": 2,
+   "plausibility": 3,
+   "classification": "robot weakness (scope limit by design)",
+   "sim_caveat": "none",
+   "novelty": "new",
+   "real_robot_detects": "yes - refuses safely; the 8.6\" case is not noticed",
+   "fix": "Parameterise the edge-push, pinch and slot geometry by the measured radius (or a small set of plate classes) and validate per class; keep the gate as a hard limit for sizes the basket cannot take.",
+   "ref_run": "runs/G_r2_s3.json",
+   "clip_step": "perceive_plate",
+   "clip_len_s": 6,
+   "speed": 2
+  },
+  {
+   "id": "M10",
+   "title": "Pod not at the taught spot (dish moved ~2.5 cm, or pod 16 mm off-centre) -> pod not lifted",
+   "mechanism": "The pod is picked blind at the taught dish position. A dish displaced by 2.5 cm (or a pod off-centre in the dish) leaves the fingers closing beside it.",
+   "members": [
+    "S_15",
+    "S_16",
+    "S_17",
+    "S_18"
+   ],
+   "found_by": [
+    "sparse"
+   ],
+   "minimal_from": "S_15",
+   "minimal_params": {
+    "dish": {
+     "dx": -0.01715,
+     "dy": -0.01897
+    }
+   },
+   "threshold": "2.6 cm dish displacement (smallest tried)",
+   "severity": 2,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "none",
+   "novelty": "variant of known pod_moved",
+   "real_robot_detects": "yes - finger width after closing",
+   "fix": "Always locate the pod with the camera before picking (the GPT-L1 stack already does this when it notices).",
+   "ref_run": "runs/min/min_S_15_03.json",
+   "clip_step": "load_pod",
+   "clip_len_s": 16,
+   "speed": 3,
+   "in_montage": false
+  },
+  {
+   "id": "M11",
+   "title": "Plate lying face-down -> edge push rides over the inverted rim, under-travel",
+   "mechanism": "The push finger is placed for the face-up rim profile; on an inverted plate it presses on the (now upward) foot side and slides over: 12 mm overhang instead of 45 mm, the pinch is impossible (detected by the overhang check, which uses ground truth).",
+   "members": [
+    "G_r3_s1"
+   ],
+   "also_seen": [
+    "R_03 (face-down, but its stop was caused by the cart offset)"
+   ],
+   "found_by": [
+    "gpt"
+   ],
+   "minimal_from": "G_r3_s1",
+   "minimal_params": {
+    "plate": {
+     "upside_down": true
+    }
+   },
+   "threshold": "structural",
+   "severity": 2,
+   "plausibility": 2,
+   "classification": "robot weakness",
+   "sim_caveat": "plate rim modelled by 36 flat segments; the exact slide-over depends on that profile",
+   "novelty": "new",
+   "real_robot_detects": "partly - re-perception at the edge would show the small overhang",
+   "fix": "Detect plate orientation (depth profile: concave vs convex) and either flip it or use a face-down push/pinch recipe; check the overhang with the re-perception before pinching.",
+   "ref_run": "runs/G_r3_s1.json",
+   "clip_step": "pick_plate",
+   "clip_len_s": 20,
+   "speed": 3
+  },
+  {
+   "id": "M12",
+   "title": "Wall camera knocked (~2 deg pitch + 2 cm) -> plate pose error, push under-travel; smaller bumps over-squeeze the rim",
+   "mechanism": "The camera extrinsics are never re-checked. A 2 deg pitch + 20 mm shift gives a 4.4 mm centre and 2 deg normal error; the open-loop drag stops 25 mm short (20 mm overhang). Smaller bumps (1-2 deg) still complete but with 47-71 N palm-rim contact.",
+   "members": [
+    "G_r6_s1",
+    "S_08",
+    "S_22"
+   ],
+   "also_seen": [
+    "S_19, G_r5_s1 (degraded)"
+   ],
+   "found_by": [
+    "gpt",
+    "sparse"
+   ],
+   "minimal_from": "G_r6_s1",
+   "minimal_params": {
+    "camera_bump": {
+     "pitch_deg": -2.0,
+     "dx": 0.02
+    }
+   },
+   "threshold": "1.5 deg + 15 mm passes; 2 deg + 20 mm fails",
+   "severity": 2,
+   "plausibility": 2,
+   "classification": "robot weakness",
+   "sim_caveat": "S_22 (insertion off-centre with a bump) did not reproduce with seed 2",
+   "novelty": "new",
+   "real_robot_detects": "partly (overhang check uses GT in the sim; a real robot would need the re-perception)",
+   "fix": "Self-check the extrinsics every run against fixed fiducials (or the counter edge / appliance outline) and refuse when off; close the push loop on the re-perceived overhang.",
+   "ref_run": "runs/G_r6_s1.json",
+   "clip_step": "pick_plate",
+   "clip_len_s": 20,
+   "speed": 3
+  }
+ ],
+ "known": [
+  {
+   "id": "K-person",
+   "title": "person near the robot, Runner ignores the flag (known fault \"person\")",
+   "members": [
+    "S_21",
+    "S_23"
+   ],
+   "novelty": "known fault",
+   "classification": "robot weakness (already known)"
+  },
+  {
+   "id": "K-pod",
+   "title": "pod on the counter, not in its dish (known fault \"pod_moved\")",
+   "members": [
+    "S_05"
+   ],
+   "novelty": "known fault",
+   "classification": "robot weakness (already known)"
+  }
+ ],
+ "notes": [
+  "R_15: perception mis-fit (radius 155 mm) with camera yaw -2.65 deg, dishwasher shifted 4.6 cm and 17 other changes; not minimised, left unattributed.",
+  "S_22 (camera bump + stiff pad + sensor noise -> insertion 12.6 mm off the slot): did not reproduce with seed 2; listed under M12 with that caveat.",
+  "Seating predicate: nominal seated lean is 7.5-9.5 deg against the 10 deg in_slot predicate, so tiny perturbations gave \"not seated\" at 10.3-11 deg. Treated as a predicate artefact: this study counts a plate as seated below 15 deg (the \"seated\" column of GPT_CONTROL.md) and keeps the 10 deg verdict in the run files."
+ ]
+}

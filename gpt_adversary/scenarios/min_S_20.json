@@ -1,0 +1,13 @@
+{
+ "name": "min_S_20",
+ "source": "minimized",
+ "from_entry": "S_20",
+ "target_mode": "open_door|plate_in_slot,pod_in_groove,quick_running|",
+ "params": {
+  "dishwasher": {
+   "dx": -0.014,
+   "dy": 0.0115,
+   "yaw_deg": -0.3138
+  }
+ }
+}

@@ -1,0 +1,35 @@
+--- a/pipeline.py
++++ b/pipeline.py
+@@ -574,7 +574,15 @@
+                 self.ref['q_seg'] = (q_prev, self.cfg.q.copy())
+             qa, qb = self.ref['q_seg']
+             qi = qa + ((k % nctl) + 1) / nctl * (qb - qa)
+-            d.ctrl[self.act[:7]] = qi[self.ik_arm]
++            arm_cmd = qi[self.ik_arm].copy()
++            if 'insert_joint_i' in self.ref:
++                # Correct servo deflection using encoders, preserving the IK
++                # hand target and all insertion trajectory endpoints.
++                err = arm_cmd - d.qpos[self.arm_q]
++                bias = self.ref['insert_joint_i']
++                bias[:] = np.clip(bias + 2.0 * m.opt.timestep * err, -.06, .06)
++                arm_cmd += bias
++            d.ctrl[self.act[:7]] = arm_cmd
+             if self.has_rail:
+                 d.ctrl[self.rail_act] = qi[self.ik_rail]
+             d.ctrl[self.act[7]] = g0 + s * (grip - g0)
+@@ -1296,6 +1304,7 @@
+         self.rec.set_view(*VIEWS['insert'])
+         self.move('carry_down', max(2., 1.875 * float(np.linalg.norm(above - via3)) / .12), above, Rh, 0., qpath=qs[1:3])
+         insert_meta = dict(slot_yaw_deg=round(math.degrees(yaw_opt)), carry_plan_margin_deg=round(math.degrees(wm), 1))
++        self.ref['insert_joint_i'] = np.zeros(7)
+         self.hold('carry_settle', .5, 0.)
+         # touchdown detection with the wrist F/T: support = loss of carried weight
+         w0 = float(np.mean([self.hand_force_world()[2]]))
+@@ -1331,6 +1340,7 @@
+         self.move('release', 1.0, stop_p, Rh, 200.)
+         self.move('retract', 1.5, stop_p + [0, 0, .12], Rh, 200.)
+         self.allowed = set()
++        self.ref.pop('insert_joint_i')
+         self.hold('settle', 1.0)
+         st = self.plate_slot_state()
+         ok = st['in_slot'] and st['speed_mm_s'] < 5 and not st['touching_robot']

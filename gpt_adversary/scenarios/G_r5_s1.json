@@ -1,0 +1,12 @@
+{
+ "name": "camera_shift_inboard_grasp",
+ "source": "gpt",
+ "hypothesis": "The previously tolerated camera shift was outward. An inward calibration error can instead place the pinch on the plate's sloped body rather than its rim. Radius fitting remains valid, but the assumed rim geometry no longer matches the grasp.",
+ "expected_failure": "Step 5 pinch or lift fails to establish a held, vertical plate; the plate may remain on the counter or fall during lifting.",
+ "real_world_story": "Someone shifts the camera bracket two centimetres while wiping the wall.",
+ "params": {
+  "camera_bump": {
+   "dx": 0.02
+  }
+ }
+}

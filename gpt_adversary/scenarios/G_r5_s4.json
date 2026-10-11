@@ -1,0 +1,19 @@
+{
+ "name": "front_corner_box_hand_collision",
+ "source": "gpt",
+ "hypothesis": "The earlier smaller central box remained untouched. A larger box at the front corner extends farther into the hand's approach and retreat clearance around the pull bar. The empty-scene collision model permits direct contact during position-controlled motion.",
+ "expected_failure": "Step 2 contacts and pushes or topples the cereal box; damage may occur even if the door-opening check passes.",
+ "real_world_story": "A cereal box is temporarily stored at the front corner of the countertop dishwasher.",
+ "params": {
+  "clutter": [
+   {
+    "type": "cereal_box",
+    "surface": "dishwasher_top",
+    "x": 0.15,
+    "y": 0.15,
+    "yaw_deg": 0.0,
+    "size_scale": 1.2
+   }
+  ]
+ }
+}

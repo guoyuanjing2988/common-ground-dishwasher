@@ -1,0 +1,412 @@
+{
+ "version": "1.0",
+ "status": "DESIGN v1.0 - numbers tagged in SYSTEM.md (V verified / E estimated / OPEN). Base mass & CoG are estimates from a part-by-part budget.",
+ "date": "2026-10-10",
+ "units": "SI (m, kg, s, N, N*m, W, V, Ah)",
+ "frames": {
+  "base": "origin on the floor under the footprint centre; +x towards the aisle when docked (dock face = -x side), +y along the counter, z up",
+  "world_dock_pose": "footprint x -0.02..0.63, y 0.12..0.72 (centre (0.305, 0.42)), yaw 0 -> arm base world (0.48, 0.42, 0.80) yaw 195 deg, exactly as sim M1"
+ },
+ "arm_choice": {
+  "model": "Franka Research 3 (FR3) + Franka Hand",
+  "decision_status": "decided",
+  "why": "same kinematics as the simulated Panda (reach 0.855 m); only joint limits differ",
+  "mass_kg": 18.3,
+  "payload_kg": 3.0,
+  "power": "100-240 VAC, ~80 W (datasheet); fed by 48 V->230 V inverter",
+  "sim_recheck_required": {
+   "replace_panda_joint_limits_with_fr3_rad": {
+    "q_min": [
+     -2.9007,
+     -1.8361,
+     -2.9007,
+     -3.077,
+     -2.8763,
+     0.4398,
+     -3.0508
+    ],
+    "q_max": [
+     2.9007,
+     1.8361,
+     2.9007,
+     -0.1169,
+     2.8763,
+     4.6216,
+     3.0508
+    ],
+    "source": "https://raw.githubusercontent.com/frankaemika/franka_description/main/robots/fr3/joint_limits.yaml"
+   },
+   "critical": "FR3 joint 6 lower limit is +25.2 deg vs Panda -1.0 deg (26 deg tighter); joint 4 upper -6.7 vs -4.0 deg; joint 5 +-164.8 vs +-166 deg. Every path whose Panda margin on q6 (low side) was < ~28 deg must be re-planned. Report min q6 per step."
+  }
+ },
+ "envelope": {
+  "chassis_box_m": {
+   "x": [
+    -0.02,
+    0.63
+   ],
+   "z": [
+    0.06,
+    0.32
+   ],
+   "y_width": 0.6
+  },
+  "column_m": {
+   "size_xy": [
+    0.18,
+    0.18
+   ],
+   "z_top": 0.8,
+   "centre_world_xy": [
+    0.48,
+    0.42
+   ]
+  },
+  "note": "All equipment fits inside the sim's chassis box + column; nothing above z 0.32 except the column (arm workspace + open door at z 0.91)."
+ },
+ "base": {
+  "drive": "differential: 2 driven wheels on the y axis through the footprint centre + 4 swivel casters at the corners; driven wheels on sprung arms (carry ~55 % of weight)",
+  "footprint_m": [
+   0.65,
+   0.6
+  ],
+  "ground_clearance_m": 0.06,
+  "mass_kg_incl_battery_excl_arm": 112.9,
+  "mass_total_with_arm_kg": 133.2,
+  "cog_m_base_frame_arm_stowed": [
+   0.029,
+   -0.002,
+   0.33
+  ],
+  "cog_z_m_arm_stowed": 0.33,
+  "cog_m_base_frame_base_only": [
+   0.013,
+   -0.002,
+   0.208
+  ],
+  "wheel_radius_m": 0.1,
+  "wheel_width_m": 0.05,
+  "drive_unit_note": "motor+brake+gearhead lie along the axle, inboard of each wheel (about 0.2 m each); battery modules sit fore and aft of the axle",
+  "track_width_m": 0.5,
+  "drive_wheel_positions_base_frame_m": [
+   [
+    0.0,
+    -0.25,
+    0.1
+   ],
+   [
+    0.0,
+    0.25,
+    0.1
+   ]
+  ],
+  "caster_positions_base_frame_m": [
+   [
+    -0.265,
+    -0.24,
+    0.05
+   ],
+   [
+    -0.265,
+    0.24,
+    0.05
+   ],
+   [
+    0.265,
+    -0.24,
+    0.05
+   ],
+   [
+    0.265,
+    0.24,
+    0.05
+   ]
+  ],
+  "caster_wheel_radius_m": 0.05,
+  "caster_swivel_offset_m": 0.035,
+  "drive_wheel_load_fraction": 0.55,
+  "motor": "Oriental Motor BLMR6200SKM-GFV-F + GFV6G50 gearhead + BLVD-KRD driver (200 W, 24/48 VDC, power-off brake)",
+  "gear_ratio": 50.0,
+  "motor_torque_continuous_Nm_per_wheel": 27.4,
+  "motor_torque_peak_Nm_per_wheel": 55.0,
+  "max_wheel_speed_rad_s": 8.38,
+  "max_wheel_speed_rpm": 80,
+  "max_speed_m_s": 0.5,
+  "max_speed_near_people_m_s": 0.3,
+  "dock_approach_speed_m_s": 0.05,
+  "max_accel_m_s2": 0.5,
+  "max_yaw_rate_rad_s": 0.8,
+  "brake_type": "spring-applied, power-off activated, on motor shaft (x50 through gearhead)",
+  "brake_holding_torque_Nm_per_wheel": 27.0,
+  "brake_holding_note": "0.637 N*m motor-shaft brake (verified) x 50; capped by gearhead permissible torque 27.4 N*m (assumption, confirm with Oriental)",
+  "floor_mu_assumed": 0.5,
+  "max_step_m": 0.005,
+  "max_gap_m": 0.015,
+  "tip": {
+   "edge_distance_front_m": 0.236,
+   "edge_distance_rear_m": 0.294,
+   "edge_distance_side_m": 0.238,
+   "a_to_tip_fwd_m_s2": 7.01,
+   "a_to_tip_rear_m_s2": 8.73,
+   "a_to_tip_side_m_s2": 7.08,
+   "a_wheel_skid_limit_m_s2": 4.91,
+   "commanded_a_m_s2": 0.5,
+   "safety_factor_vs_commanded": 14.0,
+   "tip_possible_by_braking": false,
+   "static_tilt_to_tip_deg": 35.6
+  },
+  "estop": {
+   "driven_wheel_normal_load_N": 718,
+   "brake_force_tyre_limit_N": 359,
+   "brake_force_torque_limit_N": 540,
+   "decel_m_s2": 2.7,
+   "stop_distance_from_0.5_m_s_mm": 46.0,
+   "stop_distance_from_0.3_m_s_mm": 17.0,
+   "tip_margin_factor": 2.6
+  },
+  "drive_calc": {
+   "rolling_force_N": 26.1,
+   "torque_cruise_Nm_per_wheel": 1.31,
+   "torque_accel_Nm_per_wheel": 4.64,
+   "torque_dock_preload_Nm_per_wheel": 6.31,
+   "step_height_m": 0.005,
+   "step_force_both_leading_casters_N": 285,
+   "torque_step_Nm_per_wheel": 15.54,
+   "traction_limit_N": 359,
+   "step_climb_traction_ok": true,
+   "max_step_by_traction_m": 0.0065,
+   "wheel_rpm_at_vmax": 47.7,
+   "gear_ratio": 50.0,
+   "motor_rpm_at_vmax": 2387,
+   "wheel_force_rated_N": 274,
+   "wheel_force_peak_N": 550,
+   "vmax_capability_m_s": 0.84,
+   "mech_power_accel_at_vmax_W": 46.4,
+   "mech_power_cruise_W": 13.1
+  }
+ },
+ "docking": {
+  "method": "lidar line-fit on cabinet fronts/plinth -> reverse at 0.05 m/s into 2 floor/plinth-mounted V-blocks (cone pins on the cart rear, z ~0.05), drive pushes 100 N, brakes apply",
+  "capture_range_m_deg": [
+   0.03,
+   3.0
+  ],
+  "repeatability_target_mm_deg": [
+   1.0,
+   0.1
+  ],
+  "dock_preload_N": 100.0,
+  "dock_contact_force_max_N": 154.9,
+  "brake_utilisation_docked": 0.409,
+  "cop_margin_docked_m": {
+   "front": 0.187,
+   "rear": 0.224,
+   "left": 0.172,
+   "right": 0.177
+  },
+  "per_dock_calibration": "wall camera sees AprilTag on the hand at 3 poses -> camera-to-robot transform re-estimated each dock (removes base-pose error from perception)"
+ },
+ "battery": {
+  "chemistry": "LiFePO4 16S (2 x 8S modules in series, one BMS with CAN)",
+  "nominal_V": 51.2,
+  "full_V": 58.4,
+  "cutoff_V": 44.0,
+  "capacity_Ah": 30.0,
+  "energy_Wh": 1536,
+  "mass_kg": 16.0,
+  "usable_fraction": 0.8,
+  "bms_continuous_A_min": 60
+ },
+ "power": {
+  "components": [
+   {
+    "load": "FR3 arm + Control (AC)",
+    "path": "ac",
+    "idle_W": 60.0,
+    "active_W": 80.0,
+    "peak_W": 450.0,
+    "bus_idle_W": 66.7,
+    "bus_active_W": 88.9,
+    "tag": "V ~80 W datasheet; idle E; peak 450 W reseller (UNVERIFIED)"
+   },
+   {
+    "load": "Main PC OnLogic Helix 500",
+    "path": "24",
+    "idle_W": 12.0,
+    "active_W": 30.0,
+    "peak_W": 60.0,
+    "bus_idle_W": 13.0,
+    "bus_active_W": 32.6,
+    "tag": "E (60 W stress, AnandTech)"
+   },
+   {
+    "load": "2 x RPLIDAR S2 (spun down docked)",
+    "path": "24",
+    "idle_W": 0.5,
+    "active_W": 5.0,
+    "peak_W": 6.0,
+    "bus_idle_W": 0.5,
+    "bus_active_W": 5.4,
+    "tag": "V/R >2 W each"
+   },
+   {
+    "load": "GbE switch EKI-2725",
+    "path": "24",
+    "idle_W": 4.0,
+    "active_W": 4.0,
+    "peak_W": 5.0,
+    "bus_idle_W": 4.3,
+    "bus_active_W": 4.3,
+    "tag": "E"
+   },
+   {
+    "load": "Base MCU STM32H723 + RS-485/CAN",
+    "path": "24",
+    "idle_W": 1.0,
+    "active_W": 1.0,
+    "peak_W": 1.5,
+    "bus_idle_W": 1.1,
+    "bus_active_W": 1.1,
+    "tag": "E"
+   },
+   {
+    "load": "PILZ PNOZ s3 + safety-edge relay",
+    "path": "24",
+    "idle_W": 2.5,
+    "active_W": 2.5,
+    "peak_W": 2.5,
+    "bus_idle_W": 2.7,
+    "bus_active_W": 2.7,
+    "tag": "E"
+   },
+   {
+    "load": "Bota SensONE F/T",
+    "path": "24",
+    "idle_W": 1.0,
+    "active_W": 1.0,
+    "peak_W": 1.0,
+    "bus_idle_W": 1.1,
+    "bus_active_W": 1.1,
+    "tag": "E"
+   },
+   {
+    "load": "2 x BLVD-KRD drivers (standby)",
+    "path": "48",
+    "idle_W": 8.0,
+    "active_W": 8.0,
+    "peak_W": 8.0,
+    "bus_idle_W": 8.0,
+    "bus_active_W": 8.0,
+    "tag": "E"
+   },
+   {
+    "load": "2 x BLV-R drive (driving)",
+    "path": "48",
+    "idle_W": 0.0,
+    "active_W": 45.0,
+    "peak_W": 470.6,
+    "bus_idle_W": 0.0,
+    "bus_active_W": 45.0,
+    "tag": "calc: 46 W mech peak accel, 13 W cruise; 200 W rated each"
+   },
+   {
+    "load": "2 x motor brake coils (released)",
+    "path": "48",
+    "idle_W": 0.0,
+    "active_W": 12.0,
+    "peak_W": 12.0,
+    "bus_idle_W": 0.0,
+    "bus_active_W": 12.0,
+    "tag": "E"
+   }
+  ],
+  "inverter": {
+   "model": "Victron Phoenix 48/800 230V VE.Direct (UK socket)",
+   "continuous_W": 650,
+   "peak_W": 1500,
+   "no_load_W": 9.5,
+   "eff_max": 0.91
+  },
+  "dcdc_24V": {
+   "model": "Mean Well RSD-300C-24",
+   "W": 300,
+   "in_V": [
+    33.6,
+    62.4
+   ],
+   "eff": 0.92
+  },
+  "charger": {
+   "model": "Mean Well NPB-750-48 on the dock",
+   "A": 11.3,
+   "V_boost_float": [
+    57.6,
+    55.2
+   ]
+  },
+  "phases": [
+   {
+    "phase": "wake: inverter on, FR3 boot + self-test",
+    "s": 90.0,
+    "bus_W": 107.0,
+    "Wh": 2.67
+   },
+   {
+    "phase": "undock + drive out + dock",
+    "s": 45.0,
+    "bus_W": 188.4,
+    "Wh": 2.36
+   },
+   {
+    "phase": "arm task (185 s sim)",
+    "s": 185.0,
+    "bus_W": 148.8,
+    "Wh": 7.65
+   },
+   {
+    "phase": "2 Codex waits (arm holding)",
+    "s": 32.0,
+    "bus_W": 126.6,
+    "Wh": 1.12
+   },
+   {
+    "phase": "undock + drive back + dock",
+    "s": 45.0,
+    "bus_W": 188.4,
+    "Wh": 2.36
+   }
+  ],
+  "energy_per_cycle_Wh": 16.2,
+  "energy_per_cycle_Wh_pessimistic": 25.9,
+  "cycles_per_charge": 76,
+  "cycles_per_charge_pessimistic": 47,
+  "bus_idle_awake_W": 107.0,
+  "bus_peak_W": 1083,
+  "charge_time_20_100_h": 2.5
+ },
+ "sim_rechecks_requested": [
+  "Replace Panda joint limits by FR3 limits (arm_choice.sim_recheck_required); report min q6 and q4 margin per step.",
+  "Base pose tolerance: perturb the docked base by +-2 / +-5 mm in x,y and +-0.2 / +-0.5 deg yaw, with perception expressed in the (re-calibrated) robot frame and the dishwasher NOT re-measured; report which steps fail. Design target is <=1 mm / 0.1 deg.",
+  "Keep all cart geometry inside the envelope (chassis z<=0.32 + column); add lidar/bumper/e-stop button bumps only inside that box.",
+  "Tool stack: Bota SensONE between flange and Franka Hand adds 0.21 kg and its height (~25-30 mm, UNVERIFIED - take from the Bota drawing) to the TCP offset; F/T then sits where the sim's hand_ft site is.",
+  "Arm speed: report peak TCP / elbow speed per step; the safety design caps TCP at 0.25 m/s whenever a person may be present (FR3 SLS) - report cycle-time impact.",
+  "Drive test: 0.5 m/s, 0.5 m/s^2, 0.8 rad/s yaw, e-stop at 0.5 m/s with brake force limited by tyre friction (mu 0.5 on 55 % of weight) - check no caster lift-off with the arm stowed."
+ ],
+ "changelog": [
+  {
+   "version": "0.1",
+   "date": "2026-10-10",
+   "change": "Initial provisional file = simulation's starting numbers + arm=FR3 provisional."
+  },
+  {
+   "version": "0.2",
+   "date": "2026-10-10",
+   "change": "Arm decided FR3 (needs FR3 joint-limit recheck, J6!). Masses from verified parts: base 112.9 kg (was 90), total 132.2 kg, CoG z 0.33 stowed (was 0.35). Battery 51.2 V (16S) 30 Ah. Added envelope + dock preload 100 N. Drive still provisional."
+  },
+  {
+   "version": "1.0",
+   "date": "2026-10-10",
+   "change": "Drive decided: Oriental BLV-R 200 W + power-off brake + 50:1, wheel r 0.10 (was 0.0825), track 0.50, rated 27.4 / peak 55 N*m per wheel (was 15/30), max 80 wheel rpm (0.84 m/s capability, limited to 0.5), brake 27 N*m (was 20). Mass 112.9 kg base / 133.2 kg total, CoG z 0.33. Battery 51.2 V 30 Ah. Added docking, per-component power, energy per cycle, sim rechecks."
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+You are the engineer on a simulated mobile robot (sprung wheeled base + Franka arm, MuJoCo) that docks at a kitchen
+counter and loads a dishwasher. The base localises itself with two corner 2-D lidars (scene_mobile.LIDARS: front-left and
+rear-right corners, z 0.25 m) by fitting the line of the cabinet fronts (x, heading) and detecting the edges of a 50 mm
+retro-reflective strip on the cabinet front (y) - see lidar.py (localize) and planner.py (_fix, base_pose_arm,
+job_localize_docked). The arm's IK uses this MEASURED base pose. The spec requires the task to tolerate dock errors of
++-4 cm in y.
+
+Observed problem: in a dock-tolerance sweep (the robot starts already at an offset dock pose with brakes on, no V-blocks,
+measures its pose with the lidars, then runs the task), y -4 cm fails at load_pod ('pod not lifted'), and the logged
+lidar base-estimate y error is about 40 mm; at y -2 cm the y error is already about 4 mm (vs < 1 mm elsewhere).
+
+Test set (docked runs, truth perception for the plate, seeded lidar noise):
+  dock4: y -4 cm   dock2: y -2 cm   dock3: y +4 cm   dock0: nominal
+METRIC = number of cases (out of 4) that finish DONE with all task steps OK and the plate in its slot after insert
+(frozen scorer). TARGET: 4/4.
+You may change the localisation software (lidar.py `localize` and helpers, planner.py), AND/OR propose a sensor-placement
+design change in scene_mobile.py, limited to the lidar mount poses (`LIDARS = ...`) and the reflective strip constants
+(`MARKER_* = ...`). The lidar hardware model (Lidar.__init__/scan: FOV, resolution, noise) is frozen. If you change
+the sensor placement, say clearly in the diagnosis that it is a hardware design proposal and what it would cost/risk.

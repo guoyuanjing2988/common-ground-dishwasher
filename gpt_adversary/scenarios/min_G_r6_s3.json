@@ -1,0 +1,11 @@
+{
+ "name": "min_G_r6_s3",
+ "source": "minimized",
+ "from_entry": "G_r6_s3",
+ "target_mode": "load_pod|door_closed,plate_in_slot,pod_in_groove,quick_running|",
+ "params": {
+  "dishwasher": {
+   "yaw_deg": 1.875
+  }
+ }
+}

@@ -1,0 +1,85 @@
+"""Build spec.json from calc_out.json + docked_statics.json + fixed design choices."""
+import json, pathlib
+H = pathlib.Path(__file__).parent
+c = json.loads((H / "calc_out.json").read_text())
+st = json.loads((H / "docked_statics.json").read_text())
+old = json.loads((H / "spec.json").read_text())
+import calc
+spec = {
+ "version": "1.0",
+ "status": "DESIGN v1.0 - numbers tagged in SYSTEM.md (V verified / E estimated / OPEN). Base mass & CoG are estimates from a part-by-part budget.",
+ "date": "2026-10-10",
+ "units": "SI (m, kg, s, N, N*m, W, V, Ah)",
+ "frames": {
+   "base": "origin on the floor under the footprint centre; +x towards the aisle when docked (dock face = -x side), +y along the counter, z up",
+   "world_dock_pose": "footprint x -0.02..0.63, y 0.12..0.72 (centre (0.305, 0.42)), yaw 0 -> arm base world (0.48, 0.42, 0.80) yaw 195 deg, exactly as sim M1"},
+ "arm_choice": old["arm_choice"],
+ "envelope": old["envelope"],
+ "base": {
+   "drive": "differential: 2 driven wheels on the y axis through the footprint centre + 4 swivel casters at the corners; driven wheels on sprung arms (carry ~55 % of weight)",
+   "footprint_m": [0.65, 0.60],
+   "ground_clearance_m": 0.06,
+   "mass_kg_incl_battery_excl_arm": st["base_mass_excl_arm_kg"],
+   "mass_total_with_arm_kg": c["mass_total_kg"],
+   "cog_m_base_frame_arm_stowed": c["cog_m"],
+   "cog_z_m_arm_stowed": c["cog_m"][2],
+   "cog_m_base_frame_base_only": [round(st["base_cog_world_m"][0] - 0.305, 3), round(st["base_cog_world_m"][1] - 0.42, 3), st["base_cog_world_m"][2]],
+   "wheel_radius_m": calc.WHEEL_R,
+   "wheel_width_m": 0.05,
+   "drive_unit_note": "motor+brake+gearhead lie along the axle, inboard of each wheel (about 0.2 m each); battery modules sit fore and aft of the axle",
+   "track_width_m": calc.TRACK,
+   "drive_wheel_positions_base_frame_m": [[0.0, -calc.TRACK/2, calc.WHEEL_R], [0.0, calc.TRACK/2, calc.WHEEL_R]],
+   "caster_positions_base_frame_m": [[sx*calc.CASTER_X, sy*calc.CASTER_Y, 0.05] for sx in (-1, 1) for sy in (-1, 1)],
+   "caster_wheel_radius_m": 0.05, "caster_swivel_offset_m": 0.035,
+   "drive_wheel_load_fraction": 0.55,
+   "motor": "Oriental Motor BLMR6200SKM-GFV-F + GFV6G50 gearhead + BLVD-KRD driver (200 W, 24/48 VDC, power-off brake)",
+   "gear_ratio": calc.GEAR,
+   "motor_torque_continuous_Nm_per_wheel": calc.MOTOR_T_RATED,
+   "motor_torque_peak_Nm_per_wheel": calc.MOTOR_T_PEAK,
+   "max_wheel_speed_rad_s": round(80 * 2 * 3.14159265 / 60, 2),
+   "max_wheel_speed_rpm": 80,
+   "max_speed_m_s": 0.5, "max_speed_near_people_m_s": 0.3, "dock_approach_speed_m_s": 0.05,
+   "max_accel_m_s2": 0.5, "max_yaw_rate_rad_s": 0.8,
+   "brake_type": "spring-applied, power-off activated, on motor shaft (x50 through gearhead)",
+   "brake_holding_torque_Nm_per_wheel": calc.BRAKE_T,
+   "brake_holding_note": "0.637 N*m motor-shaft brake (verified) x 50; capped by gearhead permissible torque 27.4 N*m (assumption, confirm with Oriental)",
+   "floor_mu_assumed": calc.MU_FLOOR,
+   "max_step_m": 0.005, "max_gap_m": 0.015,
+   "tip": c["tip"], "estop": c["estop"], "drive_calc": c["drive"]},
+ "docking": {
+   "method": "lidar line-fit on cabinet fronts/plinth -> reverse at 0.05 m/s into 2 floor/plinth-mounted V-blocks (cone pins on the cart rear, z ~0.05), drive pushes 100 N, brakes apply",
+   "capture_range_m_deg": [0.03, 3.0],
+   "repeatability_target_mm_deg": [1.0, 0.1],
+   "dock_preload_N": calc.DOCK_PRELOAD,
+   "dock_contact_force_max_N": st["dock_contact_force_max_N"],
+   "brake_utilisation_docked": st["brake_utilisation_max (drive wheels only, mu=0.50)"],
+   "cop_margin_docked_m": st["cop_margin_m"],
+   "per_dock_calibration": "wall camera sees AprilTag on the hand at 3 poses -> camera-to-robot transform re-estimated each dock (removes base-pose error from perception)"},
+ "battery": {"chemistry": "LiFePO4 16S (2 x 8S modules in series, one BMS with CAN)", "nominal_V": 51.2, "full_V": 58.4,
+             "cutoff_V": 44.0, "capacity_Ah": calc.BATT_AH, "energy_Wh": c["energy"]["battery_nominal_Wh"], "mass_kg": 16.0,
+             "usable_fraction": calc.DOD, "bms_continuous_A_min": 60},
+ "power": {
+   "components": c["power_table"],
+   "inverter": {"model": "Victron Phoenix 48/800 230V VE.Direct (UK socket)", "continuous_W": 650, "peak_W": 1500, "no_load_W": 9.5, "eff_max": 0.91},
+   "dcdc_24V": {"model": "Mean Well RSD-300C-24", "W": 300, "in_V": [33.6, 62.4], "eff": 0.92},
+   "charger": {"model": "Mean Well NPB-750-48 on the dock", "A": 11.3, "V_boost_float": [57.6, 55.2]},
+   "phases": c["energy"]["phases"],
+   "energy_per_cycle_Wh": c["energy"]["energy_per_cycle_Wh"],
+   "energy_per_cycle_Wh_pessimistic": c["energy"]["energy_per_cycle_Wh_pessimistic_FR3_250W"],
+   "cycles_per_charge": c["energy"]["cycles_per_charge"],
+   "cycles_per_charge_pessimistic": c["energy"]["cycles_per_charge_pessimistic"],
+   "bus_idle_awake_W": c["energy"]["bus_idle_awake_W"],
+   "bus_peak_W": c["energy"]["bus_peak_W_all_peaks_coincident"],
+   "charge_time_20_100_h": c["energy"]["charge_time_20_to_100pct_h"]},
+ "sim_rechecks_requested": [
+   "Replace Panda joint limits by FR3 limits (arm_choice.sim_recheck_required); report min q6 and q4 margin per step.",
+   "Base pose tolerance: perturb the docked base by +-2 / +-5 mm in x,y and +-0.2 / +-0.5 deg yaw, with perception expressed in the (re-calibrated) robot frame and the dishwasher NOT re-measured; report which steps fail. Design target is <=1 mm / 0.1 deg.",
+   "Keep all cart geometry inside the envelope (chassis z<=0.32 + column); add lidar/bumper/e-stop button bumps only inside that box.",
+   "Tool stack: Bota SensONE between flange and Franka Hand adds 0.21 kg and its height (~25-30 mm, UNVERIFIED - take from the Bota drawing) to the TCP offset; F/T then sits where the sim's hand_ft site is.",
+   "Arm speed: report peak TCP / elbow speed per step; the safety design caps TCP at 0.25 m/s whenever a person may be present (FR3 SLS) - report cycle-time impact.",
+   "Drive test: 0.5 m/s, 0.5 m/s^2, 0.8 rad/s yaw, e-stop at 0.5 m/s with brake force limited by tyre friction (mu 0.5 on 55 % of weight) - check no caster lift-off with the arm stowed."],
+ "changelog": [c for c in old["changelog"] if c["version"] != "1.0"] + [{"version": "1.0", "date": "2026-10-10",
+   "change": "Drive decided: Oriental BLV-R 200 W + power-off brake + 50:1, wheel r 0.10 (was 0.0825), track 0.50, rated 27.4 / peak 55 N*m per wheel (was 15/30), max 80 wheel rpm (0.84 m/s capability, limited to 0.5), brake 27 N*m (was 20). Mass 112.9 kg base / 133.2 kg total, CoG z 0.33. Battery 51.2 V 30 Ah. Added docking, per-component power, energy per cycle, sim rechecks."}],
+}
+(H / "spec.json").write_text(json.dumps(spec, indent=1))
+print("spec.json v1.0", len(json.dumps(spec)))

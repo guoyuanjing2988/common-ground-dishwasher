@@ -1,0 +1,19 @@
+{
+ "name": "box_obstructs_button_approach",
+ "source": "gpt",
+ "hypothesis": "A cereal box near the appliance's front top edge occupies hand clearance above the controls. Contact with the box can trigger the wrist-force stopping condition before a fingertip reaches the intended pad.",
+ "expected_failure": "Step 9 stops pressing against the box and fails the pad-touch check. Earlier contact during the bar approach could instead push or topple the box.",
+ "real_world_story": "A cereal box is temporarily stored on top of the countertop dishwasher.",
+ "params": {
+  "clutter": [
+   {
+    "type": "cereal_box",
+    "surface": "dishwasher_top",
+    "x": 0.09,
+    "y": 0.0,
+    "yaw_deg": 0.0,
+    "size_scale": 0.9
+   }
+  ]
+ }
+}

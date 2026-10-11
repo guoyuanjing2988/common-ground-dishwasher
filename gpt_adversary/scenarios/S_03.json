@@ -1,0 +1,29 @@
+{
+ "name": "sparse_03",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "basket": {
+   "rail_friction_N": 6.3919,
+   "damping": 15.2846,
+   "preload_slots": [
+    1
+   ]
+  },
+  "camera_bump": {
+   "roll_deg": 0.5568,
+   "pitch_deg": 2.3621,
+   "yaw_deg": 2.067,
+   "dx": -0.0048,
+   "dy": 0.013,
+   "dz": 0.0138
+  },
+  "dock": {
+   "dx": 0.0186,
+   "dy": 0.0226,
+   "yaw_deg": -2.1245
+  }
+ }
+}

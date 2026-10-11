@@ -1,0 +1,12 @@
+{
+ "name": "heavy_plate_drag_undertravel",
+ "source": "gpt",
+ "hypothesis": "Doubling plate mass increases counter friction without increasing the commanded 8 N finger pressure. If the finger loses traction during the drag, its commanded travel overstates plate displacement and leaves insufficient overhang.",
+ "expected_failure": "Step 5a fails the 25 mm minimum overhang check because the finger travels farther than the plate.",
+ "real_world_story": "A heavy handmade stoneware plate replaces the lightweight everyday plate.",
+ "params": {
+  "plate": {
+   "mass_kg": 0.9
+  }
+ }
+}

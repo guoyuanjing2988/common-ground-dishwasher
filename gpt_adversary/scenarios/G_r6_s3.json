@@ -1,0 +1,12 @@
+{
+ "name": "appliance_rotation_exceeds_insertion_margin",
+ "source": "gpt",
+ "hypothesis": "Increasing the tolerated appliance rotation to 2.5 degrees tests whether handle capture survives while basket orientation exceeds insertion clearance. The pull endpoint supplies translation information but cannot correct the rotated slot plane or tine positions.",
+ "expected_failure": "Step 6 contacts a tine before seating, releases incorrectly, and fails its seating check; a forceful insertion contact is also possible.",
+ "real_world_story": "The countertop dishwasher is left slightly crooked after wiping underneath it.",
+ "params": {
+  "dishwasher": {
+   "yaw_deg": 2.5
+  }
+ }
+}

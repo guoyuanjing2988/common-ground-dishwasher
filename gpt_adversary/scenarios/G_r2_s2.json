@@ -1,0 +1,12 @@
+{
+ "name": "dishwasher_set_back_after_cleaning",
+ "source": "gpt",
+ "hypothesis": "Moving the appliance backward by 30 mm displaces both the pull bar and hinge from their calibrated positions. The taught grasp may miss or capture only partially; any captured grasp must then follow an arc centered on the wrong hinge.",
+ "expected_failure": "Step 2 fails to capture or retain the pull bar, leaving the door below 85 degrees; partial capture may also cause unplanned contact during the imposed arc.",
+ "real_world_story": "After wiping behind the dishwasher, someone leaves it three centimetres farther back.",
+ "params": {
+  "dishwasher": {
+   "dx": -0.03
+  }
+ }
+}

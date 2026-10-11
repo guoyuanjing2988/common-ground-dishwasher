@@ -1,0 +1,19 @@
+{
+ "name": "bottle_in_plate_drag_sweep",
+ "source": "gpt",
+ "hypothesis": "A small bottle near the counter edge starts clear of the plate but intersects its commanded drag sweep. Contact pushes the bottle outward toward unsupported space. The runner has no clutter model and controls the drag without checking displaced objects.",
+ "expected_failure": "During step 5(a), the plate pushes the bottle toward and potentially off the counter, causing an object-fall or toppling event even if the plate overhang check passes.",
+ "real_world_story": "A small drinks bottle is left beside the plate near the counter edge.",
+ "params": {
+  "clutter": [
+   {
+    "type": "bottle",
+    "surface": "counter",
+    "x": -0.035,
+    "y": 0.47,
+    "yaw_deg": 0,
+    "size_scale": 0.8
+   }
+  ]
+ }
+}

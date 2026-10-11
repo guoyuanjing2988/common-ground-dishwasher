@@ -1,0 +1,12 @@
+{
+ "name": "ordinary_nine_inch_plate",
+ "source": "gpt",
+ "hypothesis": "A nine-inch plate has a 114.3 mm radius, exceeding the perception gate's 110 mm upper limit despite fitting comfortably on the counter. The fixed size assumption prevents the runner from handling an ordinary household plate.",
+ "expected_failure": "Step 1 rejects the plate because the circle fit exceeds the allowed radius or cannot satisfy the nominal-radius RANSAC gate.",
+ "real_world_story": "A household uses a nine-inch dinner plate instead of the validated eight-inch plate.",
+ "params": {
+  "plate": {
+   "radius_m": 0.1143
+  }
+ }
+}

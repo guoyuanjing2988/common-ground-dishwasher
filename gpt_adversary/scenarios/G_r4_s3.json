@@ -1,0 +1,13 @@
+{
+ "name": "dock_rotation_distorts_hinge_arc",
+ "source": "gpt",
+ "hypothesis": "A small clockwise docking rotation with compensating stand-off keeps the initial handle approach approximately aligned. Once grasped, the precomputed arc rotates about the wrong world-space hinge, imposing lateral loads that grow during opening.",
+ "expected_failure": "Step 2 develops excessive unplanned contact or loses its handle grasp during the arc, failing to reach 85 degrees despite initially capturing the bar.",
+ "real_world_story": "The cart docks slightly crooked because one bumper rests against a cabinet seam.",
+ "params": {
+  "dock": {
+   "dx": 0.011,
+   "yaw_deg": -2.0
+  }
+ }
+}

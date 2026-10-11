@@ -1,0 +1,12 @@
+{
+ "name": "diagonal_tablet_bridges_groove",
+ "source": "gpt",
+ "hypothesis": "A tablet retaining 45-degree yaw presents an approximately 39.6 mm footprint along both groove axes, exceeding the groove's 35 mm width. The taught placement cannot fully seat it unless contact passively corrects its orientation.",
+ "expected_failure": "Step 3 places the tablet across the groove lips instead of inside, failing the pod-in-groove check if the yaw persists through grasping.",
+ "real_world_story": "A fresh detergent tablet is dropped diagonally into the usual dish.",
+ "params": {
+  "pod": {
+   "yaw_deg": 45.0
+  }
+ }
+}

@@ -1,0 +1,4500 @@
+{
+ "searches": {
+  "G": {
+   "name": "GPT adversary",
+   "proposed": 23,
+   "rejected_invalid": 0,
+   "infra_errors": 0,
+   "run": 23,
+   "failures": 10,
+   "failure_rate": 0.435,
+   "labels": {
+    "silent_failure": 1,
+    "detected_failure": 8,
+    "success": 11,
+    "unsafe": 1,
+    "degraded": 2
+   },
+   "distinct_signatures": 8,
+   "distinct_modes": 9,
+   "modes_found": [
+    [
+     "M1",
+     "G_r1_s1"
+    ],
+    [
+     "M3",
+     "G_r1_s2"
+    ],
+    [
+     "M2",
+     "G_r1_s3"
+    ],
+    [
+     "M4",
+     "G_r2_s1"
+    ],
+    [
+     "M6",
+     "G_r2_s2"
+    ],
+    [
+     "M9",
+     "G_r2_s3"
+    ],
+    [
+     "M11",
+     "G_r3_s1"
+    ],
+    [
+     "M5",
+     "G_r4_s3"
+    ],
+    [
+     "M12",
+     "G_r6_s1"
+    ]
+   ],
+   "new_mechanism_modes": [
+    "M1",
+    "M11",
+    "M12",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M9"
+   ],
+   "robot_weakness_modes": [
+    "M1",
+    "M11",
+    "M12",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6"
+   ],
+   "unattributed_failures": [],
+   "gpt_proposal_calls": 6,
+   "gpt_proposal_s": 1054.0,
+   "gpt_proposal_tokens": 157324,
+   "perception_calls": 39,
+   "perception_s": 446.8,
+   "perception_tokens": 408713,
+   "sim_wall_s": 890.8,
+   "sample_tries_mean": null
+  },
+  "R": {
+   "name": "uniform random",
+   "proposed": 23,
+   "rejected_invalid": 0,
+   "infra_errors": 0,
+   "run": 23,
+   "failures": 23,
+   "failure_rate": 1.0,
+   "labels": {
+    "detected_failure": 23
+   },
+   "distinct_signatures": 3,
+   "distinct_modes": 3,
+   "modes_found": [
+    [
+     "M9",
+     "R_01"
+    ],
+    [
+     "M6",
+     "R_03"
+    ],
+    [
+     "M8",
+     "R_05"
+    ]
+   ],
+   "new_mechanism_modes": [
+    "M6",
+    "M8",
+    "M9"
+   ],
+   "robot_weakness_modes": [
+    "M6",
+    "M8"
+   ],
+   "unattributed_failures": [
+    "R_15"
+   ],
+   "gpt_proposal_calls": 0,
+   "gpt_proposal_s": 0,
+   "gpt_proposal_tokens": 0,
+   "perception_calls": 23,
+   "perception_s": 190.8,
+   "perception_tokens": 249207,
+   "sim_wall_s": 266.3,
+   "sample_tries_mean": 14.4
+  },
+  "S": {
+   "name": "sparse random (1-3 groups)",
+   "proposed": 23,
+   "rejected_invalid": 0,
+   "infra_errors": 0,
+   "run": 23,
+   "failures": 22,
+   "failure_rate": 0.957,
+   "labels": {
+    "detected_failure": 20,
+    "degraded": 1,
+    "unsafe": 2
+   },
+   "distinct_signatures": 9,
+   "distinct_modes": 9,
+   "modes_found": [
+    [
+     "M6",
+     "S_01"
+    ],
+    [
+     "M7",
+     "S_02"
+    ],
+    [
+     "M5",
+     "S_03"
+    ],
+    [
+     "M9",
+     "S_04"
+    ],
+    [
+     "K-pod",
+     "S_05"
+    ],
+    [
+     "M12",
+     "S_08"
+    ],
+    [
+     "M8",
+     "S_13"
+    ],
+    [
+     "M10",
+     "S_15"
+    ],
+    [
+     "K-person",
+     "S_21"
+    ]
+   ],
+   "new_mechanism_modes": [
+    "M12",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9"
+   ],
+   "robot_weakness_modes": [
+    "M10",
+    "M12",
+    "M5",
+    "M6",
+    "M7",
+    "M8"
+   ],
+   "unattributed_failures": [],
+   "gpt_proposal_calls": 0,
+   "gpt_proposal_s": 0,
+   "gpt_proposal_tokens": 0,
+   "perception_calls": 27,
+   "perception_s": 234.7,
+   "perception_tokens": 234742,
+   "sim_wall_s": 457.5,
+   "sample_tries_mean": 1.1
+  }
+ },
+ "modes": [
+  {
+   "id": "M1",
+   "title": "Panel press is an impact tap, never verified -> QUICK silently not started",
+   "mechanism": "The scripted press stops when the unfiltered wrist F/T reads 3 N, resets its reference to the measured pose and \"holds\" 0.3 s; the pad actually sees > 1 N for only 12 ms (nominal registration needs 8 ms) and ~0.07 N during the hold. Any pad needing >= 1.4 N (or a longer debounce) never registers; the Runner checks only the touch-sensor peak (>1 N), never the panel display.",
+   "members": [
+    "G_r1_s1"
+   ],
+   "also_seen": [
+    "S_23 (threshold 2.85 N, with a person)",
+    "min runs: cart yaw 0.5 deg / appliance yaw 1.25 deg -> POWER press not registered"
+   ],
+   "found_by": [
+    "gpt",
+    "sparse"
+   ],
+   "minimal_from": "G_r1_s1",
+   "minimal_params": {
+    "buttons": {
+     "threshold_N": 1.375
+    }
+   },
+   "threshold": "fails at pad threshold 1.375 N (nominal 1.0 N passes); GPT proposed 4.0 N",
+   "severity": 3,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "the 12 ms impact transient depends on the sim contact stiffness (solref 6 ms); the margin, not the weakness, is sim-specific",
+   "novelty": "new mechanism (same symptom as known button_miss)",
+   "real_robot_detects": "no - Runner claims success; only the panel display/beep would show it",
+   "fix": "Hold a regulated force (admittance, e.g. 3-5 N for >= 0.3 s) instead of stop-on-threshold; verify the panel display after each press and retry; calibrate per appliance the force/duration that registers. (The GPT-L1 press skill already holds ~3 N for 0.5 s.)",
+   "ref_run": "runs/min/min_G_r1_s1_03.json",
+   "clip_step": "press_buttons",
+   "clip_len_s": 30,
+   "speed": 3
+  },
+  {
+   "id": "M2",
+   "title": "Pod rotated in its dish -> pod bridges the groove or later falls to the tub floor",
+   "mechanism": "The pod pick uses the taught dish pose and a fixed 0 deg grasp yaw. A tablet lying >= ~34 deg rotated is pinched across a diagonal, is carried skewed and lands on the groove rim instead of in it (detected only by the ground-truth pod check). At 28 deg it seats loosely and is shaken out later (found on the tub floor) while the Runner claims success.",
+   "members": [
+    "G_r1_s3"
+   ],
+   "also_seen": [
+    "S_16, S_17 (yaw 27-33 deg combined with a pod/dish offset -> pod not lifted)"
+   ],
+   "found_by": [
+    "gpt"
+   ],
+   "minimal_from": "G_r1_s3",
+   "minimal_params": {
+    "pod": {
+     "location": "dish",
+     "yaw_deg": 33.75
+    }
+   },
+   "threshold": "34 deg -> not seated (detected by GT check); 28 deg -> silent (pod on tub floor at the end); 22.5 deg -> success",
+   "severity": 3,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "rigid box pod and groove; real tablets are slightly compliant",
+   "novelty": "new (known pod_moved = pod not in its dish)",
+   "real_robot_detects": "no - pod-in-groove is not sensed; a real robot would report success",
+   "fix": "Perceive the pod (camera + VLM) and grasp along its measured yaw even when it is in the dish; verify pod-in-groove (camera view of the door, or in-hand pose check before release).",
+   "ref_run": "runs/min/min_G_r1_s3_04.json",
+   "clip_step": "load_pod",
+   "clip_len_s": 26,
+   "speed": 3
+  },
+  {
+   "id": "M3",
+   "title": "Target slot already occupied -> carried plate strikes it, 200-320 N robot-plate contact, plate knocked out",
+   "mechanism": "No slot-occupancy check and a carry height computed for an empty basket: the carried plate hits the plate already standing in slot 6 during carry_across/descent, is wrenched in the fingers (204-317 N between hand/link7 and the plate) and ends lying on the basket front / open door.",
+   "members": [
+    "G_r1_s2"
+   ],
+   "found_by": [
+    "gpt"
+   ],
+   "minimal_from": "G_r1_s2",
+   "minimal_params": {
+    "basket": {
+     "preload_slots": [
+      6
+     ]
+    }
+   },
+   "threshold": "one plate in the target slot (structural, no magnitude)",
+   "severity": 3,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "pre-loaded plates are rigid with the basket (no wobble), so contact forces are overestimated",
+   "novelty": "new",
+   "real_robot_detects": "partly - large wrist forces would be measurable, but the Runner has no such guard; seating check is ground truth only",
+   "fix": "Perceive basket occupancy (camera over the pulled-out basket) and choose a free slot; force guard on the carry (abort above ~20 N unexpected load); compute the carry height from the perceived contents.",
+   "ref_run": "runs/G_r1_s2.json",
+   "clip_step": "insert_plate",
+   "clip_len_s": 28,
+   "speed": 3
+  },
+  {
+   "id": "M4",
+   "title": "Clutter in the arm sweep knocked off the counter, Runner unaware",
+   "mechanism": "The motion collision model is the calibrated empty kitchen. A bottle standing 35 mm from the counter edge next to the plate is hit by link 6 during the edge-push approach (12 N) and falls to the floor; the mission still completes and the Runner claims success.",
+   "members": [
+    "G_r2_s1"
+   ],
+   "found_by": [
+    "gpt"
+   ],
+   "minimal_from": "G_r2_s1",
+   "minimal_params": {
+    "clutter": [
+     {
+      "type": "bottle",
+      "surface": "counter",
+      "x": -0.035,
+      "y": 0.47,
+      "yaw_deg": 0,
+      "size_scale": 0.8
+     }
+    ]
+   },
+   "threshold": "structural (object inside the swept volume); not bisected",
+   "severity": 4,
+   "plausibility": 2,
+   "classification": "robot weakness",
+   "sim_caveat": "bottle = rigid cylinder; a real FR3 collision reflex would not trigger at 12 N",
+   "novelty": "new",
+   "real_robot_detects": "no - the contact is far below any collision threshold; nothing in the Runner looks at the counter after perception",
+   "fix": "Obstacle perception (depth occupancy of the counter) fed into the motion planner / swept-volume check; refuse or ask the user to clear the area.",
+   "ref_run": "runs/G_r2_s1.json",
+   "clip_step": "pick_plate",
+   "clip_len_s": 14,
+   "speed": 2
+  },
+  {
+   "id": "M5",
+   "title": "Small rotation of cart or appliance -> pod pick / placement misses (bar grasp still succeeds)",
+   "mechanism": "The compliant bar grasp tolerates a small yaw, but the pod pick (taught dish spot, 0.6 m from the arm base) and the groove placement do not: 1 deg of cart yaw moves the dish ~10 mm in the arm frame -> pod not lifted; 1.9 deg of appliance yaw moves the groove ~6-8 mm -> pod lands on the groove rim.",
+   "members": [
+    "G_r4_s3",
+    "G_r6_s3",
+    "S_03"
+   ],
+   "also_seen": [],
+   "found_by": [
+    "gpt",
+    "sparse"
+   ],
+   "minimal_from": "G_r4_s3",
+   "minimal_params": {
+    "dock": {
+     "dx": 0.0055,
+     "yaw_deg": -1.0
+    }
+   },
+   "threshold": "cart yaw 1.0 deg (0.5 deg -> silent QUICK failure instead, see M1); appliance yaw 1.875 deg (1.25 deg -> silent QUICK failure)",
+   "severity": 2,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "none specific",
+   "novelty": "new",
+   "real_robot_detects": "pod not lifted: yes (finger width); pod off the groove: no",
+   "fix": "Re-localise the cart and the appliance at the start of every run (fiducials on the appliance / dock, or a door-bar touch-off) and correct all taught poses.",
+   "ref_run": "runs/min/min_G_r4_s3_03.json",
+   "clip_step": "load_pod",
+   "clip_len_s": 20,
+   "speed": 3
+  },
+  {
+   "id": "M6",
+   "title": "Appliance nudged ~1 cm or cart docked ~1-2 cm off -> pull-bar grasp misses",
+   "mechanism": "All appliance poses are calibrated once. Pushing the dishwasher back by 11 mm (or a lateral cart error of ~1.4 cm) puts the 8 mm-radius pull bar outside the grasp; the fingers close on air (detected). At 7.5 mm the door still opens but the QUICK/POWER pads (24 x 16 mm) are missed.",
+   "members": [
+    "G_r2_s2",
+    "S_01",
+    "S_09",
+    "S_11",
+    "S_12",
+    "S_14",
+    "S_20",
+    "R_03",
+    "R_06",
+    "R_08",
+    "R_09",
+    "R_11",
+    "R_12",
+    "R_13",
+    "R_14",
+    "R_17",
+    "R_20"
+   ],
+   "found_by": [
+    "gpt",
+    "random",
+    "sparse"
+   ],
+   "minimal_from": "G_r2_s2",
+   "minimal_params": {
+    "dishwasher": {
+     "dx": -0.01125
+    }
+   },
+   "threshold": "dishwasher pushed back 11 mm (7.5 mm -> button pads missed instead); cart lateral 14 mm (S_11)",
+   "severity": 2,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "none specific",
+   "novelty": "new",
+   "real_robot_detects": "yes - finger encoders read 0 mm (closed on nothing)",
+   "fix": "Same as M5: per-run re-localisation; plus a guarded search around the expected bar pose before giving up.",
+   "ref_run": "runs/min/min_G_r2_s2_04.json",
+   "clip_step": "open_door",
+   "clip_len_s": 20,
+   "speed": 3
+  },
+  {
+   "id": "M7",
+   "title": "Sticky basket rail (>= ~5 N) -> light bar squeeze slips, basket not pulled out",
+   "mechanism": "The basket bar is held with a 5 N squeeze on a 4 mm wire and pulled on a position-controlled path. Rail friction of ~5 N stops the basket at 0.237 m; >= 7 N the fingers slide off immediately and the basket stays in.",
+   "members": [
+    "S_02",
+    "S_06",
+    "S_07"
+   ],
+   "found_by": [
+    "sparse"
+   ],
+   "minimal_from": "S_06",
+   "minimal_params": {
+    "basket": {
+     "rail_friction_N": 7.24,
+     "damping": 4.5
+    }
+   },
+   "threshold": "4.9 N -> stops at 0.237 m; 7.2 N -> not moved (nominal 0.3 N)",
+   "severity": 2,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "slip threshold depends on modelled finger-pad friction (mu 0.6) and the round-wire contact",
+   "novelty": "new",
+   "real_robot_detects": "yes - basket position from the appliance sensor / hand position",
+   "fix": "Grip the bar firmly (form closure around the wire, higher squeeze) and pull with force control and a stall detector; retry with a push-pull wiggle.",
+   "ref_run": "runs/min/min_S_06_05.json",
+   "clip_step": "pull_basket",
+   "clip_len_s": 20,
+   "speed": 3
+  },
+  {
+   "id": "M8",
+   "title": "Stiff / damped door hinge -> bar slips, door does not open",
+   "mechanism": "Same light 5 N squeeze on the round door bar with a position-controlled 8 s arc: hinge friction ~2 N m with 5 N m s/rad damping (or 2.6 N m) exceeds what the fingers can transmit; the door stays at 0-2 deg.",
+   "members": [
+    "S_13",
+    "R_05"
+   ],
+   "found_by": [
+    "sparse",
+    "random"
+   ],
+   "minimal_from": "S_13",
+   "minimal_params": {
+    "door": {
+     "hinge_friction_Nm": 2.569,
+     "damping": 5.937,
+     "spring_scale": 1.138
+    }
+   },
+   "threshold": "fails at 2.0 N m + 4.9 N m s/rad (door at 2 deg); passes at 1.43 N m + 3.7; GPT tested 2.0 N m with nominal damping -> passed",
+   "severity": 2,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "as M7 (finger friction model); real doors also have a latch needing 20-50 N, not modelled",
+   "novelty": "new (known door_latch = door springs back after opening)",
+   "real_robot_detects": "yes - door angle",
+   "fix": "Firmer grasp (hook the bar), force-controlled opening along the hinge arc with a measured-force budget; detect slip from the hand-door relative motion.",
+   "ref_run": "runs/min/min_S_13_07.json",
+   "clip_step": "open_door",
+   "clip_len_s": 20,
+   "speed": 3
+  },
+  {
+   "id": "M9",
+   "title": "Plate is not an 8-inch plate -> refused by the radius gate (9\" and up, 7.4\" and down); 8.6\" accepted but over-squeezed",
+   "mechanism": "Perception gates the fitted radius at 95-110 mm and every manipulation constant assumes 101.5 mm. A standard 9\" plate (114 mm) is refused at step 1 (safe stop). An 8.6\" plate (109 mm) passes the gate; the rim pinch geometry is off and the palm presses the rim with 71 N during the tilt (mission still succeeds).",
+   "members": [
+    "G_r2_s3",
+    "S_04",
+    "S_10",
+    "R_01",
+    "R_02",
+    "R_04",
+    "R_07",
+    "R_10",
+    "R_16",
+    "R_18",
+    "R_19",
+    "R_21",
+    "R_22",
+    "R_23"
+   ],
+   "also_seen": [
+    "G_r6_s2 (109 mm: degraded, 71 N palm-rim contact)"
+   ],
+   "found_by": [
+    "gpt",
+    "random",
+    "sparse"
+   ],
+   "minimal_from": "G_r2_s3",
+   "minimal_params": {
+    "plate": {
+     "radius_m": 0.1143
+    }
+   },
+   "threshold": "deterministic gate: r > 110 mm or < 95 mm",
+   "severity": 2,
+   "plausibility": 3,
+   "classification": "robot weakness (scope limit by design)",
+   "sim_caveat": "none",
+   "novelty": "new",
+   "real_robot_detects": "yes - refuses safely; the 8.6\" case is not noticed",
+   "fix": "Parameterise the edge-push, pinch and slot geometry by the measured radius (or a small set of plate classes) and validate per class; keep the gate as a hard limit for sizes the basket cannot take.",
+   "ref_run": "runs/G_r2_s3.json",
+   "clip_step": "perceive_plate",
+   "clip_len_s": 6,
+   "speed": 2
+  },
+  {
+   "id": "M10",
+   "title": "Pod not at the taught spot (dish moved ~2.5 cm, or pod 16 mm off-centre) -> pod not lifted",
+   "mechanism": "The pod is picked blind at the taught dish position. A dish displaced by 2.5 cm (or a pod off-centre in the dish) leaves the fingers closing beside it.",
+   "members": [
+    "S_15",
+    "S_16",
+    "S_17",
+    "S_18"
+   ],
+   "found_by": [
+    "sparse"
+   ],
+   "minimal_from": "S_15",
+   "minimal_params": {
+    "dish": {
+     "dx": -0.01715,
+     "dy": -0.01897
+    }
+   },
+   "threshold": "2.6 cm dish displacement (smallest tried)",
+   "severity": 2,
+   "plausibility": 3,
+   "classification": "robot weakness",
+   "sim_caveat": "none",
+   "novelty": "variant of known pod_moved",
+   "real_robot_detects": "yes - finger width after closing",
+   "fix": "Always locate the pod with the camera before picking (the GPT-L1 stack already does this when it notices).",
+   "ref_run": "runs/min/min_S_15_03.json",
+   "clip_step": "load_pod",
+   "clip_len_s": 16,
+   "speed": 3,
+   "in_montage": false
+  },
+  {
+   "id": "M11",
+   "title": "Plate lying face-down -> edge push rides over the inverted rim, under-travel",
+   "mechanism": "The push finger is placed for the face-up rim profile; on an inverted plate it presses on the (now upward) foot side and slides over: 12 mm overhang instead of 45 mm, the pinch is impossible (detected by the overhang check, which uses ground truth).",
+   "members": [
+    "G_r3_s1"
+   ],
+   "also_seen": [
+    "R_03 (face-down, but its stop was caused by the cart offset)"
+   ],
+   "found_by": [
+    "gpt"
+   ],
+   "minimal_from": "G_r3_s1",
+   "minimal_params": {
+    "plate": {
+     "upside_down": true
+    }
+   },
+   "threshold": "structural",
+   "severity": 2,
+   "plausibility": 2,
+   "classification": "robot weakness",
+   "sim_caveat": "plate rim modelled by 36 flat segments; the exact slide-over depends on that profile",
+   "novelty": "new",
+   "real_robot_detects": "partly - re-perception at the edge would show the small overhang",
+   "fix": "Detect plate orientation (depth profile: concave vs convex) and either flip it or use a face-down push/pinch recipe; check the overhang with the re-perception before pinching.",
+   "ref_run": "runs/G_r3_s1.json",
+   "clip_step": "pick_plate",
+   "clip_len_s": 20,
+   "speed": 3
+  },
+  {
+   "id": "M12",
+   "title": "Wall camera knocked (~2 deg pitch + 2 cm) -> plate pose error, push under-travel; smaller bumps over-squeeze the rim",
+   "mechanism": "The camera extrinsics are never re-checked. A 2 deg pitch + 20 mm shift gives a 4.4 mm centre and 2 deg normal error; the open-loop drag stops 25 mm short (20 mm overhang). Smaller bumps (1-2 deg) still complete but with 47-71 N palm-rim contact.",
+   "members": [
+    "G_r6_s1",
+    "S_08",
+    "S_22"
+   ],
+   "also_seen": [
+    "S_19, G_r5_s1 (degraded)"
+   ],
+   "found_by": [
+    "gpt",
+    "sparse"
+   ],
+   "minimal_from": "G_r6_s1",
+   "minimal_params": {
+    "camera_bump": {
+     "pitch_deg": -2.0,
+     "dx": 0.02
+    }
+   },
+   "threshold": "1.5 deg + 15 mm passes; 2 deg + 20 mm fails",
+   "severity": 2,
+   "plausibility": 2,
+   "classification": "robot weakness",
+   "sim_caveat": "S_22 (insertion off-centre with a bump) did not reproduce with seed 2",
+   "novelty": "new",
+   "real_robot_detects": "partly (overhang check uses GT in the sim; a real robot would need the re-perception)",
+   "fix": "Self-check the extrinsics every run against fixed fiducials (or the counter edge / appliance outline) and refuse when off; close the push loop on the re-perceived overhang.",
+   "ref_run": "runs/G_r6_s1.json",
+   "clip_step": "pick_plate",
+   "clip_len_s": 20,
+   "speed": 3
+  }
+ ],
+ "notes": [
+  "R_15: perception mis-fit (radius 155 mm) with camera yaw -2.65 deg, dishwasher shifted 4.6 cm and 17 other changes; not minimised, left unattributed.",
+  "S_22 (camera bump + stiff pad + sensor noise -> insertion 12.6 mm off the slot): did not reproduce with seed 2; listed under M12 with that caveat.",
+  "Seating predicate: nominal seated lean is 7.5-9.5 deg against the 10 deg in_slot predicate, so tiny perturbations gave \"not seated\" at 10.3-11 deg. Treated as a predicate artefact: this study counts a plate as seated below 15 deg (the \"seated\" column of GPT_CONTROL.md) and keeps the 10 deg verdict in the run files."
+ ],
+ "entries": {
+  "G": [
+   {
+    "id": "G_r1_s1",
+    "name": "pad_actuation_above_command",
+    "round": 1,
+    "params": {
+     "buttons": {
+      "threshold_N": 4.0
+     }
+    },
+    "hypothesis": "The robot stops pressing near 3 N, while the pads require 4 N to actuate. The separate success check accepts any peak above 1 N, so both presses can pass without registering commands.",
+    "label": "silent_failure",
+    "severity": 3,
+    "signature": "claimed_ok||quick_running|-",
+    "mode": "M1",
+    "errors": null,
+    "result_file": "runs/G_r1_s1.json"
+   },
+   {
+    "id": "G_r1_s2",
+    "name": "occupied_target_slot",
+    "round": 1,
+    "params": {
+     "basket": {
+      "preload_slots": [
+       6
+      ]
+     }
+    },
+    "hypothesis": "An existing plate occupies slot 6. The incoming plate contacts it before reaching the intended supports, triggering touchdown and release without any occupancy-aware recovery.",
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "insert_plate|plate not seated:|door_closed,plate_in_slot,quick_running|-",
+    "mode": "M3",
+    "errors": null,
+    "result_file": "runs/G_r1_s2.json"
+   },
+   {
+    "id": "G_r1_s3",
+    "name": "diagonal_tablet_bridges_groove",
+    "round": 1,
+    "params": {
+     "pod": {
+      "yaw_deg": 45.0
+     }
+    },
+    "hypothesis": "A tablet retaining 45-degree yaw presents an approximately 39.6 mm footprint along both groove axes, exceeding the groove's 35 mm width. The taught placement cannot fully seat it unless contact passively corrects its orientation.",
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "load_pod|pod not settled in the groove|door_closed,plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M2",
+    "errors": null,
+    "result_file": "runs/G_r1_s3.json"
+   },
+   {
+    "id": "G_r1_s4",
+    "name": "thermal_drift_false_touchdown",
+    "round": 1,
+    "params": {
+     "sensors": {
+      "ft_drift_N_per_min": 1.0
+     }
+    },
+    "hypothesis": "At 1 N per minute, positive force bias reaches the 0.5 N touchdown threshold after 30 seconds. Filtering cannot remove this sustained bias, so insertion can terminate before the plate reaches support.",
+    "label": "success",
+    "severity": 0,
+    "signature": "claimed_ok||-|-",
+    "mode": null,
+    "errors": null,
+    "result_file": "runs/G_r1_s4.json"
+   },
+   {
+    "id": "G_r1_s5",
+    "name": "camera_shift_outboard_pinch",
+    "round": 1,
+    "params": {
+     "camera_bump": {
+      "dx": -0.018
+     }
+    },
+    "hypothesis": "An 18 mm camera shift toward negative x makes the unchanged calibration report the plate approximately 18 mm farther outward. Radius fitting can still pass. The shortened drag leaves about 27 mm overhang, but the subsequent pinch remains biased outward.",
+    "label": "success",
+    "severity": 0,
+    "signature": "claimed_ok||-|-",
+    "mode": null,
+    "errors": null,
+    "result_file": "runs/G_r1_s5.json"
+   },
+   {
+    "id": "G_r2_s1",
+    "name": "bottle_in_plate_drag_sweep",
+    "round": 2,
+    "params": {
+     "clutter": [
+      {
+       "type": "bottle",
+       "surface": "counter",
+       "x": -0.035,
+       "y": 0.47,
+       "yaw_deg": 0,
+       "size_scale": 0.8
+      }
+     ]
+    },
+    "hypothesis": "A small bottle near the counter edge starts clear of the plate but intersects its commanded drag sweep. Contact pushes the bottle outward toward unsupported space. The runner has no clutter model and controls the drag without checking displaced objects.",
+    "label": "unsafe",
+    "severity": 4,
+    "signature": "claimed_ok||-|bottle_fell_off_counter",
+    "mode": "M4",
+    "errors": null,
+    "result_file": "runs/G_r2_s1.json"
+   },
+   {
+    "id": "G_r2_s2",
+    "name": "dishwasher_set_back_after_cleaning",
+    "round": 2,
+    "params": {
+     "dishwasher": {
+      "dx": -0.03
+     }
+    },
+    "hypothesis": "Moving the appliance backward by 30 mm displaces both the pull bar and hinge from their calibrated positions. The taught grasp may miss or capture only partially; any captured grasp must then follow an arc centered on the wrong hinge.",
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/G_r2_s2.json"
+   },
+   {
+    "id": "G_r2_s3",
+    "name": "ordinary_nine_inch_plate",
+    "round": 2,
+    "params": {
+     "plate": {
+      "radius_m": 0.1143
+     }
+    },
+    "hypothesis": "A nine-inch plate has a 114.3 mm radius, exceeding the perception gate's 110 mm upper limit despite fitting comfortably on the counter. The fixed size assumption prevents the runner from handling an ordinary household plate.",
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "perceive_plate|perception check failed|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M9",
+    "errors": null,
+    "result_file": "runs/G_r2_s3.json"
+   },
+   {
+    "id": "G_r3_s1",
+    "name": "face_down_rim_grasp",
+    "round": 3,
+    "params": {
+     "plate": {
+      "upside_down": true
+     }
+    },
+    "hypothesis": "An inverted plate preserves the outer radius used by perception but changes the rim height and cross-section. The calibrated pinch may close above the rim or contact the wrong surface, never establishing the intended grasp.",
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "pick_plate|push left # mm overhang|basket_in,door_closed,plate_in_slot,quick_running|-",
+    "mode": "M11",
+    "errors": null,
+    "result_file": "runs/G_r3_s1.json"
+   },
+   {
+    "id": "G_r3_s2",
+    "name": "heavy_plate_drag_undertravel",
+    "round": 3,
+    "params": {
+     "plate": {
+      "mass_kg": 0.9
+     }
+    },
+    "hypothesis": "Doubling plate mass increases counter friction without increasing the commanded 8 N finger pressure. If the finger loses traction during the drag, its commanded travel overstates plate displacement and leaves insufficient overhang.",
+    "label": "success",
+    "severity": 0,
+    "signature": "claimed_ok||-|-",
+    "mode": null,
+    "errors": null,
+    "result_file": "runs/G_r3_s2.json"
+   },
+   {
+    "id": "G_r3_s3",
+    "name": "box_obstructs_button_approach",
+    "round": 3,
+    "params": {
+     "clutter": [
+      {
+       "type": "cereal_box",
+       "surface": "dishwasher_top",
+       "x": 0.09,
+       "y": 0.0,
+       "yaw_deg": 0.0,
+       "size_scale": 0.9
+      }
+     ]
+    },
+    "hypothesis": "A cereal box near the appliance's front top edge occupies hand clearance above the controls. Contact with the box can trigger the wrist-force stopping condition before a fingertip reaches the intended pad.",
+    "label": "success",
+    "severity": 0,
+    "signature": "claimed_ok||-|-",
+    "mode": null,
+    "errors": null,
+    "result_file": "runs/G_r3_s3.json"
+   },
+   {
+    "id": "G_r3_s4",
+    "name": "thick_pod_closure_clearance",
+    "round": 3,
+    "params": {
+     "pod": {
+      "size_scale": 1.25
+     }
+    },
+    "hypothesis": "The enlarged tablet measures 40 by 30 by 16.25 mm: its aligned footprint fits the groove, but it protrudes 4.25 mm above the groove face. It tests whether closure contact can dislodge a pod after its placement check has passed.",
+    "label": "success",
+    "severity": 0,
+    "signature": "claimed_ok||-|-",
+    "mode": null,
+    "errors": null,
+    "result_file": "runs/G_r3_s4.json"
+   },
+   {
+    "id": "G_r4_s1",
+    "name": "larger_thermal_force_drift",
+    "round": 4,
+    "params": {
+     "sensors": {
+      "ft_drift_N_per_min": 2.0
+     }
+    },
+    "hypothesis": "Doubling the previously tolerated thermal drift may exceed the insertion controller's bias compensation. Sustained residual force can satisfy the filtered touchdown threshold before the plate reaches its supports.",
+    "label": "success",
+    "severity": 0,
+    "signature": "claimed_ok||-|-",
+    "mode": null,
+    "errors": null,
+    "result_file": "runs/G_r4_s1.json"
+   },
+   {
+    "id": "G_r4_s2",
+    "name": "mug_beside_pod_grasp",
+    "round": 4,
+    "params": {
+     "clutter": [
+      {
+       "type": "mug",
+       "surface": "counter",
+       "x": -0.085,
+       "y": 0.555,
+       "yaw_deg": 0.0,
+       "size_scale": 0.8
+      }
+     ]
+    },
+    "hypothesis": "A mug immediately in front of the pod dish occupies clearance needed by the hand during the taught approach. The position-controlled approach can strike the mug before the fingers surround the tablet.",
+    "label": "success",
+    "severity": 0,
+    "signature": "claimed_ok||-|-",
+    "mode": null,
+    "errors": null,
+    "result_file": "runs/G_r4_s2.json"
+   },
+   {
+    "id": "G_r4_s3",
+    "name": "dock_rotation_distorts_hinge_arc",
+    "round": 4,
+    "params": {
+     "dock": {
+      "dx": 0.011,
+      "yaw_deg": -2.0
+     }
+    },
+    "hypothesis": "A small clockwise docking rotation with compensating stand-off keeps the initial handle approach approximately aligned. Once grasped, the precomputed arc rotates about the wrong world-space hinge, imposing lateral loads that grow during opening.",
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "load_pod|pod not lifted|door_closed,plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M5",
+    "errors": null,
+    "result_file": "runs/G_r4_s3.json"
+   },
+   {
+    "id": "G_r5_s1",
+    "name": "camera_shift_inboard_grasp",
+    "round": 5,
+    "params": {
+     "camera_bump": {
+      "dx": 0.02
+     }
+    },
+    "hypothesis": "The previously tolerated camera shift was outward. An inward calibration error can instead place the pinch on the plate's sloped body rather than its rim. Radius fitting remains valid, but the assumed rim geometry no longer matches the grasp.",
+    "label": "success",
+    "severity": 0,
+    "signature": "claimed_ok||-|-",
+    "mode": null,
+    "errors": null,
+    "result_file": "runs/G_r5_s1.json"
+   },
+   {
+    "id": "G_r5_s2",
+    "name": "slightly_rotated_appliance",
+    "round": 5,
+    "params": {
+     "dishwasher": {
+      "yaw_deg": 1.2
+     }
+    },
+    "hypothesis": "A small appliance rotation may preserve handle capture and pod placement while rotating basket tines relative to the calibrated insertion plane. Tracking the basket pull endpoint corrects translation but cannot correct the unmeasured orientation.",
+    "label": "success",
+    "severity": 0,
+    "signature": "claimed_ok||-|-",
+    "mode": null,
+    "errors": null,
+    "result_file": "runs/G_r5_s2.json"
+   },
+   {
+    "id": "G_r5_s3",
+    "name": "noisy_touchdown_release",
+    "round": 5,
+    "params": {
+     "sensors": {
+      "ft_noise_N": 0.4
+     }
+    },
+    "hypothesis": "White force noise differs from the tolerated sustained drift. During the many samples of insertion, a surviving filtered excursion can cross the low 0.5 N touchdown threshold before physical support, causing premature release.",
+    "label": "success",
+    "severity": 0,
+    "signature": "claimed_ok||-|-",
+    "mode": null,
+    "errors": null,
+    "result_file": "runs/G_r5_s3.json"
+   },
+   {
+    "id": "G_r5_s4",
+    "name": "front_corner_box_hand_collision",
+    "round": 5,
+    "params": {
+     "clutter": [
+      {
+       "type": "cereal_box",
+       "surface": "dishwasher_top",
+       "x": 0.15,
+       "y": 0.15,
+       "yaw_deg": 0.0,
+       "size_scale": 1.2
+      }
+     ]
+    },
+    "hypothesis": "The earlier smaller central box remained untouched. A larger box at the front corner extends farther into the hand's approach and retreat clearance around the pull bar. The empty-scene collision model permits direct contact during position-controlled motion.",
+    "label": "degraded",
+    "severity": 1,
+    "signature": "claimed_ok||-|-",
+    "mode": null,
+    "errors": null,
+    "result_file": "runs/G_r5_s4.json"
+   },
+   {
+    "id": "G_r6_s1",
+    "name": "camera_bump_amplifies_pinch_contact",
+    "round": 6,
+    "params": {
+     "camera_bump": {
+      "dx": 0.02,
+      "pitch_deg": -2.0
+     }
+    },
+    "hypothesis": "The 20 mm camera translation already produced 46.8 N during pinch approach. Adding a small pitch error changes the reconstructed rim position further while potentially preserving the accepted radius, causing the position-controlled hand to drive into the plate before grasping.",
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "pick_plate|push left # mm overhang|basket_in,door_closed,plate_in_slot,quick_running|-",
+    "mode": "M12",
+    "errors": null,
+    "result_file": "runs/G_r6_s1.json"
+   },
+   {
+    "id": "G_r6_s2",
+    "name": "accepted_size_wrong_slot_geometry",
+    "round": 6,
+    "params": {
+     "plate": {
+      "radius_m": 0.109
+     }
+    },
+    "hypothesis": "A 109 mm radius plate remains inside the perception acceptance interval, but the insertion trajectory still assumes 101.5 mm. Its bottom rim reaches supports earlier and its larger outline can contact additional tines, causing premature touchdown and release in an unsupported or tilted configuration.",
+    "label": "degraded",
+    "severity": 1,
+    "signature": "claimed_ok||-|-",
+    "mode": null,
+    "errors": null,
+    "result_file": "runs/G_r6_s2.json"
+   },
+   {
+    "id": "G_r6_s3",
+    "name": "appliance_rotation_exceeds_insertion_margin",
+    "round": 6,
+    "params": {
+     "dishwasher": {
+      "yaw_deg": 2.5
+     }
+    },
+    "hypothesis": "Increasing the tolerated appliance rotation to 2.5 degrees tests whether handle capture survives while basket orientation exceeds insertion clearance. The pull endpoint supplies translation information but cannot correct the rotated slot plane or tine positions.",
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "load_pod|pod not settled in the groove|door_closed,plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M5",
+    "errors": null,
+    "result_file": "runs/G_r6_s3.json"
+   },
+   {
+    "id": "G_r6_s4",
+    "name": "resistive_hinge_overloads_fixed_arc",
+    "round": 6,
+    "params": {
+     "door": {
+      "hinge_friction_Nm": 2.0
+     }
+    },
+    "hypothesis": "Elevated continuous hinge friction opposes both opening and closing without introducing a latch or spring-back fault. The fixed joint trajectory must transmit additional torque through the pull-bar grasp, potentially causing grasp migration or incomplete closure despite a successful opening.",
+    "label": "success",
+    "severity": 0,
+    "signature": "claimed_ok||-|-",
+    "mode": null,
+    "errors": null,
+    "result_file": "runs/G_r6_s4.json"
+   }
+  ],
+  "R": [
+   {
+    "id": "R_01",
+    "name": "random_01",
+    "round": 1,
+    "params": {
+     "plate": {
+      "radius_m": 0.1148,
+      "mass_kg": 0.588,
+      "mu": 0.7758,
+      "wetness": 0.5924,
+      "x": -0.4006,
+      "y": 0.6044,
+      "rgb": [
+       0.014,
+       0.112,
+       0.161
+      ],
+      "upside_down": true
+     },
+     "pod": {
+      "dx": 0.0172,
+      "dy": -0.0104,
+      "yaw_deg": 79.333,
+      "size_scale": 0.9759,
+      "mass_kg": 0.0186,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": -0.0322,
+      "dy": 0.0762
+     },
+     "door": {
+      "hinge_friction_Nm": 1.1263,
+      "damping": 1.1103,
+      "spring_scale": 1.258
+     },
+     "basket": {
+      "rail_friction_N": 14.3463,
+      "damping": 11.4811,
+      "preload_slots": [
+       0,
+       6
+      ]
+     },
+     "lighting": {
+      "key_scale": 1.53,
+      "ambient_scale": 0.2432,
+      "color_temp_K": 4211.2785,
+      "key_azimuth_deg": -62.3348
+     },
+     "camera_bump": {
+      "roll_deg": 0.4226,
+      "pitch_deg": 0.9183,
+      "yaw_deg": -1.9117,
+      "dx": -0.0012,
+      "dy": 0.0197,
+      "dz": -0.0194
+     },
+     "dock": {
+      "dx": 0.0111,
+      "dy": -0.0099,
+      "yaw_deg": -0.5665
+     },
+     "dishwasher": {
+      "dx": 0.0108,
+      "dy": -0.0062,
+      "yaw_deg": 3.0646
+     },
+     "sensors": {
+      "depth_noise_scale": 2.5144,
+      "ft_noise_N": 0.2123,
+      "ft_drift_N_per_min": 0.5046
+     },
+     "person": {
+      "at_s": 32.52,
+      "dur_s": 17.68,
+      "distance_m": 1.87
+     },
+     "buttons": {
+      "threshold_N": 4.9946,
+      "dwell_ms": 65.1317
+     },
+     "clutter": [
+      {
+       "type": "bottle",
+       "surface": "dishwasher_top",
+       "x": 0.119,
+       "y": -0.093,
+       "yaw_deg": -168.3,
+       "size_scale": 0.881,
+       "rgb": [
+        0.25,
+        0.55,
+        0.35
+       ]
+      },
+      {
+       "type": "bowl",
+       "surface": "counter",
+       "x": -0.257,
+       "y": 0.369,
+       "yaw_deg": 96.0,
+       "size_scale": 1.016,
+       "rgb": [
+        0.92,
+        0.92,
+        0.9
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "perceive_plate|perception check failed|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M9",
+    "errors": null,
+    "result_file": "runs/R_01.json"
+   },
+   {
+    "id": "R_02",
+    "name": "random_02",
+    "round": 1,
+    "params": {
+     "plate": {
+      "radius_m": 0.1209,
+      "mass_kg": 0.8892,
+      "mu": 0.5298,
+      "wetness": 0.0087,
+      "x": -0.471,
+      "y": 0.6496,
+      "rgb": [
+       0.692,
+       0.575,
+       0.228
+      ]
+     },
+     "pod": {
+      "dx": 0.0051,
+      "dy": 0.0029,
+      "yaw_deg": 40.4249,
+      "size_scale": 0.8905,
+      "mass_kg": 0.0131,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": 0.0212,
+      "dy": 0.0257
+     },
+     "door": {
+      "hinge_friction_Nm": 0.3508,
+      "damping": 2.8442,
+      "spring_scale": 0.6986
+     },
+     "basket": {
+      "rail_friction_N": 18.2809,
+      "damping": 0.7474,
+      "preload_slots": [
+       1,
+       6
+      ]
+     },
+     "lighting": {
+      "key_scale": 1.1067,
+      "ambient_scale": 1.4686,
+      "color_temp_K": 2437.733,
+      "key_azimuth_deg": -117.6694
+     },
+     "camera_bump": {
+      "roll_deg": -1.0808,
+      "pitch_deg": -0.2008,
+      "yaw_deg": 0.4167,
+      "dx": 0.0025,
+      "dy": 0.0017,
+      "dz": 0.0026
+     },
+     "dock": {
+      "dx": 0.0125,
+      "dy": -0.0133,
+      "yaw_deg": 0.1088
+     },
+     "dishwasher": {
+      "dx": -0.0415,
+      "dy": 0.0249,
+      "yaw_deg": 3.6235
+     },
+     "sensors": {
+      "depth_noise_scale": 0.6893,
+      "ft_noise_N": 0.3912,
+      "ft_drift_N_per_min": 0.4477
+     },
+     "buttons": {
+      "threshold_N": 2.2175,
+      "dwell_ms": 5.2867
+     },
+     "clutter": [
+      {
+       "type": "bottle",
+       "surface": "counter",
+       "x": -0.383,
+       "y": 0.982,
+       "yaw_deg": -158.4,
+       "size_scale": 1.213,
+       "rgb": [
+        0.25,
+        0.55,
+        0.35
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "perceive_plate|perception check failed|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M9",
+    "errors": null,
+    "result_file": "runs/R_02.json"
+   },
+   {
+    "id": "R_03",
+    "name": "random_03",
+    "round": 1,
+    "params": {
+     "plate": {
+      "radius_m": 0.097,
+      "mass_kg": 0.8601,
+      "mu": 0.9584,
+      "wetness": 0.1208,
+      "x": -0.0516,
+      "y": 0.3394,
+      "rgb": [
+       0.885,
+       0.729,
+       0.821
+      ],
+      "upside_down": true
+     },
+     "pod": {
+      "dx": 0.0037,
+      "dy": 0.0047,
+      "yaw_deg": -17.1164,
+      "size_scale": 0.9125,
+      "mass_kg": 0.0171,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": -0.0378,
+      "dy": -0.0608
+     },
+     "door": {
+      "hinge_friction_Nm": 0.9508,
+      "damping": 9.9505,
+      "spring_scale": 1.2922
+     },
+     "basket": {
+      "rail_friction_N": 11.8231,
+      "damping": 24.1047,
+      "preload_slots": [
+       3
+      ]
+     },
+     "lighting": {
+      "key_scale": 1.3793,
+      "ambient_scale": 0.9286,
+      "color_temp_K": 3023.8201,
+      "key_azimuth_deg": 6.9154
+     },
+     "camera_bump": {
+      "roll_deg": 2.7891,
+      "pitch_deg": -1.5243,
+      "yaw_deg": -1.8528,
+      "dx": 0.0137,
+      "dy": -0.0048,
+      "dz": 0.0004
+     },
+     "dock": {
+      "dx": 0.0169,
+      "dy": 0.0049,
+      "yaw_deg": 1.8418
+     },
+     "dishwasher": {
+      "dx": -0.0214,
+      "dy": 0.0006,
+      "yaw_deg": -3.3373
+     },
+     "sensors": {
+      "depth_noise_scale": 3.568,
+      "ft_noise_N": 0.3365,
+      "ft_drift_N_per_min": 0.6675
+     },
+     "person": {
+      "at_s": 91.39,
+      "dur_s": 67.29,
+      "distance_m": 1.29
+     },
+     "buttons": {
+      "threshold_N": 1.3114,
+      "dwell_ms": 53.8512
+     },
+     "clutter": [
+      {
+       "type": "bowl",
+       "surface": "dishwasher_top",
+       "x": -0.085,
+       "y": -0.019,
+       "yaw_deg": -160.7,
+       "size_scale": 1.164,
+       "rgb": [
+        0.92,
+        0.92,
+        0.9
+       ]
+      },
+      {
+       "type": "bottle",
+       "surface": "counter",
+       "x": -0.068,
+       "y": 0.733,
+       "yaw_deg": -8.6,
+       "size_scale": 1.038,
+       "rgb": [
+        0.25,
+        0.55,
+        0.35
+       ]
+      },
+      {
+       "type": "bottle",
+       "surface": "counter",
+       "x": -0.236,
+       "y": 0.545,
+       "yaw_deg": 115.4,
+       "size_scale": 1.191,
+       "rgb": [
+        0.25,
+        0.55,
+        0.35
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/R_03.json"
+   },
+   {
+    "id": "R_04",
+    "name": "random_04",
+    "round": 1,
+    "params": {
+     "plate": {
+      "radius_m": 0.1146,
+      "mass_kg": 0.7285,
+      "mu": 0.6487,
+      "wetness": 0.9307,
+      "x": -0.1366,
+      "y": 0.8016,
+      "rgb": [
+       0.663,
+       0.915,
+       0.107
+      ],
+      "upside_down": true
+     },
+     "pod": {
+      "dx": -0.0103,
+      "dy": -0.0065,
+      "yaw_deg": 63.9935,
+      "size_scale": 1.0656,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": -0.001,
+      "dy": -0.0789
+     },
+     "door": {
+      "hinge_friction_Nm": 0.6699,
+      "damping": 9.4409,
+      "spring_scale": 0.8308
+     },
+     "basket": {
+      "rail_friction_N": 0.6679,
+      "damping": 20.1722,
+      "preload_slots": [
+       6
+      ]
+     },
+     "lighting": {
+      "key_scale": 1.3442,
+      "ambient_scale": 0.47,
+      "color_temp_K": 3961.3784,
+      "key_azimuth_deg": -169.2218
+     },
+     "camera_bump": {
+      "roll_deg": -2.9219,
+      "pitch_deg": -0.4381,
+      "yaw_deg": 2.3556,
+      "dx": -0.0032,
+      "dy": -0.0002,
+      "dz": 0.0058
+     },
+     "dock": {
+      "dx": 0.0175,
+      "dy": -0.0241,
+      "yaw_deg": 0.5443
+     },
+     "dishwasher": {
+      "dx": -0.0296,
+      "dy": -0.0466,
+      "yaw_deg": -3.7692
+     },
+     "sensors": {
+      "depth_noise_scale": 1.8211,
+      "ft_noise_N": 0.4178,
+      "ft_drift_N_per_min": 0.0532
+     },
+     "person": {
+      "at_s": 129.64,
+      "dur_s": 11.93,
+      "distance_m": 0.79
+     },
+     "buttons": {
+      "threshold_N": 5.8789,
+      "dwell_ms": 32.7489
+     },
+     "clutter": [
+      {
+       "type": "cereal_box",
+       "surface": "counter",
+       "x": -0.342,
+       "y": 0.68,
+       "yaw_deg": -68.2,
+       "size_scale": 1.072,
+       "rgb": [
+        0.9,
+        0.7,
+        0.2
+       ]
+      },
+      {
+       "type": "bottle",
+       "surface": "counter",
+       "x": -0.523,
+       "y": 0.767,
+       "yaw_deg": 3.9,
+       "size_scale": 1.217,
+       "rgb": [
+        0.25,
+        0.55,
+        0.35
+       ]
+      },
+      {
+       "type": "bottle",
+       "surface": "dishwasher_top",
+       "x": -0.003,
+       "y": 0.046,
+       "yaw_deg": -11.8,
+       "size_scale": 1.073,
+       "rgb": [
+        0.25,
+        0.55,
+        0.35
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "perceive_plate|perception check failed|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M9",
+    "errors": null,
+    "result_file": "runs/R_04.json"
+   },
+   {
+    "id": "R_05",
+    "name": "random_05",
+    "round": 1,
+    "params": {
+     "plate": {
+      "radius_m": 0.0977,
+      "mass_kg": 1.0282,
+      "mu": 0.8496,
+      "wetness": 0.6525,
+      "x": -0.0309,
+      "y": 0.4755,
+      "rgb": [
+       0.39,
+       0.882,
+       0.347
+      ]
+     },
+     "pod": {
+      "location": "counter",
+      "dx": 0.0068,
+      "dy": 0.0162,
+      "x": -0.4716,
+      "y": 0.7556,
+      "yaw_deg": 46.2235,
+      "size_scale": 0.9324,
+      "mass_kg": 0.0131
+     },
+     "dish": {
+      "dx": -0.0792,
+      "dy": -0.0215
+     },
+     "door": {
+      "hinge_friction_Nm": 1.7989,
+      "damping": 6.4137,
+      "spring_scale": 0.8009
+     },
+     "basket": {
+      "rail_friction_N": 14.5844,
+      "damping": 8.8742,
+      "preload_slots": [
+       4
+      ]
+     },
+     "lighting": {
+      "key_scale": 0.54,
+      "ambient_scale": 0.4225,
+      "color_temp_K": 6021.4741,
+      "key_azimuth_deg": -150.4382
+     },
+     "camera_bump": {
+      "roll_deg": -0.8663,
+      "pitch_deg": -0.502,
+      "yaw_deg": 3.0,
+      "dx": -0.0074,
+      "dy": 0.012,
+      "dz": 0.003
+     },
+     "dock": {
+      "dx": 0.0159,
+      "dy": 0.0022,
+      "yaw_deg": 1.1896
+     },
+     "dishwasher": {
+      "dx": 0.0115,
+      "dy": 0.0093,
+      "yaw_deg": -0.5188
+     },
+     "sensors": {
+      "depth_noise_scale": 0.7806,
+      "ft_noise_N": 0.0496,
+      "ft_drift_N_per_min": 0.5958
+     },
+     "person": {
+      "at_s": 169.65,
+      "dur_s": 28.67,
+      "distance_m": 1.63
+     },
+     "buttons": {
+      "threshold_N": 5.0328,
+      "dwell_ms": 77.9984
+     },
+     "clutter": [
+      {
+       "type": "mug",
+       "surface": "counter",
+       "x": -0.255,
+       "y": 0.873,
+       "yaw_deg": 48.1,
+       "size_scale": 0.975,
+       "rgb": [
+        0.85,
+        0.3,
+        0.25
+       ]
+      },
+      {
+       "type": "bowl",
+       "surface": "counter",
+       "x": -0.373,
+       "y": 0.402,
+       "yaw_deg": 48.1,
+       "size_scale": 0.93,
+       "rgb": [
+        0.92,
+        0.92,
+        0.9
+       ]
+      },
+      {
+       "type": "cutting_board",
+       "surface": "dishwasher_top",
+       "x": 0.058,
+       "y": 0.068,
+       "yaw_deg": -82.7,
+       "size_scale": 0.868,
+       "rgb": [
+        0.7,
+        0.52,
+        0.32
+       ]
+      },
+      {
+       "type": "cutting_board",
+       "surface": "dishwasher_top",
+       "x": 0.027,
+       "y": 0.05,
+       "yaw_deg": 67.7,
+       "size_scale": 0.962,
+       "rgb": [
+        0.7,
+        0.52,
+        0.32
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|door only at # deg|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M8",
+    "errors": null,
+    "result_file": "runs/R_05.json"
+   },
+   {
+    "id": "R_06",
+    "name": "random_06",
+    "round": 2,
+    "params": {
+     "plate": {
+      "radius_m": 0.09,
+      "mass_kg": 0.6581,
+      "mu": 0.4929,
+      "wetness": 0.9124,
+      "x": -0.4625,
+      "y": 0.4307,
+      "rgb": [
+       0.572,
+       0.572,
+       0.603
+      ]
+     },
+     "pod": {
+      "location": "counter",
+      "dx": -0.014,
+      "dy": -0.0164,
+      "x": -0.3915,
+      "y": 0.8993,
+      "yaw_deg": -67.7657,
+      "size_scale": 1.0617,
+      "mass_kg": 0.0153
+     },
+     "dish": {
+      "dx": 0.0187,
+      "dy": 0.0429
+     },
+     "door": {
+      "hinge_friction_Nm": 1.5082,
+      "damping": 7.436,
+      "spring_scale": 1.4641
+     },
+     "basket": {
+      "rail_friction_N": 5.4664,
+      "damping": 13.4614,
+      "preload_slots": [
+       7
+      ]
+     },
+     "lighting": {
+      "key_scale": 0.3061,
+      "ambient_scale": 1.7525,
+      "color_temp_K": 7090.9655,
+      "key_azimuth_deg": 142.5848
+     },
+     "camera_bump": {
+      "roll_deg": -1.7147,
+      "pitch_deg": 0.0798,
+      "yaw_deg": -0.3685,
+      "dx": 0.004,
+      "dy": -0.0051,
+      "dz": 0.0188
+     },
+     "dock": {
+      "dx": 0.0131,
+      "dy": 0.0216,
+      "yaw_deg": -1.266
+     },
+     "dishwasher": {
+      "dx": -0.0491,
+      "dy": 0.0124,
+      "yaw_deg": 1.0703
+     },
+     "sensors": {
+      "depth_noise_scale": 1.6432,
+      "ft_noise_N": 0.0538,
+      "ft_drift_N_per_min": 0.4066
+     },
+     "person": {
+      "at_s": 186.64,
+      "dur_s": 72.77,
+      "distance_m": 1.1
+     },
+     "buttons": {
+      "threshold_N": 1.9744,
+      "dwell_ms": 61.5134
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/R_06.json"
+   },
+   {
+    "id": "R_07",
+    "name": "random_07",
+    "round": 2,
+    "params": {
+     "plate": {
+      "radius_m": 0.0887,
+      "mass_kg": 0.6219,
+      "mu": 0.8286,
+      "wetness": 0.7874,
+      "x": -0.2789,
+      "y": 0.6735,
+      "rgb": [
+       0.565,
+       0.989,
+       0.595
+      ]
+     },
+     "pod": {
+      "dx": 0.0057,
+      "dy": 0.001,
+      "yaw_deg": -29.9411,
+      "size_scale": 1.0246,
+      "mass_kg": 0.0192,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": -0.0327,
+      "dy": 0.0116
+     },
+     "door": {
+      "hinge_friction_Nm": 0.9378,
+      "damping": 5.2135,
+      "spring_scale": 0.6729
+     },
+     "basket": {
+      "rail_friction_N": 5.4277,
+      "damping": 26.8949,
+      "preload_slots": [
+       0,
+       1,
+       3,
+       5
+      ]
+     },
+     "lighting": {
+      "key_scale": 0.4673,
+      "ambient_scale": 1.3921,
+      "color_temp_K": 7213.7124,
+      "key_azimuth_deg": -139.8904
+     },
+     "camera_bump": {
+      "roll_deg": 1.0662,
+      "pitch_deg": -0.09,
+      "yaw_deg": 2.4863,
+      "dx": 0.0023,
+      "dy": -0.0012,
+      "dz": 0.0144
+     },
+     "dock": {
+      "dx": 0.0116,
+      "dy": -0.0149,
+      "yaw_deg": -1.0513
+     },
+     "dishwasher": {
+      "dx": -0.0442,
+      "dy": 0.0301,
+      "yaw_deg": -3.341
+     },
+     "sensors": {
+      "depth_noise_scale": 2.3821,
+      "ft_noise_N": 0.135,
+      "ft_drift_N_per_min": 0.6489
+     },
+     "person": {
+      "at_s": 71.02,
+      "dur_s": 119.58,
+      "distance_m": 1.36
+     },
+     "buttons": {
+      "threshold_N": 2.3964,
+      "dwell_ms": 21.4157
+     },
+     "clutter": [
+      {
+       "type": "bowl",
+       "surface": "counter",
+       "x": -0.438,
+       "y": 0.373,
+       "yaw_deg": 94.4,
+       "size_scale": 1.216,
+       "rgb": [
+        0.92,
+        0.92,
+        0.9
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "perceive_plate|perception check failed|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M9",
+    "errors": null,
+    "result_file": "runs/R_07.json"
+   },
+   {
+    "id": "R_08",
+    "name": "random_08",
+    "round": 2,
+    "params": {
+     "plate": {
+      "radius_m": 0.1296,
+      "mass_kg": 1.0297,
+      "mu": 0.426,
+      "wetness": 0.0423,
+      "x": -0.4511,
+      "y": 0.7627,
+      "rgb": [
+       0.671,
+       0.713,
+       0.141
+      ]
+     },
+     "pod": {
+      "dx": 0.0023,
+      "dy": 0.0082,
+      "yaw_deg": -16.1345,
+      "size_scale": 1.0809,
+      "mass_kg": 0.0115,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": 0.0163,
+      "dy": -0.0407
+     },
+     "door": {
+      "hinge_friction_Nm": 1.401,
+      "damping": 6.1248,
+      "spring_scale": 1.431
+     },
+     "basket": {
+      "rail_friction_N": 5.2854,
+      "damping": 0.562
+     },
+     "lighting": {
+      "key_scale": 1.9175,
+      "ambient_scale": 0.446,
+      "color_temp_K": 4109.1335,
+      "key_azimuth_deg": 134.0298
+     },
+     "camera_bump": {
+      "roll_deg": 1.9262,
+      "pitch_deg": -2.7762,
+      "yaw_deg": 0.493,
+      "dx": 0.0189,
+      "dy": 0.0027,
+      "dz": -0.0125
+     },
+     "dock": {
+      "dx": 0.0225,
+      "dy": -0.0113,
+      "yaw_deg": 0.5176
+     },
+     "dishwasher": {
+      "dx": -0.0027,
+      "dy": 0.0214,
+      "yaw_deg": -3.1796
+     },
+     "sensors": {
+      "depth_noise_scale": 1.865,
+      "ft_noise_N": 0.0952,
+      "ft_drift_N_per_min": 0.2405
+     },
+     "person": {
+      "at_s": 120.17,
+      "dur_s": 23.48,
+      "distance_m": 1.02
+     },
+     "buttons": {
+      "threshold_N": 2.3903,
+      "dwell_ms": 82.6763
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/R_08.json"
+   },
+   {
+    "id": "R_09",
+    "name": "random_09",
+    "round": 2,
+    "params": {
+     "plate": {
+      "radius_m": 0.1028,
+      "mass_kg": 0.5885,
+      "mu": 0.6664,
+      "wetness": 0.7445,
+      "x": -0.0705,
+      "y": 0.8017,
+      "rgb": [
+       0.154,
+       0.196,
+       0.993
+      ]
+     },
+     "pod": {
+      "dx": 0.0157,
+      "dy": 0.0106,
+      "yaw_deg": 6.0864,
+      "size_scale": 0.9086,
+      "mass_kg": 0.0165,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": -0.0077,
+      "dy": -0.011
+     },
+     "door": {
+      "hinge_friction_Nm": 1.8774,
+      "damping": 4.3005,
+      "spring_scale": 1.4618
+     },
+     "basket": {
+      "rail_friction_N": 2.9876,
+      "damping": 9.3878,
+      "preload_slots": [
+       1,
+       3
+      ]
+     },
+     "lighting": {
+      "key_scale": 1.8218,
+      "ambient_scale": 1.4506,
+      "color_temp_K": 6604.0171,
+      "key_azimuth_deg": -10.4225
+     },
+     "camera_bump": {
+      "roll_deg": -0.4323,
+      "pitch_deg": 0.2667,
+      "yaw_deg": -0.3531,
+      "dx": -0.0037,
+      "dy": 0.0127,
+      "dz": 0.0081
+     },
+     "dock": {
+      "dx": 0.0259,
+      "dy": 0.01,
+      "yaw_deg": -0.1708
+     },
+     "dishwasher": {
+      "dx": -0.028,
+      "dy": 0.0287,
+      "yaw_deg": -3.0796
+     },
+     "sensors": {
+      "depth_noise_scale": 1.5228,
+      "ft_noise_N": 0.3265,
+      "ft_drift_N_per_min": 0.672
+     },
+     "buttons": {
+      "threshold_N": 1.284,
+      "dwell_ms": 5.445
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/R_09.json"
+   },
+   {
+    "id": "R_10",
+    "name": "random_10",
+    "round": 2,
+    "params": {
+     "plate": {
+      "radius_m": 0.1191,
+      "mass_kg": 0.2797,
+      "mu": 0.1713,
+      "wetness": 0.0462,
+      "x": -0.1053,
+      "y": 0.5513,
+      "rgb": [
+       0.994,
+       0.021,
+       0.912
+      ]
+     },
+     "pod": {
+      "dx": 0.0018,
+      "dy": 0.0028,
+      "yaw_deg": 23.9745,
+      "size_scale": 0.8928,
+      "mass_kg": 0.0116,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": -0.0752,
+      "dy": 0.0765
+     },
+     "door": {
+      "hinge_friction_Nm": 1.6616,
+      "damping": 4.9526,
+      "spring_scale": 0.7765
+     },
+     "basket": {
+      "rail_friction_N": 13.3543,
+      "damping": 7.1802,
+      "preload_slots": [
+       4,
+       6
+      ]
+     },
+     "lighting": {
+      "key_scale": 1.5311,
+      "ambient_scale": 0.9417,
+      "color_temp_K": 2356.0969,
+      "key_azimuth_deg": -146.301
+     },
+     "camera_bump": {
+      "roll_deg": -2.1623,
+      "pitch_deg": -1.3152,
+      "yaw_deg": -2.7246,
+      "dx": -0.0103,
+      "dy": -0.0095,
+      "dz": -0.0039
+     },
+     "dock": {
+      "dx": 0.0179,
+      "dy": 0.0091,
+      "yaw_deg": 0.4233
+     },
+     "dishwasher": {
+      "dx": -0.0188,
+      "dy": 0.0464,
+      "yaw_deg": -0.5041
+     },
+     "sensors": {
+      "depth_noise_scale": 2.8869,
+      "ft_noise_N": 0.4908,
+      "ft_drift_N_per_min": 1.0872
+     },
+     "person": {
+      "at_s": 67.2,
+      "dur_s": 56.07,
+      "distance_m": 1.75
+     },
+     "buttons": {
+      "threshold_N": 0.3334,
+      "dwell_ms": 31.4978
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "perceive_plate|perception check failed|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M9",
+    "errors": null,
+    "result_file": "runs/R_10.json"
+   },
+   {
+    "id": "R_11",
+    "name": "random_11",
+    "round": 3,
+    "params": {
+     "plate": {
+      "radius_m": 0.0967,
+      "mass_kg": 0.2536,
+      "mu": 0.7371,
+      "wetness": 0.0507,
+      "x": -0.3482,
+      "y": 0.651,
+      "rgb": [
+       0.333,
+       0.339,
+       0.893
+      ],
+      "upside_down": true
+     },
+     "pod": {
+      "location": "counter",
+      "dx": -0.0153,
+      "dy": -0.0089,
+      "x": -0.3945,
+      "y": 0.3506,
+      "yaw_deg": 87.3324,
+      "size_scale": 1.0407,
+      "mass_kg": 0.0211
+     },
+     "dish": {
+      "dx": -0.0524,
+      "dy": -0.0207
+     },
+     "door": {
+      "hinge_friction_Nm": 1.0208,
+      "damping": 0.8966,
+      "spring_scale": 1.3558
+     },
+     "basket": {
+      "rail_friction_N": 8.0269,
+      "damping": 13.5384,
+      "preload_slots": [
+       1,
+       4,
+       5,
+       7
+      ]
+     },
+     "lighting": {
+      "key_scale": 0.0909,
+      "ambient_scale": 1.634,
+      "color_temp_K": 7105.0107,
+      "key_azimuth_deg": -8.8873
+     },
+     "camera_bump": {
+      "roll_deg": -0.8722,
+      "pitch_deg": 1.2032,
+      "yaw_deg": -2.0085,
+      "dx": -0.0181,
+      "dy": 0.0108,
+      "dz": 0.0175
+     },
+     "dock": {
+      "dx": 0.0196,
+      "dy": 0.0242,
+      "yaw_deg": 2.6993
+     },
+     "dishwasher": {
+      "dx": -0.0275,
+      "dy": 0.0085,
+      "yaw_deg": -0.5756
+     },
+     "sensors": {
+      "depth_noise_scale": 3.051,
+      "ft_noise_N": 0.0246,
+      "ft_drift_N_per_min": 1.668
+     },
+     "buttons": {
+      "threshold_N": 4.5493,
+      "dwell_ms": 66.9816
+     },
+     "clutter": [
+      {
+       "type": "cereal_box",
+       "surface": "dishwasher_top",
+       "x": -0.136,
+       "y": 0.0,
+       "yaw_deg": -140.1,
+       "size_scale": 1.079,
+       "rgb": [
+        0.9,
+        0.7,
+        0.2
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/R_11.json"
+   },
+   {
+    "id": "R_12",
+    "name": "random_12",
+    "round": 3,
+    "params": {
+     "plate": {
+      "radius_m": 0.1271,
+      "mass_kg": 0.9706,
+      "mu": 0.629,
+      "wetness": 0.4856,
+      "x": -0.4671,
+      "y": 0.5089,
+      "rgb": [
+       0.117,
+       0.109,
+       0.254
+      ]
+     },
+     "pod": {
+      "dx": 0.0072,
+      "dy": 0.0011,
+      "yaw_deg": -19.0838,
+      "size_scale": 1.0852,
+      "mass_kg": 0.0245,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": 0.0129,
+      "dy": 0.0011
+     },
+     "door": {
+      "hinge_friction_Nm": 0.7136,
+      "damping": 6.8257,
+      "spring_scale": 0.6452
+     },
+     "basket": {
+      "rail_friction_N": 10.7937,
+      "damping": 16.0976,
+      "preload_slots": [
+       3,
+       4,
+       7
+      ]
+     },
+     "lighting": {
+      "key_scale": 1.9633,
+      "ambient_scale": 1.8895,
+      "color_temp_K": 5578.0676,
+      "key_azimuth_deg": 87.2727
+     },
+     "camera_bump": {
+      "roll_deg": -2.8084,
+      "pitch_deg": -2.0306,
+      "yaw_deg": 0.0855,
+      "dx": -0.0178,
+      "dy": -0.0082,
+      "dz": -0.0196
+     },
+     "dock": {
+      "dx": 0.0258,
+      "dy": 0.0025,
+      "yaw_deg": 1.0426
+     },
+     "dishwasher": {
+      "dx": -0.0093,
+      "dy": 0.0059,
+      "yaw_deg": -2.5559
+     },
+     "sensors": {
+      "depth_noise_scale": 0.5012,
+      "ft_noise_N": 0.2464,
+      "ft_drift_N_per_min": 0.7345
+     },
+     "buttons": {
+      "threshold_N": 3.2794,
+      "dwell_ms": 90.4305
+     },
+     "clutter": [
+      {
+       "type": "mug",
+       "surface": "dishwasher_top",
+       "x": 0.024,
+       "y": -0.021,
+       "yaw_deg": -125.5,
+       "size_scale": 1.021,
+       "rgb": [
+        0.85,
+        0.3,
+        0.25
+       ]
+      },
+      {
+       "type": "bottle",
+       "surface": "counter",
+       "x": -0.304,
+       "y": 0.838,
+       "yaw_deg": -57.0,
+       "size_scale": 1.235,
+       "rgb": [
+        0.25,
+        0.55,
+        0.35
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/R_12.json"
+   },
+   {
+    "id": "R_13",
+    "name": "random_13",
+    "round": 3,
+    "params": {
+     "plate": {
+      "radius_m": 0.1033,
+      "mass_kg": 0.368,
+      "mu": 0.7031,
+      "wetness": 0.8239,
+      "x": -0.207,
+      "y": 0.834,
+      "rgb": [
+       0.209,
+       0.621,
+       0.655
+      ]
+     },
+     "pod": {
+      "dx": 0.008,
+      "dy": 0.0113,
+      "yaw_deg": -41.613,
+      "size_scale": 1.2622,
+      "mass_kg": 0.0199,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": 0.0176,
+      "dy": 0.0617
+     },
+     "door": {
+      "hinge_friction_Nm": 0.4009,
+      "damping": 9.817,
+      "spring_scale": 1.0965
+     },
+     "basket": {
+      "rail_friction_N": 8.0826,
+      "damping": 22.6609,
+      "preload_slots": [
+       2,
+       6
+      ]
+     },
+     "lighting": {
+      "key_scale": 0.2763,
+      "ambient_scale": 1.7325,
+      "color_temp_K": 2699.1397,
+      "key_azimuth_deg": -110.3111
+     },
+     "camera_bump": {
+      "roll_deg": -2.5372,
+      "pitch_deg": 1.497,
+      "yaw_deg": 1.9674,
+      "dx": -0.0067,
+      "dy": 0.0088,
+      "dz": 0.0193
+     },
+     "dock": {
+      "dx": 0.0278,
+      "dy": 0.0279,
+      "yaw_deg": -1.6407
+     },
+     "dishwasher": {
+      "dx": -0.0108,
+      "dy": 0.0115,
+      "yaw_deg": -1.9906
+     },
+     "sensors": {
+      "depth_noise_scale": 0.7829,
+      "ft_noise_N": 0.2188,
+      "ft_drift_N_per_min": 1.82
+     },
+     "buttons": {
+      "threshold_N": 0.6837,
+      "dwell_ms": 53.9842
+     },
+     "clutter": [
+      {
+       "type": "cereal_box",
+       "surface": "dishwasher_top",
+       "x": -0.073,
+       "y": -0.046,
+       "yaw_deg": -101.8,
+       "size_scale": 1.213,
+       "rgb": [
+        0.9,
+        0.7,
+        0.2
+       ]
+      },
+      {
+       "type": "cereal_box",
+       "surface": "counter",
+       "x": -0.364,
+       "y": 0.972,
+       "yaw_deg": -156.6,
+       "size_scale": 0.822,
+       "rgb": [
+        0.9,
+        0.7,
+        0.2
+       ]
+      },
+      {
+       "type": "bottle",
+       "surface": "counter",
+       "x": -0.17,
+       "y": 0.457,
+       "yaw_deg": -29.2,
+       "size_scale": 1.192,
+       "rgb": [
+        0.25,
+        0.55,
+        0.35
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/R_13.json"
+   },
+   {
+    "id": "R_14",
+    "name": "random_14",
+    "round": 3,
+    "params": {
+     "plate": {
+      "radius_m": 0.1066,
+      "mass_kg": 0.5999,
+      "mu": 0.7947,
+      "wetness": 0.8698,
+      "x": -0.3348,
+      "y": 0.7351,
+      "rgb": [
+       0.509,
+       0.695,
+       0.911
+      ],
+      "upside_down": true
+     },
+     "pod": {
+      "dx": 0.0121,
+      "dy": -0.017,
+      "yaw_deg": -52.1133,
+      "size_scale": 0.9834,
+      "mass_kg": 0.0228,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": 0.0204,
+      "dy": 0.0771
+     },
+     "door": {
+      "hinge_friction_Nm": 1.356,
+      "damping": 1.8621,
+      "spring_scale": 1.2493
+     },
+     "basket": {
+      "rail_friction_N": 7.0551,
+      "damping": 24.6395,
+      "preload_slots": [
+       0,
+       3,
+       6,
+       7
+      ]
+     },
+     "lighting": {
+      "key_scale": 1.9986,
+      "ambient_scale": 0.6057,
+      "color_temp_K": 7331.8374,
+      "key_azimuth_deg": -0.6965
+     },
+     "camera_bump": {
+      "roll_deg": 1.9491,
+      "pitch_deg": 2.291,
+      "yaw_deg": -2.1207,
+      "dx": 0.005,
+      "dz": -0.0135
+     },
+     "dock": {
+      "dx": 0.0253,
+      "dy": 0.0102,
+      "yaw_deg": -0.1573
+     },
+     "dishwasher": {
+      "dx": -0.0263,
+      "dy": 0.0443,
+      "yaw_deg": 0.8825
+     },
+     "sensors": {
+      "depth_noise_scale": 1.421,
+      "ft_noise_N": 0.1638,
+      "ft_drift_N_per_min": 1.0693
+     },
+     "person": {
+      "at_s": 11.81,
+      "dur_s": 30.35,
+      "distance_m": 1.13
+     },
+     "buttons": {
+      "threshold_N": 1.2054,
+      "dwell_ms": 49.0561
+     },
+     "clutter": [
+      {
+       "type": "mug",
+       "surface": "counter",
+       "x": -0.5,
+       "y": 0.707,
+       "yaw_deg": 89.9,
+       "size_scale": 1.232,
+       "rgb": [
+        0.85,
+        0.3,
+        0.25
+       ]
+      },
+      {
+       "type": "cereal_box",
+       "surface": "dishwasher_top",
+       "x": -0.104,
+       "y": 0.06,
+       "yaw_deg": -102.4,
+       "size_scale": 1.132,
+       "rgb": [
+        0.9,
+        0.7,
+        0.2
+       ]
+      },
+      {
+       "type": "bowl",
+       "surface": "counter",
+       "x": -0.359,
+       "y": 0.951,
+       "yaw_deg": -68.5,
+       "size_scale": 1.169,
+       "rgb": [
+        0.92,
+        0.92,
+        0.9
+       ]
+      },
+      {
+       "type": "bottle",
+       "surface": "counter",
+       "x": -0.062,
+       "y": 0.311,
+       "yaw_deg": 111.8,
+       "size_scale": 0.861,
+       "rgb": [
+        0.25,
+        0.55,
+        0.35
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/R_14.json"
+   },
+   {
+    "id": "R_15",
+    "name": "random_15",
+    "round": 3,
+    "params": {
+     "plate": {
+      "radius_m": 0.0959,
+      "mass_kg": 0.4239,
+      "mu": 0.9412,
+      "wetness": 0.2892,
+      "x": -0.2403,
+      "y": 0.4592,
+      "rgb": [
+       0.368,
+       0.844,
+       0.746
+      ]
+     },
+     "pod": {
+      "dx": -0.0133,
+      "dy": -0.0056,
+      "yaw_deg": 22.3342,
+      "size_scale": 1.2689,
+      "mass_kg": 0.0261,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": -0.075,
+      "dy": -0.0031
+     },
+     "door": {
+      "hinge_friction_Nm": 0.9712,
+      "damping": 0.6455,
+      "spring_scale": 1.252
+     },
+     "basket": {
+      "rail_friction_N": 2.2318,
+      "damping": 22.2872,
+      "preload_slots": [
+       0
+      ]
+     },
+     "lighting": {
+      "key_scale": 1.9408,
+      "ambient_scale": 0.7287,
+      "color_temp_K": 4935.2879,
+      "key_azimuth_deg": -149.5378
+     },
+     "camera_bump": {
+      "roll_deg": -0.8299,
+      "pitch_deg": -0.8821,
+      "yaw_deg": -2.6486,
+      "dx": -0.0055,
+      "dy": -0.0156,
+      "dz": 0.0049
+     },
+     "dock": {
+      "dx": 0.0096,
+      "dy": 0.0216,
+      "yaw_deg": -0.1486
+     },
+     "dishwasher": {
+      "dx": 0.0169,
+      "dy": 0.0462,
+      "yaw_deg": 2.3436
+     },
+     "sensors": {
+      "depth_noise_scale": 2.0982,
+      "ft_noise_N": 0.4311,
+      "ft_drift_N_per_min": 0.9793
+     },
+     "buttons": {
+      "threshold_N": 4.0527,
+      "dwell_ms": 30.8814
+     },
+     "clutter": [
+      {
+       "type": "bottle",
+       "surface": "dishwasher_top",
+       "x": -0.105,
+       "y": -0.101,
+       "yaw_deg": -49.2,
+       "size_scale": 1.049,
+       "rgb": [
+        0.25,
+        0.55,
+        0.35
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "perceive_plate|perception check failed|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": null,
+    "errors": null,
+    "result_file": "runs/R_15.json"
+   },
+   {
+    "id": "R_16",
+    "name": "random_16",
+    "round": 4,
+    "params": {
+     "plate": {
+      "radius_m": 0.1239,
+      "mass_kg": 0.4983,
+      "mu": 0.3012,
+      "wetness": 0.1447,
+      "x": -0.1498,
+      "y": 0.7788,
+      "rgb": [
+       0.49,
+       0.929,
+       0.207
+      ]
+     },
+     "pod": {
+      "dx": 0.0136,
+      "dy": 0.0107,
+      "yaw_deg": 61.9402,
+      "size_scale": 0.8233,
+      "mass_kg": 0.0103,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": 0.013,
+      "dy": -0.0465
+     },
+     "door": {
+      "hinge_friction_Nm": 2.3963,
+      "damping": 4.0636,
+      "spring_scale": 0.8513
+     },
+     "basket": {
+      "rail_friction_N": 5.1562,
+      "damping": 2.1494,
+      "preload_slots": [
+       4
+      ]
+     },
+     "lighting": {
+      "key_scale": 1.2431,
+      "ambient_scale": 0.2539,
+      "color_temp_K": 4923.7579,
+      "key_azimuth_deg": -138.4217
+     },
+     "camera_bump": {
+      "roll_deg": -1.542,
+      "pitch_deg": 1.3166,
+      "yaw_deg": 1.3419,
+      "dx": 0.0002,
+      "dy": 0.0178,
+      "dz": 0.0122
+     },
+     "dock": {
+      "dx": 0.0106,
+      "dy": 0.0071,
+      "yaw_deg": -0.247
+     },
+     "dishwasher": {
+      "dx": -0.026,
+      "dy": -0.015,
+      "yaw_deg": 3.4966
+     },
+     "sensors": {
+      "depth_noise_scale": 1.3233,
+      "ft_noise_N": 0.494,
+      "ft_drift_N_per_min": 0.2178
+     },
+     "buttons": {
+      "threshold_N": 5.4275,
+      "dwell_ms": 79.4749
+     },
+     "clutter": [
+      {
+       "type": "cutting_board",
+       "surface": "dishwasher_top",
+       "x": 0.076,
+       "y": -0.033,
+       "yaw_deg": -34.6,
+       "size_scale": 0.99,
+       "rgb": [
+        0.7,
+        0.52,
+        0.32
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "perceive_plate|perception check failed|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M9",
+    "errors": null,
+    "result_file": "runs/R_16.json"
+   },
+   {
+    "id": "R_17",
+    "name": "random_17",
+    "round": 4,
+    "params": {
+     "plate": {
+      "radius_m": 0.0976,
+      "mass_kg": 0.6835,
+      "mu": 0.4441,
+      "wetness": 0.2083,
+      "x": -0.3049,
+      "y": 0.5435,
+      "rgb": [
+       0.235,
+       0.057,
+       0.722
+      ]
+     },
+     "pod": {
+      "dx": -0.0087,
+      "dy": -0.0045,
+      "yaw_deg": 65.1557,
+      "size_scale": 0.9972,
+      "mass_kg": 0.0149,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": 0.0134,
+      "dy": -0.0414
+     },
+     "door": {
+      "hinge_friction_Nm": 0.6607,
+      "damping": 0.522,
+      "spring_scale": 1.4916
+     },
+     "basket": {
+      "rail_friction_N": 12.7965,
+      "damping": 15.63,
+      "preload_slots": [
+       4,
+       5
+      ]
+     },
+     "lighting": {
+      "key_scale": 0.7119,
+      "ambient_scale": 1.5386,
+      "color_temp_K": 2725.6042,
+      "key_azimuth_deg": -57.7465
+     },
+     "camera_bump": {
+      "roll_deg": 1.3515,
+      "pitch_deg": -1.294,
+      "yaw_deg": -0.3787,
+      "dx": -0.0038,
+      "dy": -0.013,
+      "dz": -0.0073
+     },
+     "dock": {
+      "dx": 0.0272,
+      "dy": 0.0059,
+      "yaw_deg": -2.9398
+     },
+     "dishwasher": {
+      "dx": -0.0267,
+      "dy": 0.0316,
+      "yaw_deg": -0.4235
+     },
+     "sensors": {
+      "depth_noise_scale": 1.08,
+      "ft_noise_N": 0.1304,
+      "ft_drift_N_per_min": 0.3794
+     },
+     "person": {
+      "at_s": 114.4,
+      "dur_s": 3.45,
+      "distance_m": 0.73
+     },
+     "buttons": {
+      "threshold_N": 5.082,
+      "dwell_ms": 34.7847
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/R_17.json"
+   },
+   {
+    "id": "R_18",
+    "name": "random_18",
+    "round": 4,
+    "params": {
+     "plate": {
+      "radius_m": 0.0859,
+      "mass_kg": 0.5067,
+      "mu": 0.6974,
+      "wetness": 0.9717,
+      "x": -0.0822,
+      "y": 0.5209,
+      "rgb": [
+       0.385,
+       0.592,
+       0.481
+      ],
+      "upside_down": true
+     },
+     "pod": {
+      "location": "counter",
+      "dx": 0.0008,
+      "dy": -0.0133,
+      "x": -0.2906,
+      "y": 0.9473,
+      "yaw_deg": 5.585,
+      "size_scale": 1.2005,
+      "mass_kg": 0.0286
+     },
+     "dish": {
+      "dx": -0.0779,
+      "dy": 0.0488
+     },
+     "door": {
+      "hinge_friction_Nm": 1.987,
+      "damping": 1.976,
+      "spring_scale": 1.4907
+     },
+     "basket": {
+      "rail_friction_N": 16.8879,
+      "damping": 8.1099,
+      "preload_slots": [
+       0,
+       1,
+       4,
+       6
+      ]
+     },
+     "lighting": {
+      "key_scale": 0.8606,
+      "ambient_scale": 0.318,
+      "color_temp_K": 2898.0985,
+      "key_azimuth_deg": -51.9923
+     },
+     "camera_bump": {
+      "roll_deg": 1.2088,
+      "pitch_deg": -2.4231,
+      "yaw_deg": -0.4584,
+      "dx": 0.0137,
+      "dy": -0.0161,
+      "dz": -0.0162
+     },
+     "dock": {
+      "dx": 0.0059,
+      "dy": 0.0106,
+      "yaw_deg": -0.2237
+     },
+     "dishwasher": {
+      "dx": -0.0291,
+      "dy": 0.0169,
+      "yaw_deg": -0.8463
+     },
+     "sensors": {
+      "depth_noise_scale": 2.8019,
+      "ft_noise_N": 0.0052,
+      "ft_drift_N_per_min": 0.6356
+     },
+     "person": {
+      "at_s": 38.66,
+      "dur_s": 85.65,
+      "distance_m": 1.09
+     },
+     "buttons": {
+      "threshold_N": 5.1533,
+      "dwell_ms": 43.0752
+     },
+     "clutter": [
+      {
+       "type": "mug",
+       "surface": "counter",
+       "x": -0.3,
+       "y": 0.743,
+       "yaw_deg": -23.2,
+       "size_scale": 1.232,
+       "rgb": [
+        0.85,
+        0.3,
+        0.25
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "perceive_plate|perception check failed|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M9",
+    "errors": null,
+    "result_file": "runs/R_18.json"
+   },
+   {
+    "id": "R_19",
+    "name": "random_19",
+    "round": 4,
+    "params": {
+     "plate": {
+      "radius_m": 0.111,
+      "mass_kg": 1.1802,
+      "mu": 0.4037,
+      "wetness": 0.6821,
+      "x": -0.281,
+      "y": 0.3131,
+      "rgb": [
+       0.202,
+       0.469,
+       0.962
+      ],
+      "upside_down": true
+     },
+     "pod": {
+      "dx": 0.0109,
+      "dy": -0.0118,
+      "yaw_deg": 29.5405,
+      "size_scale": 1.0773,
+      "mass_kg": 0.0129,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": 0.0212,
+      "dy": 0.0115
+     },
+     "door": {
+      "hinge_friction_Nm": 1.9949,
+      "damping": 4.4669,
+      "spring_scale": 1.1244
+     },
+     "basket": {
+      "rail_friction_N": 8.3194,
+      "damping": 13.3273,
+      "preload_slots": [
+       2
+      ]
+     },
+     "lighting": {
+      "key_scale": 0.4538,
+      "ambient_scale": 1.0369,
+      "color_temp_K": 4861.9313,
+      "key_azimuth_deg": -65.8671
+     },
+     "camera_bump": {
+      "roll_deg": 0.3925,
+      "pitch_deg": -2.3397,
+      "yaw_deg": -2.1979,
+      "dx": 0.0186,
+      "dy": -0.0112,
+      "dz": 0.0131
+     },
+     "dock": {
+      "dx": 0.028,
+      "dy": -0.0184,
+      "yaw_deg": 2.9581
+     },
+     "dishwasher": {
+      "dx": -0.0435,
+      "dy": -0.0441,
+      "yaw_deg": 3.9427
+     },
+     "sensors": {
+      "depth_noise_scale": 1.4121,
+      "ft_noise_N": 0.3779,
+      "ft_drift_N_per_min": 1.6088
+     },
+     "person": {
+      "at_s": 77.0,
+      "dur_s": 19.08,
+      "distance_m": 1.65
+     },
+     "buttons": {
+      "threshold_N": 1.9399,
+      "dwell_ms": 12.7739
+     },
+     "clutter": [
+      {
+       "type": "cereal_box",
+       "surface": "counter",
+       "x": -0.445,
+       "y": 0.544,
+       "yaw_deg": 86.0,
+       "size_scale": 1.139,
+       "rgb": [
+        0.9,
+        0.7,
+        0.2
+       ]
+      },
+      {
+       "type": "bottle",
+       "surface": "counter",
+       "x": -0.073,
+       "y": 0.527,
+       "yaw_deg": -6.4,
+       "size_scale": 0.902,
+       "rgb": [
+        0.25,
+        0.55,
+        0.35
+       ]
+      },
+      {
+       "type": "mug",
+       "surface": "counter",
+       "x": -0.198,
+       "y": 0.639,
+       "yaw_deg": 35.3,
+       "size_scale": 1.063,
+       "rgb": [
+        0.85,
+        0.3,
+        0.25
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "perceive_plate|perception check failed|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M9",
+    "errors": null,
+    "result_file": "runs/R_19.json"
+   },
+   {
+    "id": "R_20",
+    "name": "random_20",
+    "round": 4,
+    "params": {
+     "plate": {
+      "radius_m": 0.1004,
+      "mass_kg": 0.848,
+      "mu": 0.5784,
+      "wetness": 0.5558,
+      "x": -0.4177,
+      "y": 0.7101,
+      "rgb": [
+       0.743,
+       0.076,
+       0.881
+      ]
+     },
+     "pod": {
+      "dx": -0.0117,
+      "dy": 0.0012,
+      "yaw_deg": -72.1206,
+      "size_scale": 1.2545,
+      "mass_kg": 0.02,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": -0.0061,
+      "dy": 0.0411
+     },
+     "door": {
+      "hinge_friction_Nm": 2.3734,
+      "damping": 7.6343,
+      "spring_scale": 1.1289
+     },
+     "basket": {
+      "rail_friction_N": 16.5794,
+      "damping": 9.8634
+     },
+     "lighting": {
+      "key_scale": 1.0439,
+      "ambient_scale": 1.8953,
+      "color_temp_K": 4864.6031,
+      "key_azimuth_deg": -10.057
+     },
+     "camera_bump": {
+      "roll_deg": -2.7824,
+      "pitch_deg": 2.766,
+      "yaw_deg": 2.3282,
+      "dx": 0.0105,
+      "dy": -0.0174,
+      "dz": 0.0184
+     },
+     "dock": {
+      "dx": 0.0153,
+      "dy": 0.0015,
+      "yaw_deg": 0.4403
+     },
+     "dishwasher": {
+      "dx": -0.0341,
+      "dy": -0.0399,
+      "yaw_deg": 3.9031
+     },
+     "sensors": {
+      "depth_noise_scale": 0.7853,
+      "ft_noise_N": 0.0754,
+      "ft_drift_N_per_min": 0.4635
+     },
+     "buttons": {
+      "threshold_N": 5.2992,
+      "dwell_ms": 56.1771
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/R_20.json"
+   },
+   {
+    "id": "R_21",
+    "name": "random_21",
+    "round": 5,
+    "params": {
+     "plate": {
+      "radius_m": 0.1118,
+      "mass_kg": 0.8638,
+      "mu": 0.2051,
+      "wetness": 0.7369,
+      "x": -0.4532,
+      "y": 0.5694,
+      "rgb": [
+       0.733,
+       0.378,
+       0.559
+      ]
+     },
+     "pod": {
+      "location": "counter",
+      "dx": 0.0041,
+      "dy": -0.0191,
+      "x": -0.0726,
+      "y": 0.7384,
+      "yaw_deg": 66.7757,
+      "size_scale": 1.0399,
+      "mass_kg": 0.0228
+     },
+     "dish": {
+      "dx": 0.0355,
+      "dy": -0.0507
+     },
+     "door": {
+      "hinge_friction_Nm": 0.9689,
+      "damping": 5.195,
+      "spring_scale": 1.0477
+     },
+     "basket": {
+      "rail_friction_N": 1.7072,
+      "damping": 28.0548,
+      "preload_slots": [
+       1,
+       2,
+       4,
+       7
+      ]
+     },
+     "lighting": {
+      "key_scale": 1.3979,
+      "ambient_scale": 1.2792,
+      "color_temp_K": 4587.9425,
+      "key_azimuth_deg": 84.1208
+     },
+     "camera_bump": {
+      "roll_deg": 0.3735,
+      "pitch_deg": -0.6685,
+      "yaw_deg": 0.5305,
+      "dx": -0.0188,
+      "dy": 0.0029,
+      "dz": -0.0165
+     },
+     "dock": {
+      "dx": 0.0259,
+      "dy": 0.0248,
+      "yaw_deg": 2.7925
+     },
+     "dishwasher": {
+      "dx": -0.0135,
+      "dy": 0.0262,
+      "yaw_deg": 1.1006
+     },
+     "sensors": {
+      "depth_noise_scale": 0.9168,
+      "ft_noise_N": 0.0438,
+      "ft_drift_N_per_min": 1.9484
+     },
+     "buttons": {
+      "threshold_N": 2.2488,
+      "dwell_ms": 54.6647
+     },
+     "clutter": [
+      {
+       "type": "bowl",
+       "surface": "dishwasher_top",
+       "x": 0.009,
+       "y": 0.12,
+       "yaw_deg": -105.0,
+       "size_scale": 1.145,
+       "rgb": [
+        0.92,
+        0.92,
+        0.9
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "perceive_plate|perception check failed|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M9",
+    "errors": null,
+    "result_file": "runs/R_21.json"
+   },
+   {
+    "id": "R_22",
+    "name": "random_22",
+    "round": 5,
+    "params": {
+     "plate": {
+      "radius_m": 0.1139,
+      "mass_kg": 0.3726,
+      "mu": 0.2843,
+      "wetness": 0.3422,
+      "x": -0.3793,
+      "y": 0.5983,
+      "rgb": [
+       0.833,
+       0.735,
+       0.005
+      ]
+     },
+     "pod": {
+      "dx": 0.0062,
+      "dy": -0.0153,
+      "yaw_deg": -66.4069,
+      "size_scale": 0.9492,
+      "mass_kg": 0.0121,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": -0.0378,
+      "dy": -0.0118
+     },
+     "door": {
+      "hinge_friction_Nm": 2.1619,
+      "damping": 1.338,
+      "spring_scale": 0.8354
+     },
+     "basket": {
+      "rail_friction_N": 17.2863,
+      "damping": 13.9102,
+      "preload_slots": [
+       0,
+       1,
+       3,
+       4,
+       7
+      ]
+     },
+     "lighting": {
+      "key_scale": 1.7957,
+      "ambient_scale": 0.3909,
+      "color_temp_K": 5274.2976,
+      "key_azimuth_deg": 56.7754
+     },
+     "camera_bump": {
+      "roll_deg": -0.9183,
+      "pitch_deg": -0.7525,
+      "yaw_deg": -0.1112,
+      "dx": -0.0147,
+      "dy": 0.0173,
+      "dz": 0.0082
+     },
+     "dock": {
+      "dx": 0.0015,
+      "dy": -0.0042,
+      "yaw_deg": 0.0751
+     },
+     "dishwasher": {
+      "dx": -0.0077,
+      "dy": -0.0487,
+      "yaw_deg": -3.3
+     },
+     "sensors": {
+      "depth_noise_scale": 1.6675,
+      "ft_noise_N": 0.0346,
+      "ft_drift_N_per_min": 0.8876
+     },
+     "buttons": {
+      "threshold_N": 2.8361,
+      "dwell_ms": 18.1605
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "perceive_plate|perception check failed|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M9",
+    "errors": null,
+    "result_file": "runs/R_22.json"
+   },
+   {
+    "id": "R_23",
+    "name": "random_23",
+    "round": 5,
+    "params": {
+     "plate": {
+      "radius_m": 0.1317,
+      "mass_kg": 0.9559,
+      "mu": 0.2233,
+      "wetness": 0.8314,
+      "x": -0.313,
+      "y": 0.6119,
+      "rgb": [
+       0.272,
+       0.448,
+       0.329
+      ],
+      "upside_down": true
+     },
+     "pod": {
+      "dx": 0.0127,
+      "dy": 0.0134,
+      "yaw_deg": 55.9,
+      "size_scale": 1.028,
+      "mass_kg": 0.027,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": 0.0346,
+      "dy": -0.0127
+     },
+     "door": {
+      "hinge_friction_Nm": 2.2017,
+      "damping": 8.5831,
+      "spring_scale": 1.3475
+     },
+     "basket": {
+      "rail_friction_N": 10.8026,
+      "damping": 18.3571,
+      "preload_slots": [
+       3
+      ]
+     },
+     "lighting": {
+      "key_scale": 0.4026,
+      "ambient_scale": 1.09,
+      "color_temp_K": 3635.3634,
+      "key_azimuth_deg": 4.1737
+     },
+     "camera_bump": {
+      "roll_deg": -2.9239,
+      "pitch_deg": -2.4517,
+      "yaw_deg": 1.1227,
+      "dx": 0.0096,
+      "dy": 0.0186,
+      "dz": -0.0123
+     },
+     "dock": {
+      "dx": 0.0187,
+      "dy": 0.0298,
+      "yaw_deg": 1.448
+     },
+     "dishwasher": {
+      "dx": 0.0102,
+      "dy": -0.0093,
+      "yaw_deg": 0.0816
+     },
+     "sensors": {
+      "depth_noise_scale": 1.217,
+      "ft_noise_N": 0.425,
+      "ft_drift_N_per_min": 0.72
+     },
+     "person": {
+      "at_s": 162.37,
+      "dur_s": 57.43,
+      "distance_m": 1.91
+     },
+     "buttons": {
+      "threshold_N": 2.0136,
+      "dwell_ms": 45.5472
+     },
+     "clutter": [
+      {
+       "type": "bowl",
+       "surface": "counter",
+       "x": -0.123,
+       "y": 0.43,
+       "yaw_deg": 68.2,
+       "size_scale": 0.992,
+       "rgb": [
+        0.92,
+        0.92,
+        0.9
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "perceive_plate|perception check failed|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M9",
+    "errors": null,
+    "result_file": "runs/R_23.json"
+   }
+  ],
+  "S": [
+   {
+    "id": "S_01",
+    "name": "sparse_01",
+    "round": 1,
+    "params": {
+     "dishwasher": {
+      "dx": -0.0251,
+      "dy": 0.0249,
+      "yaw_deg": 1.8362
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/S_01.json"
+   },
+   {
+    "id": "S_02",
+    "name": "sparse_02",
+    "round": 1,
+    "params": {
+     "plate": {
+      "radius_m": 0.0941,
+      "mass_kg": 0.8746,
+      "mu": 0.5241,
+      "wetness": 0.3245,
+      "x": -0.4506,
+      "y": 0.8422,
+      "rgb": [
+       0.593,
+       0.443,
+       0.587
+      ],
+      "upside_down": true
+     },
+     "basket": {
+      "rail_friction_N": 8.2316,
+      "damping": 11.9917,
+      "preload_slots": [
+       1,
+       2,
+       4
+      ]
+     },
+     "lighting": {
+      "key_scale": 0.8728,
+      "ambient_scale": 0.9908,
+      "color_temp_K": 4162.6169,
+      "key_azimuth_deg": -40.5054
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "pull_basket|basket at # m, pod in groove true|door_closed,plate_in_slot,quick_running|-",
+    "mode": "M7",
+    "errors": null,
+    "result_file": "runs/S_02.json"
+   },
+   {
+    "id": "S_03",
+    "name": "sparse_03",
+    "round": 1,
+    "params": {
+     "basket": {
+      "rail_friction_N": 6.3919,
+      "damping": 15.2846,
+      "preload_slots": [
+       1
+      ]
+     },
+     "camera_bump": {
+      "roll_deg": 0.5568,
+      "pitch_deg": 2.3621,
+      "yaw_deg": 2.067,
+      "dx": -0.0048,
+      "dy": 0.013,
+      "dz": 0.0138
+     },
+     "dock": {
+      "dx": 0.0186,
+      "dy": 0.0226,
+      "yaw_deg": -2.1245
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "load_pod|pod not lifted|door_closed,plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M5",
+    "errors": null,
+    "result_file": "runs/S_03.json"
+   },
+   {
+    "id": "S_04",
+    "name": "sparse_04",
+    "round": 1,
+    "params": {
+     "plate": {
+      "radius_m": 0.0898,
+      "mass_kg": 0.7992,
+      "mu": 0.4524,
+      "wetness": 0.5352,
+      "x": -0.3494,
+      "y": 0.3566,
+      "rgb": [
+       0.183,
+       0.111,
+       0.379
+      ]
+     },
+     "clutter": [
+      {
+       "type": "mug",
+       "surface": "dishwasher_top",
+       "x": -0.062,
+       "y": 0.139,
+       "yaw_deg": -164.9,
+       "size_scale": 0.865,
+       "rgb": [
+        0.85,
+        0.3,
+        0.25
+       ]
+      }
+     ]
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "perceive_plate|perception check failed|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M9",
+    "errors": null,
+    "result_file": "runs/S_04.json"
+   },
+   {
+    "id": "S_05",
+    "name": "sparse_05",
+    "round": 1,
+    "params": {
+     "pod": {
+      "location": "counter",
+      "dx": 0.0187,
+      "dy": -0.0003,
+      "x": -0.0584,
+      "y": 0.5019,
+      "yaw_deg": -52.8583,
+      "size_scale": 1.2983,
+      "mass_kg": 0.0233
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "load_pod|pod not lifted|door_closed,plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "K-pod",
+    "errors": null,
+    "result_file": "runs/S_05.json"
+   },
+   {
+    "id": "S_06",
+    "name": "sparse_06",
+    "round": 2,
+    "params": {
+     "basket": {
+      "rail_friction_N": 18.8173,
+      "damping": 8.6672,
+      "preload_slots": [
+       0,
+       1
+      ]
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "pull_basket|basket at # m, pod in groove true|door_closed,plate_in_slot,quick_running|-",
+    "mode": "M7",
+    "errors": null,
+    "result_file": "runs/S_06.json"
+   },
+   {
+    "id": "S_07",
+    "name": "sparse_07",
+    "round": 2,
+    "params": {
+     "basket": {
+      "rail_friction_N": 12.8895,
+      "damping": 7.3514,
+      "preload_slots": [
+       0,
+       1,
+       3,
+       6
+      ]
+     },
+     "camera_bump": {
+      "roll_deg": -2.0431,
+      "pitch_deg": 1.643,
+      "yaw_deg": -0.0116,
+      "dx": -0.0055,
+      "dy": 0.0105,
+      "dz": 0.0169
+     },
+     "buttons": {
+      "threshold_N": 2.845,
+      "dwell_ms": 13.7255
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "pull_basket|basket at # m, pod in groove true|door_closed,plate_in_slot,quick_running|-",
+    "mode": "M7",
+    "errors": null,
+    "result_file": "runs/S_07.json"
+   },
+   {
+    "id": "S_08",
+    "name": "sparse_08",
+    "round": 2,
+    "params": {
+     "camera_bump": {
+      "roll_deg": -1.1206,
+      "pitch_deg": -2.4479,
+      "yaw_deg": 0.5114,
+      "dx": 0.0181,
+      "dy": 0.0137,
+      "dz": -0.0148
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "pick_plate|push left # mm overhang|basket_in,door_closed,plate_in_slot,quick_running|-",
+    "mode": "M12",
+    "errors": null,
+    "result_file": "runs/S_08.json"
+   },
+   {
+    "id": "S_09",
+    "name": "sparse_09",
+    "round": 2,
+    "params": {
+     "lighting": {
+      "key_scale": 0.48,
+      "ambient_scale": 1.9906,
+      "color_temp_K": 5767.6704,
+      "key_azimuth_deg": -50.5256
+     },
+     "dock": {
+      "dx": 0.0286,
+      "dy": 0.029,
+      "yaw_deg": -1.5791
+     },
+     "dishwasher": {
+      "dx": -0.0371,
+      "dy": -0.0202,
+      "yaw_deg": -1.2703
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/S_09.json"
+   },
+   {
+    "id": "S_10",
+    "name": "sparse_10",
+    "round": 2,
+    "params": {
+     "plate": {
+      "radius_m": 0.1308,
+      "mass_kg": 0.7205,
+      "mu": 0.9052,
+      "wetness": 0.9012,
+      "x": -0.2032,
+      "y": 0.4862,
+      "rgb": [
+       0.247,
+       0.309,
+       0.719
+      ]
+     },
+     "dish": {
+      "dx": 0.0392,
+      "dy": 0.0252
+     },
+     "dishwasher": {
+      "dx": -0.0026,
+      "dy": 0.0493,
+      "yaw_deg": -0.4824
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "perceive_plate|perception check failed|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M9",
+    "errors": null,
+    "result_file": "runs/S_10.json"
+   },
+   {
+    "id": "S_11",
+    "name": "sparse_11",
+    "round": 3,
+    "params": {
+     "dock": {
+      "dx": 0.0206,
+      "dy": -0.0272,
+      "yaw_deg": 0.3488
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/S_11.json"
+   },
+   {
+    "id": "S_12",
+    "name": "sparse_12",
+    "round": 3,
+    "params": {
+     "door": {
+      "hinge_friction_Nm": 2.505,
+      "damping": 1.9945,
+      "spring_scale": 1.0373
+     },
+     "lighting": {
+      "key_scale": 1.5202,
+      "ambient_scale": 1.2388,
+      "color_temp_K": 6744.9832,
+      "key_azimuth_deg": -137.3658
+     },
+     "dishwasher": {
+      "dx": -0.0235,
+      "dy": -0.0278,
+      "yaw_deg": -2.9897
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/S_12.json"
+   },
+   {
+    "id": "S_13",
+    "name": "sparse_13",
+    "round": 3,
+    "params": {
+     "door": {
+      "hinge_friction_Nm": 2.569,
+      "damping": 5.9369,
+      "spring_scale": 1.1376
+     },
+     "basket": {
+      "rail_friction_N": 15.9989,
+      "damping": 2.1157,
+      "preload_slots": [
+       0
+      ]
+     },
+     "person": {
+      "at_s": 243.66,
+      "dur_s": 98.92,
+      "distance_m": 1.66
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|door only at # deg|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M8",
+    "errors": null,
+    "result_file": "runs/S_13.json"
+   },
+   {
+    "id": "S_14",
+    "name": "sparse_14",
+    "round": 3,
+    "params": {
+     "lighting": {
+      "key_scale": 1.249,
+      "ambient_scale": 0.9251,
+      "color_temp_K": 4034.863,
+      "key_azimuth_deg": 24.9132
+     },
+     "dishwasher": {
+      "dx": -0.0262,
+      "dy": 0.0354,
+      "yaw_deg": -1.7868
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|bar not grasped|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/S_14.json"
+   },
+   {
+    "id": "S_15",
+    "name": "sparse_15",
+    "round": 3,
+    "params": {
+     "dish": {
+      "dx": -0.0686,
+      "dy": -0.0759
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "load_pod|pod not lifted|door_closed,plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M10",
+    "errors": null,
+    "result_file": "runs/S_15.json"
+   },
+   {
+    "id": "S_16",
+    "name": "sparse_16",
+    "round": 4,
+    "params": {
+     "pod": {
+      "dx": -0.0013,
+      "dy": 0.0178,
+      "yaw_deg": 27.2596,
+      "size_scale": 0.9952,
+      "mass_kg": 0.0175,
+      "location": "dish"
+     },
+     "dish": {
+      "dx": -0.0384,
+      "dy": -0.0073
+     },
+     "person": {
+      "at_s": 70.93,
+      "dur_s": 25.41,
+      "distance_m": 1.14
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "load_pod|pod not lifted|door_closed,plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M10",
+    "errors": null,
+    "result_file": "runs/S_16.json"
+   },
+   {
+    "id": "S_17",
+    "name": "sparse_17",
+    "round": 4,
+    "params": {
+     "pod": {
+      "dx": 0.016,
+      "dy": -0.0028,
+      "yaw_deg": 32.8096,
+      "size_scale": 1.1537,
+      "mass_kg": 0.0249,
+      "location": "dish"
+     },
+     "basket": {
+      "rail_friction_N": 4.69,
+      "damping": 5.4303
+     },
+     "camera_bump": {
+      "roll_deg": -1.8502,
+      "pitch_deg": -1.0467,
+      "yaw_deg": 0.9233,
+      "dx": -0.0015,
+      "dy": -0.0035,
+      "dz": -0.0083
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "load_pod|pod not lifted|door_closed,plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M10",
+    "errors": null,
+    "result_file": "runs/S_17.json"
+   },
+   {
+    "id": "S_18",
+    "name": "sparse_18",
+    "round": 4,
+    "params": {
+     "dish": {
+      "dx": -0.0079,
+      "dy": -0.0574
+     },
+     "person": {
+      "at_s": 99.41,
+      "dur_s": 116.7,
+      "distance_m": 1.74
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "load_pod|pod not lifted|door_closed,plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M10",
+    "errors": null,
+    "result_file": "runs/S_18.json"
+   },
+   {
+    "id": "S_19",
+    "name": "sparse_19",
+    "round": 4,
+    "params": {
+     "camera_bump": {
+      "roll_deg": -1.0706,
+      "pitch_deg": -0.6377,
+      "yaw_deg": 2.1405,
+      "dx": -0.0026,
+      "dy": -0.0001,
+      "dz": 0.0087
+     }
+    },
+    "hypothesis": null,
+    "label": "degraded",
+    "severity": 1,
+    "signature": "claimed_ok||-|-",
+    "mode": null,
+    "errors": null,
+    "result_file": "runs/S_19.json"
+   },
+   {
+    "id": "S_20",
+    "name": "sparse_20",
+    "round": 4,
+    "params": {
+     "plate": {
+      "radius_m": 0.1264,
+      "mass_kg": 0.4171,
+      "mu": 0.6432,
+      "wetness": 0.8792,
+      "x": -0.2565,
+      "y": 0.407,
+      "rgb": [
+       0.012,
+       0.529,
+       0.726
+      ],
+      "upside_down": true
+     },
+     "basket": {
+      "rail_friction_N": 9.8482,
+      "damping": 3.24,
+      "preload_slots": [
+       3
+      ]
+     },
+     "dishwasher": {
+      "dx": -0.014,
+      "dy": 0.0115,
+      "yaw_deg": -0.3138
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "open_door|door only at # deg|plate_in_slot,pod_in_groove,quick_running|-",
+    "mode": "M6",
+    "errors": null,
+    "result_file": "runs/S_20.json"
+   },
+   {
+    "id": "S_21",
+    "name": "sparse_21",
+    "round": 5,
+    "params": {
+     "person": {
+      "at_s": 135.06,
+      "dur_s": 94.63,
+      "distance_m": 1.88
+     }
+    },
+    "hypothesis": null,
+    "label": "unsafe",
+    "severity": 4,
+    "signature": "claimed_ok||-|person_overspeed",
+    "mode": "K-person",
+    "errors": null,
+    "result_file": "runs/S_21.json"
+   },
+   {
+    "id": "S_22",
+    "name": "sparse_22",
+    "round": 5,
+    "params": {
+     "camera_bump": {
+      "roll_deg": -0.5603,
+      "pitch_deg": -0.212,
+      "yaw_deg": -1.9367,
+      "dx": 0.0136,
+      "dy": -0.0148,
+      "dz": 0.0136
+     },
+     "sensors": {
+      "depth_noise_scale": 0.624,
+      "ft_noise_N": 0.419,
+      "ft_drift_N_per_min": 0.7515
+     },
+     "buttons": {
+      "threshold_N": 5.1131,
+      "dwell_ms": 26.3048
+     }
+    },
+    "hypothesis": null,
+    "label": "detected_failure",
+    "severity": 2,
+    "signature": "insert_plate|plate not seated:|basket_in,door_closed,plate_in_slot,quick_running|-",
+    "mode": "M12",
+    "errors": null,
+    "result_file": "runs/S_22.json"
+   },
+   {
+    "id": "S_23",
+    "name": "sparse_23",
+    "round": 5,
+    "params": {
+     "person": {
+      "at_s": 30.63,
+      "dur_s": 82.04,
+      "distance_m": 1.55
+     },
+     "buttons": {
+      "threshold_N": 2.8538,
+      "dwell_ms": 4.7677
+     }
+    },
+    "hypothesis": null,
+    "label": "unsafe",
+    "severity": 4,
+    "signature": "claimed_ok||quick_running|person_overspeed",
+    "mode": "K-person",
+    "errors": null,
+    "result_file": "runs/S_23.json"
+   }
+  ]
+ },
+ "minimization": {
+  "G_r1_s1": {
+   "minimal": {
+    "buttons": {
+     "threshold_N": 1.375
+    }
+   },
+   "n_runs": 4,
+   "lam_fail": 0.125,
+   "lam_ok": 0.0,
+   "reproduced_seed2": true
+  },
+  "G_r1_s2": {
+   "minimal": {
+    "basket": {
+     "preload_slots": [
+      6
+     ]
+    }
+   },
+   "n_runs": 1,
+   "lam_fail": 1.0,
+   "lam_ok": 0.0,
+   "reproduced_seed2": true
+  },
+  "G_r1_s3": {
+   "minimal": {
+    "pod": {
+     "yaw_deg": 33.75,
+     "location": "dish"
+    }
+   },
+   "n_runs": 4,
+   "lam_fail": 0.75,
+   "lam_ok": 0.625,
+   "reproduced_seed2": true
+  },
+  "G_r2_s1": {
+   "minimal": {
+    "clutter": [
+     {
+      "type": "bottle",
+      "surface": "counter",
+      "x": -0.035,
+      "y": 0.47,
+      "yaw_deg": 0,
+      "size_scale": 0.8,
+      "rgb": [
+       0.25,
+       0.55,
+       0.35
+      ]
+     }
+    ]
+   },
+   "n_runs": 1,
+   "lam_fail": 1.0,
+   "lam_ok": 0.0,
+   "reproduced_seed2": true
+  },
+  "G_r2_s2": {
+   "minimal": {
+    "dishwasher": {
+     "dx": -0.01125
+    }
+   },
+   "n_runs": 4,
+   "lam_fail": 0.375,
+   "lam_ok": 0.25,
+   "reproduced_seed2": true
+  },
+  "G_r2_s3": {
+   "minimal": {
+    "plate": {
+     "radius_m": 0.1143
+    }
+   },
+   "n_runs": 2,
+   "lam_fail": 1.0,
+   "lam_ok": 0.5,
+   "reproduced_seed2": true
+  },
+  "G_r3_s1": {
+   "minimal": {
+    "plate": {
+     "upside_down": true
+    }
+   },
+   "n_runs": 1,
+   "lam_fail": 1.0,
+   "lam_ok": 0.0,
+   "reproduced_seed2": true
+  },
+  "G_r4_s3": {
+   "minimal": {
+    "dock": {
+     "dx": 0.0055,
+     "yaw_deg": -1.0
+    }
+   },
+   "n_runs": 3,
+   "lam_fail": 0.5,
+   "lam_ok": 0.25,
+   "reproduced_seed2": true
+  },
+  "G_r6_s1": {
+   "minimal": {
+    "camera_bump": {
+     "pitch_deg": -2.0,
+     "dx": 0.02
+    }
+   },
+   "n_runs": 3,
+   "lam_fail": 1.0,
+   "lam_ok": 0.75,
+   "reproduced_seed2": true
+  },
+  "G_r6_s3": {
+   "minimal": {
+    "dishwasher": {
+     "yaw_deg": 1.875
+    }
+   },
+   "n_runs": 3,
+   "lam_fail": 0.75,
+   "lam_ok": 0.5,
+   "reproduced_seed2": true
+  },
+  "R_01": {
+   "minimal": {
+    "plate": {
+     "radius_m": 0.1148,
+     "mass_kg": 0.588
+    },
+    "dish": {
+     "dx": -0.0322,
+     "dy": 0.0762
+    },
+    "door": {
+     "hinge_friction_Nm": 1.1263,
+     "damping": 1.1103,
+     "spring_scale": 1.258
+    },
+    "lighting": {
+     "key_scale": 1.53,
+     "ambient_scale": 0.2432,
+     "color_temp_K": 4211.2785,
+     "key_azimuth_deg": -62.3348
+    },
+    "dock": {
+     "dx": 0.0111,
+     "dy": -0.0099,
+     "yaw_deg": -0.5665
+    },
+    "dishwasher": {
+     "dx": 0.0108,
+     "dy": -0.0062,
+     "yaw_deg": 3.0646
+    }
+   },
+   "n_runs": 20,
+   "lam_fail": 1.0,
+   "lam_ok": 0.5,
+   "reproduced_seed2": true
+  },
+  "R_03": {
+   "minimal": {
+    "plate": {
+     "x": -0.1008,
+     "y": 0.3697,
+     "upside_down": true
+    },
+    "dock": {
+     "dx": 0.00845,
+     "dy": 0.00245,
+     "yaw_deg": 0.9209
+    }
+   },
+   "n_runs": 20,
+   "lam_fail": 0.5,
+   "lam_ok": 0.0,
+   "reproduced_seed2": true
+  },
+  "S_06": {
+   "minimal": {
+    "basket": {
+     "rail_friction_N": 7.24399,
+     "damping": 4.5002
+    }
+   },
+   "n_runs": 5,
+   "lam_fail": 0.375,
+   "lam_ok": 0.25,
+   "reproduced_seed2": true
+  },
+  "S_11": {
+   "minimal": {
+    "dock": {
+     "dx": 0.0103,
+     "dy": -0.0136,
+     "yaw_deg": 0.1744
+    }
+   },
+   "n_runs": 3,
+   "lam_fail": 0.5,
+   "lam_ok": 0.25,
+   "reproduced_seed2": true
+  },
+  "S_13": {
+   "minimal": {
+    "door": {
+     "hinge_friction_Nm": 2.569,
+     "damping": 5.9369,
+     "spring_scale": 1.1376
+    }
+   },
+   "n_runs": 7,
+   "lam_fail": 1.0,
+   "lam_ok": 0.75,
+   "reproduced_seed2": true
+  },
+  "S_15": {
+   "minimal": {
+    "dish": {
+     "dx": -0.01715,
+     "dy": -0.01897
+    }
+   },
+   "n_runs": 3,
+   "lam_fail": 0.25,
+   "lam_ok": 0.0,
+   "reproduced_seed2": true
+  },
+  "S_20": {
+   "minimal": {
+    "dishwasher": {
+     "dx": -0.014,
+     "dy": 0.0115,
+     "yaw_deg": -0.3138
+    }
+   },
+   "n_runs": 10,
+   "lam_fail": 1.0,
+   "lam_ok": 0.75,
+   "reproduced_seed2": true
+  },
+  "S_22": {
+   "minimal": {
+    "camera_bump": {
+     "roll_deg": -0.42023,
+     "pitch_deg": -0.159,
+     "yaw_deg": -1.45253,
+     "dx": 0.0102,
+     "dy": -0.0111,
+     "dz": 0.0102
+    },
+    "buttons": {
+     "threshold_N": 4.08483,
+     "dwell_ms": 21.7286
+    }
+   },
+   "n_runs": 7,
+   "lam_fail": 0.75,
+   "lam_ok": 0.5,
+   "reproduced_seed2": false
+  }
+ },
+ "memory": {
+  "sim_processes": 190,
+  "peak_rss_mb_max": 944,
+  "peak_rss_mb_median": 577,
+  "watchdog_kills": 0
+ },
+ "rate_limit_backoffs": 0,
+ "codex_totals": {
+  "calls": 282,
+  "seconds": 3532.2,
+  "tokens": 2305725,
+  "failed": 0
+ }
+}

@@ -1,0 +1,15 @@
+--- a/pipeline.py
++++ b/pipeline.py
+@@ -1306,8 +1306,10 @@
+             sup['filt'] += .2 * (s_ - sup['filt'])
+             sup['peak'] = max(sup.get('peak', 0.), s_)
+             near = abs(self.tcp()[0][2] - ph[2]) < .04
+-            sup['cnt'] = sup['cnt'] + 1 if (sup['filt'] > .5 and near) else 0
+-            if sup['cnt'] >= 5:
++            # Require sustained support of most of the ~4.4 N plate weight,
++            # rather than stopping at the first light contact with a tine.
++            sup['cnt'] = sup['cnt'] + 1 if (sup['filt'] > 3.5 and near) else 0
++            if sup['cnt'] >= 25:
+                 sup['at'] = self.tcp()[0].copy()
+                 return True
+             return False

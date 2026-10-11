@@ -1,0 +1,26 @@
+{
+ "name": "sparse_13",
+ "source": "sparse",
+ "hypothesis": "",
+ "expected_failure": "",
+ "real_world_story": "",
+ "params": {
+  "door": {
+   "hinge_friction_Nm": 2.569,
+   "damping": 5.9369,
+   "spring_scale": 1.1376
+  },
+  "basket": {
+   "rail_friction_N": 15.9989,
+   "damping": 2.1157,
+   "preload_slots": [
+    0
+   ]
+  },
+  "person": {
+   "at_s": 243.66,
+   "dur_s": 98.92,
+   "distance_m": 1.66
+  }
+ }
+}

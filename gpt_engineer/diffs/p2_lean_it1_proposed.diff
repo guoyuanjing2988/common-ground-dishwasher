@@ -1,0 +1,15 @@
+--- a/pipeline.py
++++ b/pipeline.py
+@@ -1272,9 +1272,9 @@
+             ax = np.cross(n, tgt_n)
+             Rc = rot_axis(ax, math.asin(min(1., np.linalg.norm(ax)))) if np.linalg.norm(ax) > 1e-9 else np.eye(3)
+             R_slot = rot_z(yaw_opt) @ Rc @ Rpl
+-            # aim 3 mm toward the convex side (-normal): a seated plate leans that way onto its own tine, so this
+-            # shortens the lean and keeps the leading lip (+6.8 mm along the normal) clear of the tine it faces
+-            org = slot - .003 * R_slot[:, 2] - R_slot @ np.array([0, 0, S.MID_Z])
++            # aim 10 mm toward the convex side (-normal), reducing free tipping onto its own tine;
++            # the lowest lip (+6.8 mm along the normal) remains inside the 24 mm gap
++            org = slot - .010 * R_slot[:, 2] - R_slot @ np.array([0, 0, S.MID_Z])
+             Rh = R_slot @ Rh_p
+             ph = org + R_slot @ ph_p
+             via2 = np.array([ph[0], via1[1], via1[2]])
