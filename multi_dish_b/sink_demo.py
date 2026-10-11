@@ -191,11 +191,61 @@ class Sink(M.Multi):
         self.rgb0 = rgb
         return self.gpt
 
+    def _has(self, nm):
+        try:
+            self.model.body(nm)
+            return True
+        except KeyError:
+            return False
+
     def match(self, est_pos, cat):
-        names = [f'{cat}{i}' for i in range(3)]
+        names = [f'{cat}{i}' for i in range(3) if self._has(f'{cat}{i}')]
         pos = {nm: (self.data.site(f'{nm}_center').xpos if cat == 'plate' else self.data.site(f'{nm}_foot').xpos).copy() for nm in names}
         nm = min(names, key=lambda k: np.linalg.norm(pos[k][:2] - est_pos[:2]))
         return nm, float(np.linalg.norm(pos[nm] - est_pos) * 1000)
+
+    # -------------------------------------------------------------- finish the job (full_pipeline skills)
+    def pod_state(self):
+        return dict(in_groove=True, note='no detergent pod in this scene: pod check not applicable')
+
+    def finish_job(self):
+        d = self.data
+        self.lift_clear()
+        M.Hud.items += [['Push basket in', None, ''], ['Close door', None, ''], ['Press QUICK, then POWER', None, '']]
+        n0 = len(M.Hud.items) - 3
+        self.opt.rail.update(push_basket=self.set_base(0.48), close_door=self.set_base(0.40), press_buttons=self.set_base(0.48))
+        self.set_base(M.BASE_INSERT)
+        self.rec.view = np.array([0.20, 0.05, 1.08, 1.5, 150., -25.], float)
+        for k, (name, fn, cap) in enumerate([('push_basket', self.step_push_basket, 'Push the loaded basket in (full_pipeline skill)'),
+                                              ('close_door', self.step_close_door, 'Close the door along its hinge arc'),
+                                              ('press_buttons', self.step_buttons, 'Press QUICK, then POWER (wrist F/T stop at 3 N)')]):
+            M.Hud.caption = cap
+            if name == 'press_buttons':
+                self.rec.view = np.array([0.05, 0.05, 1.30, 0.95, 150., -12.], float)
+            try:
+                out = self.run_step(name, fn)
+                self.finish[name] = dict(ok=True, **{k_: v for k_, v in out.items() if not isinstance(v, (dict, list))})
+                M.Hud.items[n0 + k][1] = True
+            except PL.StepFail as e:
+                self.finish[name] = dict(ok=False, reason=str(e))
+                M.Hud.items[n0 + k][1] = False
+                self.recover()
+                break
+        running = all(self.finish.get(n_, {}).get('ok') for n_ in ('push_basket', 'close_door', 'press_buttons'))
+        if running:                                        # panel display (visual only): QUICK + POWER lit, RUNNING
+            for b in ('quick', 'power'):
+                bid = self.model.body(f'dw/btn_{b}_body').id
+                for g in range(self.model.body_geomadr[bid], self.model.body_geomadr[bid] + self.model.body_geomnum[bid]):
+                    self.model.geom_rgba[g] = [.25, .95, .40, 1]
+        self.finish['panel'] = 'RUNNING (QUICK)' if running else 'not started'
+        M.Hud.caption = ('Panel: QUICK program RUNNING  面板：快速洗 运行中' if running else 'Program NOT started: ' +
+                         '; '.join(f'{k_} failed' for k_, v in self.finish.items() if isinstance(v, dict) and not v.get('ok')))
+        self.lift_clear(1.30)
+        self.goto('home', np.array([0.45, 0.25, 1.30]), hand_frame([0, 0, -1.], [0, 1., 0]), PL.OPEN, speed=.25)
+        self.rec.view = np.array([0.05, 0.05, 1.20, 1.3, 155., -15.], float)
+        self.hold('running', 6.0)
+        if self.keyframes_dir:
+            self.rec.still(d, Path(self.keyframes_dir) / '97_panel_running.png')
 
     # -------------------------------------------------------------- skills
     def pick_lean(self):
@@ -217,7 +267,8 @@ class Sink(M.Multi):
         self.hold('dump', 2.5, PL.OPEN)
         M.SPEED = 3
         self.rec.view = np.array([-0.12, 0.0, 0.95, 2.85, 180., -48.], float)
-        M.Hud.caption = 'Messy sink next to the dishwasher: 3 plates, 3 bowls, kitchen items'
+        M.Hud.caption = ('Messy sink: 3 plates + 2 bowls (this layout: no flat plate, no upright bowl)' if SS.LAYOUT == 'full'
+                         else 'Messy sink next to the dishwasher: 3 plates, 3 bowls, kitchen items')
         self.hold('overview', 4.5, PL.OPEN)
         if self.keyframes_dir:
             self.rec.still(d, Path(self.keyframes_dir) / '00_sink.png')
@@ -360,11 +411,15 @@ class Sink(M.Multi):
                 self.log_fn(f'FAIL {it["label_en"]}: {e}')
                 self.recover()
             rows.append(row)
-        M.Hud.caption = 'Done: robot returns to park, everything settles (final poses measured)'
-        self.lift_clear()
-        self.set_base(M.BASE_INSERT)
-        self.transfer('home', M.PARK0, hand_frame([0, 0, -1.], [0, 1., 0]), PL.OPEN, speed=.25)
-        self.hold('final_settle', 2.0)
+        self.finish = {}
+        if getattr(self, 'full', False):
+            self.finish_job()
+        else:
+            M.Hud.caption = 'Done: robot returns to park, everything settles (final poses measured)'
+            self.lift_clear()
+            self.set_base(M.BASE_INSERT)
+            self.transfer('home', M.PARK0, hand_frame([0, 0, -1.], [0, 1., 0]), PL.OPEN, speed=.25)
+            self.hold('final_settle', 2.0)
         # final measured state
         table = []
         for i, k_ in self.plate_slot.items():
@@ -377,7 +432,7 @@ class Sink(M.Multi):
             table.append(dict(item=f'bowl{j}', target=f'bowl spot {sp + 1}', ok=bool(ok), **st))
         # anything knocked out of the sink?
         outside = []
-        for nm in [f'plate{i}' for i in range(3)] + [f'bowl{j}' for j in range(3)]:
+        for nm in [x_ for x_ in [f'plate{i}' for i in range(3)] + [f'bowl{j}' for j in range(3)] if self._has(x_)]:
             p = d.xpos[m.body(nm).id]
             in_sink = SS.BX0 - .01 < p[0] < SS.BX1 + .01 and SS.BY0 - .01 < p[1] < SS.BY1 + .01 and p[2] < S.COUNTER_Z + .05
             loaded = any(r_['item'] == nm for r_ in table)
@@ -391,7 +446,8 @@ class Sink(M.Multi):
         M.Hud.left = [f"{r_['gpt']['label_en']} / {r_['gpt']['label_zh']}: {r_['handed_to_person']}" for r_ in rows if 'handed_to_person' in r_] + \
                      [f"{r_['gpt']['label_en']} / {r_['gpt']['label_zh']}: grasp failed, left in the sink for a person" for r_ in rows if 'failed' in r_] + \
                      [f"{it['label_en']} / {it['label_zh']}: {it['reason_en']}" for it in items if it['pick_order'] <= 0 and it['in_sink']]
-        self.rec.view = np.array([0.12, 0.17, 1.06, 0.95, 180., -55.], float)
+        if not getattr(self, 'full', False):
+            self.rec.view = np.array([0.12, 0.17, 1.06, 0.95, 180., -55.], float)
         n_ok = sum(t_['ok'] for t_ in table)
         M.Hud.caption = f'Loaded basket: {n_ok} of {len(picks)} dishes from the sink; the rest is handed to a person'
         self.substep('')
@@ -409,7 +465,7 @@ class Sink(M.Multi):
         self.cam.close()
         warnings = {mujoco.mjtWarning(i).name: int(w.number) for i, w in enumerate(d.warning) if w.number}
         unexpected = [dict(step=k[0], phase=k[1], robot=k[2], other=k[3], max_force_N=round(v, 2)) for k, v in self.contact_log.items()]
-        return dict(table=table, rows=rows, looks=self.looks, outside_sink=outside, clutter_moved_mm=moved, gpt_meta=self.gpt_meta, gpt=self.gpt,
+        return dict(table=table, rows=rows, looks=self.looks, finish=self.finish, layout=SS.LAYOUT, outside_sink=outside, clutter_moved_mm=moved, gpt_meta=self.gpt_meta, gpt=self.gpt,
                     steps=self.steps, sim_time_s=round(d.time, 2), wall_s=round(time.monotonic() - self.t_wall0, 1), warnings=warnings,
                     max_penetration_mm=round(self.metrics['max_penetration_mm'], 3), max_pen_where=self.metrics['max_pen_where'],
                     unexpected_robot_contacts=unexpected, video_frames=self.rec.frames)
@@ -431,16 +487,20 @@ def main():
     ap.add_argument('--cache', default=None)
     ap.add_argument('--tag', default='')
     ap.add_argument('--seed', type=int, default=3)
+    ap.add_argument('--full', action='store_true', help='all-graspable layout + push basket, close door, QUICK + POWER')
     a = ap.parse_args()
     SS.SEED = a.seed
+    if a.full:
+        SS.LAYOUT = 'full'
     SD.mkdir(parents=True, exist_ok=True)
-    video = None if a.no_video else OUT / f'sink_demo{a.tag}.tmp.mp4'
-    kf = None if a.no_video else ROOT / 'frames_sink'
+    video = None if a.no_video else OUT / f'sink{"_full" if a.full else ""}_demo{a.tag}.tmp.mp4'
+    kf = None if a.no_video else ROOT / ('frames_sink_full' if a.full else 'frames_sink')
     if kf:
         kf.mkdir(exist_ok=True)
     r = Sink(video=video, keyframes_dir=kf, log=lambda s: print(s, flush=True))
+    r.full = a.full
     res = r.run_sink(a.cache)
-    (OUT / f'result_sink{a.tag}.json').write_text(json.dumps(res, indent=1, default=float))
+    (OUT / f'result_sink{"_full" if a.full else ""}{a.tag}.json').write_text(json.dumps(res, indent=1, default=float))
     for row in res['rows']:
         print('ROW', json.dumps({k: v for k, v in row.items() if k != 'gpt'}, default=float), row['gpt']['label_en'])
     for t in res['table']:

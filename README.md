@@ -2,27 +2,34 @@
 
 **From the messy sink to a loaded dishwasher.**
 
-![Sink to Shelf mission, 18x speed](docs/assets/mission_header.gif)
+![GPT looks, the arm picks, GPT looks again](docs/assets/sink_header.gif)
 
-**Common Ground Makeathon 2026, SQ Collective Singapore.** Tracks: Design × Tech, Culture × Tech.
+**Common Ground Makeathon 2026, SQ Collective Singapore.**
 
-A wheeled robot leaves its charger, docks at the kitchen counter, and a Franka FR3 arm loads a
-countertop dishwasher (BREMED E804 class). It opens the door, puts a detergent pod in the door groove,
-pulls the basket out, picks a flat plate off the counter, slots it upright between the tines, pushes
-the basket in, closes the door, and presses POWER, then QUICK, then POWER. Then it drives back to its
-charger. From a messy sink, GPT looks, the arm picks from the perceived pose (GPT box + depth), and GPT looks again:
-4 of 6 dishes loaded, and the 2 it cannot grasp are handed to a person. On a tidy counter the same pipeline finds 13/13
-items and loads 5/5 dishes, with a gripper and again with a suction cup.
-GPT (through `codex exec` on a ChatGPT subscription) is the robot's task-level brain. It
-chooses and sequences validated skills, reads their results, and recovers from faults. Force control,
-trajectories, collision checks and safety stay in the robot's own controllers.
+**GPT controls a robot that clears a messy sink into a countertop dishwasher.** GPT sees only an overhead camera
+image of the sink. It names the dishes and plans a pick order. The arm grasps each dish from its perceived pose (GPT's
+box plus depth, 1.7–2.9 mm error) and loads it. Then GPT looks again at what is left. In the sink run, **4 of 6
+dishes were loaded** (2 plates upright, 2 bowls upside-down). The 2 it could not grasp, an upright bowl sitting on a
+plate and a plate lying flat on the basin floor, were handed to a person.
+
+**How it works.** GPT (through `codex exec` on a ChatGPT subscription) decides the next *skill*. The robot API checks
+the call against a schema, a safety gate and preconditions. Then the robot's own controllers move the arm. GPT never
+sends joint torques: it makes about one decision per 10 s, while the arm runs a 1 kHz torque loop. Force control,
+trajectories, collision checks and the e-stop stay with the robot.
+
+**Other results** (all in MuJoCo physics, details below):
+- **Tidy counter:** the same pipeline finds 13/13 items and loads 5/5 dishes, with a gripper and again with a suction cup.
+- **Faults:** with injected faults GPT finished 13/14 missions; a fixed script finished 0/14.
+- **Mobile robot:** a wheeled base leaves its charger, docks at the counter, and the Franka FR3 arm opens the door,
+  loads the pod and a plate, closes the door, presses POWER, QUICK, POWER and drives back. 6/6 missions.
+- **Hardware design:** a costed real-hardware design (power, chips, safety chain, BOM of about US$53k).
 
 > **Status, honestly:** this is a **physics simulation in MuJoCo** plus a **costed real-hardware design**
 > (parts, power, chips, safety chain, BOM). It is **not yet a physical robot**. Water, washing, the door
 > latch and real capacitive touch are not simulated; see [Limitations](#limitations).
 
-- **Demo video:** [`docs/media/demo_final.mp4`](docs/media/demo_final.mp4)
-- **Demo page (GitHub Pages):** `https://<user>.github.io/<repo>/`, served from [`docs/index.html`](docs/index.html) *(fill in the URL after enabling Pages)*
+- **Demo video:** https://guoyuanjing2988.github.io/common-ground-dishwasher/media/demo_final.mp4 (also in [`docs/media/demo_final.mp4`](docs/media/demo_final.mp4))
+- **Demo page:** https://guoyuanjing2988.github.io/common-ground-dishwasher/ (served from [`docs/index.html`](docs/index.html))
 - **Slides:** [`docs/slides.html`](docs/slides.html) (arrow keys to navigate)
 
 Timeline: the event prompts and proofs of concept date from 10 Oct 2026. The pipelines were built

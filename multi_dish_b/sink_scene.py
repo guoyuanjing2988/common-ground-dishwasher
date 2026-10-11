@@ -73,7 +73,7 @@ def _accessories(spec):
                                             (BOX, [0, 0, .0062], [.11, .006, .0002], 0, [.95, .95, .95, 1])], yaw=math.radians(12))
     K._simple(spec, 'soap2', (BX0 - WALL_T - .06, BY1 - .06), [
         (BOX, [0, 0, .085], [.028, .018, .085], .45, [.85, .35, .55, 1]), (CYL, [0, 0, .182], [.011, .012, 0], .02, [.95, .95, .95, 1])])
-    K._simple(spec, 'sponge2', (BX0 - WALL_T - .055, BY0 + .10), [
+    K._simple(spec, 'sponge2', (BX0 - WALL_T - .055, BY0 + .19), [
         (BOX, [0, 0, .012], [.045, .032, .012], .02, [.96, .83, .25, 1]), (BOX, [0, 0, .027], [.045, .032, .003], .005, [.15, .45, .20, 1])],
         yaw=math.radians(-20))
     # cup with chopsticks (visual chopsticks: sticks are welded-free visual geoms of the cup body)
@@ -104,6 +104,8 @@ def _lean_plate_pose(y, yaw_off=0.):
 
 
 SEED = 3
+LAYOUT = 'mixed'
+SS_FLOOR = 0.78
 
 
 def build():
@@ -117,6 +119,21 @@ def build():
     S._attach_panda(spec, site)
     tints = [[.96, .96, .93, 1], [.97, .93, .86, 1], [.92, .95, .97, 1], [.95, .92, .90, 1]]
     j = lambda s_: rng.uniform(-s_, s_)
+    if LAYOUT == 'full':
+        # 'all graspable' layout: 3 plates slid down against the front wall (rims up over its edge) at random yaw / spacing,
+        # 2 bowls upside down wedged behind them. NO flat plate and NO upright bowl in this layout.
+        for i, y in enumerate((0.405 + j(.01), 0.625 + j(.01), 0.845 + j(.008))):
+            org, R = _lean_plate_pose(y, j(math.radians(7)))
+            S._add_plate(spec, None, 0., pos=org, R=R, name=f'plate{i}', rgba=tints[i])
+        for k_, (x, y) in enumerate([(-0.25, 0.515), (-0.255, 0.735)]):
+            M.add_bowl(spec, f'bowl{k_}', (x + j(.008), y + j(.01)))
+            bb = spec.body(f'bowl{k_}')
+            bb.pos = [bb.pos[0], bb.pos[1], SS_FLOOR + M.BOWL_HEIGHT + .03 + .02 * k_]
+            bb.quat = _quat_mul([0, 1, 0, 0], _axis_quat([1, .4, 0], j(.15)))
+        K.add_clutter(spec)
+        _accessories(spec)
+        K.add_camera(spec)
+        return _finish(spec)
     # messy sink (sink_6.png approximated where it stays graspable): 2 plates slid down against the front wall with their rims
     # sticking up over its edge, a 3rd plate flat at the back with a bowl (opening up, tilted) on it, 2 bowls upside down
     # wedged between the plates and the back wall. Seeded roughly, settled by physics.
@@ -139,6 +156,10 @@ def build():
     K.add_clutter(spec)
     _accessories(spec)
     K.add_camera(spec)
+    return _finish(spec)
+
+
+def _finish(spec):
     # sink camera: under the wall cabinet behind the sink, looking down into the basin (sees the leaning plates' faces)
     pos, look = np.array(SINKCAM_POS), np.array(SINKCAM_LOOK)
     fwd = unit_(look - pos)
